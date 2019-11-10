@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/parser.dir/test.cpp.o  -o parser 
