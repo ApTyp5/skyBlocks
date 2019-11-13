@@ -7,7 +7,7 @@
 
 #include <vector>
 
-#include "../AnalyzerType.h"
+#include "AnalyzerType.h"
 #include "../Primitives/AbstractPrimitive.h"
 
 class AbstractAnalyzer {

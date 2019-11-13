@@ -5,7 +5,7 @@
 #ifndef PARSER_ANALYZERS_CLIKEANALYZER_H_
 #define PARSER_ANALYZERS_CLIKEANALYZER_H_
 
-#include "../AnalyzerType.h"
+#include "AnalyzerType.h"
 #include "AbstractAnalyzer.h"
 
 class ClikeAnalyzer: public AbstractAnalyzer {

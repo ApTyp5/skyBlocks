@@ -2,7 +2,7 @@
 // Created by arthur on 09.11.2019.
 //
 
-#include "AnalyzerType.h"
+#include "Analyzers/AnalyzerType.h"
 #include "Parser.h"
 
 AbstractAnalyzer *Parser::createAnalyzer(AnalyzerType) {

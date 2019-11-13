@@ -8,8 +8,8 @@
 #include <string>
 #include <vector>
 
-#include "AnalyzerType.h"
-#include "SchedulerType.h"
+#include "Analyzers/AnalyzerType.h"
+#include "Schedulers/SchedulerType.h"
 
 #include "Analyzers/AbstractAnalyzer.h"
 #include "Schedulers/AbstractScheduler.h"
