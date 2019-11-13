@@ -6,3 +6,4 @@
 
 AbstractPrimitive::AbstractPrimitive(std::string text):
   text(text){}
+

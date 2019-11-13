@@ -7,9 +7,8 @@
 
 #include <string>
 
-class AbstractFigure {
- public:
-  virtual std::string toJson() = 0;
-};
+#include "../Interfaces/Jsonable.h"
+
+class AbstractFigure: public Jsonable {};
 
 #endif //PARSER_FIGURES_ABSTRACTFIGURE_H_

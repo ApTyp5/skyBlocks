@@ -10,7 +10,7 @@
 class Arrow: public OneMeasureFigure {
  public:
   Arrow(Point begin, Point end, std::string sign);
-  std::string toJson() override;
+  std::string toJson() const override;
 };
 
 #endif //PARSER_FIGURES_ARROW_H_

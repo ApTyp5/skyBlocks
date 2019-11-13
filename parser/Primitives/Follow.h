@@ -10,6 +10,7 @@
 class Follow: public AbstractPrimitive {
  public:
   Follow(std::string text);
+  DoubleMeasureFigure *toFigure(const Rect &rect) const override;
 };
 
 #endif //PARSER_PRIMITIVES_FOLLOW_H_

@@ -10,6 +10,8 @@
 class Cycle: public AbstractPrimitive {
  public:
   Cycle(std::string topText, std::string bottomText, size_t innerNum);
+  DoubleMeasureFigure *toFigure(const Rect &rect) const override;
+
  private:
   std::string bottomText;
   size_t innnerNum;

@@ -9,7 +9,8 @@
 
 class Line: public OneMeasureFigure {
   Line(Point begin, Point end, std::string);
-  std::string toJson() override;
+ public:
+  std::string toJson() const override;
 };
 
 #endif //PARSER_FIGURES_LINE_H_

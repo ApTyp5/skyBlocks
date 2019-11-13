@@ -7,10 +7,10 @@
 
 #include "DoubleMeasureFigure.h"
 
-class BegEnd {
+class BegEnd: public DoubleMeasureFigure {
  public:
   BegEnd(Rect rect, std::string text);
-  std::string toJson() override;
+  std::string toJson() const override;
 };
 
 #endif //PARSER_FIGURES_BEGEND_H_

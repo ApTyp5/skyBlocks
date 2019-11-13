@@ -11,10 +11,10 @@ struct Point{
   double x, y;
 };
 
-class OneMeasureFigure:AbstractFigure {
+class OneMeasureFigure: public AbstractFigure {
  public:
   OneMeasureFigure(Point begin, Point end, std::string sing);
-  virtual std::string toJson() = 0 override;
+
 
  private:
   Point begin, end;

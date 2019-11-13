@@ -17,12 +17,15 @@
 #include "Figures/AbstractFigure.h"
 #include "Primitives/AbstractPrimitive.h"
 
+
 class Parser {
  public:
   std::string parse(std::string, AnalyzerType = CLike, SchedulerType = Gost);
 
  private:
   std::string figuresToString(std::vector<AbstractFigure *> figures);
+  AbstractAnalyzer *createAnalyzer(AnalyzerType);
+  AbstractScheduler *createScheduler(SchedulerType);
 };
 
 #endif //PARSER__PARSER_H_

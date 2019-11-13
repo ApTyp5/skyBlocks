@@ -10,6 +10,7 @@
 class SubScheme: public AbstractPrimitive {
  public:
   SubScheme(std::string text, std::string name, size_t innerBlocks);
+  DoubleMeasureFigure *toFigure(const Rect &rect) const override;
  private:
   std::string name;
   size_t innerBlocks;

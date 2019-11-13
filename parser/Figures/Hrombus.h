@@ -9,7 +9,7 @@
 class Hrombus: public DoubleMeasureFigure {
  public:
   Hrombus(Rect rect, std::string text);
-  std::string toJson() override ;
+  std::string toJson() const override;
 };
 
 #endif //PARSER_FIGURES_HROMBUS_H_

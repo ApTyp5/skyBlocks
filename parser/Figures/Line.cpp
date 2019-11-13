@@ -9,3 +9,6 @@ Line::Line(Point begin, Point end, std::string sign):
 
 
 std::string toJson() { return " line "; }
+std::string Line::toJson() const {
+  return std::__cxx11::string();
+}

@@ -12,7 +12,6 @@
 
 class AbstractAnalyzer {
  public:
-  static create(AnalyzerType type);
   virtual std::vector<AbstractPrimitive *> analyze(std::string text) = 0;
 };
 

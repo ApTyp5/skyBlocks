@@ -16,7 +16,6 @@ struct Rect{
 class DoubleMeasureFigure: public AbstractFigure {
  public:
   DoubleMeasureFigure(Rect rect, std::string text);
-  virtual void toJson() = 0;
 
  private:
   Rect rect;

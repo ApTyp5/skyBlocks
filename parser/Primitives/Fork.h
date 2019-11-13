@@ -10,6 +10,7 @@
 class Fork: public AbstractPrimitive {
  public:
   Fork(std::string text, size_t yesNum, size_t nonum);
+  DoubleMeasureFigure *toFigure(const Rect &rect) const override;
  private:
   size_t yesNum, noNum;
 };

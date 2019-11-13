@@ -6,3 +6,5 @@
 
 OneMeasureFigure::OneMeasureFigure(Point begin, Point end, std::string sign):
 begin(begin), end(end), sign(sign) {}
+
+

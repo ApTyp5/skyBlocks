@@ -8,12 +8,8 @@
 #include <string>
 #include "../Figures/AbstractFigure.h"
 #include "../Interfaces/Figurable.h"
-struct Rect{
-  double x_center, y_center;
-  double width, height;
-};
 
-class AbstractPrimitive: Figurable {
+class AbstractPrimitive: public DMFigurable {
  public:
   AbstractPrimitive(std::string text);
 

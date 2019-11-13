@@ -3,3 +3,7 @@
 //
 
 #include "ClikeAnalyzer.h"
+
+std::vector<AbstractPrimitive *> ClikeAnalyzer::analyze(std::string text) {
+  return std::vector<AbstractPrimitive *>();
+}

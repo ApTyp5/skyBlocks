@@ -8,3 +8,6 @@ Arrow::Arrow(Point begin, Point end, std::string sign):
   OneMeasureFigure(begin, end, sign){}
 
 std::string toJson(){ return "test"; }
+std::string Arrow::toJson() const {
+  return std::__cxx11::string();
+}

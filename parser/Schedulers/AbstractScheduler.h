@@ -11,7 +11,6 @@
 
 class AbstractScheduler {
  public:
-  static AbstractScheduler *create(SchedulerType);
   virtual std::vector<AbstractFigure *> schedule(std::vector<AbstractPrimitive *>);
 };
 

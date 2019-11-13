@@ -8,8 +8,17 @@
 #include "Primitives/Follow.h"
 #include "Primitives/Fork.h"
 #include "Primitives/Cycle.h"
+#include "Primitives/SubScheme.h"
 
 #include "Figures/BegEnd.h"
+#include "Figures/Hrombus.h"
+#include "Figures/Rectangle.h"
+#include "Figures/BorderedRect.h"
+
+#include "Figures/Arrow.h"
+#include "Figures/Line.h"
+
+
 
 
 

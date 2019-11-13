@@ -10,7 +10,10 @@
 class Rectangle: public DoubleMeasureFigure {
  public:
   Rectangle(Rect rect, std::string text);
-  std::string toJson() override;
+  std::string toJson() const override;
 };
+std::string Rectangle::toJson() const {
+  return std::__cxx11::string();
+}
 
 #endif //PARSER_FIGURES_RECTANGLE_H_
