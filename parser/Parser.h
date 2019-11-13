@@ -23,9 +23,11 @@ class Parser {
   std::string parse(std::string, AnalyzerType = CLike, SchedulerType = Gost);
 
  private:
-  std::string figuresToString(std::vector<AbstractFigure *> figures);
   AbstractAnalyzer *createAnalyzer(AnalyzerType);
   AbstractScheduler *createScheduler(SchedulerType);
+
+  std::string figuresToJson(std::vector<Jsonable *> figures);
+
 };
 
 #endif //PARSER__PARSER_H_

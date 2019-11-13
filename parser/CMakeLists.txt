@@ -7,4 +7,4 @@ include_directories(test_parser ${GTEST_INCLUDE_DIRS})
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(test_parser test.cpp Analyzers/PythonLikeAnalyzer.cpp Analyzers/PythonLikeAnalyzer.h Analyzers/RuPseudoAnalyzer.cpp Analyzers/RuPseudoAnalyzer.h Analyzers/EnPseudoAnalyzer.cpp Analyzers/EnPseudoAnalyzer.h)
+add_executable(test_parser test.cpp Analyzers/PythonLikeAnalyzer.cpp Analyzers/PythonLikeAnalyzer.h Analyzers/RuPseudoAnalyzer.cpp Analyzers/RuPseudoAnalyzer.h Analyzers/EnPseudoAnalyzer.cpp Analyzers/EnPseudoAnalyzer.h Parser.cpp Parser.h)
