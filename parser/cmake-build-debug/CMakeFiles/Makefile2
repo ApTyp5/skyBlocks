@@ -74,12 +74,12 @@ preinstall:
 CMakeFiles/test_parser.dir/all:
 	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/depend
 	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target test_parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target test_parser"
 .PHONY : CMakeFiles/test_parser.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_parser.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_parser.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/test_parser.dir/rule

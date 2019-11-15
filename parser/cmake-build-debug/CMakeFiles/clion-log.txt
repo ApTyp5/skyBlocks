@@ -1,8 +1,4 @@
 /snap/clion/92/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/arthur/Repos/skyBlocks/parser
-CMake Error at CMakeLists.txt:10 (target_include_directories):
-  target_include_directories called with invalid arguments
-
-
--- Configuring incomplete, errors occurred!
-See also "/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeOutput.log".
-See also "/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeError.log".
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/arthur/Repos/skyBlocks/parser/cmake-build-debug

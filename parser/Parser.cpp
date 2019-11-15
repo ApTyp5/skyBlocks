@@ -3,17 +3,45 @@
 //
 
 #include "Analyzers/AnalyzerType.h"
+#include "Analyzers/ClikeAnalyzer.h"
+#include "Schedulers/SchedulerType.h"
+#include "Schedulers/GostScheduler.h"
 #include "Parser.h"
 
-AbstractAnalyzer *Parser::createAnalyzer(AnalyzerType) {
-  return nullptr;
+#include <memory>
+
+jsonString Parser::parse(const std::string &text,
+                         AnalyzerType analyzer_type,
+                         SchedulerType scheduler_type) {
+
+  std::unique_ptr<AbstractAnalyzer> analyzer(createAnalyzer(analyzer_type));
+  std::unique_ptr<AbstractScheduler> scheduler(createScheduler(scheduler_type));
+
+  Primitives primitives = analyzer->analyze(text);
+  Figures figures = scheduler->schedule(primitives);
+
+  jsonString retValue = figuresToJson(figures);
+  return retValue;
 }
-AbstractScheduler *Parser::createScheduler(SchedulerType) {
-  return nullptr;
+
+AbstractAnalyzer *Parser::createAnalyzer(AnalyzerType type) {
+  switch (type) {
+    case AnalyzerType::CLike: return new ClikeAnalyzer;
+    default: return nullptr;
+  }
 }
-std::string Parser::figuresToJson(std::vector<Jsonable *> figures) {
-  return std::string();
+
+AbstractScheduler *Parser::createScheduler(SchedulerType type) {
+  switch (type) {
+    case SchedulerType::Gost: return new GostScheduler;
+    default: return nullptr;
+  }
 }
-std::string Parser::parse(std::string, AnalyzerType, SchedulerType) {
-  return std::string();
+
+jsonString Parser::figuresToJson(const Figures figures) {
+  jsonString retVal;
+  for (const auto &i: figures) {
+    retVal += i->toJson();
+  }
+  return retVal;
 }

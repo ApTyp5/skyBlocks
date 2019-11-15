@@ -10,7 +10,7 @@
 
 class ClikeAnalyzer: public AbstractAnalyzer {
  public:
-  std::vector<AbstractPrimitive *> analyze(std::string text) override;
+  Primitives analyze(std::string text) override;
 };
 
 #endif //PARSER_ANALYZERS_CLIKEANALYZER_H_

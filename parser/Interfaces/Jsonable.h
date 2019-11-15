@@ -7,9 +7,11 @@
 
 #include <string>
 
+typedef std::string jsonString;
+
 class Jsonable{
  public:
-  virtual std::string toJson() const = 0;
+  virtual jsonString toJson() const = 0;
 };
 
 #endif //PARSER_INTERFACES_JSONABLE_H_

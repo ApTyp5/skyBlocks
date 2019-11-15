@@ -8,7 +8,8 @@
 enum AnalyzerType{
   CLike,
   PythonLike,
-  PseudoCode,
+  RuPseudoCode,
+  EnPseudoCode,
 };
 
 #endif //PARSER__ANALYZERTYPE_H_

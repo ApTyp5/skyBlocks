@@ -6,13 +6,16 @@
 #define PARSER_ANALYZERS_ABSTRACTANALYZER_H_
 
 #include <vector>
+#include <memory>
 
 #include "AnalyzerType.h"
 #include "../Primitives/AbstractPrimitive.h"
 
+typedef std::vector<std::shared_ptr<AbstractPrimitive>> Primitives;
+
 class AbstractAnalyzer {
  public:
-  virtual std::vector<AbstractPrimitive *> analyze(std::string text) = 0;
+  virtual Primitives analyze(std::string text) = 0;
 };
 
 #endif //PARSER_ANALYZERS_ABSTRACTANALYZER_H_

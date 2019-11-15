@@ -8,10 +8,16 @@
 #include "SchedulerType.h"
 #include "../Primitives/AbstractPrimitive.h"
 #include "../Figures/AbstractFigure.h"
+#include "../Analyzers/AbstractAnalyzer.h"
+
+#include <memory>
+#include <vector>
+
+typedef std::vector<std::shared_ptr<AbstractFigure> > Figures;
 
 class AbstractScheduler {
  public:
-  virtual std::vector<AbstractFigure *> schedule(std::vector<AbstractPrimitive *>);
+  virtual Figures schedule(Primitives) = 0;
 };
 
 #endif //PARSER_SCHEDULERS_ABSTRACTSCHEDULER_H_

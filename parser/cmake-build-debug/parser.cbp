@@ -34,6 +34,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/arthur/Repos/skyBlocks/parser/test_parser"/>
 					<Add directory="/usr/include/c++/8"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
 					<Add directory="/usr/include/c++/8/backward"/>
@@ -57,6 +58,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/arthur/Repos/skyBlocks/parser/test_parser"/>
 					<Add directory="/usr/include/c++/8"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
 					<Add directory="/usr/include/c++/8/backward"/>
@@ -84,6 +86,45 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/AbstractAnalyzer.cpp">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/AbstractAnalyzer.h">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/ClikeAnalyzer.cpp">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/ClikeAnalyzer.h">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Mocks/MockAnalyzer.h">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Mocks/MockParser.h">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Mocks/MockScheduler.h">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Parser.cpp">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Parser.h">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Schedulers/AbstractScheduler.cpp">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Schedulers/AbstractScheduler.h">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Schedulers/GostScheduler.cpp">
+			<Option target="test_parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Schedulers/GostScheduler.h">
+			<Option target="test_parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/test.cpp">
 			<Option target="test_parser"/>
 		</Unit>

@@ -9,7 +9,7 @@
 
 class GostScheduler: public AbstractScheduler {
  public:
-  std::vector<AbstractFigure *> schedule(std::vector<AbstractPrimitive *>) override ;
+  Figures schedule(Primitives primitives) override;
 };
 
 #endif //PARSER_SCHEDULERS_GOSTSCHEDULER_H_

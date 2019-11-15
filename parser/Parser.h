@@ -14,20 +14,16 @@
 #include "Analyzers/AbstractAnalyzer.h"
 #include "Schedulers/AbstractScheduler.h"
 
-#include "Figures/AbstractFigure.h"
-#include "Primitives/AbstractPrimitive.h"
 
 
 class Parser {
  public:
-  std::string parse(std::string, AnalyzerType = CLike, SchedulerType = Gost);
+  virtual jsonString parse(const std::string &, AnalyzerType = CLike, SchedulerType = Gost);
 
- private:
-  AbstractAnalyzer *createAnalyzer(AnalyzerType);
-  AbstractScheduler *createScheduler(SchedulerType);
-
-  std::string figuresToJson(std::vector<Jsonable *> figures);
-
+ protected:
+  virtual AbstractAnalyzer *createAnalyzer(AnalyzerType);
+  virtual AbstractScheduler *createScheduler(SchedulerType);
+  virtual jsonString figuresToJson(Figures figures);
 };
 
 #endif //PARSER__PARSER_H_

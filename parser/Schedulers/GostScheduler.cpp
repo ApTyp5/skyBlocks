@@ -3,3 +3,7 @@
 //
 
 #include "GostScheduler.h"
+
+Figures GostScheduler::schedule(Primitives primitives) {
+  return Figures();
+}
