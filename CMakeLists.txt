@@ -4,4 +4,4 @@ project(SkyBlocks VERSION 1)
 set(SERVER ${PROJECT}_server)
 set(CLIENT ${PROJECT}_client)
 
-add_executable(${SERVER} main.cpp}
+add_executable(${SERVER} main.cpp)

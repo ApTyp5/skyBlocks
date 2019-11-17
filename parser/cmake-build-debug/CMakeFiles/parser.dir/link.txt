@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/parser.dir/test.cpp.o  -o parser 
+/usr/bin/c++ -fPIC -g  -shared -Wl,-soname,libparser.so -o libparser.so CMakeFiles/parser.dir/Parser.cpp.o CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o 

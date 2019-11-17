@@ -8,7 +8,7 @@
 #include "SchedulerType.h"
 #include "../Primitives/AbstractPrimitive.h"
 #include "../Figures/AbstractFigure.h"
-#include "../Analyzers/AbstractAnalyzer.h"
+#include "../Analyzers/BaseAnalyzer.h"
 
 #include <memory>
 #include <vector>

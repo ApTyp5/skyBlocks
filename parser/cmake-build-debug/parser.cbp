@@ -27,6 +27,64 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/arthur/Repos/skyBlocks/parser/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="parser">
+				<Option output="/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/libparser.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arthur/Repos/skyBlocks/parser/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/arthur/Repos/skyBlocks/parser/test_parser"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 parser"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="parser/fast">
+				<Option output="/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/libparser.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/arthur/Repos/skyBlocks/parser/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/arthur/Repos/skyBlocks/parser/test_parser"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 parser/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="test_parser">
 				<Option output="/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/test_parser" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/arthur/Repos/skyBlocks/parser/cmake-build-debug"/>
@@ -75,55 +133,42 @@
 					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/home/arthur/Repos/skyBlocks/parser/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 		</Build>
-		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/AbstractAnalyzer.cpp">
-			<Option target="test_parser"/>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/BaseAnalyzer.cpp">
+			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/AbstractAnalyzer.h">
-			<Option target="test_parser"/>
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/BaseAnalyzer.h">
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/ClikeAnalyzer.cpp">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Analyzers/ClikeAnalyzer.h">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Mocks/MockAnalyzer.h">
-			<Option target="test_parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Mocks/MockParser.h">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Mocks/MockScheduler.h">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Parser.cpp">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Parser.h">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Schedulers/AbstractScheduler.cpp">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Schedulers/AbstractScheduler.h">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Schedulers/GostScheduler.cpp">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Schedulers/GostScheduler.h">
-			<Option target="test_parser"/>
+			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/test.cpp">
 			<Option target="test_parser"/>

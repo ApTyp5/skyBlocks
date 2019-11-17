@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.14)
 project(parser)
 
 set(AnalyzersFiles
-        Analyzers/AbstractAnalyzer.cpp Analyzers/AbstractAnalyzer.h
+        Analyzers/BaseAnalyzer.cpp Analyzers/BaseAnalyzer.h
         Analyzers/ClikeAnalyzer.cpp Analyzers/ClikeAnalyzer.h)
 set(FiguresFiles
         Figures/AbstractFigure.cpp Figures/AbstractFigure.h
@@ -29,7 +29,7 @@ set(ParserFiles
 set(MockFiles
         Mocks/MockAnalyzer.h
         Mocks/MockScheduler.h
-        Mocks/MockParser.h)
+        )
 set(AllFiles ${ParserFiles} ${SchedulerFiles}
         ${PrimitivesFiles} ${FigureFiles} ${AnalyzersFiles}
         ${MockFiles})
@@ -41,4 +41,7 @@ include_directories(test_parser ${GTEST_INCLUDE_DIRS})
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(test_parser test.cpp ${AllFiles})
+add_library(${PROJECT_NAME} SHARED ${AllFiles})
+
+add_executable(test_parser test.cpp)
+target_link_libraries(test_parser ${PROJECT_NAME} -lgtest -lgmock pthread)

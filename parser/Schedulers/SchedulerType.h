@@ -6,6 +6,7 @@
 #define PARSER__SCHEDULERTYPE_H_
 
 enum SchedulerType{
-  Gost;
+  Gost,
 };
+
 #endif //PARSER__SCHEDULERTYPE_H_

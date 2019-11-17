@@ -4,6 +4,12 @@
 
 #include "ClikeAnalyzer.h"
 
-Primitives ClikeAnalyzer::analyze(std::string text) {
-  return Primitives();
+void ClikeAnalyzer::followHandler(std::string line) {
+
+}
+void ClikeAnalyzer::ifHandler(std::string line) {
+
+}
+void ClikeAnalyzer::whileHandler(std::string line) {
+
 }

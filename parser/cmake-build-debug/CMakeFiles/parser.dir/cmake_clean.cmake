@@ -1,7 +1,11 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/parser.dir/test.cpp.o"
-  "parser"
-  "parser.pdb"
+  "CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o"
+  "CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o"
+  "CMakeFiles/parser.dir/Parser.cpp.o"
+  "CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o"
+  "CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o"
+  "libparser.pdb"
+  "libparser.so"
 )
 
 # Per-language clean rules from dependency scanning.

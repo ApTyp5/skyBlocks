@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named parser
+
+# Build rule for target.
+parser: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 parser
+.PHONY : parser
+
+# fast build rule for target.
+parser/fast:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/build
+.PHONY : parser/fast
+
+#=============================================================================
 # Target rules for targets named test_parser
 
 # Build rule for target.
@@ -123,32 +136,32 @@ test_parser/fast:
 	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/build
 .PHONY : test_parser/fast
 
-Analyzers/AbstractAnalyzer.o: Analyzers/AbstractAnalyzer.cpp.o
+Analyzers/BaseAnalyzer.o: Analyzers/BaseAnalyzer.cpp.o
 
-.PHONY : Analyzers/AbstractAnalyzer.o
+.PHONY : Analyzers/BaseAnalyzer.o
 
 # target to build an object file
-Analyzers/AbstractAnalyzer.cpp.o:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Analyzers/AbstractAnalyzer.cpp.o
-.PHONY : Analyzers/AbstractAnalyzer.cpp.o
+Analyzers/BaseAnalyzer.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o
+.PHONY : Analyzers/BaseAnalyzer.cpp.o
 
-Analyzers/AbstractAnalyzer.i: Analyzers/AbstractAnalyzer.cpp.i
+Analyzers/BaseAnalyzer.i: Analyzers/BaseAnalyzer.cpp.i
 
-.PHONY : Analyzers/AbstractAnalyzer.i
+.PHONY : Analyzers/BaseAnalyzer.i
 
 # target to preprocess a source file
-Analyzers/AbstractAnalyzer.cpp.i:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Analyzers/AbstractAnalyzer.cpp.i
-.PHONY : Analyzers/AbstractAnalyzer.cpp.i
+Analyzers/BaseAnalyzer.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.i
+.PHONY : Analyzers/BaseAnalyzer.cpp.i
 
-Analyzers/AbstractAnalyzer.s: Analyzers/AbstractAnalyzer.cpp.s
+Analyzers/BaseAnalyzer.s: Analyzers/BaseAnalyzer.cpp.s
 
-.PHONY : Analyzers/AbstractAnalyzer.s
+.PHONY : Analyzers/BaseAnalyzer.s
 
 # target to generate assembly for a file
-Analyzers/AbstractAnalyzer.cpp.s:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Analyzers/AbstractAnalyzer.cpp.s
-.PHONY : Analyzers/AbstractAnalyzer.cpp.s
+Analyzers/BaseAnalyzer.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.s
+.PHONY : Analyzers/BaseAnalyzer.cpp.s
 
 Analyzers/ClikeAnalyzer.o: Analyzers/ClikeAnalyzer.cpp.o
 
@@ -156,7 +169,7 @@ Analyzers/ClikeAnalyzer.o: Analyzers/ClikeAnalyzer.cpp.o
 
 # target to build an object file
 Analyzers/ClikeAnalyzer.cpp.o:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Analyzers/ClikeAnalyzer.cpp.o
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o
 .PHONY : Analyzers/ClikeAnalyzer.cpp.o
 
 Analyzers/ClikeAnalyzer.i: Analyzers/ClikeAnalyzer.cpp.i
@@ -165,7 +178,7 @@ Analyzers/ClikeAnalyzer.i: Analyzers/ClikeAnalyzer.cpp.i
 
 # target to preprocess a source file
 Analyzers/ClikeAnalyzer.cpp.i:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Analyzers/ClikeAnalyzer.cpp.i
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.i
 .PHONY : Analyzers/ClikeAnalyzer.cpp.i
 
 Analyzers/ClikeAnalyzer.s: Analyzers/ClikeAnalyzer.cpp.s
@@ -174,7 +187,7 @@ Analyzers/ClikeAnalyzer.s: Analyzers/ClikeAnalyzer.cpp.s
 
 # target to generate assembly for a file
 Analyzers/ClikeAnalyzer.cpp.s:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Analyzers/ClikeAnalyzer.cpp.s
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.s
 .PHONY : Analyzers/ClikeAnalyzer.cpp.s
 
 Parser.o: Parser.cpp.o
@@ -183,7 +196,7 @@ Parser.o: Parser.cpp.o
 
 # target to build an object file
 Parser.cpp.o:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Parser.cpp.o
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Parser.cpp.o
 .PHONY : Parser.cpp.o
 
 Parser.i: Parser.cpp.i
@@ -192,7 +205,7 @@ Parser.i: Parser.cpp.i
 
 # target to preprocess a source file
 Parser.cpp.i:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Parser.cpp.i
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Parser.cpp.i
 .PHONY : Parser.cpp.i
 
 Parser.s: Parser.cpp.s
@@ -201,7 +214,7 @@ Parser.s: Parser.cpp.s
 
 # target to generate assembly for a file
 Parser.cpp.s:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Parser.cpp.s
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Parser.cpp.s
 .PHONY : Parser.cpp.s
 
 Schedulers/AbstractScheduler.o: Schedulers/AbstractScheduler.cpp.o
@@ -210,7 +223,7 @@ Schedulers/AbstractScheduler.o: Schedulers/AbstractScheduler.cpp.o
 
 # target to build an object file
 Schedulers/AbstractScheduler.cpp.o:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Schedulers/AbstractScheduler.cpp.o
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o
 .PHONY : Schedulers/AbstractScheduler.cpp.o
 
 Schedulers/AbstractScheduler.i: Schedulers/AbstractScheduler.cpp.i
@@ -219,7 +232,7 @@ Schedulers/AbstractScheduler.i: Schedulers/AbstractScheduler.cpp.i
 
 # target to preprocess a source file
 Schedulers/AbstractScheduler.cpp.i:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Schedulers/AbstractScheduler.cpp.i
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.i
 .PHONY : Schedulers/AbstractScheduler.cpp.i
 
 Schedulers/AbstractScheduler.s: Schedulers/AbstractScheduler.cpp.s
@@ -228,7 +241,7 @@ Schedulers/AbstractScheduler.s: Schedulers/AbstractScheduler.cpp.s
 
 # target to generate assembly for a file
 Schedulers/AbstractScheduler.cpp.s:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Schedulers/AbstractScheduler.cpp.s
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.s
 .PHONY : Schedulers/AbstractScheduler.cpp.s
 
 Schedulers/GostScheduler.o: Schedulers/GostScheduler.cpp.o
@@ -237,7 +250,7 @@ Schedulers/GostScheduler.o: Schedulers/GostScheduler.cpp.o
 
 # target to build an object file
 Schedulers/GostScheduler.cpp.o:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Schedulers/GostScheduler.cpp.o
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o
 .PHONY : Schedulers/GostScheduler.cpp.o
 
 Schedulers/GostScheduler.i: Schedulers/GostScheduler.cpp.i
@@ -246,7 +259,7 @@ Schedulers/GostScheduler.i: Schedulers/GostScheduler.cpp.i
 
 # target to preprocess a source file
 Schedulers/GostScheduler.cpp.i:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Schedulers/GostScheduler.cpp.i
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.i
 .PHONY : Schedulers/GostScheduler.cpp.i
 
 Schedulers/GostScheduler.s: Schedulers/GostScheduler.cpp.s
@@ -255,7 +268,7 @@ Schedulers/GostScheduler.s: Schedulers/GostScheduler.cpp.s
 
 # target to generate assembly for a file
 Schedulers/GostScheduler.cpp.s:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/Schedulers/GostScheduler.cpp.s
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.s
 .PHONY : Schedulers/GostScheduler.cpp.s
 
 test.o: test.cpp.o
@@ -292,11 +305,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... test_parser"
 	@echo "... edit_cache"
-	@echo "... Analyzers/AbstractAnalyzer.o"
-	@echo "... Analyzers/AbstractAnalyzer.i"
-	@echo "... Analyzers/AbstractAnalyzer.s"
+	@echo "... parser"
+	@echo "... test_parser"
+	@echo "... Analyzers/BaseAnalyzer.o"
+	@echo "... Analyzers/BaseAnalyzer.i"
+	@echo "... Analyzers/BaseAnalyzer.s"
 	@echo "... Analyzers/ClikeAnalyzer.o"
 	@echo "... Analyzers/ClikeAnalyzer.i"
 	@echo "... Analyzers/ClikeAnalyzer.s"

@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/test_parser.dir/test.cpp.o CMakeFiles/test_parser.dir/Parser.cpp.o CMakeFiles/test_parser.dir/Schedulers/AbstractScheduler.cpp.o CMakeFiles/test_parser.dir/Schedulers/GostScheduler.cpp.o CMakeFiles/test_parser.dir/Analyzers/AbstractAnalyzer.cpp.o CMakeFiles/test_parser.dir/Analyzers/ClikeAnalyzer.cpp.o  -o test_parser 
+/usr/bin/c++  -g   CMakeFiles/test_parser.dir/test.cpp.o  -o test_parser -Wl,-rpath,/home/arthur/Repos/skyBlocks/parser/cmake-build-debug libparser.so -lgtest -lgmock -lpthread 

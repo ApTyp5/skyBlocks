@@ -7,23 +7,24 @@
 
 #include <string>
 #include <vector>
+#include <memory>
 
 #include "Analyzers/AnalyzerType.h"
 #include "Schedulers/SchedulerType.h"
 
-#include "Analyzers/AbstractAnalyzer.h"
+#include "Analyzers/BaseAnalyzer.h"
 #include "Schedulers/AbstractScheduler.h"
-
 
 
 class Parser {
  public:
-  virtual jsonString parse(const std::string &, AnalyzerType = CLike, SchedulerType = Gost);
+  jsonString parse(const std::string &,
+                   const std::shared_ptr<BaseAnalyzer> &analyzer,
+                   const std::shared_ptr<AbstractScheduler> &scheduler);
 
  protected:
-  virtual AbstractAnalyzer *createAnalyzer(AnalyzerType);
-  virtual AbstractScheduler *createScheduler(SchedulerType);
-  virtual jsonString figuresToJson(Figures figures);
+  jsonString figuresToJson(const Figures &figures);
+
 };
 
 #endif //PARSER__PARSER_H_

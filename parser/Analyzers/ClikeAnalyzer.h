@@ -6,11 +6,14 @@
 #define PARSER_ANALYZERS_CLIKEANALYZER_H_
 
 #include "AnalyzerType.h"
-#include "AbstractAnalyzer.h"
+#include "BaseAnalyzer.h"
 
-class ClikeAnalyzer: public AbstractAnalyzer {
+class ClikeAnalyzer : public BaseAnalyzer {
  public:
-  Primitives analyze(std::string text) override;
+ protected:
+  void ifHandler(std::string line) override;
+  void whileHandler(std::string line) override;
+  void followHandler(std::string line) override;
 };
 
 #endif //PARSER_ANALYZERS_CLIKEANALYZER_H_

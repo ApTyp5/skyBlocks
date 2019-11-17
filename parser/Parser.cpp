@@ -11,34 +11,17 @@
 #include <memory>
 
 jsonString Parser::parse(const std::string &text,
-                         AnalyzerType analyzer_type,
-                         SchedulerType scheduler_type) {
-
-  std::unique_ptr<AbstractAnalyzer> analyzer(createAnalyzer(analyzer_type));
-  std::unique_ptr<AbstractScheduler> scheduler(createScheduler(scheduler_type));
+                         const std::shared_ptr<BaseAnalyzer> &analyzer,
+                         const std::shared_ptr<AbstractScheduler> &scheduler) {
 
   Primitives primitives = analyzer->analyze(text);
   Figures figures = scheduler->schedule(primitives);
 
-  jsonString retValue = figuresToJson(figures);
-  return retValue;
+  jsonString retJson = figuresToJson(figures);
+  return retJson;
 }
 
-AbstractAnalyzer *Parser::createAnalyzer(AnalyzerType type) {
-  switch (type) {
-    case AnalyzerType::CLike: return new ClikeAnalyzer;
-    default: return nullptr;
-  }
-}
-
-AbstractScheduler *Parser::createScheduler(SchedulerType type) {
-  switch (type) {
-    case SchedulerType::Gost: return new GostScheduler;
-    default: return nullptr;
-  }
-}
-
-jsonString Parser::figuresToJson(const Figures figures) {
+jsonString Parser::figuresToJson(const Figures &figures) {
   jsonString retVal;
   for (const auto &i: figures) {
     retVal += i->toJson();
