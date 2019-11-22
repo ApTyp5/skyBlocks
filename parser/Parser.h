@@ -19,20 +19,15 @@
 class Parser {
  public:
   explicit Parser(DataBaseConnection connection = DataBaseConnection()) {}
-  jsonString parse(std::string text, Meta meta,
-                   AAnalyzeFactory *analyzeFactory,
-                   AScheduler *scheduler) {
-    return formJson();
-  }
+  virtual jsonString parse(std::string text, Meta meta,
+                           AAnalyzeFactory *analyzeFactory,
+                           AScheduler *scheduler);
 
-  jsonString parseFunc(std::string text, std::string name, Meta meta,
-                       AAnalyzeFactory *analyzeFactory,
-                       AScheduler *scheduler) {
-    return formJson();
-  }
+  virtual jsonString parseFunc(std::string text, std::string name, Meta meta,
+                               AAnalyzeFactory *analyzeFactory,
+                               AScheduler *scheduler);
 
- protected:
-  jsonString formJson() {
+  virtual jsonString formJson(ptrVector<AFigure> &figures) {
     return jsonString();
   }
 

@@ -15,3 +15,5 @@ class MockAnalyzeFactory : public AAnalyzeFactory {
 };
 
 #endif //PARSER_MOCKS_MOCKANALYZEFACTORY_H_
+
+

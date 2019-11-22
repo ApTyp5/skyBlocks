@@ -30,9 +30,9 @@ set(PrimitiveFiles
         Analyzer/Primitive/PFork.h
         Analyzer/Primitive/PCycle.h
         )
-set(AnalyzersFiles ${PrimitiveFiles} Analyzer/AAnalyzeFactory.h Analyzer/AAnalyzer.h Analyzer/IndentAnalyze/IndentAnalyzer.cpp Analyzer/IndentAnalyze/IndentAnalyzer.h Analyzer/AConstraintor.h Analyzer/IndentAnalyze/IndentConstraintor.cpp Analyzer/IndentAnalyze/IndentConstraintor.h Analyzer/AnalyzeFactoryType.h Analyzer/AnalyzeFactoryCreator.h Analyzer/IndentAnalyze/IndentAnalyzeFactory.h)
+set(AnalyzersFiles ${PrimitiveFiles} Analyzer/AAnalyzeFactory.h Analyzer/AAnalyzer.h Analyzer/IndentAnalyze/IndentAnalyzer.cpp Analyzer/IndentAnalyze/IndentAnalyzer.h Analyzer/AConstraintor.h Analyzer/IndentAnalyze/IndentConstraintor.cpp Analyzer/IndentAnalyze/IndentConstraintor.h Analyzer/AnalyzeFactoryType.h Analyzer/AnalyzeFactoryCreator.h Analyzer/IndentAnalyze/IndentAnalyzeFactory.h Analyzer/IndentAnalyze/Tools/Liner.cpp Analyzer/IndentAnalyze/Tools/Liner.h)
 set(SchedulerFiles ${FigureFiles} Scheduler/SchedulerType.h Scheduler/SchedulerCreator.h Scheduler/AScheduler.h Scheduler/CommonScheduler.cpp Scheduler/CommonScheduler.h)
-set(MockFiles Mocks/MockScheduler.h Mocks/MockAnalyzeFactory.h)
+set(MockFiles Mocks/MockScheduler.h Mocks/MockAnalyzeFactory.h Mocks/MockParser.cpp Mocks/MockParser.h)
 set(ParserFiles
         Parser.h Parser.cpp
         ptrVector.h

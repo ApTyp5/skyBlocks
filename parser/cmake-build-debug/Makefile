@@ -201,6 +201,33 @@ Analyzer/IndentAnalyze/IndentConstraintor.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.s
 .PHONY : Analyzer/IndentAnalyze/IndentConstraintor.cpp.s
 
+Analyzer/IndentAnalyze/Tools/Liner.o: Analyzer/IndentAnalyze/Tools/Liner.cpp.o
+
+.PHONY : Analyzer/IndentAnalyze/Tools/Liner.o
+
+# target to build an object file
+Analyzer/IndentAnalyze/Tools/Liner.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.o
+.PHONY : Analyzer/IndentAnalyze/Tools/Liner.cpp.o
+
+Analyzer/IndentAnalyze/Tools/Liner.i: Analyzer/IndentAnalyze/Tools/Liner.cpp.i
+
+.PHONY : Analyzer/IndentAnalyze/Tools/Liner.i
+
+# target to preprocess a source file
+Analyzer/IndentAnalyze/Tools/Liner.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.i
+.PHONY : Analyzer/IndentAnalyze/Tools/Liner.cpp.i
+
+Analyzer/IndentAnalyze/Tools/Liner.s: Analyzer/IndentAnalyze/Tools/Liner.cpp.s
+
+.PHONY : Analyzer/IndentAnalyze/Tools/Liner.s
+
+# target to generate assembly for a file
+Analyzer/IndentAnalyze/Tools/Liner.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.s
+.PHONY : Analyzer/IndentAnalyze/Tools/Liner.cpp.s
+
 JsonFormer/JsonFormer.o: JsonFormer/JsonFormer.cpp.o
 
 .PHONY : JsonFormer/JsonFormer.o
@@ -227,6 +254,33 @@ JsonFormer/JsonFormer.s: JsonFormer/JsonFormer.cpp.s
 JsonFormer/JsonFormer.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.s
 .PHONY : JsonFormer/JsonFormer.cpp.s
+
+Mocks/MockParser.o: Mocks/MockParser.cpp.o
+
+.PHONY : Mocks/MockParser.o
+
+# target to build an object file
+Mocks/MockParser.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Mocks/MockParser.cpp.o
+.PHONY : Mocks/MockParser.cpp.o
+
+Mocks/MockParser.i: Mocks/MockParser.cpp.i
+
+.PHONY : Mocks/MockParser.i
+
+# target to preprocess a source file
+Mocks/MockParser.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Mocks/MockParser.cpp.i
+.PHONY : Mocks/MockParser.cpp.i
+
+Mocks/MockParser.s: Mocks/MockParser.cpp.s
+
+.PHONY : Mocks/MockParser.s
+
+# target to generate assembly for a file
+Mocks/MockParser.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Mocks/MockParser.cpp.s
+.PHONY : Mocks/MockParser.cpp.s
 
 Parser.o: Parser.cpp.o
 
@@ -326,9 +380,15 @@ help:
 	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.o"
 	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.i"
 	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.s"
+	@echo "... Analyzer/IndentAnalyze/Tools/Liner.o"
+	@echo "... Analyzer/IndentAnalyze/Tools/Liner.i"
+	@echo "... Analyzer/IndentAnalyze/Tools/Liner.s"
 	@echo "... JsonFormer/JsonFormer.o"
 	@echo "... JsonFormer/JsonFormer.i"
 	@echo "... JsonFormer/JsonFormer.s"
+	@echo "... Mocks/MockParser.o"
+	@echo "... Mocks/MockParser.i"
+	@echo "... Mocks/MockParser.s"
 	@echo "... Parser.o"
 	@echo "... Parser.i"
 	@echo "... Parser.s"

@@ -13,10 +13,10 @@
 
 class SchedulerCreator {
  public:
-  static AScheduler *create(SchedulerType type) {
+  static AScheduler *create(SchedulerType type = Common) {
     switch (type) {
       default:
-      case SchedulerType::CommonScheduler:return new CommonScheduler;
+      case Common:return new CommonScheduler;
     }
   }
 };

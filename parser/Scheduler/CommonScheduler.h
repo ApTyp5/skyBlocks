@@ -9,7 +9,6 @@
 class CommonScheduler : public AScheduler {
  public:
   ptrVector<AFigure> schedule(const ptrVector<APrimitive> &primitives) override;
-
 };
 
 #endif //PARSER_SCHEDULER_COMMONSCHEDULER_H_

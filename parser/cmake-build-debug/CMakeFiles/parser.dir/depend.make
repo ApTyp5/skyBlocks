@@ -4,7 +4,10 @@
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/AAnalyzer.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/IndentAnalyzer.cpp
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/IndentAnalyzer.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Tools/Liner.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/Primitive/APrimitive.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/Primitive/PAlgorithm.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Error/Error.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../ptrVector.h
 
@@ -13,13 +16,32 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyz
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/IndentConstraintor.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Stubs/Stubs.h
 
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.o: ../Analyzer/IndentAnalyze/Tools/Liner.cpp
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.o: ../Analyzer/IndentAnalyze/Tools/Liner.h
+
 CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: ../JsonFormer/JsonFormer.cpp
 CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: ../JsonFormer/JsonFormer.h
+
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Analyzer/AAnalyzeFactory.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Analyzer/AAnalyzer.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Analyzer/AConstraintor.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Analyzer/Primitive/APrimitive.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Error/Error.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../JsonFormer/JsonFormer.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Mocks/MockParser.cpp
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Mocks/MockParser.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Parser.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Scheduler/AScheduler.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Scheduler/Figure/AFigure.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../Stubs/Stubs.h
+CMakeFiles/parser.dir/Mocks/MockParser.cpp.o: ../ptrVector.h
 
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/AAnalyzeFactory.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/AAnalyzer.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/AConstraintor.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/APrimitive.h
+CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Error/Error.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../JsonFormer/JsonFormer.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.cpp

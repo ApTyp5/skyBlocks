@@ -4,8 +4,9 @@
 
 #include "IndentConstraintor.h"
 std::string IndentConstraintor::findMain(std::string text) {
-  return std::string();
+  return text;
 }
+
 std::string IndentConstraintor::findFunc(std::string text, std::string name, DataBaseConnection &connection) {
-  return std::string();
+  return text;
 }

@@ -11,6 +11,9 @@
 class ComplexPrimitive : public APrimitive {
  public:
   explicit ComplexPrimitive(std::string text) : APrimitive(std::move(text)) {}
+  void addChild(APrimitive *child) {
+    children.push_back(child);
+  }
 
  protected:
   ptrVector<APrimitive> children;

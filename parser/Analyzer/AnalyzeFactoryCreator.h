@@ -14,7 +14,7 @@ class AnalyzeFactoryCreator {
   static AAnalyzeFactory *create(AnalyzeFactoryType type) {
     switch (type) {
       default:
-      case AnalyzeFactoryType::Indent: return new IndentAnalyzeFactory;
+      case Indent: return new IndentAnalyzeFactory;
     }
   }
 };

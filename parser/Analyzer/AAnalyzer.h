@@ -7,10 +7,11 @@
 
 #include "../ptrVector.h"
 #include "Primitive/APrimitive.h"
+#include "Primitive/ComplexPrimitive.h"
 #include "../Error/Error.h"
 
 class AAnalyzer {
  public:
-  virtual ptrVector<APrimitive> analyze(ptrVector<Error> &errors, std::string text) = 0;
+  virtual ComplexPrimitive *analyze(ptrVector<Error> &errors, std::string text) = 0;
 };
 #endif //PARSER_ANALYZER_AANALYZER_H_
