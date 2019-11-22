@@ -8,8 +8,19 @@ set(Stubs Stubs/Stubs.h)
 set(Error Error/Error.h)
 set(JsonFormer
         JsonFormer/JsonFormer.h JsonFormer/JsonFormer.cpp)
-set(AnalyzersFiles)
-set(FigureFiles Scheduler/Figure/AFigure.h Scheduler/Figure/SingleMeasureFigure.h Scheduler/Figure/FLine.h Scheduler/Figure/FArrorw.h Scheduler/Figure/DoubleMeasureFigure.h Scheduler/Figure/FBegEnd.h Scheduler/Figure/FFollow.h Scheduler/Figure/FFork.h Scheduler/Figure/FFunc.h Scheduler/Figure/FBegCycle.h Scheduler/Figure/FEndCycle.h)
+set(FigureFiles
+        Scheduler/Figure/AFigure.h
+        Scheduler/Figure/SingleMeasureFigure.h
+        Scheduler/Figure/FLine.h
+        Scheduler/Figure/FArrorw.h
+        Scheduler/Figure/DoubleMeasureFigure.h
+        Scheduler/Figure/FBegEnd.h
+        Scheduler/Figure/FFollow.h
+        Scheduler/Figure/FFork.h
+        Scheduler/Figure/FFunc.h
+        Scheduler/Figure/FBegCycle.h
+        Scheduler/Figure/FEndCycle.h
+        )
 set(PrimitiveFiles
         Analyzer/Primitive/APrimitive.h
         Analyzer/Primitive/PFollow.h
@@ -19,17 +30,19 @@ set(PrimitiveFiles
         Analyzer/Primitive/PFork.h
         Analyzer/Primitive/PCycle.h
         )
-set(SchedulerFiles)
+set(AnalyzersFiles ${PrimitiveFiles})
+set(SchedulerFiles ${FigureFiles} Scheduler/SchedulerType.h Scheduler/SchedulerCreator.h Scheduler/AScheduler.h Scheduler/CommonScheduler.cpp Scheduler/CommonScheduler.h)
 set(MockFiles)
-set(ParserFiles Parser.h Parser.cpp ptrVector.h)
+set(ParserFiles
+        Parser.h Parser.cpp
+        ptrVector.h
+        )
 
 set(AllFiles
         ${Stubs}
         ${Error}
         ${JsonFormer}
         ${AnalyzersFiles}
-        ${FigureFiles}
-        ${PrimitiveFiles}
         ${SchedulerFiles}
         ${ParserFiles}
         ${MockFiles}

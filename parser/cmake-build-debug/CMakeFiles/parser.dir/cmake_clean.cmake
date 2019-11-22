@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o"
   "CMakeFiles/parser.dir/Parser.cpp.o"
+  "CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o"
   "libparser.pdb"
   "libparser.so"
 )

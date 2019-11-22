@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o"
   "/home/arthur/Repos/new_skyBlocks/parser/Parser.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Parser.cpp.o"
+  "/home/arthur/Repos/new_skyBlocks/parser/Scheduler/CommonScheduler.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

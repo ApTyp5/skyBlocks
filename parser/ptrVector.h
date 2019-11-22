@@ -7,28 +7,39 @@
 
 #include <vector>
 template<typename T>
-class ptrVector : public std::vector<T *> {
+class ptrVector {
+ protected:
+  std::vector<T *> buffer;
+
  public:
-  ptrVector(size_t size = 0) : std::vector<T *>(size) {}
+  explicit ptrVector(size_t size = 0) : buffer(size) {}
 
   virtual ~ptrVector() {
-    for (auto &i : *this) {
+    for (auto &i : buffer) {
       delete *i;
     }
+
+    buffer.clear();
   }
 
   ptrVector(ptrVector<T> &ptr_vector) {
     for (auto &i : ptr_vector) {
-      this->push_back(new T(*i));
+      buffer.push_back(new T(**i));
     }
   }
 
-  ptrVector<T> &operator=(ptrVector<T> ptr_vector) {
-    *this = ptrVector<T>(ptr_vector);
+  ptrVector(ptrVector<T> &&ptr_vector) noexcept {
+    buffer = std::move(ptr_vector.buffer);
+    ptr_vector.buffer.clear();
   }
 
-  ptrVector(ptrVector<T> &&ptr_vector) noexcept {
-    *this = std::move(ptr_vector);
+  ptrVector<T> &operator=(const ptrVector<T> &ptr_vector) {
+    *this = std::move(ptrVector<T>(ptr_vector));
   }
+
+  ptrVector<T> &operator=(ptrVector<T> &&ptr_vector) noexcept {
+    *this = std::move(ptrVector<T>(ptr_vector));
+  }
+
 };
 #endif //PARSER__PTRVECTOR_H_
