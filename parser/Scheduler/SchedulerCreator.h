@@ -8,12 +8,15 @@
 #include <memory>
 
 #include "SchedulerType.h"
+#include "AScheduler.h"
+#include "CommonScheduler.h"
 
 class SchedulerCreator {
  public:
-  static std::unique_ptr<AScheduler> &UPtrCreate(SchedulerType type) {
+  static AScheduler *create(SchedulerType type) {
     switch (type) {
-      case SchedulerType::CommonScheduler:return std::unique_ptr<AScheduler>(new CommonScheduler);
+      default:
+      case SchedulerType::CommonScheduler:return new CommonScheduler;
     }
   }
 };

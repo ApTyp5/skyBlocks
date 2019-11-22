@@ -134,6 +134,36 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/AAnalyzeFactory.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/AAnalyzer.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/AConstraintor.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/AnalyzeFactoryCreator.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/AnalyzeFactoryType.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentAnalyzeFactory.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentAnalyzer.cpp">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentAnalyzer.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentConstraintor.cpp">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentConstraintor.h">
+			<Option target="parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/APrimitive.h">
 			<Option target="parser"/>
 		</Unit>

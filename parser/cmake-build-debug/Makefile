@@ -136,6 +136,60 @@ test_parser/fast:
 	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/build
 .PHONY : test_parser/fast
 
+Analyzer/IndentAnalyze/IndentAnalyzer.o: Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o
+
+.PHONY : Analyzer/IndentAnalyze/IndentAnalyzer.o
+
+# target to build an object file
+Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o
+.PHONY : Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o
+
+Analyzer/IndentAnalyze/IndentAnalyzer.i: Analyzer/IndentAnalyze/IndentAnalyzer.cpp.i
+
+.PHONY : Analyzer/IndentAnalyze/IndentAnalyzer.i
+
+# target to preprocess a source file
+Analyzer/IndentAnalyze/IndentAnalyzer.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.i
+.PHONY : Analyzer/IndentAnalyze/IndentAnalyzer.cpp.i
+
+Analyzer/IndentAnalyze/IndentAnalyzer.s: Analyzer/IndentAnalyze/IndentAnalyzer.cpp.s
+
+.PHONY : Analyzer/IndentAnalyze/IndentAnalyzer.s
+
+# target to generate assembly for a file
+Analyzer/IndentAnalyze/IndentAnalyzer.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.s
+.PHONY : Analyzer/IndentAnalyze/IndentAnalyzer.cpp.s
+
+Analyzer/IndentAnalyze/IndentConstraintor.o: Analyzer/IndentAnalyze/IndentConstraintor.cpp.o
+
+.PHONY : Analyzer/IndentAnalyze/IndentConstraintor.o
+
+# target to build an object file
+Analyzer/IndentAnalyze/IndentConstraintor.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o
+.PHONY : Analyzer/IndentAnalyze/IndentConstraintor.cpp.o
+
+Analyzer/IndentAnalyze/IndentConstraintor.i: Analyzer/IndentAnalyze/IndentConstraintor.cpp.i
+
+.PHONY : Analyzer/IndentAnalyze/IndentConstraintor.i
+
+# target to preprocess a source file
+Analyzer/IndentAnalyze/IndentConstraintor.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.i
+.PHONY : Analyzer/IndentAnalyze/IndentConstraintor.cpp.i
+
+Analyzer/IndentAnalyze/IndentConstraintor.s: Analyzer/IndentAnalyze/IndentConstraintor.cpp.s
+
+.PHONY : Analyzer/IndentAnalyze/IndentConstraintor.s
+
+# target to generate assembly for a file
+Analyzer/IndentAnalyze/IndentConstraintor.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.s
+.PHONY : Analyzer/IndentAnalyze/IndentConstraintor.cpp.s
+
 JsonFormer/JsonFormer.o: JsonFormer/JsonFormer.cpp.o
 
 .PHONY : JsonFormer/JsonFormer.o
@@ -254,6 +308,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... parser"
 	@echo "... test_parser"
+	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.o"
+	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.i"
+	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.s"
+	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.o"
+	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.i"
+	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.s"
 	@echo "... JsonFormer/JsonFormer.o"
 	@echo "... JsonFormer/JsonFormer.i"
 	@echo "... JsonFormer/JsonFormer.s"
