@@ -6,15 +6,18 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(Stubs Stubs/Stubs.h)
 set(Error Error/Error.h)
-set(JsonFormer JsonFormer/JsonFormer.h JsonFormer/JsonFormer.cpp)
+set(JsonFormer
+        JsonFormer/JsonFormer.h JsonFormer/JsonFormer.cpp)
 set(AnalyzersFiles)
-set(FiguresFiles)
+set(FigureFiles Scheduler/Figure/AFigure.h Scheduler/Figure/SingleMeasureFigure.h Scheduler/Figure/FLine.h Scheduler/Figure/FArrorw.h Scheduler/Figure/DoubleMeasureFigure.h Scheduler/Figure/FBegEnd.h Scheduler/Figure/FFollow.h Scheduler/Figure/FFork.h Scheduler/Figure/FFunc.h Scheduler/Figure/FBegCycle.h Scheduler/Figure/FEndCycle.h)
 set(PrimitiveFiles
         Analyzer/Primitive/APrimitive.h
         Analyzer/Primitive/PFollow.h
         Analyzer/Primitive/PFunc.h
         Analyzer/Primitive/ComplexPrimitive.h
         Analyzer/Primitive/PAlgorithm.h
+        Analyzer/Primitive/PFork.h
+        Analyzer/Primitive/PCycle.h
         )
 set(SchedulerFiles)
 set(MockFiles)
@@ -30,7 +33,7 @@ set(AllFiles
         ${SchedulerFiles}
         ${ParserFiles}
         ${MockFiles}
-        Analyzer/Primitive/PFork.h Analyzer/Primitive/PCycle.h)
+        )
 
 
 find_package(GTest REQUIRED)

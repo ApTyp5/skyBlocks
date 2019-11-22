@@ -134,6 +134,27 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/APrimitive.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/ComplexPrimitive.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/PAlgorithm.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/PCycle.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/PFollow.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/PFork.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/PFunc.h">
+			<Option target="parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Error/Error.h">
 			<Option target="parser"/>
 		</Unit>
@@ -149,25 +170,37 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Parser.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Primitive/APrimitive.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/AFigure.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Primitive/ComplexPrimitive.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/DoubleMeasureFigure.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Primitive/PAlgorithm.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FArrorw.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Primitive/PCycle.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FBegCycle.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Primitive/PFollow.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FBegEnd.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Primitive/PFork.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FEndCycle.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Primitive/PFunc.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FFollow.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FFork.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FFunc.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FLine.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/SingleMeasureFigure.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Stubs/Stubs.h">
