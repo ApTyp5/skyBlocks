@@ -10,17 +10,17 @@
 #include <memory>
 
 #include "Error/Error.h"
+#include "JsonFormer/JsonFormer.h"
+#include "Stubs/Stubs.h"
 
-typedef std::string jsonString;
 
 class Parser {
  public:
-  jsonString parse(const std::string &,
-                   const std::shared_ptr<BaseAnalyzer> &analyzer,
-                   const std::shared_ptr<AbstractScheduler> &scheduler);
+  Parser(DataBaseConnection connection);
 
- protected:
-  jsonString formJson(const Figures &figures);
+ private:
+  DataBaseConnection connection;
+  std::vector
 
 };
 

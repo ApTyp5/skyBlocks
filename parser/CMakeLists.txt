@@ -12,7 +12,7 @@ set(FiguresFiles)
 set(PrimitiveFiles)
 set(SchedulerFiles)
 set(MockFiles)
-set(ParserFiles Parser.h Parser.cpp)
+set(ParserFiles Parser.h Parser.cpp ptrVector.h)
 
 set(AllFiles
         ${Stubs}
@@ -31,5 +31,5 @@ find_package(GTest REQUIRED)
 include_directories(test_parser ${GTEST_INCLUDE_DIRS})
 add_library(${PROJECT_NAME} SHARED ${AllFiles})
 
-add_executable(test_parser test.cpp)
+add_executable(test_parser test.cpp ptrVector.h)
 target_link_libraries(test_parser ${PROJECT_NAME} -lgtest -lgmock pthread)

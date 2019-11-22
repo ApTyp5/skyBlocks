@@ -152,6 +152,10 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Stubs/Stubs.h">
 			<Option target="parser"/>
 		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/ptrVector.h">
+			<Option target="parser"/>
+			<Option target="test_parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/test.cpp">
 			<Option target="test_parser"/>
 		</Unit>
