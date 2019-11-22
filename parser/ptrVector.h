@@ -8,6 +8,9 @@
 #include <vector>
 template<typename T>
 class ptrVector : public std::vector<T *> {
+ public:
+  ptrVector(size_t size = 0) : std::vector<T *>(size) {}
+
   virtual ~ptrVector() {
     for (auto &i : *this) {
       delete *i;
@@ -20,11 +23,11 @@ class ptrVector : public std::vector<T *> {
     }
   }
 
-  const ptrVector<T> &operator=(ptrVector<T> ptr_vector) {
+  ptrVector<T> &operator=(ptrVector<T> ptr_vector) {
     *this = ptrVector<T>(ptr_vector);
   }
 
-  ptrVector(ptrVector<T> &&ptr_vector) {
+  ptrVector(ptrVector<T> &&ptr_vector) noexcept {
     *this = std::move(ptr_vector);
   }
 };

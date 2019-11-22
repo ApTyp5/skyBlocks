@@ -12,15 +12,31 @@
 #include "Error/Error.h"
 #include "JsonFormer/JsonFormer.h"
 #include "Stubs/Stubs.h"
+#include "ptrVector.h"
 
 
 class Parser {
  public:
-  Parser(DataBaseConnection connection);
+  explicit Parser(DataBaseConnection connection) {}
+  jsonString parse(std::string text, Meta meta,
+                   std::unique_ptr<AAnalyzeFactory> &analyzeFactory,
+                   std::unique_ptr<AScheduler> &scheduler) {
+    return formJson();
+  }
+  jsonString parseFunc(std::string text, std::string name, Meta meta,
+                       std::unique_ptr<AAnalyzeFactory> &analyzeFactory,
+                       std::unique_ptr<AScheduler> &scheduler) {
+    return formJson();
+  }
+
+ protected:
+  jsonString formJson() {
+    return jsonString();
+  }
 
  private:
   DataBaseConnection connection;
-  std::vector
+  ptrVector<Error> errors;
 
 };
 

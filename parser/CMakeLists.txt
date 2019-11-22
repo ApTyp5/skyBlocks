@@ -9,7 +9,13 @@ set(Error Error/Error.h)
 set(JsonFormer JsonFormer/JsonFormer.h JsonFormer/JsonFormer.cpp)
 set(AnalyzersFiles)
 set(FiguresFiles)
-set(PrimitiveFiles)
+set(PrimitiveFiles
+        Analyzer/Primitive/APrimitive.h
+        Analyzer/Primitive/PFollow.h
+        Analyzer/Primitive/PFunc.h
+        Analyzer/Primitive/ComplexPrimitive.h
+        Analyzer/Primitive/PAlgorithm.h
+        )
 set(SchedulerFiles)
 set(MockFiles)
 set(ParserFiles Parser.h Parser.cpp ptrVector.h)
@@ -24,7 +30,7 @@ set(AllFiles
         ${SchedulerFiles}
         ${ParserFiles}
         ${MockFiles}
-        )
+        Analyzer/Primitive/PFork.h Analyzer/Primitive/PCycle.h)
 
 
 find_package(GTest REQUIRED)

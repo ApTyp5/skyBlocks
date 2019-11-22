@@ -10,7 +10,7 @@
 struct Error{
   int row, col;
   std::string message;
-  Error(std::string message, row = -1, col = -1):
+  Error(std::string message = "", int row = -1, int col = -1) :
     message(message), row(row), col(col) {}
 };
 
