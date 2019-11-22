@@ -3,6 +3,7 @@
 //
 
 #include "CommonScheduler.h"
-ptrVector<AFigure> &&CommonScheduler::schedule(const ptrVector<APrimitive> &primitives) {
-  return <#initializer#>;
+ptrVector<AFigure> CommonScheduler::schedule(const ptrVector<APrimitive> &primitives) {
+  ptrVector<AFigure> figures;
+  return figures;
 }

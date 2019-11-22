@@ -13,19 +13,21 @@
 #include "JsonFormer/JsonFormer.h"
 #include "Stubs/Stubs.h"
 #include "ptrVector.h"
-
+#include "Analyzer/AAnalyzeFactory.h"
+#include "Scheduler/AScheduler.h"
 
 class Parser {
  public:
-  explicit Parser(DataBaseConnection connection) {}
+  explicit Parser(DataBaseConnection connection = DataBaseConnection()) {}
   jsonString parse(std::string text, Meta meta,
-                   std::unique_ptr<AAnalyzeFactory> &analyzeFactory,
-                   std::unique_ptr<AScheduler> &scheduler) {
+                   AAnalyzeFactory *analyzeFactory,
+                   AScheduler *scheduler) {
     return formJson();
   }
+
   jsonString parseFunc(std::string text, std::string name, Meta meta,
-                       std::unique_ptr<AAnalyzeFactory> &analyzeFactory,
-                       std::unique_ptr<AScheduler> &scheduler) {
+                       AAnalyzeFactory *analyzeFactory,
+                       AScheduler *scheduler) {
     return formJson();
   }
 
@@ -37,7 +39,6 @@ class Parser {
  private:
   DataBaseConnection connection;
   ptrVector<Error> errors;
-
 };
 
 #endif //PARSER__PARSER_H_

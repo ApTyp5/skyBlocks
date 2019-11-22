@@ -39,7 +39,7 @@ class ptrVector {
 
   ptrVector<T> &operator=(ptrVector<T> &&ptr_vector) noexcept {
     *this = std::move(ptrVector<T>(ptr_vector));
+    ptr_vector.buffer.clear();
   }
-
 };
 #endif //PARSER__PTRVECTOR_H_

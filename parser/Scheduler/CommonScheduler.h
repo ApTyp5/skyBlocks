@@ -8,7 +8,7 @@
 #include "AScheduler.h"
 class CommonScheduler : public AScheduler {
  public:
-  ptrVector<AFigure> &&schedule(const ptrVector<APrimitive> &primitives) override;
+  ptrVector<AFigure> schedule(const ptrVector<APrimitive> &primitives) override;
 
 };
 

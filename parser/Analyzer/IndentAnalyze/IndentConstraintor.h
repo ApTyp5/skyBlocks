@@ -9,8 +9,8 @@
 
 class IndentConstraintor : public AConstraintor {
  public:
-  std::string &&findMain(std::string text) override;
-  std::string &&findFunc(std::string text, std::string name, DataBaseConnection &connection) override;
+  std::string findMain(std::string text) override;
+  std::string findFunc(std::string text, std::string name, DataBaseConnection &connection) override;
 };
 
 #endif //PARSER_ANALYZER_INDENTCONSTRAINTOR_H_

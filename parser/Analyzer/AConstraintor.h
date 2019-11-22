@@ -11,8 +11,8 @@
 
 class AConstraintor {
  public:
-  virtual std::string &&findMain(std::string text) = 0;
-  virtual std::string &&findFunc(std::string text,
+  virtual std::string findMain(std::string text) = 0;
+  virtual std::string findFunc(std::string text,
                                  std::string name, DataBaseConnection &connection) = 0;
 };
 

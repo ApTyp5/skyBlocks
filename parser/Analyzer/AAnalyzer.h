@@ -11,6 +11,6 @@
 
 class AAnalyzer {
  public:
-  virtual ptrVector<APrimitive> &&analyze(ptrVector<Error> &errors, std::string text) = 0;
+  virtual ptrVector<APrimitive> analyze(ptrVector<Error> &errors, std::string text) = 0;
 };
 #endif //PARSER_ANALYZER_AANALYZER_H_

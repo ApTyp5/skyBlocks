@@ -54,13 +54,13 @@ CMAKE_BINARY_DIR = /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug
 
 # The main recursive "all" target.
 all: CMakeFiles/parser.dir/all
-all: CMakeFiles/test_parser.dir/all
+all: CMakeFiles/parserTest.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
 clean: CMakeFiles/parser.dir/clean
-clean: CMakeFiles/test_parser.dir/clean
+clean: CMakeFiles/parserTest.dir/clean
 
 .PHONY : clean
 
@@ -97,31 +97,31 @@ CMakeFiles/parser.dir/clean:
 .PHONY : CMakeFiles/parser.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/test_parser.dir
+# Target rules for target CMakeFiles/parserTest.dir
 
 # All Build rule for target.
-CMakeFiles/test_parser.dir/all: CMakeFiles/parser.dir/all
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/depend
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target test_parser"
-.PHONY : CMakeFiles/test_parser.dir/all
+CMakeFiles/parserTest.dir/all: CMakeFiles/parser.dir/all
+	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/depend
+	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=7,8 "Built target parserTest"
+.PHONY : CMakeFiles/parserTest.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/test_parser.dir/rule: cmake_check_build_system
+CMakeFiles/parserTest.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 8
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_parser.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/parserTest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/test_parser.dir/rule
+.PHONY : CMakeFiles/parserTest.dir/rule
 
 # Convenience name for target.
-test_parser: CMakeFiles/test_parser.dir/rule
+parserTest: CMakeFiles/parserTest.dir/rule
 
-.PHONY : test_parser
+.PHONY : parserTest
 
 # clean rule for target.
-CMakeFiles/test_parser.dir/clean:
-	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/clean
-.PHONY : CMakeFiles/test_parser.dir/clean
+CMakeFiles/parserTest.dir/clean:
+	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/clean
+.PHONY : CMakeFiles/parserTest.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

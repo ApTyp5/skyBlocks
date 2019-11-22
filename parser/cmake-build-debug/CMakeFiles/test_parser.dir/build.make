@@ -57,27 +57,27 @@ include CMakeFiles/test_parser.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test_parser.dir/flags.make
 
-CMakeFiles/test_parser.dir/test.cpp.o: CMakeFiles/test_parser.dir/flags.make
-CMakeFiles/test_parser.dir/test.cpp.o: ../test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_parser.dir/test.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_parser.dir/test.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/test.cpp
+CMakeFiles/test_parser.dir/parserTest.cpp.o: CMakeFiles/test_parser.dir/flags.make
+CMakeFiles/test_parser.dir/parserTest.cpp.o: ../parserTest.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_parser.dir/parserTest.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_parser.dir/parserTest.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/parserTest.cpp
 
-CMakeFiles/test_parser.dir/test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_parser.dir/test.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/new_skyBlocks/parser/test.cpp > CMakeFiles/test_parser.dir/test.cpp.i
+CMakeFiles/test_parser.dir/parserTest.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_parser.dir/parserTest.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/new_skyBlocks/parser/parserTest.cpp > CMakeFiles/test_parser.dir/parserTest.cpp.i
 
-CMakeFiles/test_parser.dir/test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_parser.dir/test.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/test.cpp -o CMakeFiles/test_parser.dir/test.cpp.s
+CMakeFiles/test_parser.dir/parserTest.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_parser.dir/parserTest.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/parserTest.cpp -o CMakeFiles/test_parser.dir/parserTest.cpp.s
 
 # Object files for target test_parser
 test_parser_OBJECTS = \
-"CMakeFiles/test_parser.dir/test.cpp.o"
+"CMakeFiles/test_parser.dir/parserTest.cpp.o"
 
 # External object files for target test_parser
 test_parser_EXTERNAL_OBJECTS =
 
-test_parser: CMakeFiles/test_parser.dir/test.cpp.o
+test_parser: CMakeFiles/test_parser.dir/parserTest.cpp.o
 test_parser: CMakeFiles/test_parser.dir/build.make
 test_parser: libparser.so
 test_parser: CMakeFiles/test_parser.dir/link.txt

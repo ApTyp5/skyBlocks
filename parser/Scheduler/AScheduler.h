@@ -11,7 +11,7 @@
 
 class AScheduler {
  public:
-  virtual ptrVector<AFigure> &&schedule(const ptrVector<APrimitive> &primitives) = 0;
+  virtual ptrVector<AFigure> schedule(const ptrVector<APrimitive> &primitives) = 0;
 };
 
 #endif //PARSER_SCHEDULER_ASCHEDULER_H_

@@ -1,4 +1,5 @@
 /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/test.dir
 /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir
-/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/test_parser.dir
+/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parserTest.dir

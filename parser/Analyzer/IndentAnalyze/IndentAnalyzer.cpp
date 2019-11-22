@@ -3,6 +3,7 @@
 //
 
 #include "IndentAnalyzer.h"
-ptrVector<APrimitive> &&IndentAnalyzer::analyze(ptrVector<Error> &errors, std::string text) {
-  return <#initializer#>;
+ptrVector<APrimitive> IndentAnalyzer::analyze(ptrVector<Error> &errors, std::string text) {
+  ptrVector<APrimitive> retVal;
+  return retVal;
 }

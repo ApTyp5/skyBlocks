@@ -9,7 +9,7 @@
 
 class IndentAnalyzer : public AAnalyzer {
  public:
-  ptrVector<APrimitive> &&analyze(ptrVector<Error> &errors, std::string text) override;
+  ptrVector<APrimitive> analyze(ptrVector<Error> &errors, std::string text) override;
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZER_H_

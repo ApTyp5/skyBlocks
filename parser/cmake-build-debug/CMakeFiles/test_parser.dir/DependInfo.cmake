@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/arthur/Repos/new_skyBlocks/parser/test.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/test_parser.dir/test.cpp.o"
+  "/home/arthur/Repos/new_skyBlocks/parser/parserTest.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/test_parser.dir/parserTest.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

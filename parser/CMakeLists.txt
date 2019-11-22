@@ -32,7 +32,7 @@ set(PrimitiveFiles
         )
 set(AnalyzersFiles ${PrimitiveFiles} Analyzer/AAnalyzeFactory.h Analyzer/AAnalyzer.h Analyzer/IndentAnalyze/IndentAnalyzer.cpp Analyzer/IndentAnalyze/IndentAnalyzer.h Analyzer/AConstraintor.h Analyzer/IndentAnalyze/IndentConstraintor.cpp Analyzer/IndentAnalyze/IndentConstraintor.h Analyzer/AnalyzeFactoryType.h Analyzer/AnalyzeFactoryCreator.h Analyzer/IndentAnalyze/IndentAnalyzeFactory.h)
 set(SchedulerFiles ${FigureFiles} Scheduler/SchedulerType.h Scheduler/SchedulerCreator.h Scheduler/AScheduler.h Scheduler/CommonScheduler.cpp Scheduler/CommonScheduler.h)
-set(MockFiles)
+set(MockFiles Mocks/MockScheduler.h Mocks/MockAnalyzeFactory.h)
 set(ParserFiles
         Parser.h Parser.cpp
         ptrVector.h
@@ -46,12 +46,16 @@ set(AllFiles
         ${SchedulerFiles}
         ${ParserFiles}
         ${MockFiles}
-        )
+        Mocks/MockScheduler.h)
 
 
 find_package(GTest REQUIRED)
 include_directories(test_parser ${GTEST_INCLUDE_DIRS})
 add_library(${PROJECT_NAME} SHARED ${AllFiles})
 
-add_executable(test_parser test.cpp ptrVector.h)
-target_link_libraries(test_parser ${PROJECT_NAME} -lgtest -lgmock pthread)
+enable_testing()
+
+add_executable(parserTest parserTest.cpp ptrVector.h)
+target_link_libraries(parserTest ${PROJECT_NAME} -lgtest -lgmock pthread)
+
+add_test(parser_testing parserTest)
