@@ -43,10 +43,10 @@ RM = /snap/clion/92/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arthur/Repos/skyBlocks/parser
+CMAKE_SOURCE_DIR = /home/arthur/Repos/new_skyBlocks/parser
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arthur/Repos/skyBlocks/parser/cmake-build-debug
+CMAKE_BINARY_DIR = /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/parser.dir/depend.make
@@ -57,90 +57,45 @@ include CMakeFiles/parser.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/parser.dir/flags.make
 
+CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: CMakeFiles/parser.dir/flags.make
+CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: ../JsonFormer/JsonFormer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.cpp
+
+CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.cpp > CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.i
+
+CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.cpp -o CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.s
+
 CMakeFiles/parser.dir/Parser.cpp.o: CMakeFiles/parser.dir/flags.make
 CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/parser.dir/Parser.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Parser.cpp.o -c /home/arthur/Repos/skyBlocks/parser/Parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/parser.dir/Parser.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Parser.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Parser.cpp
 
 CMakeFiles/parser.dir/Parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Parser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/skyBlocks/parser/Parser.cpp > CMakeFiles/parser.dir/Parser.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/new_skyBlocks/parser/Parser.cpp > CMakeFiles/parser.dir/Parser.cpp.i
 
 CMakeFiles/parser.dir/Parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Parser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/skyBlocks/parser/Parser.cpp -o CMakeFiles/parser.dir/Parser.cpp.s
-
-CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o: CMakeFiles/parser.dir/flags.make
-CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o: ../Schedulers/AbstractScheduler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o -c /home/arthur/Repos/skyBlocks/parser/Schedulers/AbstractScheduler.cpp
-
-CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/skyBlocks/parser/Schedulers/AbstractScheduler.cpp > CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.i
-
-CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/skyBlocks/parser/Schedulers/AbstractScheduler.cpp -o CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.s
-
-CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o: CMakeFiles/parser.dir/flags.make
-CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o: ../Schedulers/GostScheduler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o -c /home/arthur/Repos/skyBlocks/parser/Schedulers/GostScheduler.cpp
-
-CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/skyBlocks/parser/Schedulers/GostScheduler.cpp > CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.i
-
-CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/skyBlocks/parser/Schedulers/GostScheduler.cpp -o CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.s
-
-CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o: CMakeFiles/parser.dir/flags.make
-CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o: ../Analyzers/BaseAnalyzer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o -c /home/arthur/Repos/skyBlocks/parser/Analyzers/BaseAnalyzer.cpp
-
-CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/skyBlocks/parser/Analyzers/BaseAnalyzer.cpp > CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.i
-
-CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/skyBlocks/parser/Analyzers/BaseAnalyzer.cpp -o CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.s
-
-CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o: CMakeFiles/parser.dir/flags.make
-CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o: ../Analyzers/ClikeAnalyzer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o -c /home/arthur/Repos/skyBlocks/parser/Analyzers/ClikeAnalyzer.cpp
-
-CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/skyBlocks/parser/Analyzers/ClikeAnalyzer.cpp > CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.i
-
-CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/skyBlocks/parser/Analyzers/ClikeAnalyzer.cpp -o CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/Parser.cpp -o CMakeFiles/parser.dir/Parser.cpp.s
 
 # Object files for target parser
 parser_OBJECTS = \
-"CMakeFiles/parser.dir/Parser.cpp.o" \
-"CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o" \
-"CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o" \
-"CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o" \
-"CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o"
+"CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o" \
+"CMakeFiles/parser.dir/Parser.cpp.o"
 
 # External object files for target parser
 parser_EXTERNAL_OBJECTS =
 
+libparser.so: CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o
 libparser.so: CMakeFiles/parser.dir/Parser.cpp.o
-libparser.so: CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o
-libparser.so: CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o
-libparser.so: CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o
-libparser.so: CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o
 libparser.so: CMakeFiles/parser.dir/build.make
 libparser.so: CMakeFiles/parser.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX shared library libparser.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX shared library libparser.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/parser.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +108,6 @@ CMakeFiles/parser.dir/clean:
 .PHONY : CMakeFiles/parser.dir/clean
 
 CMakeFiles/parser.dir/depend:
-	cd /home/arthur/Repos/skyBlocks/parser/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/arthur/Repos/skyBlocks/parser /home/arthur/Repos/skyBlocks/parser /home/arthur/Repos/skyBlocks/parser/cmake-build-debug /home/arthur/Repos/skyBlocks/parser/cmake-build-debug /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/arthur/Repos/new_skyBlocks/parser /home/arthur/Repos/new_skyBlocks/parser /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/parser.dir/depend
 

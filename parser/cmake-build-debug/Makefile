@@ -48,10 +48,10 @@ RM = /snap/clion/92/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arthur/Repos/skyBlocks/parser
+CMAKE_SOURCE_DIR = /home/arthur/Repos/new_skyBlocks/parser
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arthur/Repos/skyBlocks/parser/cmake-build-debug
+CMAKE_BINARY_DIR = /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -136,59 +136,32 @@ test_parser/fast:
 	$(MAKE) -f CMakeFiles/test_parser.dir/build.make CMakeFiles/test_parser.dir/build
 .PHONY : test_parser/fast
 
-Analyzers/BaseAnalyzer.o: Analyzers/BaseAnalyzer.cpp.o
+JsonFormer/JsonFormer.o: JsonFormer/JsonFormer.cpp.o
 
-.PHONY : Analyzers/BaseAnalyzer.o
-
-# target to build an object file
-Analyzers/BaseAnalyzer.cpp.o:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o
-.PHONY : Analyzers/BaseAnalyzer.cpp.o
-
-Analyzers/BaseAnalyzer.i: Analyzers/BaseAnalyzer.cpp.i
-
-.PHONY : Analyzers/BaseAnalyzer.i
-
-# target to preprocess a source file
-Analyzers/BaseAnalyzer.cpp.i:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.i
-.PHONY : Analyzers/BaseAnalyzer.cpp.i
-
-Analyzers/BaseAnalyzer.s: Analyzers/BaseAnalyzer.cpp.s
-
-.PHONY : Analyzers/BaseAnalyzer.s
-
-# target to generate assembly for a file
-Analyzers/BaseAnalyzer.cpp.s:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.s
-.PHONY : Analyzers/BaseAnalyzer.cpp.s
-
-Analyzers/ClikeAnalyzer.o: Analyzers/ClikeAnalyzer.cpp.o
-
-.PHONY : Analyzers/ClikeAnalyzer.o
+.PHONY : JsonFormer/JsonFormer.o
 
 # target to build an object file
-Analyzers/ClikeAnalyzer.cpp.o:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o
-.PHONY : Analyzers/ClikeAnalyzer.cpp.o
+JsonFormer/JsonFormer.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o
+.PHONY : JsonFormer/JsonFormer.cpp.o
 
-Analyzers/ClikeAnalyzer.i: Analyzers/ClikeAnalyzer.cpp.i
+JsonFormer/JsonFormer.i: JsonFormer/JsonFormer.cpp.i
 
-.PHONY : Analyzers/ClikeAnalyzer.i
+.PHONY : JsonFormer/JsonFormer.i
 
 # target to preprocess a source file
-Analyzers/ClikeAnalyzer.cpp.i:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.i
-.PHONY : Analyzers/ClikeAnalyzer.cpp.i
+JsonFormer/JsonFormer.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.i
+.PHONY : JsonFormer/JsonFormer.cpp.i
 
-Analyzers/ClikeAnalyzer.s: Analyzers/ClikeAnalyzer.cpp.s
+JsonFormer/JsonFormer.s: JsonFormer/JsonFormer.cpp.s
 
-.PHONY : Analyzers/ClikeAnalyzer.s
+.PHONY : JsonFormer/JsonFormer.s
 
 # target to generate assembly for a file
-Analyzers/ClikeAnalyzer.cpp.s:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.s
-.PHONY : Analyzers/ClikeAnalyzer.cpp.s
+JsonFormer/JsonFormer.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.s
+.PHONY : JsonFormer/JsonFormer.cpp.s
 
 Parser.o: Parser.cpp.o
 
@@ -216,60 +189,6 @@ Parser.s: Parser.cpp.s
 Parser.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Parser.cpp.s
 .PHONY : Parser.cpp.s
-
-Schedulers/AbstractScheduler.o: Schedulers/AbstractScheduler.cpp.o
-
-.PHONY : Schedulers/AbstractScheduler.o
-
-# target to build an object file
-Schedulers/AbstractScheduler.cpp.o:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o
-.PHONY : Schedulers/AbstractScheduler.cpp.o
-
-Schedulers/AbstractScheduler.i: Schedulers/AbstractScheduler.cpp.i
-
-.PHONY : Schedulers/AbstractScheduler.i
-
-# target to preprocess a source file
-Schedulers/AbstractScheduler.cpp.i:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.i
-.PHONY : Schedulers/AbstractScheduler.cpp.i
-
-Schedulers/AbstractScheduler.s: Schedulers/AbstractScheduler.cpp.s
-
-.PHONY : Schedulers/AbstractScheduler.s
-
-# target to generate assembly for a file
-Schedulers/AbstractScheduler.cpp.s:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.s
-.PHONY : Schedulers/AbstractScheduler.cpp.s
-
-Schedulers/GostScheduler.o: Schedulers/GostScheduler.cpp.o
-
-.PHONY : Schedulers/GostScheduler.o
-
-# target to build an object file
-Schedulers/GostScheduler.cpp.o:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o
-.PHONY : Schedulers/GostScheduler.cpp.o
-
-Schedulers/GostScheduler.i: Schedulers/GostScheduler.cpp.i
-
-.PHONY : Schedulers/GostScheduler.i
-
-# target to preprocess a source file
-Schedulers/GostScheduler.cpp.i:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.i
-.PHONY : Schedulers/GostScheduler.cpp.i
-
-Schedulers/GostScheduler.s: Schedulers/GostScheduler.cpp.s
-
-.PHONY : Schedulers/GostScheduler.s
-
-# target to generate assembly for a file
-Schedulers/GostScheduler.cpp.s:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.s
-.PHONY : Schedulers/GostScheduler.cpp.s
 
 test.o: test.cpp.o
 
@@ -308,21 +227,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... parser"
 	@echo "... test_parser"
-	@echo "... Analyzers/BaseAnalyzer.o"
-	@echo "... Analyzers/BaseAnalyzer.i"
-	@echo "... Analyzers/BaseAnalyzer.s"
-	@echo "... Analyzers/ClikeAnalyzer.o"
-	@echo "... Analyzers/ClikeAnalyzer.i"
-	@echo "... Analyzers/ClikeAnalyzer.s"
+	@echo "... JsonFormer/JsonFormer.o"
+	@echo "... JsonFormer/JsonFormer.i"
+	@echo "... JsonFormer/JsonFormer.s"
 	@echo "... Parser.o"
 	@echo "... Parser.i"
 	@echo "... Parser.s"
-	@echo "... Schedulers/AbstractScheduler.o"
-	@echo "... Schedulers/AbstractScheduler.i"
-	@echo "... Schedulers/AbstractScheduler.s"
-	@echo "... Schedulers/GostScheduler.o"
-	@echo "... Schedulers/GostScheduler.i"
-	@echo "... Schedulers/GostScheduler.s"
 	@echo "... test.o"
 	@echo "... test.i"
 	@echo "... test.s"

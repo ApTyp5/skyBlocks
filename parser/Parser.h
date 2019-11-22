@@ -9,12 +9,9 @@
 #include <vector>
 #include <memory>
 
-#include "Analyzers/AnalyzerType.h"
-#include "Schedulers/SchedulerType.h"
+#include "Error/Error.h"
 
-#include "Analyzers/BaseAnalyzer.h"
-#include "Schedulers/AbstractScheduler.h"
-
+typedef std::string jsonString;
 
 class Parser {
  public:
@@ -23,7 +20,7 @@ class Parser {
                    const std::shared_ptr<AbstractScheduler> &scheduler);
 
  protected:
-  jsonString figuresToJson(const Figures &figures);
+  jsonString formJson(const Figures &figures);
 
 };
 

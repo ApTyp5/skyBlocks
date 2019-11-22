@@ -4,11 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/arthur/Repos/skyBlocks/parser/Analyzers/BaseAnalyzer.cpp" "/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Analyzers/BaseAnalyzer.cpp.o"
-  "/home/arthur/Repos/skyBlocks/parser/Analyzers/ClikeAnalyzer.cpp" "/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Analyzers/ClikeAnalyzer.cpp.o"
-  "/home/arthur/Repos/skyBlocks/parser/Parser.cpp" "/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Parser.cpp.o"
-  "/home/arthur/Repos/skyBlocks/parser/Schedulers/AbstractScheduler.cpp" "/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Schedulers/AbstractScheduler.cpp.o"
-  "/home/arthur/Repos/skyBlocks/parser/Schedulers/GostScheduler.cpp" "/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Schedulers/GostScheduler.cpp.o"
+  "/home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o"
+  "/home/arthur/Repos/new_skyBlocks/parser/Parser.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Parser.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

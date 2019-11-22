@@ -1,4 +1,4 @@
-/snap/clion/92/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/arthur/Repos/skyBlocks/parser
+/snap/clion/92/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/arthur/Repos/new_skyBlocks/parser
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/arthur/Repos/skyBlocks/parser/cmake-build-debug
+-- Build files have been written to: /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug

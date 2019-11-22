@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/test_parser.dir/test.cpp.o  -o test_parser -Wl,-rpath,/home/arthur/Repos/skyBlocks/parser/cmake-build-debug libparser.so -lgtest -lgmock -lpthread 
+/usr/bin/c++  -g   CMakeFiles/test_parser.dir/test.cpp.o  -o test_parser -Wl,-rpath,/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug libparser.so -lgtest -lgmock -lpthread 
