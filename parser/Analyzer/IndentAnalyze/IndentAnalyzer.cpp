@@ -119,7 +119,7 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
                 tryAddPFollowToLastMem();
 
                 state_ = isFork ? Fork : Cycle;
-                indent = Utils::makeIncreasedIndent(
+                indent = Utils::strAppendMultipleSymbols(
                     currentIndent,
                     AlphaBet->WordDelimiters().front(),
                     AlphaBet->ForkWord().size()

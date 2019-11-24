@@ -54,7 +54,7 @@ public:
         return separateString(firstWord, others, str, ' ');
     }
 
-    static std::string makeIncreasedIndent(const std::string &curIndent, char sym, size_t n)
+    static std::string strAppendMultipleSymbols(const std::string &curIndent, char sym, size_t n)
     {
         std::string output(curIndent);
         for (size_t i = 0; i < n; i++) {
