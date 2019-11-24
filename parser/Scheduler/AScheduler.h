@@ -8,11 +8,12 @@
 #include "../Analyzer/Primitive/APrimitive.h"
 #include "../ptrVector.h"
 #include "Figure/AFigure.h"
+#include "../Stubs/Stubs.h"
 
 class AScheduler
 {
 public:
-    virtual ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm) = 0;
+    virtual ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm, Meta meta) = 0;
 };
 
 #endif //PARSER_SCHEDULER_ASCHEDULER_H_

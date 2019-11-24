@@ -12,7 +12,7 @@
 #include "../../Primitive/PFork.h"
 #include "States.h"
 
-class Utils
+class AnalyzerUtils
 {
 public:
     static APrimitive *createPrimitive(State state,

@@ -13,6 +13,12 @@ public:
     explicit PFollow(std::string text)
         : APrimitive(std::move(text))
     {}
+
+    std::string toString() const override
+    {
+        return std::string("Func\n") +
+            APrimitive::toString();
+    }
 };
 
 #endif //PARSER_PRIMITIVE_PFOLLOW_H_

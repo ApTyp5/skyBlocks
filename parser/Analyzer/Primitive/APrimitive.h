@@ -19,6 +19,12 @@ public:
         return false;
     }
 
+    virtual std::string toString() const
+    {
+        return std::string(
+            "innerText:") + innerText + "\n";
+    }
+
 protected:
     std::string innerText;
 

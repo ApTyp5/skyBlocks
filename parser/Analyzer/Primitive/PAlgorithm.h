@@ -15,6 +15,12 @@ public:
         ComplexPrimitive(std::move(text)), name(std::move(name))
     {}
 
+    virtual std::string toString() override
+    {
+        std::string ans = "Algorithm\n" + ComplexPrimitive::toString();
+        return ans;
+    }
+
 private:
     std::string name;
 };

@@ -67,17 +67,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/92/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -88,6 +77,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/snap/clion/92/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -122,17 +122,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named analyzerTest
+# Target rules for targets named parserTest
 
 # Build rule for target.
-analyzerTest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 analyzerTest
-.PHONY : analyzerTest
+parserTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 parserTest
+.PHONY : parserTest
 
 # fast build rule for target.
-analyzerTest/fast:
-	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/build
-.PHONY : analyzerTest/fast
+parserTest/fast:
+	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/build
+.PHONY : parserTest/fast
 
 #=============================================================================
 # Target rules for targets named parser
@@ -148,17 +148,30 @@ parser/fast:
 .PHONY : parser/fast
 
 #=============================================================================
-# Target rules for targets named parserTest
+# Target rules for targets named analyzerTest
 
 # Build rule for target.
-parserTest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 parserTest
-.PHONY : parserTest
+analyzerTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 analyzerTest
+.PHONY : analyzerTest
 
 # fast build rule for target.
-parserTest/fast:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/build
-.PHONY : parserTest/fast
+analyzerTest/fast:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/build
+.PHONY : analyzerTest/fast
+
+#=============================================================================
+# Target rules for targets named schedulerTest
+
+# Build rule for target.
+schedulerTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 schedulerTest
+.PHONY : schedulerTest
+
+# fast build rule for target.
+schedulerTest/fast:
+	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/build
+.PHONY : schedulerTest/fast
 
 Analyzer/IndentAnalyze/IndentAnalyzer.o: Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o
 
@@ -430,6 +443,33 @@ parserTest.cpp.s:
 	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/parserTest.cpp.s
 .PHONY : parserTest.cpp.s
 
+schedulerTest.o: schedulerTest.cpp.o
+
+.PHONY : schedulerTest.o
+
+# target to build an object file
+schedulerTest.cpp.o:
+	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/schedulerTest.cpp.o
+.PHONY : schedulerTest.cpp.o
+
+schedulerTest.i: schedulerTest.cpp.i
+
+.PHONY : schedulerTest.i
+
+# target to preprocess a source file
+schedulerTest.cpp.i:
+	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/schedulerTest.cpp.i
+.PHONY : schedulerTest.cpp.i
+
+schedulerTest.s: schedulerTest.cpp.s
+
+.PHONY : schedulerTest.s
+
+# target to generate assembly for a file
+schedulerTest.cpp.s:
+	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/schedulerTest.cpp.s
+.PHONY : schedulerTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -437,11 +477,12 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... analyzerTest"
-	@echo "... parser"
 	@echo "... parserTest"
+	@echo "... parser"
+	@echo "... analyzerTest"
+	@echo "... schedulerTest"
+	@echo "... test"
+	@echo "... edit_cache"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.o"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.i"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.s"
@@ -472,6 +513,9 @@ help:
 	@echo "... parserTest.o"
 	@echo "... parserTest.i"
 	@echo "... parserTest.s"
+	@echo "... schedulerTest.o"
+	@echo "... schedulerTest.i"
+	@echo "... schedulerTest.s"
 .PHONY : help
 
 

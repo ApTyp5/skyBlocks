@@ -30,10 +30,7 @@ public:
                                  AAnalyzeFactory *analyzeFactory,
                                  AScheduler *scheduler);
 
-    virtual jsonString formJson(ptrVector<AFigure> &figures)
-    {
-        return jsonString();
-    }
+    virtual jsonString formJson(ptrVector<AFigure> &figures);
 
 private:
     DataBaseConnection connection;

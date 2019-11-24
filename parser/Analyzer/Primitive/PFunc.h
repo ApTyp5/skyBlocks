@@ -15,6 +15,12 @@ public:
         APrimitive(std::move(text)), name(std::move(name))
     {}
 
+    virtual std::string toString() const
+    {
+        return std::string("Func(") + name + std::string(")\n") +
+            APrimitive::toString();
+    }
+
 protected:
     std::string name;
 };

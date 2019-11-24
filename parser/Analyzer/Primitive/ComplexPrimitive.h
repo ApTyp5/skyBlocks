@@ -38,6 +38,15 @@ public:
     virtual void startElseSection()
     {}
 
+    virtual std::string toString()
+    {
+        std::string ans = "inner text:" + innerText + "\n"
+                                                      "children:";
+        for (size_t i = 0; i < childrenNum(); i++) {
+            ans += "\t" + children[i]->toString();
+        }
+    }
+
 protected:
     ptrVector<APrimitive> children;
 };

@@ -13,7 +13,7 @@ jsonString Parser::parse(std::string text, Meta meta,
     size_t line_num;
     std::string constrainted_text = constraintor->findMain(line_num, std::move(text));
     std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(constrainted_text, line_num));
-    ptrVector<AFigure> figures = scheduler->schedule(algorithm);
+    ptrVector<AFigure> figures = scheduler->schedule(algorithm, meta);
     jsonString output = formJson(figures);
     return output;
 }
@@ -30,7 +30,12 @@ jsonString Parser::parseFunc(std::string text,
     size_t line_num;
     std::string constrainted_text = constraintor->findFunc(line_num, std::move(text), std::move(name), connection);
     std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(constrainted_text, line_num));
-    ptrVector<AFigure> figures = scheduler->schedule(algorithm);
+    ptrVector<AFigure> figures = scheduler->schedule(algorithm, meta);
     jsonString output = formJson(figures);
     return output;
+}
+
+jsonString Parser::formJson(ptrVector<AFigure> &figures)
+{
+    return jsonString();
 }

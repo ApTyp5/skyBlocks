@@ -16,6 +16,12 @@ public:
         endCycleText(std::move(endCycleText))
     {}
 
+    std::string toString() override
+    {
+        std::string ans = "Cycle\n" + ComplexPrimitive::toString();
+        return ans;
+    }
+
 private:
     std::string endCycleText;
 };

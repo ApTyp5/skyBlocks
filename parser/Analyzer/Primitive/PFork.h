@@ -28,6 +28,12 @@ public:
         is_else = true;
     }
 
+    std::string toString() override
+    {
+        std::string ans = "Fork\n" + ComplexPrimitive::toString();
+        return ans;
+    }
+
 private:
     bool is_else;
     ptrVector<APrimitive> elseChildren;
