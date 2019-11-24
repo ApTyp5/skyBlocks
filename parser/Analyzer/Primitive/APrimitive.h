@@ -7,11 +7,14 @@
 
 #include <string>
 
-class APrimitive {
- public:
-  explicit APrimitive(std::string text) : innerText(std::move(text)) {}
+class APrimitive
+{
+public:
+    explicit APrimitive(std::string text)
+        : innerText(std::move(text))
+    {}
 
- protected:
-  std::string innerText;
+protected:
+    std::string innerText;
 };
 #endif //PARSER_PRIMITIVE_APRIMITIVE_H_

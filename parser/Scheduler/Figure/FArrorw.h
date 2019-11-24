@@ -7,10 +7,13 @@
 
 #include "SingleMeasureFigure.h"
 
-class FArrow : public SingleMeasureFigure {
- public:
-  FArrow(Point begin, Point end, std::string text) :
-      SingleMeasureFigure(begin, end, std::move(text)) {}
+class FArrow: public SingleMeasureFigure
+{
+public:
+    FArrow(Point begin, Point end, std::string text)
+        :
+        SingleMeasureFigure(begin, end, std::move(text))
+    {}
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FARRORW_H_

@@ -9,12 +9,15 @@
 
 #include "AFigure.h"
 
-class SingleMeasureFigure : public AFigure {
- public:
-  SingleMeasureFigure(Point begin, Point end, std::string text) :
-      AFigure(std::move(text)), begin(begin), end(end) {}
+class SingleMeasureFigure: public AFigure
+{
+public:
+    SingleMeasureFigure(Point begin, Point end, std::string text)
+        :
+        AFigure(std::move(text)), begin(begin), end(end)
+    {}
 
- protected:
-  Point begin, end;
+protected:
+    Point begin, end;
 };
 #endif //PARSER_SCHEDULER_FIGURE_SINGLEMEASUREFIGURE_H_

@@ -7,9 +7,13 @@
 
 #include "DoubleMeasureFigure.h"
 
-class FFollow : public DoubleMeasureFigure {
- public:
-  FFollow(Point center, Rect rect, std::string text) :
-      DoubleMeasureFigure(center, rect, std::move(text)) {}
+class FFollow: public DoubleMeasureFigure
+{
+public:
+    FFollow(Point center, Rect rect, std::string text)
+        :
+        DoubleMeasureFigure(center, rect, std::move(text))
+    {}
 };
+
 #endif //PARSER_SCHEDULER_FIGURE_FFOLLOW_H_

@@ -7,11 +7,14 @@
 
 #include <string>
 
-struct Error{
-  int row, col;
-  std::string message;
-  Error(std::string message = "", int row = -1, int col = -1) :
-    message(message), row(row), col(col) {}
+struct Error
+{
+    int row, col;
+    std::string message;
+    Error(std::string message = "", int row = -1, int col = -1)
+        :
+        message(std::move(message)), row(row), col(col)
+    {}
 };
 
 #endif //PARSER_ERROR_ERROR_H_

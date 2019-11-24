@@ -5,17 +5,18 @@
 #ifndef PARSER_ANALYZER_INDENTCONSTRAINTOR_H_
 #define PARSER_ANALYZER_INDENTCONSTRAINTOR_H_
 
-#include "../AConstraintor.h"
-#include "../../ptrVector.h"
 #include "../../Error/Error.h"
+#include "../../ptrVector.h"
+#include "../AConstraintor.h"
 
-class IndentConstraintor : public AConstraintor {
- public:
-  std::string findMain(std::string text) override;
-  std::string findFunc(std::string text, std::string name, DataBaseConnection &connection) override;
-
- private:
-  ptrVector<Error> &errors
+class IndentConstraintor: public AConstraintor
+{
+public:
+    explicit IndentConstraintor(ptrVector<Error> &errors)
+        : AConstraintor(errors)
+    {}
+    std::string findMain(std::string text) override;
+    std::string findFunc(std::string text, std::string name, DataBaseConnection &connection) override;
 };
 
 #endif //PARSER_ANALYZER_INDENTCONSTRAINTOR_H_

@@ -4,13 +4,15 @@
 
 #include "Liner.h"
 
-Liner::Liner(const std::string &text) {
-  ss.str(text);
+Liner::Liner(const std::string &text)
+{
+    ss.str(text);
 }
 
-bool Liner::getLine(std::string &line) {
-  std::getline(ss, line);
-  return !ss.eof();
+bool Liner::getLine(std::string &line)
+{
+    std::getline(ss, line);
+    return !ss.eof();
 }
 
 

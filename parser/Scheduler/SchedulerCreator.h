@@ -7,17 +7,20 @@
 
 #include <memory>
 
-#include "SchedulerType.h"
 #include "AScheduler.h"
 #include "CommonScheduler.h"
+#include "SchedulerType.h"
 
-class SchedulerCreator {
- public:
-  static AScheduler *create(SchedulerType type = Common) {
-    switch (type) {
-      default:
-      case Common:return new CommonScheduler;
+
+class SchedulerCreator
+{
+public:
+    static AScheduler *create(SchedulerType type = Common)
+    {
+        switch (type) {
+            default:
+            case Common:return new CommonScheduler;
+        }
     }
-  }
 };
 #endif //PARSER_SCHEDULER_SCHEDULERCREATOR_H_

@@ -6,28 +6,31 @@
 #define PARSER_ANALYZER_INDENTANALYZE_TOOLS_MEMORY_H_
 
 #include <string>
-#include "States.h"
+
 #include "../../Primitive/ComplexPrimitive.h"
+#include "States.h"
 
-class Memory {
-  State state_;
-  std::string indent;
-  ComplexPrimitive *complexPrimitive;
 
- public:
-  Memory(State state, ComplexPrimitive *complex_primitive);
+class Memory
+{
+    State state_;
+    std::string indent;
+    ComplexPrimitive *complexPrimitive;
 
-  Memory(Memory &&memory) noexcept;
+public:
+    Memory(State state, ComplexPrimitive *complex_primitive);
 
-  void merge(Memory *memory);
+    Memory(Memory &&memory) noexcept;
 
- public:
-  State getState() const;
-  const std::string &getIndent() const;
-  ComplexPrimitive *getComplexPrimitive() const;
+    void merge(Memory *memory);
 
- public:
-  void setIndent(const std::string &indent);
+public:
+    State getState() const;
+    const std::string &getIndent() const;
+    ComplexPrimitive *getComplexPrimitive() const;
+
+public:
+    void setIndent(const std::string &indent);
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZE_TOOLS_MEMORY_H_

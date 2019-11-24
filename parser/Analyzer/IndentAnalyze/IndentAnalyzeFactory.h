@@ -9,13 +9,17 @@
 #include "IndentAnalyzer.h"
 #include "IndentConstraintor.h"
 
-class IndentAnalyzeFactory : public AAnalyzeFactory {
- public:
-  AConstraintor *createConstraintor(ptrVector<Error> &errors) override {
-    return IndentConstraintor(errors);
-  }
-  AAnalyzer *createAnalyzer(ptrVector<Error> &errors) override {
-    return new IndentAnalyzer(errors);
-  }
+class IndentAnalyzeFactory: public AAnalyzeFactory
+{
+public:
+    AConstraintor *createConstraintor(ptrVector<Error> &errors) override
+    {
+        return new IndentConstraintor(errors);
+    }
+    AAnalyzer *createAnalyzer(ptrVector<Error> &errors) override
+    {
+        return new IndentAnalyzer(errors);
+    }
 };
+
 #endif //PARSER_ANALYZER_INDENTANALYZEFACTORY_H_

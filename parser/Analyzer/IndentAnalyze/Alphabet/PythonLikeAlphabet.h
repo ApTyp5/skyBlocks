@@ -7,18 +7,21 @@
 
 #include "BaseAlphabet.h"
 
-class PythonLikeAlphabet : public BaseAlphabet {
- public:
-  PythonLikeAlphabet() :
-      BaseAlphabet(
-          "if",
-          "else",
-          "while",
-          "call",
-          "def",
-          {' ', '\t'},
-          {';'}
-      ) {}
+class PythonLikeAlphabet: public BaseAlphabet
+{
+public:
+    PythonLikeAlphabet()
+        :
+        BaseAlphabet(
+            "if",
+            "else",
+            "while",
+            "call",
+            "def",
+            {' ', '\t'},
+            {';'}
+        )
+    {}
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZE_ALPHABET_PYTHONLIKEALPHABET_H_

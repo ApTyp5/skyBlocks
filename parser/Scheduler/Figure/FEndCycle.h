@@ -7,9 +7,13 @@
 
 #include "DoubleMeasureFigure.h"
 
-class FEndCycle : public DoubleMeasureFigure {
-  FEndCycle(Point point, Rect rect, std::string text) :
-      DoubleMeasureFigure(point, rect, std::move(text)) {}
+class FEndCycle: public DoubleMeasureFigure
+{
+public:
+    FEndCycle(Point point, Rect rect, std::string text)
+        :
+        DoubleMeasureFigure(point, rect, std::move(text))
+    {}
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FENDCYCLE_H_

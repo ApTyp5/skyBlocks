@@ -7,9 +7,12 @@
 
 #include "APrimitive.h"
 
-class PFollow : public APrimitive {
- public:
-  explicit PFollow(std::string text) : APrimitive(std::move(text)) {}
+class PFollow: public APrimitive
+{
+public:
+    explicit PFollow(std::string text)
+        : APrimitive(std::move(text))
+    {}
 };
 
 #endif //PARSER_PRIMITIVE_PFOLLOW_H_

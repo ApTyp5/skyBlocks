@@ -5,22 +5,27 @@
 #ifndef PARSER_SCHEDULER_FIGURE_AFIGURE_H_
 #define PARSER_SCHEDULER_FIGURE_AFIGURE_H_
 
-struct Point {
-  double x, y;
-};
-
-struct Rect {
-  double width, height;
-};
-
 #include <string>
 
-class AFigure {
- public:
-  explicit AFigure(std::string text) : text(std::move(text)) {}
+struct Point
+{
+    double x, y;
+};
 
- private:
-  std::string text;
+struct Rect
+{
+    double width, height;
+};
+
+class AFigure
+{
+public:
+    explicit AFigure(std::string text)
+        : text(std::move(text))
+    {}
+
+private:
+    std::string text;
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_AFIGURE_H_

@@ -7,13 +7,17 @@
 
 #include "AFigure.h"
 
-class DoubleMeasureFigure : public AFigure {
- public:
-  DoubleMeasureFigure(Point center, Rect rect, std::string text) :
-      AFigure(std::move(text)), center(center), rect_(rect) {}
- private:
-  Point center;
-  Rect rect_;
+class DoubleMeasureFigure: public AFigure
+{
+public:
+    DoubleMeasureFigure(Point center, Rect rect, std::string text)
+        :
+        AFigure(std::move(text)), center(center), rect_(rect)
+    {}
+
+private:
+    Point center;
+    Rect rect_;
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_DOUBLEMEASUREFIGURE_H_

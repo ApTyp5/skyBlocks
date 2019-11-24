@@ -12,6 +12,8 @@
 
 #include "Scheduler/SchedulerCreator.h"
 
+/*
+
 TEST(parser, mock) {
   MockParser parser;
   auto *mock_analyze_factory = new MockAnalyzeFactory;
@@ -27,6 +29,7 @@ TEST(parser, mock) {
   delete mock_analyze_factory;
   delete scheduler;
 }
+*/
 
 /*TEST(parser, parse_follow){
   std::string input = "begin\n\n"

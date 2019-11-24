@@ -5,18 +5,22 @@
 #ifndef PARSER_PRIMITIVE_COMPLEXPRIMITIVE_H_
 #define PARSER_PRIMITIVE_COMPLEXPRIMITIVE_H_
 
-#include "APrimitive.h"
 #include "../../ptrVector.h"
+#include "APrimitive.h"
 
-class ComplexPrimitive : public APrimitive {
- public:
-  explicit ComplexPrimitive(std::string text) : APrimitive(std::move(text)) {}
-  virtual void addChild(APrimitive *child) {
-    children.push_back(child);
-  }
+class ComplexPrimitive: public APrimitive
+{
+public:
+    explicit ComplexPrimitive(std::string text)
+        : APrimitive(std::move(text))
+    {}
+    virtual void addChild(APrimitive *child)
+    {
+        children.push_back(child);
+    }
 
- protected:
-  ptrVector<APrimitive> children;
+protected:
+    ptrVector<APrimitive> children;
 };
 
 #endif //PARSER_PRIMITIVE_COMPLEXPRIMITIVE_H_

@@ -7,9 +7,13 @@
 
 #include "DoubleMeasureFigure.h"
 
-class FFunc : public DoubleMeasureFigure {
- public:
-  FFunc(Point center, Rect rect, std::string text) :
-      DoubleMeasureFigure(center, rect, std::move(text)) {}
+class FFunc: public DoubleMeasureFigure
+{
+public:
+    FFunc(Point center, Rect rect, std::string text)
+        :
+        DoubleMeasureFigure(center, rect, std::move(text))
+    {}
 };
+
 #endif //PARSER_SCHEDULER_FIGURE_FFUNC_H_

@@ -7,12 +7,15 @@
 
 #include "APrimitive.h"
 
-class PFunc : public APrimitive {
- public:
-  PFunc(std::string name, std::string text) :
-      APrimitive(std::move(text)), name(std::move(name)) {}
+class PFunc: public APrimitive
+{
+public:
+    PFunc(std::string name, std::string text)
+        :
+        APrimitive(std::move(text)), name(std::move(name))
+    {}
 
- protected:
-  std::string name;
+protected:
+    std::string name;
 };
 #endif //PARSER_PRIMITIVE_PFUNC_H_

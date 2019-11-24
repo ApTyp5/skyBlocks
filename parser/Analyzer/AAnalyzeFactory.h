@@ -10,10 +10,11 @@
 #include "AAnalyzer.h"
 #include "AConstraintor.h"
 
-class AAnalyzeFactory {
- public:
-  virtual AConstraintor *createConstraintor(ptrVector<Error> &) = 0;
-  virtual AAnalyzer *createAnalyzer(ptrVector<Error> &) = 0;
+class AAnalyzeFactory
+{
+public:
+    virtual AConstraintor *createConstraintor(ptrVector<Error> &) = 0;
+    virtual AAnalyzer *createAnalyzer(ptrVector<Error> &) = 0;
 };
 
 #endif //PARSER_ANALYZER_AANALYZEFACTORY_H_

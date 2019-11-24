@@ -9,11 +9,15 @@
 
 typedef std::string jsonString;
 
-class JsonFormer {
- public:
-  void addAloneProperty(std::string path, std::string name) {}
-  void addGroupProperty(std::string path, std::string name) {}
-  jsonString formJson() { return jsonString(); }
+class JsonFormer
+{
+public:
+    void addAloneProperty(std::string path, std::string name)
+    {}
+    void addGroupProperty(std::string path, std::string name)
+    {}
+    jsonString formJson()
+    { return jsonString(); }
 };
 
 #endif //PARSER_JSONFORMER_JSONFORMER_H_

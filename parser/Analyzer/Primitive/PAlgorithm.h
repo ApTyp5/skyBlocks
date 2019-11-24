@@ -7,13 +7,16 @@
 
 #include "ComplexPrimitive.h"
 
-class PAlgorithm : public ComplexPrimitive {
- public:
-  PAlgorithm(std::string name, std::string text) :
-      ComplexPrimitive(std::move(text)), name(std::move(name)) {}
+class PAlgorithm: public ComplexPrimitive
+{
+public:
+    PAlgorithm(std::string name, std::string text)
+        :
+        ComplexPrimitive(std::move(text)), name(std::move(name))
+    {}
 
- private:
-  std::string name;
+private:
+    std::string name;
 };
 
 #endif //PARSER_PRIMITIVE_PALGORITHM_H_

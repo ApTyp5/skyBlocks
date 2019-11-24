@@ -7,10 +7,13 @@
 
 #include "DoubleMeasureFigure.h"
 
-class FBegEnd : public DoubleMeasureFigure {
- public:
-  FBegEnd(Point center, Rect rect, std::string text) :
-      DoubleMeasureFigure(center, rect, std::move(text)) {}
+class FBegEnd: public DoubleMeasureFigure
+{
+public:
+    FBegEnd(Point center, Rect rect, std::string text)
+        :
+        DoubleMeasureFigure(center, rect, std::move(text))
+    {}
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FBEGEND_H_

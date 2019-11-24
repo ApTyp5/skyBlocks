@@ -7,12 +7,15 @@
 
 #include "ComplexPrimitive.h"
 
-class PFork : public ComplexPrimitive {
- public:
-  explicit PFork(std::string text) : ComplexPrimitive(std::move(text)) {}
+class PFork: public ComplexPrimitive
+{
+public:
+    explicit PFork(std::string text)
+        : ComplexPrimitive(std::move(text))
+    {}
 
- private:
-  ptrVector<APrimitive> elseChildren;
+private:
+    ptrVector<APrimitive> elseChildren;
 };
 
 #endif //PARSER_PRIMITIVE_PFORK_H_

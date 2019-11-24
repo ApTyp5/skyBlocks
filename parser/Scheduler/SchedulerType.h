@@ -5,8 +5,9 @@
 #ifndef PARSER_SCHEDULER_SCHEDULERTYPE_H_
 #define PARSER_SCHEDULER_SCHEDULERTYPE_H_
 
-enum SchedulerType {
-  Common,
+enum SchedulerType
+{
+    Common,
 };
 
 #endif //PARSER_SCHEDULER_SCHEDULERTYPE_H_
