@@ -12,6 +12,7 @@ Liner::Liner(const std::string &text)
 bool Liner::getLine(std::string &line)
 {
     std::getline(ss, line);
+    line += '\n';
     return !ss.eof();
 }
 

@@ -56,7 +56,9 @@ add_library(${PROJECT_NAME} SHARED ${AllFiles})
 enable_testing()
 
 add_executable(parserTest parserTest.cpp)
-add_executable(analyzerTest analyzerTest.cpp)
 target_link_libraries(parserTest ${PROJECT_NAME} -lgtest -lgmock pthread)
+
+add_executable(analyzerTest analyzerTest.cpp)
+target_link_libraries(analyzerTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 
 add_test(parser_testing parserTest)
