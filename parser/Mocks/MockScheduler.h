@@ -10,7 +10,7 @@
 
 class MockScheduler : public AScheduler {
  public:
-  MOCK_METHOD(ptrVector<AFigure>, schedule, (const ptrVector<APrimitive> &primitives), (override));
+    MOCK_METHOD(ptrVector<AFigure>, schedule, (const std::unique_ptr<ComplexPrimitive> &algorithm), (override));
 };
 
 #endif //PARSER_MOCKS_MOCKSCHEDULER_H_

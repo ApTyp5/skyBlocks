@@ -10,9 +10,10 @@ jsonString Parser::parse(std::string text, Meta meta,
     std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor(errors));
     std::unique_ptr<AAnalyzer> analyzer(analyzeFactory->createAnalyzer(errors));
 
-    std::string constrainted_text = constraintor->findMain(std::move(text));
-    ptrVector<APrimitive> primitives = analyzer->analyze(constrainted_text);
-    ptrVector<AFigure> figures = scheduler->schedule(primitives);
+    size_t line_num;
+    std::string constrainted_text = constraintor->findMain(line_num, std::move(text));
+    std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(constrainted_text, line_num));
+    ptrVector<AFigure> figures = scheduler->schedule(algorithm);
     jsonString output = formJson(figures);
     return output;
 }
@@ -26,9 +27,10 @@ jsonString Parser::parseFunc(std::string text,
     std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor(errors));
     std::unique_ptr<AAnalyzer> analyzer(analyzeFactory->createAnalyzer(errors));
 
-    std::string constrainted_text = constraintor->findFunc(std::move(text), std::move(name), connection);
-    ptrVector<APrimitive> primitives = analyzer->analyze(constrainted_text);
-    ptrVector<AFigure> figures = scheduler->schedule(primitives);
+    size_t line_num;
+    std::string constrainted_text = constraintor->findFunc(line_num, std::move(text), std::move(name), connection);
+    std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(constrainted_text, line_num));
+    ptrVector<AFigure> figures = scheduler->schedule(algorithm);
     jsonString output = formJson(figures);
     return output;
 }

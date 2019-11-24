@@ -10,7 +10,7 @@
 class CommonScheduler: public AScheduler
 {
 public:
-    ptrVector<AFigure> schedule(const ptrVector<APrimitive> &primitives) override;
+    ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm) override;
 };
 
 #endif //PARSER_SCHEDULER_COMMONSCHEDULER_H_

@@ -56,6 +56,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/analyzerTest.dir/DependInfo.cmake"
   "CMakeFiles/parser.dir/DependInfo.cmake"
   "CMakeFiles/parserTest.dir/DependInfo.cmake"
   )

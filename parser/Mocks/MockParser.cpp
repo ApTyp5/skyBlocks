@@ -4,14 +4,13 @@
 
 #include "MockParser.h"
 
-jsonString MockParser::parse(std::string text, Meta meta, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler) {
-  std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor());
-  std::unique_ptr<AAnalyzer> analyzer(analyzeFactory->createAnalyzer());
+jsonString MockParser::parse(std::string text, Meta meta, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler)
+{
+    ptrVector<Error> errors;
+    std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor(errors));
+    std::unique_ptr<AAnalyzer> analyzer(analyzeFactory->createAnalyzer(errors));
+    ptrVector<AFigure> figures = scheduler->schedule(std::unique_ptr<ComplexPrimitive>());
+    jsonString output = formJson(figures);
 
-  //std::string constrainted_text = constraintor->findMain(std::move(text));
-  //ptrVector<APrimitive> primitives = analyzer->analyze(errors, constrainted_text);
-  ptrVector<AFigure> figures = scheduler->schedule(ptrVector<APrimitive>());
-  jsonString output = formJson(figures);
-
-  return output;
+    return output;
 }

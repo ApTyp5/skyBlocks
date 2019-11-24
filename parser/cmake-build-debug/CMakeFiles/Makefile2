@@ -53,12 +53,14 @@ CMAKE_BINARY_DIR = /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/analyzerTest.dir/all
 all: CMakeFiles/parser.dir/all
 all: CMakeFiles/parserTest.dir/all
 
 .PHONY : all
 
 # The main recursive "clean" target.
+clean: CMakeFiles/analyzerTest.dir/clean
 clean: CMakeFiles/parser.dir/clean
 clean: CMakeFiles/parserTest.dir/clean
 
@@ -70,13 +72,40 @@ preinstall:
 .PHONY : preinstall
 
 #=============================================================================
+# Target rules for target CMakeFiles/analyzerTest.dir
+
+# All Build rule for target.
+CMakeFiles/analyzerTest.dir/all:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/depend
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target analyzerTest"
+.PHONY : CMakeFiles/analyzerTest.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/analyzerTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/analyzerTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/analyzerTest.dir/rule
+
+# Convenience name for target.
+analyzerTest: CMakeFiles/analyzerTest.dir/rule
+
+.PHONY : analyzerTest
+
+# clean rule for target.
+CMakeFiles/analyzerTest.dir/clean:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/clean
+.PHONY : CMakeFiles/analyzerTest.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/parser.dir
 
 # All Build rule for target.
 CMakeFiles/parser.dir/all:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/depend
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=3,4,5,6,7,8,9,10,11 "Built target parser"
 .PHONY : CMakeFiles/parser.dir/all
 
 # Build rule for subdir invocation for target.
@@ -103,7 +132,7 @@ CMakeFiles/parser.dir/clean:
 CMakeFiles/parserTest.dir/all: CMakeFiles/parser.dir/all
 	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/depend
 	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=10,11 "Built target parserTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=12,13 "Built target parserTest"
 .PHONY : CMakeFiles/parserTest.dir/all
 
 # Build rule for subdir invocation for target.

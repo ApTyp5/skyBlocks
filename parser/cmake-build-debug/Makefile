@@ -122,6 +122,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named analyzerTest
+
+# Build rule for target.
+analyzerTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 analyzerTest
+.PHONY : analyzerTest
+
+# fast build rule for target.
+analyzerTest/fast:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/build
+.PHONY : analyzerTest/fast
+
+#=============================================================================
 # Target rules for targets named parser
 
 # Build rule for target.
@@ -363,6 +376,33 @@ Scheduler/CommonScheduler.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.s
 .PHONY : Scheduler/CommonScheduler.cpp.s
 
+analyzerTest.o: analyzerTest.cpp.o
+
+.PHONY : analyzerTest.o
+
+# target to build an object file
+analyzerTest.cpp.o:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/analyzerTest.cpp.o
+.PHONY : analyzerTest.cpp.o
+
+analyzerTest.i: analyzerTest.cpp.i
+
+.PHONY : analyzerTest.i
+
+# target to preprocess a source file
+analyzerTest.cpp.i:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/analyzerTest.cpp.i
+.PHONY : analyzerTest.cpp.i
+
+analyzerTest.s: analyzerTest.cpp.s
+
+.PHONY : analyzerTest.s
+
+# target to generate assembly for a file
+analyzerTest.cpp.s:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/analyzerTest.cpp.s
+.PHONY : analyzerTest.cpp.s
+
 parserTest.o: parserTest.cpp.o
 
 .PHONY : parserTest.o
@@ -399,6 +439,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... analyzerTest"
 	@echo "... parser"
 	@echo "... parserTest"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.o"
@@ -425,6 +466,9 @@ help:
 	@echo "... Scheduler/CommonScheduler.o"
 	@echo "... Scheduler/CommonScheduler.i"
 	@echo "... Scheduler/CommonScheduler.s"
+	@echo "... analyzerTest.o"
+	@echo "... analyzerTest.i"
+	@echo "... analyzerTest.s"
 	@echo "... parserTest.o"
 	@echo "... parserTest.i"
 	@echo "... parserTest.s"

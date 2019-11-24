@@ -12,7 +12,6 @@
 
 #include "Scheduler/SchedulerCreator.h"
 
-/*
 
 TEST(parser, mock) {
   MockParser parser;
@@ -29,32 +28,7 @@ TEST(parser, mock) {
   delete mock_analyze_factory;
   delete scheduler;
 }
-*/
 
-/*TEST(parser, parse_follow){
-  std::string input = "begin\n\n"
-                      "follow1\nfollow2\n\n"
-                      "end\n\n";
-  Parser parser;
-  std::unique_ptr<AAnalyzeFactory> analyze_factory(AnalyzeFactoryCreator::create(Indent));
-  std::unique_ptr<AScheduler> scheduler(SchedulerCreator::create(Common));
-
-  std::string output = parser.parse(input, Meta(), analyze_factory.get(), scheduler.get());
-
-  std::string expected = "qwer";
-}
-
-TEST(parser, parse_while){
-  std::string input = "begin\n\n"
-                      "while\nfollow2\n\n"
-                      "end\n\n";
-  Parser parser;
-  std::unique_ptr<AAnalyzeFactory> analyze_factory(AnalyzeFactoryCreator::create(Indent));
-  std::unique_ptr<AScheduler> scheduler(SchedulerCreator::create(Common));
-
-  std::string output = parser.parse(input, Meta(), analyze_factory.get(), scheduler.get());
-  std::string expected = "qwer";
-}*/
 
 int main(int argc, char *argv[]) {
   ::testing::InitGoogleMock(&argc, argv);
