@@ -30,7 +30,7 @@ set(PrimitiveFiles
         Analyzer/Primitive/PFork.h
         Analyzer/Primitive/PCycle.h
         )
-set(AnalyzersFiles ${PrimitiveFiles} Analyzer/AAnalyzeFactory.h Analyzer/AAnalyzer.h Analyzer/IndentAnalyze/IndentAnalyzer.cpp Analyzer/IndentAnalyze/IndentAnalyzer.h Analyzer/AConstraintor.h Analyzer/IndentAnalyze/IndentConstraintor.cpp Analyzer/IndentAnalyze/IndentConstraintor.h Analyzer/AnalyzeFactoryType.h Analyzer/AnalyzeFactoryCreator.h Analyzer/IndentAnalyze/IndentAnalyzeFactory.h Analyzer/IndentAnalyze/Tools/Liner.cpp Analyzer/IndentAnalyze/Tools/Liner.h Analyzer/IndentAnalyze/Tools/Utils.h Analyzer/IndentAnalyze/States.h Analyzer/IndentAnalyze/Tools/Memory.cpp Analyzer/IndentAnalyze/Tools/Memory.h)
+set(AnalyzersFiles ${PrimitiveFiles} Analyzer/AAnalyzeFactory.h Analyzer/AAnalyzer.h Analyzer/IndentAnalyze/IndentAnalyzer.cpp Analyzer/IndentAnalyze/IndentAnalyzer.h Analyzer/AConstraintor.h Analyzer/IndentAnalyze/IndentConstraintor.cpp Analyzer/IndentAnalyze/IndentConstraintor.h Analyzer/AnalyzeFactoryType.h Analyzer/AnalyzeFactoryCreator.h Analyzer/IndentAnalyze/IndentAnalyzeFactory.h Analyzer/IndentAnalyze/Tools/Liner.cpp Analyzer/IndentAnalyze/Tools/Liner.h Analyzer/IndentAnalyze/Tools/Utils.h Analyzer/IndentAnalyze/Tools/States.h Analyzer/IndentAnalyze/Tools/Memory.cpp Analyzer/IndentAnalyze/Tools/Memory.h Analyzer/IndentAnalyze/Alphabet/BaseAlphabet.h Analyzer/IndentAnalyze/Alphabet/PythonLikeAlphabet.h Analyzer/AccumulateErrors.h)
 set(SchedulerFiles ${FigureFiles} Scheduler/SchedulerType.h Scheduler/SchedulerCreator.h Scheduler/AScheduler.h Scheduler/CommonScheduler.cpp Scheduler/CommonScheduler.h)
 set(MockFiles Mocks/MockScheduler.h Mocks/MockAnalyzeFactory.h Mocks/MockParser.cpp Mocks/MockParser.h)
 set(ParserFiles

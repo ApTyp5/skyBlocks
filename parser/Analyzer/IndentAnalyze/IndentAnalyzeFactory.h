@@ -11,11 +11,11 @@
 
 class IndentAnalyzeFactory : public AAnalyzeFactory {
  public:
-  AConstraintor *createConstraintor() override {
-    return new IndentConstraintor;
+  AConstraintor *createConstraintor(ptrVector<Error> &errors) override {
+    return IndentConstraintor(errors);
   }
-  AAnalyzer *createAnalyzer() override {
-    return new IndentAnalyzer;
+  AAnalyzer *createAnalyzer(ptrVector<Error> &errors) override {
+    return new IndentAnalyzer(errors);
   }
 };
 #endif //PARSER_ANALYZER_INDENTANALYZEFACTORY_H_

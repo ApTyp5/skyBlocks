@@ -8,9 +8,11 @@
 #include <string>
 
 #include "../Stubs/Stubs.h"
+#include "AccumulateErrors.h"
 
-class AConstraintor {
+class AConstraintor : public AccumulateErrors {
  public:
+  explicit AConstraintor(ptrVector<Error> &errors) : AccumulateErrors(errors) {}
   virtual std::string findMain(std::string text) = 0;
   virtual std::string findFunc(std::string text,
                                  std::string name, DataBaseConnection &connection) = 0;

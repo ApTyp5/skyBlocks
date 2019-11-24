@@ -6,6 +6,7 @@
 #define PARSER__PTRVECTOR_H_
 
 #include <vector>
+
 template<typename T>
 class ptrVector {
  protected:
@@ -59,6 +60,7 @@ class ptrVector {
   size_t size() {
     return buffer.size();
   }
+
   T *&back() {
     if (buffer.empty())
       throw std::exception();

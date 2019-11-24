@@ -11,10 +11,10 @@
 
 class AnalyzeFactoryCreator {
  public:
-  static AAnalyzeFactory *create(AnalyzeFactoryType type) {
+  static AAnalyzeFactory *create(AnalyzeFactoryType type = Indent) {
     switch (type) {
       default:
-      case Indent: return new IndentAnalyzeFactory;
+      case Indent: return new IndentAnalyzeFactory();
     }
   }
 };

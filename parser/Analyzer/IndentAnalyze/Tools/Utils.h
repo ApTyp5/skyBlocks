@@ -6,7 +6,7 @@
 #define PARSER_ANALYZER_INDENTANALYZE_TOOLS_UTILS_H_
 
 #include "../../Primitive/APrimitive.h"
-#include "../States.h"
+#include "States.h"
 #include "../../Primitive/PAlgorithm.h"
 #include "../../Primitive/PFollow.h"
 #include "../../Primitive/PFork.h"
@@ -45,6 +45,24 @@ class Utils {
 
   static bool retFirstWord(std::string &firstWord, std::string &others, const std::string &str) {
     return separateString(firstWord, others, str, ' ');
+  }
+
+  static std::string makeIncreasedIndent(const std::string &curIndent, char sym, size_t n) {
+    std::string output(curIndent);
+    for (size_t i = 0; i < n; i++) {
+      output += sym;
+    }
+    return output;
+  }
+
+  template<typename T>
+  static bool isInVector(T el, const std::vector<T> &vector) {
+    for (auto &i : vector) {
+      if (i == el)
+        return true;
+    }
+
+    return false;
   }
 
  private:

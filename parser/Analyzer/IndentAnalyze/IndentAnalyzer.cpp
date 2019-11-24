@@ -70,7 +70,8 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t line_num) 
 
     case Follow:
       while (longMemory.size() != 0) {
-        if (lineIndent == longMemory.back()->getIndent()) return false;
+        if (lineIndent == longMemory.back()->getIndent())
+          return false;
         tryAddPFollowToLastMem();
         mergeBackMemory();
       }
@@ -110,40 +111,39 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num) {
       std::string others;
       Utils::retFirstWord(fstWord, others, lineWithoutIndent);
 
-      switch (fstWord.front()) {
-        case 'i':tryAddPFollowToLastMem();
-          if (fstWord == "if") {
-            state_ = Fork;
-            indent = currentIndent + "   ";
-            shortMemory += others;
-          }
-          return false;
+      bool isFork = fstWord == AlphaBet->ForkWord();
+      bool isCycle = fstWord == AlphaBet->CycleWord();
 
-        case 'w':tryAddPFollowToLastMem();
-          if (fstWord == "while") {
-            state_ = Cycle;
-            indent = currentIndent + "      ";
-            shortMemory += others;
-          }
-          return false;
+      if (isFork || isCycle) {
+        tryAddPFollowToLastMem();
 
-        case 'c':tryAddPFollowToLastMem();
-          if (fstWord == "call") {
-            tryAddPFollowToLastMem();
-            addPFuncToLastMem(fstWord, others);
-          }
-          return false;
+        state_ = isFork ? Fork : Cycle;
+        indent = Utils::makeIncreasedIndent(
+            currentIndent,
+            AlphaBet->WordDelimiters().front(),
+            AlphaBet->ForkWord().size()
+        );
 
-        default:shortMemory += lineWithoutIndent;
+        shortMemory += others;
+        return false;
       }
-      return false;
+
+      if (fstWord == AlphaBet->CallFuncWord()) {
+        tryAddPFollowToLastMem();
+        addPFuncToLastMem(fstWord, others);
+        return false;
+      }
+
+      shortMemory += lineWithoutIndent;
   }
+  return false;
 }
+
 
 std::string IndentAnalyzer::retIndent(const std::string &line) {
   std::string retVal;
   auto i = line.cbegin();
-  while (*i == ' ' || *i == '\t') {
+  while (Utils::isInVector(*i, AlphaBet->WordDelimiters())) {
     retVal.push_back(*i);
     i++;
   }
@@ -197,7 +197,9 @@ const std::string &IndentAnalyzer::getCurrentIndent() {
 
   return longMemory.back()->getIndent();
 }
+
 bool IndentAnalyzer::addPFuncToLastMem(std::string name, std::string text) {
   longMemory.back()->getComplexPrimitive()->addChild(new PFunc(std::move(name), std::move(text)));
+  return true;
 }
 

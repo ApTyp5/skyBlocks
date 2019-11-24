@@ -6,7 +6,7 @@
 #define PARSER_ANALYZER_INDENTANALYZE_TOOLS_MEMORY_H_
 
 #include <string>
-#include "../States.h"
+#include "States.h"
 #include "../../Primitive/ComplexPrimitive.h"
 
 class Memory {
