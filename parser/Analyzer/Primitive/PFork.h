@@ -11,10 +11,25 @@ class PFork: public ComplexPrimitive
 {
 public:
     explicit PFork(std::string text)
-        : ComplexPrimitive(std::move(text))
+        : ComplexPrimitive(std::move(text)),
+          is_else(false)
     {}
 
+    void addChild(APrimitive *child) override
+    {
+        if (is_else)
+            elseChildren.push_back(child);
+        else
+            ComplexPrimitive::addChild(child);
+    }
+
+    void startElseSection() override
+    {
+        is_else = true;
+    }
+
 private:
+    bool is_else;
     ptrVector<APrimitive> elseChildren;
 };
 

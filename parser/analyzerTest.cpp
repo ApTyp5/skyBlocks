@@ -11,6 +11,124 @@
 #include "Analyzer/Primitive/PAlgorithm.h"
 #include "Analyzer/Primitive/PFork.h"
 #include "Analyzer/IndentAnalyze/Tools/Utils.h"
+#include "Fixtures/FixtureIndentAnalyzer.h"
+
+TEST(IndentAnalyzer, analyze_if)
+{
+    ptrVector<Error> errors;
+    auto *analyzer = new IndentAnalyzer(errors);
+    std::string text = "begin\n"
+                       "if true\n"
+                       "    smth\n"
+                       "else\n"
+                       "    smth2\n"
+                       "end\n";
+
+    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 0));
+    EXPECT_EQ(3, prim_ptr->childrenNum());
+    EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
+    EXPECT_EQ("true\n", prim_ptr->getChildern()[1]->getInnerText());
+    EXPECT_EQ("end\n", prim_ptr->getChildern()[2]->getInnerText());
+
+    EXPECT_EQ(false, prim_ptr->getChildern()[0]->hasChildren());
+    EXPECT_EQ(true, prim_ptr->getChildern()[1]->hasChildren());
+    EXPECT_EQ(false, prim_ptr->getChildern()[0]->hasChildren());
+
+    auto iff = dynamic_cast<const ComplexPrimitive *>(prim_ptr->getChildern()[1]);
+
+    EXPECT_EQ(1, iff->childrenNum());
+    EXPECT_EQ("smth\n", iff->getChildern()[0]->getInnerText());
+//    EXPECT_EQ("smth2\n", iff->getChildern()[1]->getInnerText());
+
+    EXPECT_EQ(false, iff->getChildern()[0]->hasChildren());
+//    EXPECT_EQ(false, iff->getChildern()[1]->hasChildren());
+}
+
+TEST(IndentAnalyzer, analyze_cycle)
+{
+    ptrVector<Error> errors;
+    auto *analyzer = new IndentAnalyzer(errors);
+    std::string text = "begin\n"
+                       "while true\n"
+                       "    smth\n"
+                       "\n"
+                       "    smth2\n"
+                       "end\n";
+
+    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 0));
+    EXPECT_EQ(3, prim_ptr->childrenNum());
+    EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
+    EXPECT_EQ("true\n", prim_ptr->getChildern()[1]->getInnerText());
+    EXPECT_EQ("end\n", prim_ptr->getChildern()[2]->getInnerText());
+
+    EXPECT_EQ(false, prim_ptr->getChildern()[0]->hasChildren());
+    EXPECT_EQ(true, prim_ptr->getChildern()[1]->hasChildren());
+    EXPECT_EQ(false, prim_ptr->getChildern()[0]->hasChildren());
+
+    auto whil = dynamic_cast<const ComplexPrimitive *>(prim_ptr->getChildern()[1]);
+
+    EXPECT_EQ(2, whil->childrenNum());
+    EXPECT_EQ("smth\n", whil->getChildern()[0]->getInnerText());
+    EXPECT_EQ("smth2\n", whil->getChildern()[1]->getInnerText());
+
+    EXPECT_EQ(false, whil->getChildern()[0]->hasChildren());
+    EXPECT_EQ(false, whil->getChildern()[1]->hasChildren());
+}
+
+TEST(IndentAnalyzer, analyze_2_follow)
+{
+    ptrVector<Error> errors;
+    auto *analyzer = new IndentAnalyzer(errors);
+
+    std::string text = "begin\n"
+                       "\n"
+                       "end\n";
+
+    ComplexPrimitive *prim_ptr(analyzer->analyze(text, 0));
+    EXPECT_EQ(2, prim_ptr->childrenNum());
+    EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
+    EXPECT_EQ("end\n", prim_ptr->getChildern()[1]->getInnerText());
+    delete (prim_ptr);
+}
+
+TEST_F(FixtureIndentAnalyzer, try_add_pfollow_positive)
+{
+    analyzer->shortMemory = "qwer";
+    EXPECT_EQ(0, analyzer->longMemory.back()->getComplexPrimitive()->childrenNum());
+    analyzer->tryAddPFollowToLastMem();
+    EXPECT_EQ(1, analyzer->longMemory.back()->getComplexPrimitive()->childrenNum());
+    EXPECT_EQ(true, analyzer->shortMemory.empty());
+}
+
+TEST_F(FixtureIndentAnalyzer, merge_back_mem)
+{
+    analyzer->longMemory.push_back(new Memory(Fork, new PFork("text")));
+    EXPECT_EQ(2, analyzer->longMemory.size());
+    analyzer->mergeBackMemory();
+    EXPECT_EQ(1, analyzer->longMemory.size());
+    EXPECT_EQ(1, analyzer->longMemory.back()->getComplexPrimitive()->childrenNum());
+}
+
+TEST_F(FixtureIndentAnalyzer, ret_indent)
+{
+    std::string str = "\t\t\tqwer";
+    std::string indent = analyzer->retIndent(str);
+    EXPECT_STREQ("\t\t\t", indent.data());
+}
+
+TEST_F(FixtureIndentAnalyzer, get_current_indent)
+{
+    analyzer->indent = "qwer";
+    analyzer->state_ = Cycle;
+    EXPECT_STREQ("qwer", analyzer->getCurrentIndent().data());
+
+    analyzer->state_ = Fork;
+    EXPECT_STREQ("qwer", analyzer->getCurrentIndent().data());
+
+    analyzer->state_ = Follow;
+    analyzer->longMemory.back()->setBodyIndent("asdf");
+    EXPECT_STREQ("asdf", analyzer->getCurrentIndent().data());
+}
 
 TEST(utils, is_in_vector_str_positive)
 {
@@ -103,6 +221,14 @@ TEST(utils, cut_front_positive)
 
     std::string answer = Utils::cutFront(test_string, ult.size());
     EXPECT_STREQ(answer.data(), uft.data());
+}
+
+TEST(utils, skip_symbols)
+{
+    std::string str(" \t qwer");
+    std::vector<char> syms = {' ', '\t'};
+
+    EXPECT_STREQ("qwer", Utils::skipSymbols(str, syms).data());
 }
 
 TEST(memory, merge_positive)

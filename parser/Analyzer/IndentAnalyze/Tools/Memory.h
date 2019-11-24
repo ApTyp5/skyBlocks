@@ -14,23 +14,22 @@
 class Memory
 {
     State state_;
-    std::string indent;
+    std::string bodyIndent;
     ComplexPrimitive *complexPrimitive;
 
 public:
     Memory(State state, ComplexPrimitive *complex_primitive);
-
     Memory(Memory &&memory) noexcept;
 
     void merge(Memory *&memory);
 
 public:
     State getState() const;
-    const std::string &getIndent() const;
+    const std::string &getBodyIndent() const;
     ComplexPrimitive *getComplexPrimitive() const;
 
 public:
-    void setIndent(const std::string &indent);
+    void setBodyIndent(const std::string &indent);
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZE_TOOLS_MEMORY_H_

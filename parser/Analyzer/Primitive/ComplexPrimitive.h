@@ -20,10 +20,23 @@ public:
         children.push_back(child);
     }
 
-    size_t childrenNum()
+    virtual size_t childrenNum() const
     {
         return children.size();
     };
+
+    const ptrVector<APrimitive> &getChildern() const
+    {
+        return children;
+    };
+
+    bool hasChildren() const override
+    {
+        return true;
+    }
+
+    virtual void startElseSection()
+    {}
 
 protected:
     ptrVector<APrimitive> children;

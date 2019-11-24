@@ -21,6 +21,7 @@ class Parser
 public:
     explicit Parser(DataBaseConnection connection = DataBaseConnection())
     {}
+
     virtual jsonString parse(std::string text, Meta meta,
                              AAnalyzeFactory *analyzeFactory,
                              AScheduler *scheduler);

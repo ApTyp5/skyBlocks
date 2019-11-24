@@ -4,6 +4,8 @@
 
 #include "Memory.h"
 
+#include <utility>
+
 Memory::Memory(State state, ComplexPrimitive *complex_primitive)
     :
     state_(state), complexPrimitive(complex_primitive)
@@ -12,7 +14,7 @@ Memory::Memory(State state, ComplexPrimitive *complex_primitive)
 Memory::Memory(Memory &&memory) noexcept
 {
     state_ = memory.state_;
-    indent = std::move(memory.indent);
+    bodyIndent = std::move(memory.bodyIndent);
     complexPrimitive = memory.complexPrimitive;
     memory.complexPrimitive = nullptr;
 }
@@ -33,9 +35,9 @@ State Memory::getState() const
     return state_;
 }
 
-const std::string &Memory::getIndent() const
+const std::string &Memory::getBodyIndent() const
 {
-    return indent;
+    return bodyIndent;
 }
 
 ComplexPrimitive *Memory::getComplexPrimitive() const
@@ -43,7 +45,8 @@ ComplexPrimitive *Memory::getComplexPrimitive() const
     return complexPrimitive;
 }
 
-void Memory::setIndent(const std::string &indent)
+void Memory::setBodyIndent(const std::string &indent)
 {
-    Memory::indent = indent;
+    Memory::bodyIndent = indent;
 }
+

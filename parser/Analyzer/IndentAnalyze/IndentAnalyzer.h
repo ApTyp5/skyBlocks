@@ -17,12 +17,13 @@
 #include "Tools/Memory.h"
 #include "Tools/States.h"
 
+class FixtureIndentAnalyzer;
+class FixtureIndentAnalyzer_get_current_indent_follow_test;
+
 class IndentAnalyzer: public AAnalyzer
 {
 public:
-    explicit IndentAnalyzer(ptrVector<Error> &errors)
-        : AAnalyzer(errors), AlphaBet(new PythonLikeAlphabet)
-    {}
+    explicit IndentAnalyzer(ptrVector<Error> &errors);
     ComplexPrimitive *analyze(std::string text, size_t line_num) override;
 
 private:
@@ -34,6 +35,7 @@ private:
     std::string retIndent(const std::string &line);
     const std::string &getCurrentIndent();
     void mergeBackMemory();
+    void flushShortMemory();
 
 private:
     bool tryAddPFollowToLastMem();
@@ -47,6 +49,12 @@ private:
     std::string shortMemory;
     ptrVector<Memory> longMemory;
     std::unique_ptr<BaseAlphabet> AlphaBet;
+
+    friend class FixtureIndentAnalyzer;
+    friend class FixtureIndentAnalyzer_get_current_indent_Test;
+    friend class FixtureIndentAnalyzer_ret_indent_Test;
+    friend class FixtureIndentAnalyzer_merge_back_mem_Test;
+    friend class FixtureIndentAnalyzer_try_add_pfollow_positive_Test;
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZER_H_

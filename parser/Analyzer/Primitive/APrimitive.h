@@ -14,7 +14,18 @@ public:
         : innerText(std::move(text))
     {}
 
+    virtual bool hasChildren() const
+    {
+        return false;
+    }
+
 protected:
     std::string innerText;
+
+public:
+    const std::string &getInnerText() const
+    {
+        return innerText;
+    }
 };
 #endif //PARSER_PRIMITIVE_APRIMITIVE_H_

@@ -67,7 +67,7 @@ public:
         return retVal;
     }
 
-    size_t size()
+    size_t size() const
     {
         return buffer.size();
     }
@@ -77,6 +77,20 @@ public:
         if (buffer.empty())
             throw std::exception();
         return buffer.back();
+    }
+
+    T *operator[](size_t index)
+    {
+        if (index >= size())
+            throw std::exception();
+        return buffer[index];
+    }
+
+    const T *operator[](size_t index) const
+    {
+        if (index >= size())
+            throw std::exception();
+        return buffer[index];
     }
 };
 #endif //PARSER__PTRVECTOR_H_

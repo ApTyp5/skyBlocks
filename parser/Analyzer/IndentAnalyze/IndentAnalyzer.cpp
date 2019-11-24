@@ -2,6 +2,7 @@
 // Created by arthur on 22.11.2019.
 //
 
+#include <iostream>
 #include "IndentAnalyzer.h"
 #include "../Primitive/PAlgorithm.h"
 #include "Tools/Liner.h"
@@ -24,6 +25,8 @@ ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t line_num)
         if (analyzeStrPhase(line, line_num)) continue;
     }
 
+    flushShortMemory();
+
     while (longMemory.size() > 1)
         mergeBackMemory();
 
@@ -37,25 +40,26 @@ bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t line_num)
     if (line.front() == '\n' || curIndent.size() + 1 == line.size()) {
         switch (state_) {
             case Follow:tryAddPFollowToLastMem();
-                break;
+                return true;
 
             case Fork:
                 if (tryMemorizePFork()) {
                     state_ = Follow;
                 }
-                break;
+                return true;
 
             case Cycle:
                 if (tryMemorizePCycle()) {
                     state_ = Follow;
                 }
-                break;
-            case UnknownIndent: break;
+                return true;
+            case UnknownIndent: return true;
             case Alg:throw std::exception();
             default: throw std::exception();
         }
     }
-    return true;
+
+    return false;
 }
 
 bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t line_num)
@@ -64,33 +68,46 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t line_num)
 
     switch (state_) {
         case Alg:; // state_ = UnknownIndent;
-        case UnknownIndent:longMemory.back()->setIndent(lineIndent);
+        case UnknownIndent:longMemory.back()->setBodyIndent(lineIndent);
             state_ = Follow;
             return false;
 
         case Follow:
-            while (longMemory.size() != 0) {
-                if (lineIndent == longMemory.back()->getIndent())
+            while (longMemory.size() != 1) {
+                if (lineIndent == getCurrentIndent())
                     return false;
+
                 tryAddPFollowToLastMem();
+
+                if (longMemory.back()->getState() == Fork) {
+                    std::string str = Utils::skipSymbols(line, AlphaBet->WordDelimiters());
+                    if (str.substr(0, AlphaBet->ElseWord().size()) == AlphaBet->ElseWord()) {
+                        longMemory.back()->getComplexPrimitive()->startElseSection();
+                        state_ = UnknownIndent;
+                        return true;
+                    }
+                }
                 mergeBackMemory();
             }
+
             /* error */
             return false;
 
-        case Fork:if (lineIndent == indent) break;
+        case Fork:if (lineIndent == getCurrentIndent()) return false;
             if (!tryMemorizePFork()) {/* error */}
             state_ = UnknownIndent;
-            return true;
+            break;
 
-        case Cycle:if (lineIndent == indent) break;
+        case Cycle:if (lineIndent == getCurrentIndent()) return false;
             if (!tryMemorizePCycle()) {/* error */}
             state_ = UnknownIndent;
-            return true;
+            break;
 
         default: throw std::exception();
     }
 
+    longMemory.back()->setBodyIndent(lineIndent);
+    state_ = Follow;
     return false;
 }
 
@@ -119,11 +136,14 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
                 tryAddPFollowToLastMem();
 
                 state_ = isFork ? Fork : Cycle;
+                std::string addIndent = retIndent(others);
+                others = Utils::cutFront(others, addIndent.size());
+
                 indent = Utils::strAppendMultipleSymbols(
                     currentIndent,
                     AlphaBet->WordDelimiters().front(),
-                    AlphaBet->ForkWord().size()
-                );
+                    isFork ? AlphaBet->ForkWord().size() : AlphaBet->CycleWord().size()
+                ) + addIndent;
 
                 shortMemory += others;
                 return false;
@@ -201,12 +221,21 @@ const std::string &IndentAnalyzer::getCurrentIndent()
         || state_ == Cycle)
         return indent;
 
-    return longMemory.back()->getIndent();
+    return longMemory.back()->getBodyIndent();
 }
 
 bool IndentAnalyzer::addPFuncToLastMem(std::string name, std::string text)
 {
     longMemory.back()->getComplexPrimitive()->addChild(new PFunc(std::move(name), std::move(text)));
     return true;
+}
+
+IndentAnalyzer::IndentAnalyzer(ptrVector<Error> &errors)
+    : AAnalyzer(errors), AlphaBet(new PythonLikeAlphabet)
+{}
+
+void IndentAnalyzer::flushShortMemory()
+{
+    emptyStringPhase("\n", 0);
 }
 

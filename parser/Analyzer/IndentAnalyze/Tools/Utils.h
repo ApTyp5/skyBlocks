@@ -74,6 +74,17 @@ public:
         return false;
     }
 
+    static std::string skipSymbols(const std::string &str, std::vector<char> syms)
+    {
+        size_t i = 0;
+        for (; i < str.size(); i++) {
+            if (!isInVector(str[i], syms))
+                return str.substr(i);
+        }
+
+        return std::string();
+    }
+
 private:
     static bool separateString(std::string &firstPart,
                                std::string &secondPart,
