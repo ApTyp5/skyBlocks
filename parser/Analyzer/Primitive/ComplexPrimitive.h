@@ -14,10 +14,16 @@ public:
     explicit ComplexPrimitive(std::string text)
         : APrimitive(std::move(text))
     {}
+
     virtual void addChild(APrimitive *child)
     {
         children.push_back(child);
     }
+
+    size_t childrenNum()
+    {
+        return children.size();
+    };
 
 protected:
     ptrVector<APrimitive> children;

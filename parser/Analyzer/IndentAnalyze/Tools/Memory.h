@@ -22,7 +22,7 @@ public:
 
     Memory(Memory &&memory) noexcept;
 
-    void merge(Memory *memory);
+    void merge(Memory *&memory);
 
 public:
     State getState() const;

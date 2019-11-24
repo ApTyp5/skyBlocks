@@ -17,7 +17,7 @@ Memory::Memory(Memory &&memory) noexcept
     memory.complexPrimitive = nullptr;
 }
 
-void Memory::merge(Memory *memory)
+void Memory::merge(Memory *&memory)
 {
     if (memory == nullptr)
         throw std::exception();
@@ -25,6 +25,7 @@ void Memory::merge(Memory *memory)
     complexPrimitive->addChild(memory->complexPrimitive);
     memory->complexPrimitive = nullptr;
     delete memory;
+    memory = nullptr;
 }
 
 State Memory::getState() const

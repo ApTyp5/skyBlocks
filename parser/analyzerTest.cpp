@@ -7,8 +7,24 @@
 
 #include <gmock/gmock.h>
 #include "Analyzer/IndentAnalyze/Tools/Liner.h"
+#include "Analyzer/IndentAnalyze/Tools/Memory.h"
+#include "Analyzer/Primitive/PAlgorithm.h"
+#include "Analyzer/Primitive/PFork.h"
 
-TEST(liner, common_work)
+
+TEST(memory, merge_positive)
+{
+    auto memory = new Memory(Alg, new PAlgorithm("name", "text"));
+    auto merged_memory = new Memory(Fork, new PFork("text"));
+
+    EXPECT_EQ(0, memory->getComplexPrimitive()->childrenNum());
+    memory->merge(merged_memory);
+    EXPECT_EQ(1, memory->getComplexPrimitive()->childrenNum());
+    EXPECT_EQ(nullptr, merged_memory);
+    delete memory;
+}
+
+TEST(liner, positive)
 {
     std::string input = "qwer\n"
                         "asdf\n"
