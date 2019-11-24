@@ -12,38 +12,10 @@
 #include "../Primitive/PFollow.h"
 #include "../Primitive/PFork.h"
 #include "../Primitive/PCycle.h"
+#include "../Primitive/PFunc.h"
+
 #include "States.h"
-
-struct Memory {
-  State state_;
-  std::string indent;
-  ComplexPrimitive *complexPrimitive;
-
-  Memory(State state, std::string indent, ComplexPrimitive *complex_primitive) :
-      state_(state), indent(std::move(indent)), complexPrimitive(complex_primitive) {}
-
-/*  Memory(const Memory &memory){
-    state_ = memory.state_;
-    indent = memory.indent;
-    complexPrimitive = new ComplexPrimitive(memory.complexPrimitive);
-  }    */
-
-  Memory(Memory &&memory) noexcept {
-    state_ = memory.state_;
-    indent = std::move(memory.indent);
-    complexPrimitive = memory.complexPrimitive;
-    memory.complexPrimitive = nullptr;
-  }
-
-  void merge(Memory *memory) {
-    if (memory == nullptr)
-      throw std::exception();
-
-    complexPrimitive->addChild(memory->complexPrimitive);
-    memory->complexPrimitive = nullptr;
-    delete memory;
-  }
-};
+#include "Tools/Memory.h"
 
 class IndentAnalyzer : public AAnalyzer {
  public:
@@ -53,7 +25,17 @@ class IndentAnalyzer : public AAnalyzer {
   virtual bool indentCheckPhase(const std::string &line, size_t line_num);
   virtual bool analyzeStrPhase(const std::string &line, size_t line_num);
 
+ private:
   std::string retIndent(const std::string &line);
+  const std::string &getCurrentIndent();
+  void mergeBackMemory();
+
+ private:
+  bool tryAddPFollowToLastMem();
+  bool tryMemorizePFork();
+  bool tryMemorizePCycle();
+  bool addPFuncToLastMem(std::string name, std::string text);
+
  private:
   State state_;
   std::string indent;

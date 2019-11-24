@@ -7,6 +7,7 @@
 
 enum State {
   Alg,
+  UnknownIndent,
   Follow,
   Fork,
   Cycle,

@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentAnalyzer.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o"
   "/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentConstraintor.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o"
   "/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/Liner.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.o"
+  "/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/Memory.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o"
   "/home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o"
   "/home/arthur/Repos/new_skyBlocks/parser/Mocks/MockParser.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Mocks/MockParser.cpp.o"
   "/home/arthur/Repos/new_skyBlocks/parser/Parser.cpp" "/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/parser.dir/Parser.cpp.o"

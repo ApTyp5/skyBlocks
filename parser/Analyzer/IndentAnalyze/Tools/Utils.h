@@ -25,14 +25,42 @@ class Utils {
     }
   };
 
-  static std::string extractAlgName(std::string &addText, const std::string &text) {
-    int first_space = text.find(' ');
-    if (first_space < 0)
-      return text;
+  static std::string cutFront(const std::string &str, size_t size) {
+    return str.substr(size);
+  }
 
-    addText = text.substr(first_space);
-    std::string name = text.substr(0, first_space);
-    return name;
+  static bool extractFuncName(std::string &name,
+                              std::string &otherText,
+                              const std::string &text,
+                              char delim = ' ') {
+    return separateString(name, otherText, text, delim);
+  }
+
+  static bool extractCycleParts(std::string &topPart,
+                                std::string &botPart,
+                                const std::string &text,
+                                char delim = ';') {
+    return separateString(topPart, botPart, text, delim);
+  }
+
+  static bool retFirstWord(std::string &firstWord, std::string &others, const std::string &str) {
+    return separateString(firstWord, others, str, ' ');
+  }
+
+ private:
+  static bool separateString(std::string &firstPart,
+                             std::string &secondPart,
+                             const std::string &initString,
+                             char delim) {
+    int first_delim = initString.find(delim);
+    if (first_delim < 0) {
+      firstPart = initString;
+      return false;
+    }
+
+    firstPart = initString.substr(0, first_delim);
+    secondPart = initString.substr(first_delim + 1);
+    return true;
   }
 };
 

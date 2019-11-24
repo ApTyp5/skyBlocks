@@ -228,6 +228,33 @@ Analyzer/IndentAnalyze/Tools/Liner.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.s
 .PHONY : Analyzer/IndentAnalyze/Tools/Liner.cpp.s
 
+Analyzer/IndentAnalyze/Tools/Memory.o: Analyzer/IndentAnalyze/Tools/Memory.cpp.o
+
+.PHONY : Analyzer/IndentAnalyze/Tools/Memory.o
+
+# target to build an object file
+Analyzer/IndentAnalyze/Tools/Memory.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o
+.PHONY : Analyzer/IndentAnalyze/Tools/Memory.cpp.o
+
+Analyzer/IndentAnalyze/Tools/Memory.i: Analyzer/IndentAnalyze/Tools/Memory.cpp.i
+
+.PHONY : Analyzer/IndentAnalyze/Tools/Memory.i
+
+# target to preprocess a source file
+Analyzer/IndentAnalyze/Tools/Memory.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.i
+.PHONY : Analyzer/IndentAnalyze/Tools/Memory.cpp.i
+
+Analyzer/IndentAnalyze/Tools/Memory.s: Analyzer/IndentAnalyze/Tools/Memory.cpp.s
+
+.PHONY : Analyzer/IndentAnalyze/Tools/Memory.s
+
+# target to generate assembly for a file
+Analyzer/IndentAnalyze/Tools/Memory.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.s
+.PHONY : Analyzer/IndentAnalyze/Tools/Memory.cpp.s
+
 JsonFormer/JsonFormer.o: JsonFormer/JsonFormer.cpp.o
 
 .PHONY : JsonFormer/JsonFormer.o
@@ -383,6 +410,9 @@ help:
 	@echo "... Analyzer/IndentAnalyze/Tools/Liner.o"
 	@echo "... Analyzer/IndentAnalyze/Tools/Liner.i"
 	@echo "... Analyzer/IndentAnalyze/Tools/Liner.s"
+	@echo "... Analyzer/IndentAnalyze/Tools/Memory.o"
+	@echo "... Analyzer/IndentAnalyze/Tools/Memory.i"
+	@echo "... Analyzer/IndentAnalyze/Tools/Memory.s"
 	@echo "... JsonFormer/JsonFormer.o"
 	@echo "... JsonFormer/JsonFormer.i"
 	@echo "... JsonFormer/JsonFormer.s"

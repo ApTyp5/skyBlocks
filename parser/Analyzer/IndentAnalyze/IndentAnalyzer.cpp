@@ -4,17 +4,20 @@
 
 #include "IndentAnalyzer.h"
 
+#include <utility>
+
 #include "../Primitive/PAlgorithm.h"
 #include "Tools/Liner.h"
 #include "Tools/Utils.h"
 
 ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t line_num) {
   ptrVector<APrimitive> retVal;
-  longMemory.push_back(new Memory(Alg, "", new PAlgorithm("__main__", "")));
+  longMemory.push_back(new Memory(Alg, new PAlgorithm("__main__", "")));
   indent = shortMemory = "";
   Liner liner(text);
   std::string line;
   line_num -= 1;
+  state_ = UnknownIndent;
 
   while (liner.getLine(line)) {
     line_num += 1;
@@ -24,80 +27,117 @@ ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t line_num) {
   }
 
   while (longMemory.size() > 1)
-    longMemory.back()->merge(longMemory.pop_back());
+    mergeBackMemory();
 
-  return longMemory.pop_back()->complexPrimitive;
+  return longMemory.pop_back()->getComplexPrimitive();
 }
 
 bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t line_num) {
   std::string curIndent = retIndent(line);
+
   if (line.front() == '\n' || curIndent.size() + 1 == line.size()) {
-
-    if (state_ == Follow) {
-      if (!shortMemory.empty()) {
-        longMemory.back()->complexPrimitive->addChild(new PFollow(shortMemory));
-        shortMemory.clear();
-      }
-      return true;
-    }
-
-    if (shortMemory.empty()) push_error("unexpected empty string", line_num);
-
     switch (state_) {
-      case Alg:
-        if (!shortMemory.empty()) {
-          std::string name, addText;
-          name = Utils::extractAlgName(addText, line);
-          longMemory.push_back(new Memory(state_,))
-        }
+      case Follow:tryAddPFollowToLastMem();
+        break;
 
       case Fork:
-      case Cycle:
-
-      case Follow:
-        if (!shortMemory.empty()) {
-          longMemory.back()->complexPrimitive->addChild(new PFollow(shortMemory));
-          shortMemory.clear();
+        if (tryMemorizePFork()) {
+          state_ = Follow;
         }
         break;
 
+      case Cycle:
+        if (tryMemorizePCycle()) {
+          state_ = Follow;
+        }
+        break;
+      case UnknownIndent: break;
+      case Alg:throw std::exception();
       default: throw std::exception();
     }
   }
-  return false;
+  return true;
 }
 
 bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t line_num) {
   std::string lineIndent = retIndent(line);
+
   switch (state_) {
-    case Alg: state_ = Unknown;
-    case Unknown:state_ = Follow;
-      indent = lineIndent;
-      break;
+    case Alg:; // state_ = UnknownIndent;
+    case UnknownIndent:longMemory.back()->setIndent(lineIndent);
+      state_ = Follow;
+      return false;
 
     case Follow:
-      if (lineIndent == indent) {
-
+      while (longMemory.size() != 0) {
+        if (lineIndent == longMemory.back()->getIndent()) return false;
+        tryAddPFollowToLastMem();
+        mergeBackMemory();
       }
+      /* error */
+      return false;
 
-    case Fork:
-    case Cycle:
-      if (indent == lineIndent)
-        shortMemory += line.substr(lineIndent.size());
-      else {
-        size_t delim_pos = shortMemory.find(';');
-        ComplexPrimitive *cycle = new PCycle(
-            shortMemory.substr(0, delim_pos),
-            shortMemory.substr(delim_pos + 1)
-        );
+    case Fork:if (lineIndent == indent) break;
+      if (!tryMemorizePFork()) {/* error */}
+      state_ = UnknownIndent;
+      return true;
 
-        longMemory.push_back(new Memory(state_, lineIndent, cycle));
-        state_ = Follow;
-        indent = lineIndent;
-      }
+    case Cycle:if (lineIndent == indent) break;
+      if (!tryMemorizePCycle()) {/* error */}
+      state_ = UnknownIndent;
+      return true;
+
+    default: throw std::exception();
   }
 
   return false;
+}
+
+bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num) {
+  const std::string &currentIndent = getCurrentIndent();
+  std::string lineWithoutIndent = Utils::cutFront(line, currentIndent.size());
+
+  switch (state_) {
+    case Fork:
+    case Cycle:shortMemory += lineWithoutIndent;
+      return false;
+
+    case Alg:
+    case UnknownIndent:
+    default: throw std::exception();
+
+    case Follow:std::string fstWord;
+      std::string others;
+      Utils::retFirstWord(fstWord, others, lineWithoutIndent);
+
+      switch (fstWord.front()) {
+        case 'i':tryAddPFollowToLastMem();
+          if (fstWord == "if") {
+            state_ = Fork;
+            indent = currentIndent + "   ";
+            shortMemory += others;
+          }
+          return false;
+
+        case 'w':tryAddPFollowToLastMem();
+          if (fstWord == "while") {
+            state_ = Cycle;
+            indent = currentIndent + "      ";
+            shortMemory += others;
+          }
+          return false;
+
+        case 'c':tryAddPFollowToLastMem();
+          if (fstWord == "call") {
+            tryAddPFollowToLastMem();
+            addPFuncToLastMem(fstWord, others);
+          }
+          return false;
+
+        default:shortMemory += lineWithoutIndent;
+      }
+      return false;
+  }
 }
 
 std::string IndentAnalyzer::retIndent(const std::string &line) {
@@ -110,3 +150,54 @@ std::string IndentAnalyzer::retIndent(const std::string &line) {
 
   return retVal;
 }
+
+bool IndentAnalyzer::tryAddPFollowToLastMem() {
+  if (!shortMemory.empty()) {
+    longMemory.back()->getComplexPrimitive()->addChild(new PFollow(shortMemory));
+    shortMemory.clear();
+    return true;
+  }
+  return false;
+}
+
+bool IndentAnalyzer::tryMemorizePFork() {
+  if (!shortMemory.empty()) {
+    longMemory.push_back(new Memory(Fork, new PFork(shortMemory)));
+    shortMemory.clear();
+    return true;
+  }
+  return false;
+}
+
+bool IndentAnalyzer::tryMemorizePCycle() {
+  if (!shortMemory.empty()) {
+    std::string topText, botText;
+    Utils::extractCycleParts(topText, botText, shortMemory);
+
+    longMemory.push_back(new Memory(Cycle, new PCycle(topText, botText)));
+    shortMemory.clear();
+    return true;
+  }
+  return false;
+}
+
+void IndentAnalyzer::mergeBackMemory() {
+  Memory *last = longMemory.pop_back();
+  longMemory.back()->merge(last);
+}
+
+const std::string &IndentAnalyzer::getCurrentIndent() {
+  if (state_ == UnknownIndent
+      || state_ == Alg)
+    throw std::exception();
+
+  if (state_ == Fork
+      || state_ == Cycle)
+    return indent;
+
+  return longMemory.back()->getIndent();
+}
+bool IndentAnalyzer::addPFuncToLastMem(std::string name, std::string text) {
+  longMemory.back()->getComplexPrimitive()->addChild(new PFunc(std::move(name), std::move(text)));
+}
+
