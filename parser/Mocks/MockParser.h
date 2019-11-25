@@ -11,9 +11,7 @@
 
 class MockParser : public Parser {
  public:
-  jsonString parse(std::string text, Meta meta,
-                   AAnalyzeFactory *analyzeFactory,
-                   AScheduler *scheduler) override;
+    jsonString parse(std::string text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler) override;
 
   MOCK_METHOD(jsonString, formJson, (ptrVector<AFigure> & ), (override));
 };

@@ -10,7 +10,7 @@
 
 ptrVector<AFigure> CommonScheduler::schedule(const std::unique_ptr<ComplexPrimitive> &algorithm)
 {
-    return ptrVector<AFigure>();
+    return std::move(figures);
 }
 bool CommonScheduler::schedulePrimitive(PAlgorithm &primitive, AScheduler &scheduler)
 {

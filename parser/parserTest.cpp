@@ -23,7 +23,7 @@ TEST(parser, mock) {
   EXPECT_CALL(*scheduler, schedule).Times(1);
   EXPECT_CALL(parser, formJson).Times(1);
 
-  parser.parse("doesn't matter", Meta(), mock_analyze_factory, scheduler);
+    parser.parse("doesn't matter", mock_analyze_factory, scheduler);
 
   delete mock_analyze_factory;
   delete scheduler;

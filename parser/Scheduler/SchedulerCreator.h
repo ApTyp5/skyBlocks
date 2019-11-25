@@ -10,16 +10,17 @@
 #include "AScheduler.h"
 #include "CommonScheduler.h"
 #include "SchedulerType.h"
+#include "../Stubs/Stubs.h"
 
 
 class SchedulerCreator
 {
 public:
-    static AScheduler *create(SchedulerType type = Common)
+    static AScheduler *create(const Meta &meta, SchedulerType type = Common)
     {
         switch (type) {
             default:
-            case Common:return new CommonScheduler;
+            case Common:return new CommonScheduler(meta);
         }
     }
 };
