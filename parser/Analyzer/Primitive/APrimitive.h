@@ -7,12 +7,16 @@
 
 #include <string>
 
+#include "../../Scheduler/AScheduler.h"
+
 class APrimitive
 {
 public:
     explicit APrimitive(std::string text)
         : innerText(std::move(text))
     {}
+
+    virtual bool acceptScheduler(AScheduler &scheduler) = 0;
 
     virtual bool hasChildren() const
     {

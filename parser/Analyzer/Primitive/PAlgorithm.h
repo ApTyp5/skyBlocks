@@ -15,6 +15,11 @@ public:
         ComplexPrimitive(std::move(text)), name(std::move(name))
     {}
 
+    bool acceptScheduler(AScheduler &scheduler) override
+    {
+        return scheduler.schedulePrimitive(*this, scheduler);
+    }
+
     virtual std::string toString() override
     {
         std::string ans = "Algorithm\n" + ComplexPrimitive::toString();

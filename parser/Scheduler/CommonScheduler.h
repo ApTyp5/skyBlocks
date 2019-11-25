@@ -10,10 +10,18 @@
 class CommonScheduler: public AScheduler
 {
 public:
-    ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm, Meta meta) override;
+    CommonScheduler(const Meta &meta)
+        : AScheduler(meta)
+    {}
+    ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm) override;
+
+    bool schedulePrimitive(PAlgorithm &primitive, AScheduler &scheduler) override;
+    bool schedulePrimitive(PCycle &primitive, AScheduler &scheduler) override;
+    bool schedulePrimitive(PFollow &primitive, AScheduler &scheduler) override;
+    bool schedulePrimitive(PFork &primitive, AScheduler &scheduler) override;
+    bool schedulePrimitive(PFunc &primitive, AScheduler &scheduler) override;
 protected:
-    void put(APrimitive *primitive, size_t curX, size_t curY, size_t maxY);
-    void put(ComplexPrimitive *primitive, size_t curX, size_t curY, size_t maxY);
+
 };
 
 #endif //PARSER_SCHEDULER_COMMONSCHEDULER_H_

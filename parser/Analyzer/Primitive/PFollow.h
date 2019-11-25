@@ -14,6 +14,11 @@ public:
         : APrimitive(std::move(text))
     {}
 
+    bool acceptScheduler(AScheduler &scheduler) override
+    {
+        return scheduler.schedulePrimitive(*this, scheduler);
+    }
+
     std::string toString() const override
     {
         return std::string("Func\n") +

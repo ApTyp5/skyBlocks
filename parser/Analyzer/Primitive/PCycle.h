@@ -16,6 +16,11 @@ public:
         endCycleText(std::move(endCycleText))
     {}
 
+    bool acceptScheduler(AScheduler &scheduler) override
+    {
+        return scheduler.schedulePrimitive(*this, scheduler);
+    }
+
     std::string toString() override
     {
         std::string ans = "Cycle\n" + ComplexPrimitive::toString();

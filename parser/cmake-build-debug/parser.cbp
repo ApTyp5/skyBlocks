@@ -390,6 +390,9 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/SingleMeasureFigure.h">
 			<Option target="parser"/>
 		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/PrimitiveVisitor/APrimitiveVisitor.h">
+			<Option target="parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/SchedulerCreator.h">
 			<Option target="parser"/>
 		</Unit>

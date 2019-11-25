@@ -15,6 +15,11 @@ public:
         APrimitive(std::move(text)), name(std::move(name))
     {}
 
+    bool acceptScheduler(AScheduler &scheduler) override
+    {
+        return scheduler.schedulePrimitive(*this, scheduler);
+    }
+
     virtual std::string toString() const
     {
         return std::string("Func(") + name + std::string(")\n") +

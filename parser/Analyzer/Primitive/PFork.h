@@ -15,6 +15,11 @@ public:
           is_else(false)
     {}
 
+    bool acceptScheduler(AScheduler &scheduler) override
+    {
+        return scheduler.schedulePrimitive(*this, scheduler);
+    }
+
     void addChild(APrimitive *child) override
     {
         if (is_else)

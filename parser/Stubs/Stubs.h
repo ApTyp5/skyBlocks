@@ -17,7 +17,7 @@ public:
     { return 20; }
     size_t getYMargin()
     { return 20; }
-    size_t getKegel()
+    size_t getSymHeight()
     { return 7; }
     size_t getSymWidth()
     { return 3; }
