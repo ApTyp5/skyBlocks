@@ -5,8 +5,8 @@
 #include <iostream>
 #include "IndentAnalyzer.h"
 #include "../Primitive/PAlgorithm.h"
-#include "Tools/Liner.h"
-#include "Tools/AnalyzerUtils.h"
+#include "../../Tools/Liner.h"
+#include "Tools/IndentAnalyzerUtils.h"
 
 
 ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t line_num)
@@ -80,7 +80,7 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t line_num)
                 tryAddPFollowToLastMem();
 
                 if (longMemory.back()->getState() == Fork) {
-                    std::string str = AnalyzerUtils::skipSymbols(line, AlphaBet->WordDelimiters());
+                    std::string str = IndentAnalyzerUtils::skipSymbols(line, AlphaBet->WordDelimiters());
                     if (str.substr(0, AlphaBet->ElseWord().size()) == AlphaBet->ElseWord()) {
                         longMemory.back()->getComplexPrimitive()->startElseSection();
                         state_ = UnknownIndent;
@@ -114,7 +114,7 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t line_num)
 bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
 {
     const std::string &currentIndent = getCurrentIndent();
-    std::string lineWithoutIndent = AnalyzerUtils::cutFront(line, currentIndent.size());
+    std::string lineWithoutIndent = IndentAnalyzerUtils::cutFront(line, currentIndent.size());
 
     switch (state_) {
         case Fork:
@@ -127,7 +127,7 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
 
         case Follow:std::string fstWord;
             std::string others;
-            AnalyzerUtils::retFirstWord(fstWord, others, lineWithoutIndent);
+            IndentAnalyzerUtils::retFirstWord(fstWord, others, lineWithoutIndent);
 
             bool isFork = fstWord == AlphaBet->ForkWord();
             bool isCycle = fstWord == AlphaBet->CycleWord();
@@ -137,9 +137,9 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
 
                 state_ = isFork ? Fork : Cycle;
                 std::string addIndent = retIndent(others);
-                others = AnalyzerUtils::cutFront(others, addIndent.size());
+                others = IndentAnalyzerUtils::cutFront(others, addIndent.size());
 
-                indent = AnalyzerUtils::strAppendMultipleSymbols(
+                indent = IndentAnalyzerUtils::strAppendMultipleSymbols(
                     currentIndent,
                     AlphaBet->WordDelimiters().front(),
                     isFork ? AlphaBet->ForkWord().size() : AlphaBet->CycleWord().size()
@@ -164,7 +164,7 @@ std::string IndentAnalyzer::retIndent(const std::string &line)
 {
     std::string retVal;
     auto i = line.cbegin();
-    while (AnalyzerUtils::isInVector(*i, AlphaBet->WordDelimiters())) {
+    while (IndentAnalyzerUtils::isInVector(*i, AlphaBet->WordDelimiters())) {
         retVal.push_back(*i);
         i++;
     }
@@ -196,7 +196,7 @@ bool IndentAnalyzer::tryMemorizePCycle()
 {
     if (!shortMemory.empty()) {
         std::string topText, botText;
-        AnalyzerUtils::extractCycleParts(topText, botText, shortMemory);
+        IndentAnalyzerUtils::extractCycleParts(topText, botText, shortMemory);
 
         longMemory.push_back(new Memory(Cycle, new PCycle(topText, botText)));
         shortMemory.clear();

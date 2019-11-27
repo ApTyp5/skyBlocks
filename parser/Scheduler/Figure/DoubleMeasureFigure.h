@@ -10,13 +10,12 @@
 class DoubleMeasureFigure: public AFigure
 {
 public:
-    DoubleMeasureFigure(Point center, Rect rect, std::string text)
+    DoubleMeasureFigure(Rect rect, std::string text, size_t page = 1)
         :
-        AFigure(std::move(text)), center(center), rect_(rect)
+        AFigure(std::move(text), page), rect_(rect)
     {}
 
 private:
-    Point center;
     Rect rect_;
 };
 

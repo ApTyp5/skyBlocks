@@ -279,13 +279,7 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentConstraintor.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/AnalyzerUtils.h">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/Liner.cpp">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/Liner.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/Memory.cpp">
@@ -330,18 +324,6 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Mocks/MockAnalyzeFactory.h">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Mocks/MockParser.cpp">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Mocks/MockParser.h">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Mocks/MockScheduler.h">
-			<Option target="parser"/>
-		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Parser.cpp">
 			<Option target="parser"/>
 		</Unit>
@@ -349,12 +331,6 @@
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/AScheduler.h">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/CommonScheduler.cpp">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/CommonScheduler.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/AFigure.h">
@@ -390,16 +366,34 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/SingleMeasureFigure.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/PrimitiveVisitor/APrimitiveVisitor.h">
-			<Option target="parser"/>
-		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/SchedulerCreator.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/SchedulerType.h">
 			<Option target="parser"/>
 		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/UniverseScheduler/EmborderScheduler.cpp">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/UniverseScheduler/EmborderScheduler.h">
+			<Option target="parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Stubs/Stubs.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/Liner.cpp">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/Liner.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/Meta.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/SizedLiner.cpp">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/SizedLiner.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/analyzerTest.cpp">

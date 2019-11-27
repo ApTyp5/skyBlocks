@@ -15,7 +15,7 @@ public:
           is_else(false)
     {}
 
-    bool acceptScheduler(AScheduler &scheduler) override
+    bool acceptScheduler(AScheduler &scheduler) const override
     {
         return scheduler.schedulePrimitive(*this, scheduler);
     }
@@ -37,6 +37,11 @@ public:
     {
         std::string ans = "Fork\n" + ComplexPrimitive::toString();
         return ans;
+    }
+
+    const ptrVector<APrimitive> &getElseChildren() const
+    {
+        return elseChildren;
     }
 
 private:

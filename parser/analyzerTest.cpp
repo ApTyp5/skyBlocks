@@ -6,11 +6,11 @@
 #pragma ide diagnostic ignored "cert-err58-cpp"
 
 #include <gmock/gmock.h>
-#include "Analyzer/IndentAnalyze/Tools/Liner.h"
+#include "Tools/Liner.h"
 #include "Analyzer/IndentAnalyze/Tools/Memory.h"
 #include "Analyzer/Primitive/PAlgorithm.h"
 #include "Analyzer/Primitive/PFork.h"
-#include "Analyzer/IndentAnalyze/Tools/AnalyzerUtils.h"
+#include "Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h"
 #include "Fixtures/FixtureIndentAnalyzer.h"
 
 TEST(IndentAnalyzer, analyze_if)
@@ -133,18 +133,18 @@ TEST_F(FixtureIndentAnalyzer, get_current_indent)
 TEST(analyzer_utils, is_in_vector_str_positive)
 {
     std::vector<std::string> init = {"qwer", "asdf"};
-    EXPECT_EQ(true, AnalyzerUtils::isInVector(std::string("qwer"), init));
-    EXPECT_EQ(false, AnalyzerUtils::isInVector(std::string("zxcv"), init));
+    EXPECT_EQ(true, IndentAnalyzerUtils::isInVector(std::string("qwer"), init));
+    EXPECT_EQ(false, IndentAnalyzerUtils::isInVector(std::string("zxcv"), init));
 }
 
 TEST(analyzer_utils, is_in_vector_int_positive)
 {
     std::vector<int> init = {1, 2, 3, 4, 5};
     for (int i = 1; i < 6; i++) {
-        EXPECT_EQ(true, AnalyzerUtils::isInVector(i, init));
+        EXPECT_EQ(true, IndentAnalyzerUtils::isInVector(i, init));
     }
     for (int i = 10; i < 12; i++) {
-        EXPECT_EQ(false, AnalyzerUtils::isInVector(i, init));
+        EXPECT_EQ(false, IndentAnalyzerUtils::isInVector(i, init));
     }
 }
 
@@ -154,7 +154,7 @@ TEST(analyzer_utils, str_append_mult_syms_positive)
     char suffix = '/';
     size_t num = 3;
 
-    std::string output = AnalyzerUtils::strAppendMultipleSymbols(init, suffix, num);
+    std::string output = IndentAnalyzerUtils::strAppendMultipleSymbols(init, suffix, num);
     std::string exp_output = init + '/' + '/' + '/';
     EXPECT_STREQ(exp_output.data(), output.data());
 }
@@ -166,7 +166,7 @@ TEST(analyzer_utils, ret_first_word_negaitve)
     std::string others;
     std::string rec_first, rec_others;
 
-    bool is_ok = AnalyzerUtils::extractFuncName(rec_first, rec_others, test_string);
+    bool is_ok = IndentAnalyzerUtils::extractFuncName(rec_first, rec_others, test_string);
     EXPECT_EQ(false, is_ok);
     EXPECT_STREQ(first.data(), rec_first.data());
     EXPECT_STREQ(others.data(), rec_others.data());
@@ -179,7 +179,7 @@ TEST(analyzer_utils, ret_first_word_positive)
     std::string others = "word";
     std::string rec_first, rec_others;
 
-    bool is_ok = AnalyzerUtils::extractFuncName(rec_first, rec_others, test_string);
+    bool is_ok = IndentAnalyzerUtils::extractFuncName(rec_first, rec_others, test_string);
     EXPECT_EQ(true, is_ok);
     EXPECT_STREQ(first.data(), rec_first.data());
     EXPECT_STREQ(others.data(), rec_others.data());
@@ -193,7 +193,7 @@ TEST(analyzer_utils, extract_func_name_positive)
     std::string other = "asdf";
     std::string rec_name, rec_other;
 
-    bool is_ok = AnalyzerUtils::extractFuncName(rec_name, rec_other, test_string, delim);
+    bool is_ok = IndentAnalyzerUtils::extractFuncName(rec_name, rec_other, test_string, delim);
     EXPECT_EQ(true, is_ok);
     EXPECT_STREQ(name.data(), rec_name.data());
     EXPECT_STREQ(other.data(), rec_other.data());
@@ -207,7 +207,7 @@ TEST(analyzer_utils, extract_func_name_negative)
     std::string other;
     std::string rec_name, rec_other;
 
-    bool is_ok = AnalyzerUtils::extractFuncName(rec_name, rec_other, test_string, delim);
+    bool is_ok = IndentAnalyzerUtils::extractFuncName(rec_name, rec_other, test_string, delim);
     EXPECT_EQ(false, is_ok);
     EXPECT_STREQ(name.data(), rec_name.data());
     EXPECT_STREQ(other.data(), rec_other.data());
@@ -219,7 +219,7 @@ TEST(analyzer_utils, cut_front_positive)
     std::string ult("Useless text");
     std::string uft("Usefull text");
 
-    std::string answer = AnalyzerUtils::cutFront(test_string, ult.size());
+    std::string answer = IndentAnalyzerUtils::cutFront(test_string, ult.size());
     EXPECT_STREQ(answer.data(), uft.data());
 }
 
@@ -228,7 +228,7 @@ TEST(analyzer_utils, skip_symbols)
     std::string str(" \t qwer");
     std::vector<char> syms = {' ', '\t'};
 
-    EXPECT_STREQ("qwer", AnalyzerUtils::skipSymbols(str, syms).data());
+    EXPECT_STREQ("qwer", IndentAnalyzerUtils::skipSymbols(str, syms).data());
 }
 
 TEST(memory, merge_positive)

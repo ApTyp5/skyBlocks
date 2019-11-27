@@ -10,9 +10,9 @@
 class FEndCycle: public DoubleMeasureFigure
 {
 public:
-    FEndCycle(Point point, Rect rect, std::string text)
+    FEndCycle(Rect rect, std::string text, size_t page = 1)
         :
-        DoubleMeasureFigure(point, rect, std::move(text))
+        DoubleMeasureFigure(rect, std::move(text), page)
     {}
 };
 

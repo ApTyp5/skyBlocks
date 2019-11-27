@@ -10,12 +10,12 @@
 class PAlgorithm: public ComplexPrimitive
 {
 public:
-    PAlgorithm(std::string name, std::string text)
+    explicit PAlgorithm(std::string text)
         :
-        ComplexPrimitive(std::move(text)), name(std::move(name))
+        ComplexPrimitive(std::move(text))
     {}
 
-    bool acceptScheduler(AScheduler &scheduler) override
+    bool acceptScheduler(AScheduler &scheduler) const override
     {
         return scheduler.schedulePrimitive(*this, scheduler);
     }
@@ -25,9 +25,6 @@ public:
         std::string ans = "Algorithm\n" + ComplexPrimitive::toString();
         return ans;
     }
-
-private:
-    std::string name;
 };
 
 #endif //PARSER_PRIMITIVE_PALGORITHM_H_

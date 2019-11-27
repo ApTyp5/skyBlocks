@@ -10,9 +10,9 @@
 class FLine: public SingleMeasureFigure
 {
 public:
-    FLine(Point begin, Point end, std::string text)
+    FLine(Point begin, Point end, std::string text = "", size_t page = 1)
         :
-        SingleMeasureFigure(begin, end, std::move(text))
+        SingleMeasureFigure(begin, end, std::move(text), page)
     {}
 };
 

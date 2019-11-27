@@ -13,6 +13,7 @@
 #include "../Analyzer/Primitive/PFork.h"
 #include "../Analyzer/Primitive/PFunc.h"
 */
+#include <memory>
 
 #include "../ptrVector.h"
 #include "Figure/AFigure.h"
@@ -25,7 +26,6 @@ class PFollow;
 class PFork;
 class PFunc;
 
-
 class AScheduler
 {
 public:
@@ -34,15 +34,41 @@ public:
     {}
     virtual ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm) = 0;
 
-    virtual bool schedulePrimitive(PAlgorithm &primitive, AScheduler &scheduler) = 0;
-    virtual bool schedulePrimitive(PCycle &primitive, AScheduler &scheduler) = 0;
-    virtual bool schedulePrimitive(PFollow &primitive, AScheduler &scheduler) = 0;
-    virtual bool schedulePrimitive(PFork &primitive, AScheduler &scheduler) = 0;
-    virtual bool schedulePrimitive(PFunc &primitive, AScheduler &scheduler) = 0;
+    virtual bool schedulePrimitive(const PAlgorithm &primitive, AScheduler &scheduler) = 0;
+    virtual bool schedulePrimitive(const PCycle &primitive, AScheduler &scheduler) = 0;
+    virtual bool schedulePrimitive(const PFollow &primitive, AScheduler &scheduler) = 0;
+    virtual bool schedulePrimitive(const PFork &primitive, AScheduler &scheduler) = 0;
+    virtual bool schedulePrimitive(const PFunc &primitive, AScheduler &scheduler) = 0;
 
 protected:
     ptrVector<AFigure> figures;
     const Meta &meta;
+
+protected:
+    virtual size_t BlockWidth(const std::string &text)
+    {
+        return meta.symbolWidth() * (meta.xPadding() + text.size());
+    }
+
+    virtual size_t BlockHeight(size_t lineNum)
+    {
+        return meta.lineHeight() * (meta.yPadding() + lineNum);
+    }
+
+    size_t getBotBorder()
+    {
+        return meta.pageHeight() - meta.yMargin();
+    }
+
+    size_t getLeftBorder()
+    {
+        return meta.xMargin();
+    }
+
+    size_t getRightBorder()
+    {
+        return meta.pageWidth() - meta.xMargin();
+    }
 };
 
 #endif //PARSER_SCHEDULER_ASCHEDULER_H_

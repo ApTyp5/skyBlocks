@@ -45,6 +45,7 @@ public:
         for (size_t i = 0; i < childrenNum(); i++) {
             ans += "\t" + children[i]->toString();
         }
+        return ans;
     }
 
 protected:

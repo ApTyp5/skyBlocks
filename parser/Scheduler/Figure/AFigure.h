@@ -9,22 +9,27 @@
 
 struct Point
 {
-    double x, y;
+    size_t x, y;
 };
 
 struct Rect
 {
-    double width, height;
+    Point center;
+    size_t width, height;
 };
 
 class AFigure
 {
 public:
-    explicit AFigure(std::string text)
-        : text(std::move(text))
+    explicit AFigure(std::string text, size_t page = 1)
+        : text(std::move(text)), page(page)
     {}
 
+    size_t getPage() const
+    { return page; }
+
 private:
+    size_t page;
     std::string text;
 };
 

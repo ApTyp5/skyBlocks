@@ -10,9 +10,9 @@
 class FBegCycle: public DoubleMeasureFigure
 {
 public:
-    FBegCycle(Point center, Rect rect, std::string text)
+    FBegCycle(Rect rect, std::string text, size_t page = 1)
         :
-        DoubleMeasureFigure(center, rect, std::move(text))
+        DoubleMeasureFigure(rect, std::move(text), page)
     {}
 };
 

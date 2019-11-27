@@ -10,9 +10,9 @@
 class FFollow: public DoubleMeasureFigure
 {
 public:
-    FFollow(Point center, Rect rect, std::string text)
+    FFollow(Rect rect, std::string text, size_t page = 1)
         :
-        DoubleMeasureFigure(center, rect, std::move(text))
+        DoubleMeasureFigure(rect, std::move(text), page)
     {}
 };
 

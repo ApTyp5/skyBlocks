@@ -92,5 +92,35 @@ public:
             throw std::exception();
         return buffer[index];
     }
+
+    typename std::vector<T *>::iterator begin()
+    {
+        return buffer.begin();
+    }
+
+    typename std::vector<T *>::iterator end()
+    {
+        return buffer.end();
+    }
+
+    typename std::vector<T *>::const_iterator begin() const
+    {
+        return buffer.cbegin();
+    }
+
+    typename std::vector<T *>::const_iterator end() const
+    {
+        return buffer.cend();
+    }
+
+    typename std::vector<T *>::const_iterator cbegin() const
+    {
+        return buffer.cbegin();
+    }
+
+    typename std::vector<T *>::const_iterator cend() const
+    {
+        return buffer.cend();
+    }
 };
 #endif //PARSER__PTRVECTOR_H_

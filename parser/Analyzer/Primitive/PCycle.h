@@ -13,10 +13,10 @@ public:
     PCycle(std::string beginCycleText, std::string endCycleText)
         :
         ComplexPrimitive(std::move(beginCycleText)),
-        endCycleText(std::move(endCycleText))
+        afterCycleText(std::move(endCycleText))
     {}
 
-    bool acceptScheduler(AScheduler &scheduler) override
+    bool acceptScheduler(AScheduler &scheduler) const override
     {
         return scheduler.schedulePrimitive(*this, scheduler);
     }
@@ -27,8 +27,18 @@ public:
         return ans;
     }
 
+    std::string getBeforeCycyleText() const
+    {
+        return getInnerText();
+    }
+
+    std::string getAfterCycleText() const
+    {
+        return afterCycleText;
+    }
+
 private:
-    std::string endCycleText;
+    std::string afterCycleText;
 };
 
 #endif //PARSER_PRIMITIVE_PCYCLE_H_

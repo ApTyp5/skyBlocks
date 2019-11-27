@@ -12,7 +12,7 @@
 #include "../../Primitive/PFork.h"
 #include "States.h"
 
-class AnalyzerUtils
+class IndentAnalyzerUtils
 {
 public:
     static APrimitive *createPrimitive(State state,
@@ -20,7 +20,7 @@ public:
                                        const std::string &par2 = "")
     {
         switch (state) {
-            case Alg:return new PAlgorithm(par1, par2);
+            case Alg:return new PAlgorithm(par1);
             case Follow: return new PFollow(par1);
             case Fork: return new PFork(par1);
             case Cycle: return new PCycle(par1, par2);

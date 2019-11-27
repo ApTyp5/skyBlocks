@@ -14,7 +14,7 @@ public:
         : APrimitive(std::move(text))
     {}
 
-    bool acceptScheduler(AScheduler &scheduler) override
+    bool acceptScheduler(AScheduler &scheduler) const override
     {
         return scheduler.schedulePrimitive(*this, scheduler);
     }

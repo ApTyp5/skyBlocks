@@ -13,7 +13,7 @@ class Liner
 public:
     explicit Liner(const std::string &text);
 
-    bool getLine(std::string &line);
+    virtual bool getLine(std::string &line, bool withNL = true);
 
 private:
     std::stringstream ss;

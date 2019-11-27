@@ -227,33 +227,6 @@ Analyzer/IndentAnalyze/IndentConstraintor.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.s
 .PHONY : Analyzer/IndentAnalyze/IndentConstraintor.cpp.s
 
-Analyzer/IndentAnalyze/Tools/Liner.o: Analyzer/IndentAnalyze/Tools/Liner.cpp.o
-
-.PHONY : Analyzer/IndentAnalyze/Tools/Liner.o
-
-# target to build an object file
-Analyzer/IndentAnalyze/Tools/Liner.cpp.o:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.o
-.PHONY : Analyzer/IndentAnalyze/Tools/Liner.cpp.o
-
-Analyzer/IndentAnalyze/Tools/Liner.i: Analyzer/IndentAnalyze/Tools/Liner.cpp.i
-
-.PHONY : Analyzer/IndentAnalyze/Tools/Liner.i
-
-# target to preprocess a source file
-Analyzer/IndentAnalyze/Tools/Liner.cpp.i:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.i
-.PHONY : Analyzer/IndentAnalyze/Tools/Liner.cpp.i
-
-Analyzer/IndentAnalyze/Tools/Liner.s: Analyzer/IndentAnalyze/Tools/Liner.cpp.s
-
-.PHONY : Analyzer/IndentAnalyze/Tools/Liner.s
-
-# target to generate assembly for a file
-Analyzer/IndentAnalyze/Tools/Liner.cpp.s:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.s
-.PHONY : Analyzer/IndentAnalyze/Tools/Liner.cpp.s
-
 Analyzer/IndentAnalyze/Tools/Memory.o: Analyzer/IndentAnalyze/Tools/Memory.cpp.o
 
 .PHONY : Analyzer/IndentAnalyze/Tools/Memory.o
@@ -308,33 +281,6 @@ JsonFormer/JsonFormer.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.s
 .PHONY : JsonFormer/JsonFormer.cpp.s
 
-Mocks/MockParser.o: Mocks/MockParser.cpp.o
-
-.PHONY : Mocks/MockParser.o
-
-# target to build an object file
-Mocks/MockParser.cpp.o:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Mocks/MockParser.cpp.o
-.PHONY : Mocks/MockParser.cpp.o
-
-Mocks/MockParser.i: Mocks/MockParser.cpp.i
-
-.PHONY : Mocks/MockParser.i
-
-# target to preprocess a source file
-Mocks/MockParser.cpp.i:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Mocks/MockParser.cpp.i
-.PHONY : Mocks/MockParser.cpp.i
-
-Mocks/MockParser.s: Mocks/MockParser.cpp.s
-
-.PHONY : Mocks/MockParser.s
-
-# target to generate assembly for a file
-Mocks/MockParser.cpp.s:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Mocks/MockParser.cpp.s
-.PHONY : Mocks/MockParser.cpp.s
-
 Parser.o: Parser.cpp.o
 
 .PHONY : Parser.o
@@ -362,32 +308,86 @@ Parser.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Parser.cpp.s
 .PHONY : Parser.cpp.s
 
-Scheduler/CommonScheduler.o: Scheduler/CommonScheduler.cpp.o
+Scheduler/UniverseScheduler/EmborderScheduler.o: Scheduler/UniverseScheduler/EmborderScheduler.cpp.o
 
-.PHONY : Scheduler/CommonScheduler.o
+.PHONY : Scheduler/UniverseScheduler/EmborderScheduler.o
 
 # target to build an object file
-Scheduler/CommonScheduler.cpp.o:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o
-.PHONY : Scheduler/CommonScheduler.cpp.o
+Scheduler/UniverseScheduler/EmborderScheduler.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.o
+.PHONY : Scheduler/UniverseScheduler/EmborderScheduler.cpp.o
 
-Scheduler/CommonScheduler.i: Scheduler/CommonScheduler.cpp.i
+Scheduler/UniverseScheduler/EmborderScheduler.i: Scheduler/UniverseScheduler/EmborderScheduler.cpp.i
 
-.PHONY : Scheduler/CommonScheduler.i
+.PHONY : Scheduler/UniverseScheduler/EmborderScheduler.i
 
 # target to preprocess a source file
-Scheduler/CommonScheduler.cpp.i:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.i
-.PHONY : Scheduler/CommonScheduler.cpp.i
+Scheduler/UniverseScheduler/EmborderScheduler.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.i
+.PHONY : Scheduler/UniverseScheduler/EmborderScheduler.cpp.i
 
-Scheduler/CommonScheduler.s: Scheduler/CommonScheduler.cpp.s
+Scheduler/UniverseScheduler/EmborderScheduler.s: Scheduler/UniverseScheduler/EmborderScheduler.cpp.s
 
-.PHONY : Scheduler/CommonScheduler.s
+.PHONY : Scheduler/UniverseScheduler/EmborderScheduler.s
 
 # target to generate assembly for a file
-Scheduler/CommonScheduler.cpp.s:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.s
-.PHONY : Scheduler/CommonScheduler.cpp.s
+Scheduler/UniverseScheduler/EmborderScheduler.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.s
+.PHONY : Scheduler/UniverseScheduler/EmborderScheduler.cpp.s
+
+Tools/Liner.o: Tools/Liner.cpp.o
+
+.PHONY : Tools/Liner.o
+
+# target to build an object file
+Tools/Liner.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/Liner.cpp.o
+.PHONY : Tools/Liner.cpp.o
+
+Tools/Liner.i: Tools/Liner.cpp.i
+
+.PHONY : Tools/Liner.i
+
+# target to preprocess a source file
+Tools/Liner.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/Liner.cpp.i
+.PHONY : Tools/Liner.cpp.i
+
+Tools/Liner.s: Tools/Liner.cpp.s
+
+.PHONY : Tools/Liner.s
+
+# target to generate assembly for a file
+Tools/Liner.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/Liner.cpp.s
+.PHONY : Tools/Liner.cpp.s
+
+Tools/SizedLiner.o: Tools/SizedLiner.cpp.o
+
+.PHONY : Tools/SizedLiner.o
+
+# target to build an object file
+Tools/SizedLiner.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o
+.PHONY : Tools/SizedLiner.cpp.o
+
+Tools/SizedLiner.i: Tools/SizedLiner.cpp.i
+
+.PHONY : Tools/SizedLiner.i
+
+# target to preprocess a source file
+Tools/SizedLiner.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/SizedLiner.cpp.i
+.PHONY : Tools/SizedLiner.cpp.i
+
+Tools/SizedLiner.s: Tools/SizedLiner.cpp.s
+
+.PHONY : Tools/SizedLiner.s
+
+# target to generate assembly for a file
+Tools/SizedLiner.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/SizedLiner.cpp.s
+.PHONY : Tools/SizedLiner.cpp.s
 
 analyzerTest.o: analyzerTest.cpp.o
 
@@ -489,24 +489,24 @@ help:
 	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.o"
 	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.i"
 	@echo "... Analyzer/IndentAnalyze/IndentConstraintor.s"
-	@echo "... Analyzer/IndentAnalyze/Tools/Liner.o"
-	@echo "... Analyzer/IndentAnalyze/Tools/Liner.i"
-	@echo "... Analyzer/IndentAnalyze/Tools/Liner.s"
 	@echo "... Analyzer/IndentAnalyze/Tools/Memory.o"
 	@echo "... Analyzer/IndentAnalyze/Tools/Memory.i"
 	@echo "... Analyzer/IndentAnalyze/Tools/Memory.s"
 	@echo "... JsonFormer/JsonFormer.o"
 	@echo "... JsonFormer/JsonFormer.i"
 	@echo "... JsonFormer/JsonFormer.s"
-	@echo "... Mocks/MockParser.o"
-	@echo "... Mocks/MockParser.i"
-	@echo "... Mocks/MockParser.s"
 	@echo "... Parser.o"
 	@echo "... Parser.i"
 	@echo "... Parser.s"
-	@echo "... Scheduler/CommonScheduler.o"
-	@echo "... Scheduler/CommonScheduler.i"
-	@echo "... Scheduler/CommonScheduler.s"
+	@echo "... Scheduler/UniverseScheduler/EmborderScheduler.o"
+	@echo "... Scheduler/UniverseScheduler/EmborderScheduler.i"
+	@echo "... Scheduler/UniverseScheduler/EmborderScheduler.s"
+	@echo "... Tools/Liner.o"
+	@echo "... Tools/Liner.i"
+	@echo "... Tools/Liner.s"
+	@echo "... Tools/SizedLiner.o"
+	@echo "... Tools/SizedLiner.i"
+	@echo "... Tools/SizedLiner.s"
 	@echo "... analyzerTest.o"
 	@echo "... analyzerTest.i"
 	@echo "... analyzerTest.s"

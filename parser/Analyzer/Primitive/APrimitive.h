@@ -16,7 +16,7 @@ public:
         : innerText(std::move(text))
     {}
 
-    virtual bool acceptScheduler(AScheduler &scheduler) = 0;
+    virtual bool acceptScheduler(AScheduler &scheduler) const = 0;
 
     virtual bool hasChildren() const
     {

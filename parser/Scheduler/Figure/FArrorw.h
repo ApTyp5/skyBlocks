@@ -10,9 +10,9 @@
 class FArrow: public SingleMeasureFigure
 {
 public:
-    FArrow(Point begin, Point end, std::string text)
+    FArrow(Point begin, Point end, std::string text, size_t page = 1)
         :
-        SingleMeasureFigure(begin, end, std::move(text))
+        SingleMeasureFigure(begin, end, std::move(text), page)
     {}
 };
 
