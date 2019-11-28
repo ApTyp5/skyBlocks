@@ -15,16 +15,15 @@ SizedLiner::SizedLiner(const std::string &str)
 bool SizedLiner::getLine(std::string &line, size_t maxSize, bool withNL)
 {
     if (buff.empty())
-        if (!Liner::getLine(buff, true))
+        if (!Liner::getLine(buff, false))
             return false;
 
-    if (buff.size() <= maxSize) {
+    if (buff.size() <= maxSize)
         line = std::move(buff);
-        return true;
+    else {
+        line = buff.substr(0, maxSize);
+        buff = buff.substr(maxSize);
     }
-
-    line = buff.substr(0, maxSize - withNL);
-    buff = buff.substr(maxSize - withNL);
 
     if (withNL) line += "\n";
     return true;

@@ -70,6 +70,8 @@ protected:
     {
         return meta.pw() - meta.xm();
     }
+
+    friend class FEmborderScheduler_pushContinueFigure_Test;
 };
 
 #endif //PARSER_SCHEDULER_ASCHEDULER_H_

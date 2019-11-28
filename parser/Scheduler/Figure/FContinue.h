@@ -12,7 +12,7 @@
 class FContinue: public DoubleMeasureFigure
 {
 public:
-    FContinue(Rect rect, size_t page = 1)
+    explicit FContinue(Rect rect, size_t page = 1)
         :
         DoubleMeasureFigure(rect, std::string(name), page)
     {
@@ -25,9 +25,15 @@ public:
         }
     }
 
+    static void reset();
+
 private:
+
     static char name[2];
     static size_t counter;
+
+    friend class FEmborderScheduler_connectForkPartsLeftPageLess_Test;
+    friend class FEmborderScheduler_connectForkPartsRightPageLess_Test;
 };
 
 #endif //FCONTINUE_H

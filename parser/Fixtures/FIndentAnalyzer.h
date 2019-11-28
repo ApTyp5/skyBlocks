@@ -2,14 +2,14 @@
 // Created by arthur on 24.11.2019.
 //
 
-#ifndef FIXTUREINDENTANALYZER_H
-#define FIXTUREINDENTANALYZER_H
+#ifndef FINDENTANALYZER_H
+#define FINDENTANALYZER_H
 
 #include <gtest/gtest.h>
 
 #include "../Analyzer/IndentAnalyze/IndentAnalyzer.h"
 
-class FixtureIndentAnalyzer: public ::testing::Test
+class FIndentAnalyzer: public ::testing::Test
 {
 protected:
     ptrVector<Error> errors;
@@ -27,4 +27,4 @@ protected:
         delete analyzer;
     }
 };
-#endif //FIXTUREINDENTANALYZER_H
+#endif //FINDENTANALYZER_H

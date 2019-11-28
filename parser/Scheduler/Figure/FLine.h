@@ -14,6 +14,9 @@ public:
         :
         SingleMeasureFigure(begin, end, std::move(text), page)
     {}
+
+    friend class FEmborderScheduler_pushForkLines_Test;
+    friend class FEmborderScheduler_connectForkPartsLeftPageLess_Test;
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FLINE_H_

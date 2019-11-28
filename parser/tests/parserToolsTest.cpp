@@ -17,9 +17,9 @@ TEST(sizedLiner, without_nl)
                         "third string\n"; // 13 symbols
 
     SizedLiner liner(input);
-    std::vector<std::string> answers = {"first", " stri", "ng\n",
-                                        "secon", "d str", "ing\n",
-                                        "third", " stri", "ng\n"};
+    std::vector<std::string> answers = {"first", " stri", "ng",
+                                        "secon", "d str", "ing",
+                                        "third", " stri", "ng"};
     std::string line;
     size_t c = 0;
 
@@ -36,12 +36,14 @@ TEST(sizedLiner, with_nl)
     size_t size = 5;
     std::string input = "first string\n" // 13 symbols
                         "second string\n" // 14 symbols
-                        "third string\n"; // 13 symbols
+                        "third string\n" // 13 symbols
+                        "qwer qwert\n"; // 10 sym
 
     SizedLiner liner(input);
-    std::vector<std::string> answers = {"firs\n", "t st\n", "ring\n",
-                                        "seco\n", "nd s\n", "trin\n", "g\n",
-                                        "thir\n", "d st\n", "ring\n",};
+    std::vector<std::string> answers = {"first\n", " stri\n", "ng\n",
+                                        "secon\n", "d str\n", "ing\n",
+                                        "third\n", " stri\n", "ng\n",
+                                        "qwer \n", "qwert\n"};
     std::string line;
     size_t c = 0;
 

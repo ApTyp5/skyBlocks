@@ -17,7 +17,7 @@
 #include "Tools/Memory.h"
 #include "Tools/States.h"
 
-class FixtureIndentAnalyzer;
+class FIndentAnalyzer;
 class FixtureIndentAnalyzer_get_current_indent_follow_test;
 
 class IndentAnalyzer: public AAnalyzer

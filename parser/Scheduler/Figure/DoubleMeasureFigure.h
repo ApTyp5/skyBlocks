@@ -17,6 +17,12 @@ public:
 
 private:
     Rect rect_;
+
+    friend class FEmborderScheduler_connectForkPartsLeftPageLess_Test;
+    friend class FEmborderScheduler_connectForkPartsRightPageLess_Test;
+    friend class FEmborderScheduler_addFigureCommon_Test;
+    friend class FEmborderScheduler_addFigureBadWidth_Test;
+    friend class FEmborderScheduler_addFigureTooTight_Test;
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_DOUBLEMEASUREFIGURE_H_

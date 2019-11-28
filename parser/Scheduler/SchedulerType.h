@@ -7,7 +7,7 @@
 
 enum SchedulerType
 {
-    Universe,
+    Embordered,
 };
 
 #endif //PARSER_SCHEDULER_SCHEDULERTYPE_H_

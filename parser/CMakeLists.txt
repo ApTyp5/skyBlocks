@@ -75,8 +75,8 @@ set(ParserFiles
         Tools/ptrVector.h
         )
 set(TestFiles
-        Fixtures/FixtureIndentAnalyzer.h
-        Fixtures/FIxtureEmborderScheduler.h
+        Fixtures/FIndentAnalyzer.h
+        Fixtures/FEmborderScheduler.h
         )
 set(AllFiles
         ${Stubs}

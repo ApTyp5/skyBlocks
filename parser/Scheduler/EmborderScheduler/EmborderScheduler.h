@@ -28,17 +28,28 @@ public:
     bool schedulePrimitive(const PFunc &pFunc, AScheduler &scheduler) override;
 
 protected:
-    struct State
+    class State
     {
         // cur bottom x, cur bottom y, cur width
-        size_t x, y, w;
+        size_t _x, _y, _w;
         // cur page num
-        size_t page;
+        size_t _page;
+
+    public:
+        explicit State(size_t x = 0, size_t y = 0, size_t w = 0, size_t page = 0);
+        size_t x() const;
+        size_t y() const;
+        size_t width() const;
+        size_t page() const;
+        void setX(size_t x);
+        void setY(size_t y);
+        void setW(size_t w);
+        void setPage(size_t page);
     };
 
-protected:
-    sRect rectXFitSize(std::string &text);
-    sRect continueBlockSize();
+    State curState;
+    const State &getCurState() const;
+    void setCurState(State curState);
 
 protected:
     // add* - Добавление с проверкой размеров
@@ -53,20 +64,32 @@ protected:
     void pushVerticalLine(size_t x, size_t yTop, size_t yBot, size_t page = 1, std::string text = "");
     void pushContinueFigure();
 
-    // Дополниельные функции
+    // Add ones
     bool isYFit(sRect rect);
     bool isYFit(size_t h = 0);
     void initNewPage(size_t page = 1);
     void checkPageEnd(sRect widthFitRect);
     void connectForkParts(State negState, State posState);
     void gotoPage(size_t page);
+    void addMargin(sRect &rect);
 
-protected:
-    State curState{};
+    sRect rectXFitSize(std::string &text, bool withMargin = true);
+    sRect continueBlockSize();
 
-protected:
-    const State &getCurState() const;
-    void setCurState(State curState);
+    friend class FEmborderScheduler;
+    friend class FEmborderScheduler_rectXFitSizeWithoutMarginGoodWidth_Test;
+    friend class FEmborderScheduler_rectXFitSizeWithoutMarginBadWidth_Test;
+    friend class FEmborderScheduler_rectXFitSizeWithMarginBadWidth_Test;
+    friend class FEmborderScheduler_rectXFitSizeWithMarginGoodWidth_Test;
+    friend class FEmborderScheduler_pushContinueFigure_Test;
+    friend class FEmborderScheduler_pushVerticalLine_Test;
+    friend class FEmborderScheduler_pushSpaceLine_Test;
+    friend class FEmborderScheduler_pushForkLines_Test;
+    friend class FEmborderScheduler_connectForkPartsLeftPageLess_Test;
+    friend class FEmborderScheduler_connectForkPartsRightPageLess_Test;
+    friend class FEmborderScheduler_addFigureCommon_Test;
+    friend class FEmborderScheduler_addFigureBadWidth_Test;
+    friend class FEmborderScheduler_addFigureTooTight_Test;
 };
 
 #endif //PARSER_SCHEDULER_COMMONSCHEDULER_H_

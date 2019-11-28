@@ -8,19 +8,19 @@
 #include <memory>
 
 #include "AScheduler.h"
-#include "UniverseScheduler/EmborderScheduler.h"
 #include "SchedulerType.h"
 #include "../Stubs/Stubs.h"
+#include "EmborderScheduler/EmborderScheduler.h"
 
 
 class SchedulerCreator
 {
 public:
-    static AScheduler *create(const Meta &meta, SchedulerType type = Universe)
+    static AScheduler *create(const Meta &meta, SchedulerType type = Embordered)
     {
         switch (type) {
             default:
-            case Universe:return new EmborderScheduler(meta);
+            case Embordered:return new EmborderScheduler(meta);
         }
     }
 };

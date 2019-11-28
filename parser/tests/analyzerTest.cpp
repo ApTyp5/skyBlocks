@@ -11,7 +11,7 @@
 #include "../Analyzer/Primitive/PAlgorithm.h"
 #include "../Analyzer/Primitive/PFork.h"
 #include "../Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h"
-#include "../Fixtures/FixtureIndentAnalyzer.h"
+#include "../Fixtures/FIndentAnalyzer.h"
 
 TEST(IndentAnalyzer, analyze_if)
 {
@@ -91,7 +91,7 @@ TEST(IndentAnalyzer, analyze_2_follow)
     delete (prim_ptr);
 }
 
-TEST_F(FixtureIndentAnalyzer, try_add_pfollow_positive)
+TEST_F(FIndentAnalyzer, try_add_pfollow_positive)
 {
     analyzer->shortMemory = "qwer";
     EXPECT_EQ(0, analyzer->longMemory.back()->getComplexPrimitive()->childrenNum());
@@ -100,7 +100,7 @@ TEST_F(FixtureIndentAnalyzer, try_add_pfollow_positive)
     EXPECT_EQ(true, analyzer->shortMemory.empty());
 }
 
-TEST_F(FixtureIndentAnalyzer, merge_back_mem)
+TEST_F(FIndentAnalyzer, merge_back_mem)
 {
     analyzer->longMemory.push_back(new Memory(Fork, new PFork("text")));
     EXPECT_EQ(2, analyzer->longMemory.size());
@@ -109,14 +109,14 @@ TEST_F(FixtureIndentAnalyzer, merge_back_mem)
     EXPECT_EQ(1, analyzer->longMemory.back()->getComplexPrimitive()->childrenNum());
 }
 
-TEST_F(FixtureIndentAnalyzer, ret_indent)
+TEST_F(FIndentAnalyzer, ret_indent)
 {
     std::string str = "\t\t\tqwer";
     std::string indent = analyzer->retIndent(str);
     EXPECT_STREQ("\t\t\t", indent.data());
 }
 
-TEST_F(FixtureIndentAnalyzer, get_current_indent)
+TEST_F(FIndentAnalyzer, get_current_indent)
 {
     analyzer->indent = "qwer";
     analyzer->state_ = Cycle;

@@ -19,5 +19,8 @@ public:
 
 protected:
     Point begin, end;
+
+    friend class FEmborderScheduler_pushForkLines_Test;
+    friend class FEmborderScheduler_connectForkPartsRightPageLess_Test;
 };
 #endif //PARSER_SCHEDULER_FIGURE_SINGLEMEASUREFIGURE_H_

@@ -363,10 +363,10 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Error/Error.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FIxtureEmborderScheduler.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FEmborderScheduler.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FixtureIndentAnalyzer.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FIndentAnalyzer.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.cpp">
