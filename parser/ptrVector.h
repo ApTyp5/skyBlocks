@@ -79,7 +79,7 @@ public:
         return buffer.back();
     }
 
-    T *operator[](size_t index)
+    T *&operator[](size_t index)
     {
         if (index >= size())
             throw std::exception();

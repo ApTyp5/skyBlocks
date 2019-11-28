@@ -233,7 +233,7 @@ TEST(analyzer_utils, skip_symbols)
 
 TEST(memory, merge_positive)
 {
-    auto memory = new Memory(Alg, new PAlgorithm("name", "text"));
+    auto memory = new Memory(Alg, new PAlgorithm("text"));
     auto merged_memory = new Memory(Fork, new PFork("text"));
 
     EXPECT_EQ(0, memory->getComplexPrimitive()->childrenNum());

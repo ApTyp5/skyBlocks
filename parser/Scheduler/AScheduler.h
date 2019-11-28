@@ -18,6 +18,7 @@
 #include "../ptrVector.h"
 #include "Figure/AFigure.h"
 #include "../Stubs/Stubs.h"
+#include "../Tools/Meta.h"
 
 class ComplexPrimitive;
 class PAlgorithm;
@@ -47,27 +48,27 @@ protected:
 protected:
     virtual size_t BlockWidth(const std::string &text)
     {
-        return meta.symbolWidth() * (meta.xPadding() + text.size());
+        return meta.sw() * (meta.xp() + text.size());
     }
 
     virtual size_t BlockHeight(size_t lineNum)
     {
-        return meta.lineHeight() * (meta.yPadding() + lineNum);
+        return meta.lh() * (meta.yp() + lineNum);
     }
 
     size_t getBotBorder()
     {
-        return meta.pageHeight() - meta.yMargin();
+        return meta.ph() - meta.ym();
     }
 
     size_t getLeftBorder()
     {
-        return meta.xMargin();
+        return meta.xm();
     }
 
     size_t getRightBorder()
     {
-        return meta.pageWidth() - meta.xMargin();
+        return meta.pw() - meta.xm();
     }
 };
 

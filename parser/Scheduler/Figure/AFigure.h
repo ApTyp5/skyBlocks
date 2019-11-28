@@ -12,10 +12,21 @@ struct Point
     size_t x, y;
 };
 
+struct sRect
+{
+    size_t w, h;
+    sRect operator*=(size_t num)
+    {
+        w *= num;
+        h *= num;
+        return *this;
+    }
+};
+
 struct Rect
 {
     Point center;
-    size_t width, height;
+    sRect size;
 };
 
 class AFigure
@@ -24,6 +35,8 @@ public:
     explicit AFigure(std::string text, size_t page = 1)
         : text(std::move(text)), page(page)
     {}
+
+    virtual ~AFigure() = default;
 
     size_t getPage() const
     { return page; }

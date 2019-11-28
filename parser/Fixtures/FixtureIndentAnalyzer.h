@@ -18,7 +18,7 @@ protected:
     virtual void SetUp()
     {
         analyzer = new IndentAnalyzer(errors);
-        analyzer->longMemory.push_back(new Memory(Alg, new PAlgorithm("", "")));
+        analyzer->longMemory.push_back(new Memory(Alg, new PAlgorithm("")));
 
     }
 

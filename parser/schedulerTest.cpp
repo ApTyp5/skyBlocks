@@ -7,6 +7,11 @@
 
 #include <gmock/gmock.h>
 
+TEST(test, 1)
+{
+    EXPECT_EQ(1, 2);
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleMock(&argc, argv);

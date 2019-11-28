@@ -7,8 +7,7 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/I
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/PythonLikeAlphabet.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/IndentAnalyzer.cpp
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/IndentAnalyzer.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Tools/AnalyzerUtils.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Tools/Liner.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Tools/States.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/Primitive/APrimitive.h
@@ -22,6 +21,8 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Error/Erro
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Scheduler/Figure/AFigure.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Stubs/Stubs.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Tools/Liner.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../ptrVector.h
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/AConstraintor.h
@@ -31,9 +32,6 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyz
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Error/Error.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Stubs/Stubs.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../ptrVector.h
-
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.o: ../Analyzer/IndentAnalyze/Tools/Liner.cpp
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Liner.cpp.o: ../Analyzer/IndentAnalyze/Tools/Liner.h
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.cpp
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.h
@@ -48,6 +46,7 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/Pri
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Scheduler/Figure/AFigure.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Stubs/Stubs.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../ptrVector.h
 
 CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: ../JsonFormer/JsonFormer.cpp
@@ -71,21 +70,49 @@ CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Scheduler/Figure/AFigure.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Stubs/Stubs.h
+CMakeFiles/parser.dir/Parser.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../ptrVector.h
 
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Analyzer/Primitive/APrimitive.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Analyzer/Primitive/PAlgorithm.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Analyzer/Primitive/PCycle.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Analyzer/Primitive/PFollow.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Analyzer/Primitive/PFork.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Analyzer/Primitive/PFunc.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Scheduler/AScheduler.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Scheduler/CommonScheduler.cpp
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Scheduler/CommonScheduler.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Scheduler/Figure/AFigure.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Scheduler/Figure/DoubleMeasureFigure.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Scheduler/Figure/FBegCycle.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../Stubs/Stubs.h
-CMakeFiles/parser.dir/Scheduler/CommonScheduler.cpp.o: ../ptrVector.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/APrimitive.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/PAlgorithm.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/PCycle.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/PFollow.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/PFork.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/PFunc.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/AScheduler.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/EmborderScheduler/EmborderScheduler.cpp
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/EmborderScheduler/EmborderScheduler.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/AFigure.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/DoubleMeasureFigure.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FArrorw.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FBegCycle.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FBegin.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FContinue.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FEnd.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FEndCycle.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FFollow.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FFork.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FFunc.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FLine.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FigureCreator.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/FigureTypes.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/SingleMeasureFigure.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Stubs/Stubs.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Tools/Liner.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Tools/Meta.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Tools/SizedLiner.h
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../ptrVector.h
+
+CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: ../Scheduler/Figure/AFigure.h
+CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: ../Scheduler/Figure/DoubleMeasureFigure.h
+CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: ../Scheduler/Figure/FContinue.cpp
+CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: ../Scheduler/Figure/FContinue.h
+
+CMakeFiles/parser.dir/Tools/Liner.cpp.o: ../Tools/Liner.cpp
+CMakeFiles/parser.dir/Tools/Liner.cpp.o: ../Tools/Liner.h
+
+CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o: ../Tools/Liner.h
+CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o: ../Tools/SizedLiner.cpp
+CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o: ../Tools/SizedLiner.h
 

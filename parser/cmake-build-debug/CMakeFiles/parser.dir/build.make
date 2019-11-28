@@ -135,22 +135,35 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/Memory.cpp -o CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.s
 
-CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.o: CMakeFiles/parser.dir/flags.make
-CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.o: ../Scheduler/UniverseScheduler/EmborderScheduler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Scheduler/UniverseScheduler/EmborderScheduler.cpp
+CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: CMakeFiles/parser.dir/flags.make
+CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: ../Scheduler/Figure/FContinue.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FContinue.cpp
 
-CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/new_skyBlocks/parser/Scheduler/UniverseScheduler/EmborderScheduler.cpp > CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.i
+CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FContinue.cpp > CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.i
 
-CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/Scheduler/UniverseScheduler/EmborderScheduler.cpp -o CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.s
+CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FContinue.cpp -o CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.s
+
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: CMakeFiles/parser.dir/flags.make
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/EmborderScheduler/EmborderScheduler.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Scheduler/EmborderScheduler/EmborderScheduler.cpp
+
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/new_skyBlocks/parser/Scheduler/EmborderScheduler/EmborderScheduler.cpp > CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.i
+
+CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/Scheduler/EmborderScheduler/EmborderScheduler.cpp -o CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.s
 
 CMakeFiles/parser.dir/Parser.cpp.o: CMakeFiles/parser.dir/flags.make
 CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/parser.dir/Parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/parser.dir/Parser.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Parser.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Parser.cpp
 
 CMakeFiles/parser.dir/Parser.cpp.i: cmake_force
@@ -169,7 +182,8 @@ parser_OBJECTS = \
 "CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o" \
 "CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o" \
 "CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o" \
-"CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.o" \
+"CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o" \
+"CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o" \
 "CMakeFiles/parser.dir/Parser.cpp.o"
 
 # External object files for target parser
@@ -181,11 +195,12 @@ libparser.so: CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o
 libparser.so: CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o
 libparser.so: CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o
 libparser.so: CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o
-libparser.so: CMakeFiles/parser.dir/Scheduler/UniverseScheduler/EmborderScheduler.cpp.o
+libparser.so: CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o
+libparser.so: CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o
 libparser.so: CMakeFiles/parser.dir/Parser.cpp.o
 libparser.so: CMakeFiles/parser.dir/build.make
 libparser.so: CMakeFiles/parser.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX shared library libparser.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX shared library libparser.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/parser.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

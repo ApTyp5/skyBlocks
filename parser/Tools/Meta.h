@@ -10,23 +10,23 @@
 class Meta
 {
 public:
-    size_t pageWidth() const
+    size_t pw() const
     { return 210; }
-    size_t pageHeight() const
+    size_t ph() const
     { return 297; }
-    size_t xMargin() const
+    size_t xm() const
     { return 20; }
-    size_t yMargin() const
+    size_t ym() const
     { return 20; }
-    size_t xPadding() const
+    size_t xp() const
     { return 20; }
-    size_t yPadding() const
+    size_t yp() const
     { return 40; }
-    size_t lineHeight() const
+    size_t lh() const
     { return 7; }
-    size_t symbolWidth() const
+    size_t sw() const
     { return 3; }
-    size_t blockSpace() const
+    size_t bs() const
     { return 5; }
 };
 

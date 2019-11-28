@@ -11,7 +11,7 @@
 
 ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t line_num)
 {
-    longMemory.push_back(new Memory(Alg, new PAlgorithm("__main__", "")));
+    longMemory.push_back(new Memory(Alg, new PAlgorithm("__main__")));
     indent = shortMemory = "";
     Liner liner(text);
     std::string line;

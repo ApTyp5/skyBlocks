@@ -315,6 +315,9 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Error/Error.h">
 			<Option target="parser"/>
 		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FIxtureEmborderScheduler.h">
+			<Option target="parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FixtureIndentAnalyzer.h">
 			<Option target="parser"/>
 		</Unit>
@@ -333,6 +336,12 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/AScheduler.h">
 			<Option target="parser"/>
 		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/EmborderScheduler/EmborderScheduler.cpp">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/EmborderScheduler/EmborderScheduler.h">
+			<Option target="parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/AFigure.h">
 			<Option target="parser"/>
 		</Unit>
@@ -346,6 +355,18 @@
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FBegEnd.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FBegin.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FContinue.cpp">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FContinue.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FEnd.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FEndCycle.h">
@@ -363,6 +384,12 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FLine.h">
 			<Option target="parser"/>
 		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FigureCreator.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FigureTypes.h">
+			<Option target="parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/SingleMeasureFigure.h">
 			<Option target="parser"/>
 		</Unit>
@@ -370,12 +397,6 @@
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/SchedulerType.h">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/UniverseScheduler/EmborderScheduler.cpp">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/UniverseScheduler/EmborderScheduler.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Stubs/Stubs.h">
