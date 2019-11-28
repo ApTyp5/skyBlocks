@@ -6,12 +6,12 @@
 #pragma ide diagnostic ignored "cert-err58-cpp"
 
 #include <gmock/gmock.h>
-#include "Tools/Liner.h"
-#include "Analyzer/IndentAnalyze/Tools/Memory.h"
-#include "Analyzer/Primitive/PAlgorithm.h"
-#include "Analyzer/Primitive/PFork.h"
-#include "Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h"
-#include "Fixtures/FixtureIndentAnalyzer.h"
+#include "../Tools/Liner.h"
+#include "../Analyzer/IndentAnalyze/Tools/Memory.h"
+#include "../Analyzer/Primitive/PAlgorithm.h"
+#include "../Analyzer/Primitive/PFork.h"
+#include "../Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h"
+#include "../Fixtures/FixtureIndentAnalyzer.h"
 
 TEST(IndentAnalyzer, analyze_if)
 {

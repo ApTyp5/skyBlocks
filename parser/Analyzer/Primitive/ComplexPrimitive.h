@@ -5,7 +5,7 @@
 #ifndef PARSER_PRIMITIVE_COMPLEXPRIMITIVE_H_
 #define PARSER_PRIMITIVE_COMPLEXPRIMITIVE_H_
 
-#include "../../ptrVector.h"
+#include "../../Tools/ptrVector.h"
 #include "APrimitive.h"
 
 class ComplexPrimitive: public APrimitive

@@ -56,6 +56,17 @@ CMAKE_BINARY_DIR = /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/snap/clion/92/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,17 +88,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/92/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -172,6 +172,19 @@ schedulerTest: cmake_check_build_system
 schedulerTest/fast:
 	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/build
 .PHONY : schedulerTest/fast
+
+#=============================================================================
+# Target rules for targets named parserToolsTest
+
+# Build rule for target.
+parserToolsTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 parserToolsTest
+.PHONY : parserToolsTest
+
+# fast build rule for target.
+parserToolsTest/fast:
+	$(MAKE) -f CMakeFiles/parserToolsTest.dir/build.make CMakeFiles/parserToolsTest.dir/build
+.PHONY : parserToolsTest/fast
 
 Analyzer/IndentAnalyze/IndentAnalyzer.o: Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o
 
@@ -416,86 +429,113 @@ Tools/SizedLiner.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/SizedLiner.cpp.s
 .PHONY : Tools/SizedLiner.cpp.s
 
-analyzerTest.o: analyzerTest.cpp.o
+tests/analyzerTest.o: tests/analyzerTest.cpp.o
 
-.PHONY : analyzerTest.o
-
-# target to build an object file
-analyzerTest.cpp.o:
-	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/analyzerTest.cpp.o
-.PHONY : analyzerTest.cpp.o
-
-analyzerTest.i: analyzerTest.cpp.i
-
-.PHONY : analyzerTest.i
-
-# target to preprocess a source file
-analyzerTest.cpp.i:
-	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/analyzerTest.cpp.i
-.PHONY : analyzerTest.cpp.i
-
-analyzerTest.s: analyzerTest.cpp.s
-
-.PHONY : analyzerTest.s
-
-# target to generate assembly for a file
-analyzerTest.cpp.s:
-	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/analyzerTest.cpp.s
-.PHONY : analyzerTest.cpp.s
-
-parserTest.o: parserTest.cpp.o
-
-.PHONY : parserTest.o
+.PHONY : tests/analyzerTest.o
 
 # target to build an object file
-parserTest.cpp.o:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/parserTest.cpp.o
-.PHONY : parserTest.cpp.o
+tests/analyzerTest.cpp.o:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/tests/analyzerTest.cpp.o
+.PHONY : tests/analyzerTest.cpp.o
 
-parserTest.i: parserTest.cpp.i
+tests/analyzerTest.i: tests/analyzerTest.cpp.i
 
-.PHONY : parserTest.i
+.PHONY : tests/analyzerTest.i
 
 # target to preprocess a source file
-parserTest.cpp.i:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/parserTest.cpp.i
-.PHONY : parserTest.cpp.i
+tests/analyzerTest.cpp.i:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/tests/analyzerTest.cpp.i
+.PHONY : tests/analyzerTest.cpp.i
 
-parserTest.s: parserTest.cpp.s
+tests/analyzerTest.s: tests/analyzerTest.cpp.s
 
-.PHONY : parserTest.s
+.PHONY : tests/analyzerTest.s
 
 # target to generate assembly for a file
-parserTest.cpp.s:
-	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/parserTest.cpp.s
-.PHONY : parserTest.cpp.s
+tests/analyzerTest.cpp.s:
+	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/tests/analyzerTest.cpp.s
+.PHONY : tests/analyzerTest.cpp.s
 
-schedulerTest.o: schedulerTest.cpp.o
+tests/parserTest.o: tests/parserTest.cpp.o
 
-.PHONY : schedulerTest.o
+.PHONY : tests/parserTest.o
 
 # target to build an object file
-schedulerTest.cpp.o:
-	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/schedulerTest.cpp.o
-.PHONY : schedulerTest.cpp.o
+tests/parserTest.cpp.o:
+	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/tests/parserTest.cpp.o
+.PHONY : tests/parserTest.cpp.o
 
-schedulerTest.i: schedulerTest.cpp.i
+tests/parserTest.i: tests/parserTest.cpp.i
 
-.PHONY : schedulerTest.i
+.PHONY : tests/parserTest.i
 
 # target to preprocess a source file
-schedulerTest.cpp.i:
-	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/schedulerTest.cpp.i
-.PHONY : schedulerTest.cpp.i
+tests/parserTest.cpp.i:
+	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/tests/parserTest.cpp.i
+.PHONY : tests/parserTest.cpp.i
 
-schedulerTest.s: schedulerTest.cpp.s
+tests/parserTest.s: tests/parserTest.cpp.s
 
-.PHONY : schedulerTest.s
+.PHONY : tests/parserTest.s
 
 # target to generate assembly for a file
-schedulerTest.cpp.s:
-	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/schedulerTest.cpp.s
-.PHONY : schedulerTest.cpp.s
+tests/parserTest.cpp.s:
+	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/tests/parserTest.cpp.s
+.PHONY : tests/parserTest.cpp.s
+
+tests/parserToolsTest.o: tests/parserToolsTest.cpp.o
+
+.PHONY : tests/parserToolsTest.o
+
+# target to build an object file
+tests/parserToolsTest.cpp.o:
+	$(MAKE) -f CMakeFiles/parserToolsTest.dir/build.make CMakeFiles/parserToolsTest.dir/tests/parserToolsTest.cpp.o
+.PHONY : tests/parserToolsTest.cpp.o
+
+tests/parserToolsTest.i: tests/parserToolsTest.cpp.i
+
+.PHONY : tests/parserToolsTest.i
+
+# target to preprocess a source file
+tests/parserToolsTest.cpp.i:
+	$(MAKE) -f CMakeFiles/parserToolsTest.dir/build.make CMakeFiles/parserToolsTest.dir/tests/parserToolsTest.cpp.i
+.PHONY : tests/parserToolsTest.cpp.i
+
+tests/parserToolsTest.s: tests/parserToolsTest.cpp.s
+
+.PHONY : tests/parserToolsTest.s
+
+# target to generate assembly for a file
+tests/parserToolsTest.cpp.s:
+	$(MAKE) -f CMakeFiles/parserToolsTest.dir/build.make CMakeFiles/parserToolsTest.dir/tests/parserToolsTest.cpp.s
+.PHONY : tests/parserToolsTest.cpp.s
+
+tests/schedulerTest.o: tests/schedulerTest.cpp.o
+
+.PHONY : tests/schedulerTest.o
+
+# target to build an object file
+tests/schedulerTest.cpp.o:
+	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/tests/schedulerTest.cpp.o
+.PHONY : tests/schedulerTest.cpp.o
+
+tests/schedulerTest.i: tests/schedulerTest.cpp.i
+
+.PHONY : tests/schedulerTest.i
+
+# target to preprocess a source file
+tests/schedulerTest.cpp.i:
+	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/tests/schedulerTest.cpp.i
+.PHONY : tests/schedulerTest.cpp.i
+
+tests/schedulerTest.s: tests/schedulerTest.cpp.s
+
+.PHONY : tests/schedulerTest.s
+
+# target to generate assembly for a file
+tests/schedulerTest.cpp.s:
+	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/tests/schedulerTest.cpp.s
+.PHONY : tests/schedulerTest.cpp.s
 
 # Help Target
 help:
@@ -503,13 +543,14 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
+	@echo "... edit_cache"
 	@echo "... parserTest"
 	@echo "... parser"
 	@echo "... analyzerTest"
 	@echo "... schedulerTest"
+	@echo "... rebuild_cache"
+	@echo "... parserToolsTest"
 	@echo "... test"
-	@echo "... edit_cache"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.o"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.i"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.s"
@@ -537,15 +578,18 @@ help:
 	@echo "... Tools/SizedLiner.o"
 	@echo "... Tools/SizedLiner.i"
 	@echo "... Tools/SizedLiner.s"
-	@echo "... analyzerTest.o"
-	@echo "... analyzerTest.i"
-	@echo "... analyzerTest.s"
-	@echo "... parserTest.o"
-	@echo "... parserTest.i"
-	@echo "... parserTest.s"
-	@echo "... schedulerTest.o"
-	@echo "... schedulerTest.i"
-	@echo "... schedulerTest.s"
+	@echo "... tests/analyzerTest.o"
+	@echo "... tests/analyzerTest.i"
+	@echo "... tests/analyzerTest.s"
+	@echo "... tests/parserTest.o"
+	@echo "... tests/parserTest.i"
+	@echo "... tests/parserTest.s"
+	@echo "... tests/parserToolsTest.o"
+	@echo "... tests/parserToolsTest.i"
+	@echo "... tests/parserToolsTest.s"
+	@echo "... tests/schedulerTest.o"
+	@echo "... tests/schedulerTest.i"
+	@echo "... tests/schedulerTest.s"
 .PHONY : help
 
 

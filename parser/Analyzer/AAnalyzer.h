@@ -6,7 +6,7 @@
 #define PARSER_ANALYZER_AANALYZER_H_
 
 #include "../Error/Error.h"
-#include "../ptrVector.h"
+#include "../Tools/ptrVector.h"
 #include "AccumulateErrors.h"
 #include "Primitive/APrimitive.h"
 #include "Primitive/ComplexPrimitive.h"

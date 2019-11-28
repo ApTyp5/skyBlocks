@@ -3,14 +3,14 @@
 
 #include <gmock/gmock.h>
 
-#include "Parser.h"
-#include "Mocks/MockScheduler.h"
-#include "Mocks/MockAnalyzeFactory.h"
-#include "Mocks/MockParser.h"
+#include "../Parser.h"
+#include "../Mocks/MockScheduler.h"
+#include "../Mocks/MockAnalyzeFactory.h"
+#include "../Mocks/MockParser.h"
 
-#include "Analyzer/AnalyzeFactoryCreator.h"
+#include "../Analyzer/AnalyzeFactoryCreator.h"
 
-#include "Scheduler/SchedulerCreator.h"
+#include "../Scheduler/SchedulerCreator.h"
 
 
 TEST(parser, mock) {

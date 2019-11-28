@@ -15,7 +15,7 @@
 */
 #include <memory>
 
-#include "../ptrVector.h"
+#include "../Tools/ptrVector.h"
 #include "Figure/AFigure.h"
 #include "../Stubs/Stubs.h"
 #include "../Tools/Meta.h"

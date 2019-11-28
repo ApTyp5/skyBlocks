@@ -6,7 +6,7 @@
 #define PARSER_ANALYZER_INDENTCONSTRAINTOR_H_
 
 #include "../../Error/Error.h"
-#include "../../ptrVector.h"
+#include "../../Tools/ptrVector.h"
 #include "../AConstraintor.h"
 
 class IndentConstraintor: public AConstraintor
