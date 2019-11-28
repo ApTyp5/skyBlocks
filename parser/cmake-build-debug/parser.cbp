@@ -405,16 +405,10 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FBegEnd.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FBegin.h">
-			<Option target="parser"/>
-		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FContinue.cpp">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FContinue.h">
-			<Option target="parser"/>
-		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FEnd.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FEndCycle.h">

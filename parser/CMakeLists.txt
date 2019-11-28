@@ -24,8 +24,6 @@ set(FigureFiles
         Scheduler/Figure/FContinue.h Scheduler/Figure/FContinue.cpp
         Scheduler/Figure/FigureTypes.h
         Scheduler/Figure/FigureCreator.h
-        Scheduler/Figure/FBegin.h
-        Scheduler/Figure/FEnd.h
         )
 set(PrimitiveFiles
         Analyzer/Primitive/APrimitive.h

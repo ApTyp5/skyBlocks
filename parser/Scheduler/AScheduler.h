@@ -35,11 +35,11 @@ public:
     {}
     virtual ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm) = 0;
 
-    virtual bool schedulePrimitive(const PAlgorithm &primitive, AScheduler &scheduler) = 0;
-    virtual bool schedulePrimitive(const PCycle &primitive, AScheduler &scheduler) = 0;
-    virtual bool schedulePrimitive(const PFollow &primitive, AScheduler &scheduler) = 0;
-    virtual bool schedulePrimitive(const PFork &primitive, AScheduler &scheduler) = 0;
-    virtual bool schedulePrimitive(const PFunc &primitive, AScheduler &scheduler) = 0;
+    virtual bool schedulePrimitive(const PAlgorithm &primitive) = 0;
+    virtual bool schedulePrimitive(const PCycle &primitive) = 0;
+    virtual bool schedulePrimitive(const PFollow &primitive) = 0;
+    virtual bool schedulePrimitive(const PFork &primitive) = 0;
+    virtual bool schedulePrimitive(const PFunc &primitive) = 0;
 
 protected:
     ptrVector<AFigure> figures;

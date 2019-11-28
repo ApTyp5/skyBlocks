@@ -23,6 +23,10 @@ private:
     friend class FEmborderScheduler_addFigureCommon_Test;
     friend class FEmborderScheduler_addFigureBadWidth_Test;
     friend class FEmborderScheduler_addFigureTooTight_Test;
+    friend class FEmborderScheduler_addForkCommon_Test;
+    friend class FEmborderScheduler_addForkBadWidth_Test;
+    friend class FEmborderScheduler_addForkTooTight_Test;
+
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_DOUBLEMEASUREFIGURE_H_

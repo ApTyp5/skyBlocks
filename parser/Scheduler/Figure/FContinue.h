@@ -26,6 +26,7 @@ public:
     }
 
     static void reset();
+    jsonString acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer) override;
 
 private:
 

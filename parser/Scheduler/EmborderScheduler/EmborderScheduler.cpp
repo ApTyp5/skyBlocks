@@ -20,8 +20,7 @@
 #include "../Figure/FContinue.h"
 #include "../Figure/FigureCreator.h"
 #include "../Figure/SingleMeasureFigure.h"
-#include "../Figure/FBegin.h"
-#include "../Figure/FEnd.h"
+#include "../Figure/FBegEnd.h"
 
 ptrVector<AFigure> EmborderScheduler::schedule(const std::unique_ptr<ComplexPrimitive> &primitives)
 {
@@ -32,25 +31,25 @@ ptrVector<AFigure> EmborderScheduler::schedule(const std::unique_ptr<ComplexPrim
         delete figures.pop_back();
 
     if (dynamic_cast<FFollow *>(figures[0]))
-        figures[0] = dynamic_cast<FBegin *>(figures[0]);
+        figures[0] = dynamic_cast<FBegEnd *>(figures[0]);
 
     if (dynamic_cast<FFollow *>(figures.back()))
-        figures.back() = dynamic_cast<FEnd *>(figures.back());
+        figures.back() = dynamic_cast<FBegEnd *>(figures.back());
 
     return std::move(figures);
 }
-bool EmborderScheduler::schedulePrimitive(const PAlgorithm &pAlgorithm, AScheduler &scheduler)
+bool EmborderScheduler::schedulePrimitive(const PAlgorithm &pAlgorithm)
 {
     for (const auto &i : pAlgorithm.getChildern())
         i->acceptScheduler(*this);
     return true;
 }
-bool EmborderScheduler::schedulePrimitive(const PFollow &pFollow, AScheduler &scheduler)
+bool EmborderScheduler::schedulePrimitive(const PFollow &pFollow)
 {
     addFigure(FigureType::Follow, pFollow.getInnerText());
     return true;
 }
-bool EmborderScheduler::schedulePrimitive(const PCycle &pCycle, AScheduler &scheduler)
+bool EmborderScheduler::schedulePrimitive(const PCycle &pCycle)
 {
     addFigure(FigureType::EndCycle, pCycle.getBeforeCycyleText());
 
@@ -60,12 +59,12 @@ bool EmborderScheduler::schedulePrimitive(const PCycle &pCycle, AScheduler &sche
     addFigure(FigureType::BegCycle, pCycle.getAfterCycleText());
     return true;
 }
-bool EmborderScheduler::schedulePrimitive(const PFunc &pFunc, AScheduler &scheduler)
+bool EmborderScheduler::schedulePrimitive(const PFunc &pFunc)
 {
     addFigure(FigureType::Func, pFunc.getInnerText());
     return true;
 }
-bool EmborderScheduler::schedulePrimitive(const PFork &pFork, AScheduler &scheduler)
+bool EmborderScheduler::schedulePrimitive(const PFork &pFork)
 {
     size_t negX = (curState.x() - meta.xm()) / 2;
     size_t posX = curState.x() + negX;
@@ -74,14 +73,14 @@ bool EmborderScheduler::schedulePrimitive(const PFork &pFork, AScheduler &schedu
 
     State negState(old);
     negState.setX(negX);
-    negState.setW(negState.width() / 2);
+    negState.setW(old.width() / 2 - meta.xp() / 2);
     setCurState(negState);
     for (const auto &i : pFork.getChildern())
         i->acceptScheduler(*this);
 
     State posState(old);
     posState.setX(negX);
-    posState.setW(posState.width() / 2);
+    posState.setW(posState.width() / 2 - meta.xp() / 2);
     setCurState(posState);
     for (const auto &i : pFork.getElseChildren())
         i->acceptScheduler(*this);

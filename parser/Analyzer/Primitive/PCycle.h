@@ -18,7 +18,7 @@ public:
 
     bool acceptScheduler(AScheduler &scheduler) const override
     {
-        return scheduler.schedulePrimitive(*this, scheduler);
+        return scheduler.schedulePrimitive(*this);
     }
 
     std::string toString() override

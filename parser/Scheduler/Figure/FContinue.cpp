@@ -13,3 +13,8 @@ void FContinue::reset()
     name[1] = 0;
     counter = 0;
 }
+
+jsonString FContinue::acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer)
+{
+    return jFormer.addToTree(tree, *this);
+}

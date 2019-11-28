@@ -15,6 +15,10 @@ public:
         SingleMeasureFigure(begin, end, std::move(text), page)
     {}
 
+    jsonString acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer) override
+    {
+        return jFormer.addToTree(tree, *this);
+    }
     friend class FEmborderScheduler_pushForkLines_Test;
     friend class FEmborderScheduler_connectForkPartsLeftPageLess_Test;
 };

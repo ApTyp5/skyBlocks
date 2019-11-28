@@ -21,11 +21,11 @@ public:
     {}
     ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &primitives) override;
 
-    bool schedulePrimitive(const PAlgorithm &pAlgorithm, AScheduler &scheduler) override;
-    bool schedulePrimitive(const PCycle &pCycle, AScheduler &scheduler) override;
-    bool schedulePrimitive(const PFollow &primitive, AScheduler &scheduler) override;
-    bool schedulePrimitive(const PFork &pFork, AScheduler &scheduler) override;
-    bool schedulePrimitive(const PFunc &pFunc, AScheduler &scheduler) override;
+    bool schedulePrimitive(const PAlgorithm &pAlgorithm) override;
+    bool schedulePrimitive(const PCycle &pCycle) override;
+    bool schedulePrimitive(const PFollow &primitive) override;
+    bool schedulePrimitive(const PFork &pFork) override;
+    bool schedulePrimitive(const PFunc &pFunc) override;
 
 protected:
     class State
@@ -90,6 +90,10 @@ protected:
     friend class FEmborderScheduler_addFigureCommon_Test;
     friend class FEmborderScheduler_addFigureBadWidth_Test;
     friend class FEmborderScheduler_addFigureTooTight_Test;
+    friend class FEmborderScheduler_addForkCommon_Test;
+    friend class FEmborderScheduler_addForkBadWidth_Test;
+    friend class FEmborderScheduler_addForkTooTight_Test;
+
 };
 
 #endif //PARSER_SCHEDULER_COMMONSCHEDULER_H_

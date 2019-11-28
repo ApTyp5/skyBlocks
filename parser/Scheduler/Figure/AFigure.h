@@ -7,6 +7,8 @@
 
 #include <string>
 #include <ostream>
+#include <boost/property_tree/ptree.hpp>
+#include "../../JsonFormer/JsonFormer.h"
 
 struct Point
 {
@@ -55,6 +57,8 @@ public:
     {
         return text;
     }
+
+    virtual jsonString acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer) = 0;
 
 private:
     size_t page;

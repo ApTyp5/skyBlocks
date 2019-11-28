@@ -14,6 +14,11 @@ public:
         :
         SingleMeasureFigure(begin, end, std::move(text), page)
     {}
+
+    jsonString acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer) override
+    {
+        return jFormer.addToTree(tree, *this);
+    }
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FARRORW_H_
