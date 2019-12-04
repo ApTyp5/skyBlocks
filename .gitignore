@@ -34,3 +34,7 @@
 # .idea and cmake directories
 **/.idea/
 **/cmake-*/
+
+# .directories and files for QT app
+**/CMakeLists.txt.user
+**/build/
