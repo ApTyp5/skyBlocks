@@ -2,22 +2,22 @@
 // Created by arthur on 24.11.2019.
 //
 
-#ifndef FINDENTANALYZER_H
-#define FINDENTANALYZER_H
+#ifndef FINDENTPYTHONLIKEANALYZER_H
+#define FINDENTPYTHONLIKEANALYZER_H
 
 #include <gtest/gtest.h>
 
 #include "../Analyzer/IndentAnalyze/IndentAnalyzer.h"
 
-class FIndentAnalyzer: public ::testing::Test
+class FIndentPythonLikeAnalyzer: public ::testing::Test
 {
 protected:
-    ptrVector<Error> errors;
+    ptrVector<ParseError> errors;
     IndentAnalyzer *analyzer;
 
     virtual void SetUp()
     {
-        analyzer = new IndentAnalyzer(errors);
+        analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
         analyzer->longMemory.push_back(new Memory(State::Alg, new PAlgorithm("")));
 
     }
@@ -27,4 +27,5 @@ protected:
         delete analyzer;
     }
 };
-#endif //FINDENTANALYZER_H
+
+#endif //FINDENTPYTHONLIKEANALYZER_H

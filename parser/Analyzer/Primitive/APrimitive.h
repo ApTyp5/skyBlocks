@@ -16,6 +16,8 @@ public:
         : innerText(std::move(text))
     {}
 
+    virtual ~APrimitive() = default;
+
     virtual bool acceptScheduler(AScheduler &scheduler) const = 0;
 
     virtual bool hasChildren() const

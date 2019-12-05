@@ -15,5 +15,9 @@ bool Liner::getLine(std::string &line, bool withNL)
     if (withNL) line += '\n';
     return !ss.eof();
 }
+bool Liner::isEmpty()
+{
+    return ss.eof();
+}
 
 

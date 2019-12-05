@@ -10,20 +10,20 @@
 #include "../../Scheduler/Figure/FigureTypes.h"
 
 
-ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t line_num)
+ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t frontLine, size_t backLine)
 {
     longMemory.push_back(new Memory(State::Alg, new PAlgorithm("__main__")));
+    state_ = State::UnknownIndent;
     indent = shortMemory = "";
     Liner liner(text);
     std::string line;
-    line_num -= 1;
-    state_ = State::UnknownIndent;
 
-    while (liner.getLine(line)) {
-        line_num += 1;
-        if (emptyStringPhase(line, line_num)) continue;
-        if (indentCheckPhase(line, line_num)) continue;
-        if (analyzeStrPhase(line, line_num)) continue;
+
+    for (size_t i = 0; i < frontLine; i++, liner.getLine(line));
+    for (size_t lineNum = frontLine; lineNum < backLine; lineNum++, liner.getLine(line)) {
+        if (emptyStringPhase(line, frontLine)) continue;
+        if (indentCheckPhase(line, frontLine)) continue;
+        if (analyzeStrPhase(line, frontLine)) continue;
     }
 
     flushShortMemory();
@@ -54,9 +54,9 @@ bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t line_num)
                     state_ = State::Follow;
                 }
                 return true;
-            case State::UnknownIndent: return true;
-            case State::Alg:throw std::exception();
-            default: throw std::exception();
+            case State::UnknownIndent:return true;
+            case State::Alg:
+            default:throw std::exception();
         }
     }
 
@@ -231,8 +231,8 @@ bool IndentAnalyzer::addPFuncToLastMem(std::string name, std::string text)
     return true;
 }
 
-IndentAnalyzer::IndentAnalyzer(ptrVector<Error> &errors)
-    : AAnalyzer(errors), AlphaBet(new PythonLikeAlphabet)
+IndentAnalyzer::IndentAnalyzer(ptrVector<ParseError> &errors, BaseAlphabet *alphabet)
+    : AAnalyzer(errors), AlphaBet(alphabet)
 {}
 
 void IndentAnalyzer::flushShortMemory()

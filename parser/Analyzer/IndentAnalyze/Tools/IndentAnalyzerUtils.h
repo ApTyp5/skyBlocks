@@ -74,7 +74,7 @@ public:
         return false;
     }
 
-    static std::string skipSymbols(const std::string &str, std::vector<char> syms)
+    static std::string skipSymbols(const std::string &str, const std::vector<char> &syms)
     {
         size_t i = 0;
         for (; i < str.size(); i++) {

@@ -5,7 +5,7 @@
 #ifndef PARSER_ANALYZER_AANALYZER_H_
 #define PARSER_ANALYZER_AANALYZER_H_
 
-#include "../Errors/Error.h"
+#include "../Errors/ParseError.h"
 #include "../Tools/ptrVector.h"
 #include "AccumulateErrors.h"
 #include "Primitive/APrimitive.h"
@@ -13,9 +13,11 @@
 
 class AAnalyzer : public AccumulateErrors {
  public:
-  explicit AAnalyzer(ptrVector<Error> &errors) : AccumulateErrors(errors) {}
+    explicit AAnalyzer(ptrVector<ParseError> &errors)
+        : AccumulateErrors(errors)
+    {}
     ~AAnalyzer() = default;
-    virtual ComplexPrimitive *analyze(std::string text, size_t line_num) = 0;
+    virtual ComplexPrimitive *analyze(std::string text, size_t frontLine, size_t backLine) = 0;
 };
 
 #endif //PARSER_ANALYZER_AANALYZER_H_

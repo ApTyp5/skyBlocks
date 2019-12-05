@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 
 set(Stubs Stubs/Stubs.h)
-set(Errors Errors/Error.h)
+set(Errors Errors/ParseError.h)
 set(JsonFormer
         JsonFormer/JsonFormer.h JsonFormer/JsonFormer.cpp
         )
@@ -76,9 +76,9 @@ set(ParserFiles
         Tools/ptrVector.h
         )
 set(TestFiles
-        Fixtures/FIndentAnalyzer.h
+        Fixtures/FIndentPythonLikeAnalyzer.h
         Fixtures/FEmborderScheduler.h
-        )
+        tests/constraintorTest.cpp Fixtures/FIndentPythonLikeConstraintor.h)
 set(AllFiles
         ${Stubs}
         ${Errors}
@@ -94,7 +94,6 @@ find_package(GTest REQUIRED)
 include_directories(test_parser ${GTEST_INCLUDE_DIRS})
 add_library(${PROJECT_NAME} SHARED ${AllFiles})
 
-
 add_executable(parserTest tests/parserTest.cpp)
 target_link_libraries(parserTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 
@@ -107,8 +106,12 @@ target_link_libraries(schedulerTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 add_executable(parserToolsTest tests/parserToolsTest.cpp)
 target_link_libraries(parserToolsTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 
+add_executable(constraintorTest tests/constraintorTest.cpp)
+target_link_libraries(constraintorTest ${PROJECT_NAME} -lgtest -lgmock pthread)
+
 enable_testing()
 add_test(ParserTest parserTest)
 add_test(ParserToolsTest parserToolsTest)
 add_test(AnalyzerTest analyzerTest)
+add_test(ConstraintorTest constraintorTest)
 add_test(SchedulerTest schedulerTest)

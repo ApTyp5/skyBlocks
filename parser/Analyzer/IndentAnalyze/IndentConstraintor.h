@@ -5,18 +5,26 @@
 #ifndef PARSER_ANALYZER_INDENTCONSTRAINTOR_H_
 #define PARSER_ANALYZER_INDENTCONSTRAINTOR_H_
 
-#include "../../Errors/Error.h"
+#include "../../Errors/ParseError.h"
 #include "../../Tools/ptrVector.h"
 #include "../AConstraintor.h"
+#include "Tools/IndentAnalyzerUtils.h"
+#include "Alphabet/BaseAlphabet.h"
 
 class IndentConstraintor: public AConstraintor
 {
 public:
-    explicit IndentConstraintor(ptrVector<Error> &errors)
-        : AConstraintor(errors)
+    explicit IndentConstraintor(ptrVector<ParseError> &errors, BaseAlphabet *alphabet)
+        : AConstraintor(errors), AlphaBet(alphabet)
     {}
-    std::string findFunc(size_t &line_num, std::string text, std::string name, DataBaseConnection &connection) override;
-    std::string findMain(size_t &line_num, std::string text) override;
+
+    std::string findFunc(size_t &line_num, std::string text, std::string name,
+                         DataBaseConnection &connection) override;
+
+    bool findMain(size_t &first_index, size_t &back_index, const std::string &text) override;
+
+private:
+    std::unique_ptr<BaseAlphabet> AlphaBet;
 };
 
 #endif //PARSER_ANALYZER_INDENTCONSTRAINTOR_H_

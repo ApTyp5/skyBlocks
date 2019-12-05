@@ -1,21 +1,21 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_7a200/fast && /usr/bin/make -f CMakeFiles/cmTC_7a200.dir/build.make CMakeFiles/cmTC_7a200.dir/build
+Run Build Command(s):/usr/bin/make cmTC_7e0fb/fast && /usr/bin/make -f CMakeFiles/cmTC_7e0fb.dir/build.make CMakeFiles/cmTC_7e0fb.dir/build
 make[1]: Entering directory '/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_7a200.dir/src.c.o
-/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_7a200.dir/src.c.o   -c /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_7a200
-/snap/clion/97/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7a200.dir/link.txt --verbose=1
-/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_7a200.dir/src.c.o  -o cmTC_7a200 
-/usr/bin/ld: CMakeFiles/cmTC_7a200.dir/src.c.o: in function `main':
+Building C object CMakeFiles/cmTC_7e0fb.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_7e0fb.dir/src.c.o   -c /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_7e0fb
+/snap/clion/97/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7e0fb.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_7e0fb.dir/src.c.o  -o cmTC_7e0fb 
+/usr/bin/ld: CMakeFiles/cmTC_7e0fb.dir/src.c.o: in function `main':
 src.c:(.text+0x46): undefined reference to `pthread_create'
 /usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
 /usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_7a200.dir/build.make:87: cmTC_7a200] Error 1
+make[1]: *** [CMakeFiles/cmTC_7e0fb.dir/build.make:87: cmTC_7e0fb] Error 1
 make[1]: Leaving directory '/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_7a200/fast] Error 2
+make: *** [Makefile:121: cmTC_7e0fb/fast] Error 2
 
 
 Source file was:
@@ -41,18 +41,18 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_d7cc9/fast && /usr/bin/make -f CMakeFiles/cmTC_d7cc9.dir/build.make CMakeFiles/cmTC_d7cc9.dir/build
+Run Build Command(s):/usr/bin/make cmTC_b9404/fast && /usr/bin/make -f CMakeFiles/cmTC_b9404.dir/build.make CMakeFiles/cmTC_b9404.dir/build
 make[1]: Entering directory '/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d7cc9.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d7cc9.dir/CheckFunctionExists.c.o   -c /snap/clion/97/bin/cmake/linux/share/cmake-3.15/Modules/CheckFunctionExists.c
-Linking C executable cmTC_d7cc9
-/snap/clion/97/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7cc9.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_d7cc9.dir/CheckFunctionExists.c.o  -o cmTC_d7cc9 -lpthreads 
+Building C object CMakeFiles/cmTC_b9404.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_b9404.dir/CheckFunctionExists.c.o   -c /snap/clion/97/bin/cmake/linux/share/cmake-3.15/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b9404
+/snap/clion/97/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9404.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_b9404.dir/CheckFunctionExists.c.o  -o cmTC_b9404 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-make[1]: *** [CMakeFiles/cmTC_d7cc9.dir/build.make:87: cmTC_d7cc9] Error 1
+make[1]: *** [CMakeFiles/cmTC_b9404.dir/build.make:87: cmTC_b9404] Error 1
 make[1]: Leaving directory '/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles/CMakeTmp'
-make: *** [Makefile:121: cmTC_d7cc9/fast] Error 2
+make: *** [Makefile:121: cmTC_b9404/fast] Error 2
 
 
 

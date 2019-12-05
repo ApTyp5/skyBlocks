@@ -20,7 +20,7 @@ public:
         return scheduler.schedulePrimitive(*this);
     }
 
-    virtual std::string toString() override
+    std::string toString() override
     {
         std::string ans = "Algorithm\n" + ComplexPrimitive::toString();
         return ans;

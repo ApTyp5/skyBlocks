@@ -13,8 +13,8 @@
 class AAnalyzeFactory
 {
 public:
-    virtual AConstraintor *createConstraintor(ptrVector<Error> &) = 0;
-    virtual AAnalyzer *createAnalyzer(ptrVector<Error> &) = 0;
+    virtual AConstraintor *createConstraintor(ptrVector<ParseError> &) = 0;
+    virtual AAnalyzer *createAnalyzer(ptrVector<ParseError> &) = 0;
 };
 
 #endif //PARSER_ANALYZER_AANALYZEFACTORY_H_

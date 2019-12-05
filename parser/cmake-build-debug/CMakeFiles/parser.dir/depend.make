@@ -17,7 +17,7 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/P
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/Primitive/PFollow.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/Primitive/PFork.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/Primitive/PFunc.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Errors/Error.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Errors/ParseError.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../JsonFormer/JsonFormer.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Scheduler/Figure/AFigure.h
@@ -29,10 +29,25 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Tools/ptrV
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/AConstraintor.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/AccumulateErrors.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/BaseAlphabet.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/IndentConstraintor.cpp
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/IndentConstraintor.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Errors/Error.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/Tools/States.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/Primitive/APrimitive.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/Primitive/PAlgorithm.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/Primitive/PCycle.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/Primitive/PFollow.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/Primitive/PFork.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/Primitive/PFunc.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Errors/ParseError.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../JsonFormer/JsonFormer.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Scheduler/AScheduler.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Scheduler/Figure/AFigure.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Stubs/Stubs.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/Liner.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/ptrVector.h
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.cpp
@@ -52,6 +67,7 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Stubs/Stubs.
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Tools/ptrVector.h
 
+CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: ../Errors/ParseError.h
 CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: ../JsonFormer/JsonFormer.cpp
 CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: ../JsonFormer/JsonFormer.h
 CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o: ../Scheduler/Figure/AFigure.h
@@ -81,7 +97,7 @@ CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/PCycle.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/PFollow.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/PFork.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/PFunc.h
-CMakeFiles/parser.dir/Parser.cpp.o: ../Errors/Error.h
+CMakeFiles/parser.dir/Parser.cpp.o: ../Errors/ParseError.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../JsonFormer/JsonFormer.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.cpp
 CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.h
@@ -139,4 +155,30 @@ CMakeFiles/parser.dir/Tools/Liner.cpp.o: ../Tools/Liner.h
 CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o: ../Tools/Liner.h
 CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o: ../Tools/SizedLiner.cpp
 CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o: ../Tools/SizedLiner.h
+
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/AConstraintor.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/AccumulateErrors.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/BaseAlphabet.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/PythonLikeAlphabet.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/IndentAnalyze/IndentConstraintor.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/IndentAnalyze/Tools/States.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/Primitive/APrimitive.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/Primitive/PAlgorithm.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/Primitive/PCycle.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/Primitive/PFollow.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/Primitive/PFork.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Analyzer/Primitive/PFunc.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Errors/ParseError.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Fixtures/FIndentPythonLikeConstraintor.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../JsonFormer/JsonFormer.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Scheduler/AScheduler.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Scheduler/Figure/AFigure.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Stubs/Stubs.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Tools/Liner.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Tools/Meta.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../Tools/ptrVector.h
+CMakeFiles/parser.dir/tests/constraintorTest.cpp.o: ../tests/constraintorTest.cpp
 

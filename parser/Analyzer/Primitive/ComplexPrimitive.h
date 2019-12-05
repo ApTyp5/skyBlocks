@@ -15,6 +15,8 @@ public:
         : APrimitive(std::move(text))
     {}
 
+    virtual ~ComplexPrimitive() = default;
+
     virtual void addChild(APrimitive *child)
     {
         children.push_back(child);

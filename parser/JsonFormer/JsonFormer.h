@@ -21,6 +21,7 @@ class FFunc;
 class FContinue;
 class SingleMeasureFigure;
 class DoubleMeasureFigure;
+class ParseError;
 
 typedef std::string jsonString;
 
@@ -31,6 +32,11 @@ class JsonFormer
 public:
     explicit JsonFormer(int id = 0);
 
+    //jsonString formJson(ptrVector<AFigure> &figures);
+    jsonString formJson(const ptrVector<JsonFormable> &jf);
+    jsonString formJson(const ptrVector<AFigure> &figures);
+    jsonString formJson(const ptrVector<ParseError> &errors);
+
     void addToJson(const FArrow &fArrow);
     void addToJson(const FLine &fLine);
     void addToJson(const FBegCycle &fBegCycle);
@@ -40,18 +46,22 @@ public:
     void addToJson(const FFollow &fFollow);
     void addToJson(const FFork &fFork);
     void addToJson(const FFunc &fFunc);
+    void addToJson(const ParseError &error);
 
 protected:
     void addAFigure(const std::string &templat, const AFigure &aFigure);
     void addSMFigure(const std::string &templat, const SingleMeasureFigure &smFigure);
     void addDMFigure(const std::string &templat, const DoubleMeasureFigure &dmFigure);
-    void addAloneProperty(std::string path, std::string name);
-    void addGroupProperty(std::string path, std::string name);
-    jsonString formJson(ptrVector<JsonFormable> &figures);
+    void addAloneProperty(const std::string &path, const std::string &name);
+    void addGroupProperty(const std::string &path, const std::string &name);
     std::string newFigureTemplat();
+    std::string newErrorTemplat();
+    void initFigureTemplat();
+    void initErrorTemplat();
 
 private:
     int id;
+    std::string templat;
     boost::property_tree::ptree tree;
 };
 

@@ -11,12 +11,12 @@
 #include "../Analyzer/Primitive/PAlgorithm.h"
 #include "../Analyzer/Primitive/PFork.h"
 #include "../Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h"
-#include "../Fixtures/FIndentAnalyzer.h"
+#include "../Fixtures/FIndentPythonLikeAnalyzer.h"
 
 TEST(IndentAnalyzer, analyze_if)
 {
-    ptrVector<Error> errors;
-    auto *analyzer = new IndentAnalyzer(errors);
+    ptrVector<ParseError> errors;
+    auto *analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
     std::string text = "begin\n"
                        "if true\n"
                        "    smth\n"
@@ -24,7 +24,7 @@ TEST(IndentAnalyzer, analyze_if)
                        "    smth2\n"
                        "end\n";
 
-    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 0));
+    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 1, 7));
     EXPECT_EQ(3, prim_ptr->childrenNum());
     EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
     EXPECT_EQ("true\n", prim_ptr->getChildern()[1]->getInnerText());
@@ -46,8 +46,8 @@ TEST(IndentAnalyzer, analyze_if)
 
 TEST(IndentAnalyzer, analyze_cycle)
 {
-    ptrVector<Error> errors;
-    auto *analyzer = new IndentAnalyzer(errors);
+    ptrVector<ParseError> errors;
+    auto *analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
     std::string text = "begin\n"
                        "while true\n"
                        "    smth\n"
@@ -55,7 +55,7 @@ TEST(IndentAnalyzer, analyze_cycle)
                        "    smth2\n"
                        "end\n";
 
-    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 0));
+    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 1, 7));
     EXPECT_EQ(3, prim_ptr->childrenNum());
     EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
     EXPECT_EQ("true\n", prim_ptr->getChildern()[1]->getInnerText());
@@ -77,21 +77,21 @@ TEST(IndentAnalyzer, analyze_cycle)
 
 TEST(IndentAnalyzer, analyze_2_follow)
 {
-    ptrVector<Error> errors;
-    auto *analyzer = new IndentAnalyzer(errors);
+    ptrVector<ParseError> errors;
+    auto *analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
 
     std::string text = "begin\n"
                        "\n"
                        "end\n";
 
-    ComplexPrimitive *prim_ptr(analyzer->analyze(text, 0));
+    ComplexPrimitive *prim_ptr(analyzer->analyze(text, 1, 4));
     EXPECT_EQ(2, prim_ptr->childrenNum());
     EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
     EXPECT_EQ("end\n", prim_ptr->getChildern()[1]->getInnerText());
     delete (prim_ptr);
 }
 
-TEST_F(FIndentAnalyzer, try_add_pfollow_positive)
+TEST_F(FIndentPythonLikeAnalyzer, try_add_pfollow_positive)
 {
     analyzer->shortMemory = "qwer";
     EXPECT_EQ(0, analyzer->longMemory.back()->getComplexPrimitive()->childrenNum());
@@ -100,7 +100,7 @@ TEST_F(FIndentAnalyzer, try_add_pfollow_positive)
     EXPECT_EQ(true, analyzer->shortMemory.empty());
 }
 
-TEST_F(FIndentAnalyzer, merge_back_mem)
+TEST_F(FIndentPythonLikeAnalyzer, merge_back_mem)
 {
     analyzer->longMemory.push_back(new Memory(State::Fork, new PFork("text")));
     EXPECT_EQ(2, analyzer->longMemory.size());
@@ -109,14 +109,14 @@ TEST_F(FIndentAnalyzer, merge_back_mem)
     EXPECT_EQ(1, analyzer->longMemory.back()->getComplexPrimitive()->childrenNum());
 }
 
-TEST_F(FIndentAnalyzer, ret_indent)
+TEST_F(FIndentPythonLikeAnalyzer, ret_indent)
 {
     std::string str = "\t\t\tqwer";
     std::string indent = analyzer->retIndent(str);
     EXPECT_STREQ("\t\t\t", indent.data());
 }
 
-TEST_F(FIndentAnalyzer, get_current_indent)
+TEST_F(FIndentPythonLikeAnalyzer, get_current_indent)
 {
     analyzer->indent = "qwer";
     analyzer->state_ = State::Cycle;

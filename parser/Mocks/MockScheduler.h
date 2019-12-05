@@ -11,7 +11,7 @@
 class MockScheduler: public AScheduler
 {
 public:
-    MockScheduler(const Meta &meta)
+    explicit MockScheduler(const Meta &meta)
         : AScheduler(meta)
     {}
     MOCK_METHOD(ptrVector<AFigure>, schedule, (const std::unique_ptr<ComplexPrimitive> &algorithm), (override));

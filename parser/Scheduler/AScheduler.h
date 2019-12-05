@@ -73,6 +73,16 @@ protected:
     }
 
     friend class FEmborderScheduler_pushContinueFigure_Test;
+    friend class FEmborderScheduler_addForkTooTight_Test;
+    friend class FEmborderScheduler_addForkBadWidth_Test;
+    friend class FEmborderScheduler_addForkCommon_Test;
+    friend class FEmborderScheduler_addFigureTooTight_Test;
+    friend class FEmborderScheduler_addFigureBadWidth_Test;
+    friend class FEmborderScheduler_addFigureCommon_Test;
+    friend class FEmborderScheduler_connectForkPartsRightPageLess_Test;
+    friend class FEmborderScheduler_connectForkPartsLeftPageLess_Test;
+    friend class FEmborderScheduler_pushForkLines_Test;
+    friend class FEmborderScheduler_pushSpaceLine_Test;
 };
 
 #endif //PARSER_SCHEDULER_ASCHEDULER_H_

@@ -12,13 +12,13 @@
 class IndentAnalyzeFactory: public AAnalyzeFactory
 {
 public:
-    AConstraintor *createConstraintor(ptrVector<Error> &errors) override
+    AConstraintor *createConstraintor(ptrVector<ParseError> &errors) override
     {
-        return new IndentConstraintor(errors);
+        return new IndentConstraintor(errors, new PythonLikeAlphabet);
     }
-    AAnalyzer *createAnalyzer(ptrVector<Error> &errors) override
+    AAnalyzer *createAnalyzer(ptrVector<ParseError> &errors) override
     {
-        return new IndentAnalyzer(errors);
+        return new IndentAnalyzer(errors, new PythonLikeAlphabet);
     }
 };
 

@@ -17,14 +17,14 @@
 #include "Tools/Memory.h"
 #include "Tools/States.h"
 
-class FIndentAnalyzer;
+class FIndentPythonLikeAnalyzer;
 class FixtureIndentAnalyzer_get_current_indent_follow_test;
 
 class IndentAnalyzer: public AAnalyzer
 {
 public:
-    explicit IndentAnalyzer(ptrVector<Error> &errors);
-    ComplexPrimitive *analyze(std::string text, size_t line_num) override;
+    explicit IndentAnalyzer(ptrVector<ParseError> &errors, BaseAlphabet *alphabet);
+    ComplexPrimitive *analyze(std::string text, size_t frontLine, size_t backLine) override;
 
 private:
     virtual bool emptyStringPhase(const std::string &line, size_t line_num);
@@ -50,12 +50,12 @@ private:
     ptrVector<Memory> longMemory;
     std::unique_ptr<BaseAlphabet> AlphaBet;
 
-    friend class FIndentAnalyzer;
-    friend class FIndentAnalyzer_get_current_indent_Test;
-    friend class FIndentAnalyzer_ret_indent_Test;
-    friend class FIndentAnalyzer_merge_back_mem_Test;
-    friend class FIndentAnalyzer_try_add_pfollow_positive_Test;
-    friend class FAnalyzer_try_add_pfollow_positive_Test;
+    friend class FIndentPythonLikeAnalyzer;
+    friend class FIndentPythonLikeAnalyzer_get_current_indent_Test;
+    friend class FIndentPythonLikeAnalyzer_ret_indent_Test;
+    friend class FIndentPythonLikeAnalyzer_merge_back_mem_Test;
+    friend class FIndentPythonLikeAnalyzer_try_add_pfollow_positive_Test;
+    friend class FIndentPythonLikeAnalyzer_try_add_pfollow_positive_Test;
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZER_H_

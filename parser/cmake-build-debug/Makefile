@@ -67,17 +67,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/97/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -88,6 +77,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/snap/clion/97/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -185,6 +185,19 @@ parserToolsTest: cmake_check_build_system
 parserToolsTest/fast:
 	$(MAKE) -f CMakeFiles/parserToolsTest.dir/build.make CMakeFiles/parserToolsTest.dir/build
 .PHONY : parserToolsTest/fast
+
+#=============================================================================
+# Target rules for targets named constraintorTest
+
+# Build rule for target.
+constraintorTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 constraintorTest
+.PHONY : constraintorTest
+
+# fast build rule for target.
+constraintorTest/fast:
+	$(MAKE) -f CMakeFiles/constraintorTest.dir/build.make CMakeFiles/constraintorTest.dir/build
+.PHONY : constraintorTest/fast
 
 Analyzer/IndentAnalyze/IndentAnalyzer.o: Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o
 
@@ -456,6 +469,36 @@ tests/analyzerTest.cpp.s:
 	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/tests/analyzerTest.cpp.s
 .PHONY : tests/analyzerTest.cpp.s
 
+tests/constraintorTest.o: tests/constraintorTest.cpp.o
+
+.PHONY : tests/constraintorTest.o
+
+# target to build an object file
+tests/constraintorTest.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/tests/constraintorTest.cpp.o
+	$(MAKE) -f CMakeFiles/constraintorTest.dir/build.make CMakeFiles/constraintorTest.dir/tests/constraintorTest.cpp.o
+.PHONY : tests/constraintorTest.cpp.o
+
+tests/constraintorTest.i: tests/constraintorTest.cpp.i
+
+.PHONY : tests/constraintorTest.i
+
+# target to preprocess a source file
+tests/constraintorTest.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/tests/constraintorTest.cpp.i
+	$(MAKE) -f CMakeFiles/constraintorTest.dir/build.make CMakeFiles/constraintorTest.dir/tests/constraintorTest.cpp.i
+.PHONY : tests/constraintorTest.cpp.i
+
+tests/constraintorTest.s: tests/constraintorTest.cpp.s
+
+.PHONY : tests/constraintorTest.s
+
+# target to generate assembly for a file
+tests/constraintorTest.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/tests/constraintorTest.cpp.s
+	$(MAKE) -f CMakeFiles/constraintorTest.dir/build.make CMakeFiles/constraintorTest.dir/tests/constraintorTest.cpp.s
+.PHONY : tests/constraintorTest.cpp.s
+
 tests/parserTest.o: tests/parserTest.cpp.o
 
 .PHONY : tests/parserTest.o
@@ -544,13 +587,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... parserTest"
 	@echo "... parser"
 	@echo "... analyzerTest"
 	@echo "... schedulerTest"
 	@echo "... rebuild_cache"
 	@echo "... parserToolsTest"
-	@echo "... test"
+	@echo "... constraintorTest"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.o"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.i"
 	@echo "... Analyzer/IndentAnalyze/IndentAnalyzer.s"
@@ -581,6 +625,9 @@ help:
 	@echo "... tests/analyzerTest.o"
 	@echo "... tests/analyzerTest.i"
 	@echo "... tests/analyzerTest.s"
+	@echo "... tests/constraintorTest.o"
+	@echo "... tests/constraintorTest.i"
+	@echo "... tests/constraintorTest.s"
 	@echo "... tests/parserTest.o"
 	@echo "... tests/parserTest.i"
 	@echo "... tests/parserTest.s"
