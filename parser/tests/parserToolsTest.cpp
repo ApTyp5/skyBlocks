@@ -9,6 +9,7 @@
 #include "../Tools/Liner.h"
 #include "../Tools/SizedLiner.h"
 
+
 TEST(sizedLiner, endOfText)
 {
     size_t size = 10;
