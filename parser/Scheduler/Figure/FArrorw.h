@@ -23,6 +23,10 @@ public:
     {
         return std::string("arrow");
     }
+    AFigure *tryToConvertToFBegEnd() override
+    {
+        return this;
+    }
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FARRORW_H_

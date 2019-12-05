@@ -23,6 +23,10 @@ public:
     {
         return std::string("begin cycle");
     }
+    AFigure *tryToConvertToFBegEnd() override
+    {
+        return this;
+    }
 };
 
 

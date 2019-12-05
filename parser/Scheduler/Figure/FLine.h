@@ -23,6 +23,10 @@ public:
     {
         return std::string("line");
     }
+    AFigure *tryToConvertToFBegEnd() override
+    {
+        return this;
+    }
 
     friend class FEmborderScheduler_pushForkLines_Test;
     friend class FEmborderScheduler_connectForkPartsLeftPageLess_Test;

@@ -13,7 +13,7 @@ jsonString Parser::parse(std::string text, AAnalyzeFactory *analyzeFactory, ASch
 
     size_t front_line, back_line;
     if (constraintor->findMain(front_line, back_line, text)) {
-        std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(text, front_line, 0));
+        std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(text, front_line, back_line));
         ptrVector<AFigure> figures = scheduler->schedule(algorithm);
         output += former.formJson(figures);
     }

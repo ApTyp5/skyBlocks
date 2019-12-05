@@ -109,6 +109,9 @@ target_link_libraries(parserToolsTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 add_executable(constraintorTest tests/constraintorTest.cpp)
 target_link_libraries(constraintorTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 
+add_executable(main main.cpp)
+target_link_libraries(main ${PROJECT_NAME} -lgtest -lgmock pthread)
+
 enable_testing()
 add_test(ParserTest parserTest)
 add_test(ParserToolsTest parserToolsTest)

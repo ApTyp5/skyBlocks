@@ -21,6 +21,7 @@ public:
     { return begin; }
     Point getEnd() const
     { return end; }
+
 protected:
     Point begin, end;
 

@@ -23,6 +23,10 @@ public:
     {
         return std::string("follow");
     }
+    AFigure *tryToConvertToFBegEnd() override
+    {
+        return this;
+    }
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FFOLLOW_H_

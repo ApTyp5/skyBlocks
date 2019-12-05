@@ -23,6 +23,10 @@ public:
     {
         return std::string("end cycle");
     }
+    AFigure *tryToConvertToFBegEnd() override
+    {
+        return this;
+    }
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FENDCYCLE_H_

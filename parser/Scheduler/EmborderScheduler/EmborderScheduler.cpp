@@ -27,14 +27,14 @@ ptrVector<AFigure> EmborderScheduler::schedule(const std::unique_ptr<ComplexPrim
     initNewPage(1);
     primitives->acceptScheduler(*this);
 
-    while (dynamic_cast<SingleMeasureFigure *>(figures.back()))
+    while (figures.size() > 0 && dynamic_cast<SingleMeasureFigure *>(figures.back()))
         delete figures.pop_back();
 
     if (dynamic_cast<FFollow *>(figures[0]))
-        figures[0] = dynamic_cast<FBegEnd *>(figures[0]);
+        figures[0] = (FBegEnd *) (figures[0]);
 
     if (dynamic_cast<FFollow *>(figures.back()))
-        figures.back() = dynamic_cast<FBegEnd *>(figures.back());
+        figures.back() = (FBegEnd *) (figures.back());
 
     return std::move(figures);
 }

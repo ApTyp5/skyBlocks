@@ -9,6 +9,16 @@
 #include "../Tools/Liner.h"
 #include "../Tools/SizedLiner.h"
 
+TEST(sizedLiner, endOfText)
+{
+    size_t size = 10;
+    std::string input = "qwer";
+    SizedLiner liner(input);
+
+    EXPECT_EQ(false, liner.isEmpty());
+    EXPECT_EQ(false, liner.getLine(input));
+    EXPECT_EQ(true, liner.isEmpty());
+}
 TEST(sizedLiner, without_nl)
 {
     size_t size = 5;
@@ -30,7 +40,6 @@ TEST(sizedLiner, without_nl)
 
     EXPECT_EQ(answers.size(), c);
 }
-
 TEST(sizedLiner, with_nl)
 {
     size_t size = 5;
@@ -54,7 +63,16 @@ TEST(sizedLiner, with_nl)
 
     EXPECT_EQ(answers.size(), c);
 }
+TEST(liner, endOfText)
+{
+    std::string input = "qwer";
+    Liner liner(input);
+    std::string line;
 
+    EXPECT_EQ(false, liner.isEmpty());
+    EXPECT_EQ(false, liner.getLine(line, false));
+    EXPECT_EQ(true, liner.isEmpty());
+}
 TEST(liner, without_nl)
 {
     std::string input = "first string\n"
@@ -74,7 +92,6 @@ TEST(liner, without_nl)
 
     EXPECT_EQ(answers.size(), c);
 }
-
 TEST(liner, with_nl)
 {
     std::string input = "first string\n"

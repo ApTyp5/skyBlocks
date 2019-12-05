@@ -36,3 +36,7 @@ FContinue::FContinue(Rect rect, size_t page)
         counter++;
     }
 }
+AFigure *FContinue::tryToConvertToFBegEnd()
+{
+    return this;
+}

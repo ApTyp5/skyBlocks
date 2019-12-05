@@ -30,6 +30,8 @@ public:
 
     virtual std::string figureType() const = 0;
 
+    virtual AFigure *tryToConvertToFBegEnd() = 0;
+
 private:
     size_t page;
     std::string text;

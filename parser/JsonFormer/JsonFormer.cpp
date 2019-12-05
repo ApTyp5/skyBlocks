@@ -17,17 +17,49 @@
 
 jsonString JsonFormer::formJson(const ptrVector<JsonFormable> &jf)
 {
+    tree.clear();
     std::ostringstream output;
 
     for (const auto &i : jf) {
         i->acceptJsonFormer(*this);
     }
 
-    boost::property_tree::write_json(output, tree);
+    if (tree.empty())
+        return output.str();
 
+    boost::property_tree::write_json(output, tree);
     return output.str();
 }
+jsonString JsonFormer::formJson(const ptrVector<AFigure> &jf)
+{
+    tree.clear();
+    std::ostringstream output;
 
+    for (const auto &i : jf) {
+        i->acceptJsonFormer(*this);
+    }
+
+    if (tree.empty())
+        return output.str();
+
+    boost::property_tree::write_json(output, tree);
+    return output.str();
+}
+jsonString JsonFormer::formJson(const ptrVector<ParseError> &jf)
+{
+    tree.clear();
+    std::ostringstream output;
+
+    for (const auto &i : jf) {
+        i->acceptJsonFormer(*this);
+    }
+
+    if (tree.empty())
+        return output.str();
+
+    boost::property_tree::write_json(output, tree);
+    return output.str();
+}
 void JsonFormer::addAloneProperty(const std::string &path, const std::string &name)
 {
     tree.put(path, name);
@@ -131,14 +163,14 @@ void JsonFormer::addToJson(const ParseError &error)
     addGroupProperty(templat + std::string("col"), std::to_string(error.getCol()));
     addGroupProperty(templat + std::string("text"), error.getMessage());
 }
-jsonString JsonFormer::formJson(const ptrVector<AFigure> &figures)
+/*jsonString JsonFormer::formJson(const ptrVector<AFigure> &figures)
 {
     return formJson(dynamic_cast<const ptrVector<JsonFormable> &>(figures));
 }
 jsonString JsonFormer::formJson(const ptrVector<ParseError> &errors)
 {
     return formJson(dynamic_cast<const ptrVector<JsonFormable> &>(errors));
-}
+}*/
 
 
 

@@ -23,6 +23,10 @@ public:
     {
         return std::string("fork");
     }
+    AFigure *tryToConvertToFBegEnd() override
+    {
+        return this;
+    }
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FFORK_H_

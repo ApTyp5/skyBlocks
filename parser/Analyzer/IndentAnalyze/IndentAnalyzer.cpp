@@ -19,7 +19,7 @@ ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t frontLine, si
     std::string line;
 
 
-    for (size_t i = 0; i < frontLine; i++, liner.getLine(line));
+    for (size_t i = 1; i < frontLine; i++, liner.getLine(line));
     for (size_t lineNum = frontLine; lineNum < backLine; lineNum++, liner.getLine(line)) {
         if (emptyStringPhase(line, frontLine)) continue;
         if (indentCheckPhase(line, frontLine)) continue;

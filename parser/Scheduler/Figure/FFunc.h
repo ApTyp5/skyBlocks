@@ -23,6 +23,10 @@ public:
     {
         return std::string("func");
     }
+    AFigure *tryToConvertToFBegEnd() override
+    {
+        return this;
+    }
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FFUNC_H_

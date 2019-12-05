@@ -17,6 +17,7 @@ public:
     static void reset();
     void acceptJsonFormer(JsonFormer &jFormer) override;
     std::string figureType() const override;
+    AFigure *tryToConvertToFBegEnd() override;
 
 private:
 

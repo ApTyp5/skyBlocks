@@ -25,7 +25,7 @@ public:
     size_t lh() const
     { return 3; }
     size_t sw() const
-    { return 4; }
+    { return 1; }
     size_t bs() const
     { return 5; }
 };

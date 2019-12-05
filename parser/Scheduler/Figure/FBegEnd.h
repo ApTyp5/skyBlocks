@@ -5,14 +5,14 @@
 #ifndef PARSER_SCHEDULER_FIGURE_FBEGEND_H_
 #define PARSER_SCHEDULER_FIGURE_FBEGEND_H_
 
-#include "DoubleMeasureFigure.h"
+#include "FFollow.h"
 
-class FBegEnd: public DoubleMeasureFigure
+class FBegEnd: public FFollow
 {
 public:
     FBegEnd(Rect rect, std::string text, size_t page = 1)
         :
-        DoubleMeasureFigure(rect, std::move(text), page)
+        FFollow(rect, std::move(text), page)
     {}
 
     void acceptJsonFormer(JsonFormer &jFormer) override
@@ -22,6 +22,10 @@ public:
     std::string figureType() const override
     {
         return std::string("begin end");
+    }
+    AFigure *tryToConvertToFBegEnd() override
+    {
+        return this;
     }
 };
 
