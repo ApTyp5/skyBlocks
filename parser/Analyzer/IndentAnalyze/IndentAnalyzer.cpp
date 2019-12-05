@@ -7,16 +7,17 @@
 #include "../Primitive/PAlgorithm.h"
 #include "../../Tools/Liner.h"
 #include "Tools/IndentAnalyzerUtils.h"
+#include "../../Scheduler/Figure/FigureTypes.h"
 
 
 ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t line_num)
 {
-    longMemory.push_back(new Memory(Alg, new PAlgorithm("__main__")));
+    longMemory.push_back(new Memory(State::Alg, new PAlgorithm("__main__")));
     indent = shortMemory = "";
     Liner liner(text);
     std::string line;
     line_num -= 1;
-    state_ = UnknownIndent;
+    state_ = State::UnknownIndent;
 
     while (liner.getLine(line)) {
         line_num += 1;
@@ -39,22 +40,22 @@ bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t line_num)
 
     if (line.front() == '\n' || curIndent.size() + 1 == line.size()) {
         switch (state_) {
-            case Follow:tryAddPFollowToLastMem();
+            case State::Follow:tryAddPFollowToLastMem();
                 return true;
 
-            case Fork:
+            case State::Fork:
                 if (tryMemorizePFork()) {
-                    state_ = Follow;
+                    state_ = State::Follow;
                 }
                 return true;
 
-            case Cycle:
+            case State::Cycle:
                 if (tryMemorizePCycle()) {
-                    state_ = Follow;
+                    state_ = State::Follow;
                 }
                 return true;
-            case UnknownIndent: return true;
-            case Alg:throw std::exception();
+            case State::UnknownIndent: return true;
+            case State::Alg:throw std::exception();
             default: throw std::exception();
         }
     }
@@ -67,23 +68,23 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t line_num)
     std::string lineIndent = retIndent(line);
 
     switch (state_) {
-        case Alg:; // state_ = UnknownIndent;
-        case UnknownIndent:longMemory.back()->setBodyIndent(lineIndent);
-            state_ = Follow;
+        case State::Alg:; // state_ = UnknownIndent;
+        case State::UnknownIndent:longMemory.back()->setBodyIndent(lineIndent);
+            state_ = State::Follow;
             return false;
 
-        case Follow:
+        case State::Follow:
             while (longMemory.size() != 1) {
                 if (lineIndent == getCurrentIndent())
                     return false;
 
                 tryAddPFollowToLastMem();
 
-                if (longMemory.back()->getState() == Fork) {
+                if (longMemory.back()->getState() == State::Fork) {
                     std::string str = IndentAnalyzerUtils::skipSymbols(line, AlphaBet->WordDelimiters());
                     if (str.substr(0, AlphaBet->ElseWord().size()) == AlphaBet->ElseWord()) {
                         longMemory.back()->getComplexPrimitive()->startElseSection();
-                        state_ = UnknownIndent;
+                        state_ = State::UnknownIndent;
                         return true;
                     }
                 }
@@ -93,21 +94,21 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t line_num)
             /* error */
             return false;
 
-        case Fork:if (lineIndent == getCurrentIndent()) return false;
+        case State::Fork:if (lineIndent == getCurrentIndent()) return false;
             if (!tryMemorizePFork()) {/* error */}
-            state_ = UnknownIndent;
+            state_ = State::UnknownIndent;
             break;
 
-        case Cycle:if (lineIndent == getCurrentIndent()) return false;
+        case State::Cycle:if (lineIndent == getCurrentIndent()) return false;
             if (!tryMemorizePCycle()) {/* error */}
-            state_ = UnknownIndent;
+            state_ = State::UnknownIndent;
             break;
 
         default: throw std::exception();
     }
 
     longMemory.back()->setBodyIndent(lineIndent);
-    state_ = Follow;
+    state_ = State::Follow;
     return false;
 }
 
@@ -117,15 +118,15 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
     std::string lineWithoutIndent = IndentAnalyzerUtils::cutFront(line, currentIndent.size());
 
     switch (state_) {
-        case Fork:
-        case Cycle:shortMemory += lineWithoutIndent;
+        case State::Fork:
+        case State::Cycle:shortMemory += lineWithoutIndent;
             return false;
 
-        case Alg:
-        case UnknownIndent:
+        case State::Alg:
+        case State::UnknownIndent:
         default: throw std::exception();
 
-        case Follow:std::string fstWord;
+        case State::Follow:std::string fstWord;
             std::string others;
             IndentAnalyzerUtils::retFirstWord(fstWord, others, lineWithoutIndent);
 
@@ -135,7 +136,7 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
             if (isFork || isCycle) {
                 tryAddPFollowToLastMem();
 
-                state_ = isFork ? Fork : Cycle;
+                state_ = isFork ? (State::Fork) : (State::Cycle);
                 std::string addIndent = retIndent(others);
                 others = IndentAnalyzerUtils::cutFront(others, addIndent.size());
 
@@ -185,7 +186,7 @@ bool IndentAnalyzer::tryAddPFollowToLastMem()
 bool IndentAnalyzer::tryMemorizePFork()
 {
     if (!shortMemory.empty()) {
-        longMemory.push_back(new Memory(Fork, new PFork(shortMemory)));
+        longMemory.push_back(new Memory(State::Fork, new PFork(shortMemory)));
         shortMemory.clear();
         return true;
     }
@@ -198,7 +199,7 @@ bool IndentAnalyzer::tryMemorizePCycle()
         std::string topText, botText;
         IndentAnalyzerUtils::extractCycleParts(topText, botText, shortMemory);
 
-        longMemory.push_back(new Memory(Cycle, new PCycle(topText, botText)));
+        longMemory.push_back(new Memory(State::Cycle, new PCycle(topText, botText)));
         shortMemory.clear();
         return true;
     }
@@ -213,12 +214,12 @@ void IndentAnalyzer::mergeBackMemory()
 
 const std::string &IndentAnalyzer::getCurrentIndent()
 {
-    if (state_ == UnknownIndent
-        || state_ == Alg)
+    if (state_ == State::UnknownIndent
+        || state_ == State::Alg)
         throw std::exception();
 
-    if (state_ == Fork
-        || state_ == Cycle)
+    if (state_ == State::Fork
+        || state_ == State::Cycle)
         return indent;
 
     return longMemory.back()->getBodyIndent();

@@ -6,6 +6,7 @@
 #define PARSER_SCHEDULER_FIGURE_DOUBLEMEASUREFIGURE_H_
 
 #include "AFigure.h"
+#include "Primitives/Rect.h"
 
 class DoubleMeasureFigure: public AFigure
 {
@@ -14,6 +15,14 @@ public:
         :
         AFigure(std::move(text), page), rect_(rect)
     {}
+
+    Point getCenter() const
+    { return rect_.center; }
+    size_t getWidth() const
+    { return rect_.size.w; }
+    size_t getHeight() const
+    { return rect_.size.h; }
+
 
 private:
     Rect rect_;

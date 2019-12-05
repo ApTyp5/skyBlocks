@@ -15,9 +15,13 @@ public:
         DoubleMeasureFigure(rect, std::move(text), page)
     {}
 
-    jsonString acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer) override
+    void acceptJsonFormer(JsonFormer &jFormer) override
     {
-        return jFormer.addToTree(tree, *this);
+        jFormer.addToJson(*this);
+    }
+    std::string figureType() const override
+    {
+        return std::string("follow");
     }
 };
 

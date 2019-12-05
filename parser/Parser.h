@@ -10,11 +10,12 @@
 #include <vector>
 
 #include "Analyzer/AAnalyzeFactory.h"
-#include "Error/Error.h"
+#include "Errors/Error.h"
 #include "JsonFormer/JsonFormer.h"
 #include "Scheduler/AScheduler.h"
 #include "Stubs/Stubs.h"
 #include "Tools/ptrVector.h"
+
 
 class Parser
 {
@@ -30,12 +31,14 @@ public:
                                  std::string name,
                                  AAnalyzeFactory *analyzeFactory,
                                  AScheduler *scheduler);
-
-    virtual jsonString formJson(ptrVector<AFigure> &figures);
+private:
+    jsonString formJson(ptrVector<AFigure> &figures);
 
 private:
     DataBaseConnection connection;
     ptrVector<Error> errors;
+
+    friend class parser_mock_Test;
 };
 
 #endif //PARSER__PARSER_H_

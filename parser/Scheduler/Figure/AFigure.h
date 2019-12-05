@@ -10,38 +10,8 @@
 #include <boost/property_tree/ptree.hpp>
 #include "../../JsonFormer/JsonFormer.h"
 
-struct Point
-{
-    size_t x, y;
-    bool operator==(Point p) const
-    {
-        return (x == p.x && y == p.y);
-    }
-    std::ostream &operator<<(std::ostream &out)
-    {
-        out << "(" << x << ", " << y << ")";
-        return out;
-    }
-};
 
-struct sRect
-{
-    size_t w, h;
-    sRect operator*=(size_t num)
-    {
-        w *= num;
-        h *= num;
-        return *this;
-    }
-};
-
-struct Rect
-{
-    Point center;
-    sRect size;
-};
-
-class AFigure
+class AFigure: public JsonFormable
 {
 public:
     explicit AFigure(std::string text, size_t page = 1)
@@ -53,12 +23,12 @@ public:
     size_t getPage() const
     { return page; }
 
-    const std::string &getText()
+    const std::string &getText() const
     {
         return text;
     }
 
-    virtual jsonString acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer) = 0;
+    virtual std::string figureType() const = 0;
 
 private:
     size_t page;

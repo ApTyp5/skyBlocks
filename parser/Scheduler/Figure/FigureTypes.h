@@ -5,7 +5,7 @@
 #ifndef FIGURETYPES_H
 #define FIGURETYPES_H
 
-enum FigureType
+enum class FigureType
 {
     BegCycle,
     EndCycle,

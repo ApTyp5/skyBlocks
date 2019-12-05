@@ -5,7 +5,7 @@
 #ifndef PARSER_ANALYZER_INDENTANALYZE_STATES_H_
 #define PARSER_ANALYZER_INDENTANALYZE_STATES_H_
 
-enum State
+enum class State
 {
     Alg,
     UnknownIndent,

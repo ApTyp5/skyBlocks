@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 
 set(Stubs Stubs/Stubs.h)
-set(Error Error/Error.h)
+set(Errors Errors/Error.h)
 set(JsonFormer
         JsonFormer/JsonFormer.h JsonFormer/JsonFormer.cpp
         )
@@ -61,6 +61,9 @@ set(SchedulerFiles
         Scheduler/SchedulerCreator.h
         Scheduler/AScheduler.h
         Scheduler/EmborderScheduler/EmborderScheduler.cpp Scheduler/EmborderScheduler/EmborderScheduler.h
+        Scheduler/Figure/FContinue.h Scheduler/Figure/FContinue.cpp
+        Scheduler/Figure/Primitives/Point.h
+        Scheduler/Figure/Primitives/Rect.h
         )
 set(MockFiles
         Mocks/MockScheduler.h
@@ -78,14 +81,13 @@ set(TestFiles
         )
 set(AllFiles
         ${Stubs}
-        ${Error}
+        ${Errors}
         ${JsonFormer}
         ${ToolFiles}
         ${AnalyzersFiles}
         ${SchedulerFiles}
         ${ParserFiles}
         ${TestFiles}
-        Scheduler/Figure/FContinue.h
         )
 
 find_package(GTest REQUIRED)
@@ -99,14 +101,14 @@ target_link_libraries(parserTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 add_executable(analyzerTest tests/analyzerTest.cpp)
 target_link_libraries(analyzerTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 
-add_executable(schedulerTest tests/schedulerTest.cpp tests/schedulerTest.cpp)
+add_executable(schedulerTest tests/schedulerTest.cpp)
 target_link_libraries(schedulerTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 
 add_executable(parserToolsTest tests/parserToolsTest.cpp)
 target_link_libraries(parserToolsTest ${PROJECT_NAME} -lgtest -lgmock pthread)
 
 enable_testing()
-add_test(parser_testing parserTest)
-add_test(parser_testing analyzerTest)
-add_test(parser_testing schedulerTest)
-add_test(parser_testing parserToolsTest)
+add_test(ParserTest parserTest)
+add_test(ParserToolsTest parserToolsTest)
+add_test(AnalyzerTest analyzerTest)
+add_test(SchedulerTest schedulerTest)

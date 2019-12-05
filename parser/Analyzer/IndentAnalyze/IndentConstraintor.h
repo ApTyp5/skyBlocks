@@ -5,7 +5,7 @@
 #ifndef PARSER_ANALYZER_INDENTCONSTRAINTOR_H_
 #define PARSER_ANALYZER_INDENTCONSTRAINTOR_H_
 
-#include "../../Error/Error.h"
+#include "../../Errors/Error.h"
 #include "../../Tools/ptrVector.h"
 #include "../AConstraintor.h"
 

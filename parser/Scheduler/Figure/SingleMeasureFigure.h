@@ -17,6 +17,10 @@ public:
         AFigure(std::move(text), page), begin(begin), end(end)
     {}
 
+    Point getBegin() const
+    { return begin; }
+    Point getEnd() const
+    { return end; }
 protected:
     Point begin, end;
 

@@ -9,11 +9,13 @@
 
 #include "../Parser.h"
 
-class MockParser : public Parser {
- public:
-    jsonString parse(std::string text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler) override;
-
-  MOCK_METHOD(jsonString, formJson, (ptrVector<AFigure> & ), (override));
+class MockParser: public Parser
+{
+public:
+    //MOCK_METHOD(jsonString, parse, (std::string text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler), (override));
+    MOCK_METHOD(jsonString, parseFunc, (std::string
+        text, std::string
+        name, AAnalyzeFactory * analyzeFactory, AScheduler * scheduler), (override));
 };
 
 #endif //PARSER_MOCKS_MOCKPARSER_H_

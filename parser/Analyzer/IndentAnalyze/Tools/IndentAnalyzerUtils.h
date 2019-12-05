@@ -20,11 +20,11 @@ public:
                                        const std::string &par2 = "")
     {
         switch (state) {
-            case Alg:return new PAlgorithm(par1);
-            case Follow: return new PFollow(par1);
-            case Fork: return new PFork(par1);
-            case Cycle: return new PCycle(par1, par2);
-            case UnknownIndent:throw std::exception();
+            case State::Alg:return new PAlgorithm(par1);
+            case State::Follow: return new PFollow(par1);
+            case State::Fork: return new PFork(par1);
+            case State::Cycle: return new PCycle(par1, par2);
+            case State::UnknownIndent:throw std::exception();
         }
     };
 

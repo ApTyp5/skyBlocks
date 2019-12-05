@@ -12,6 +12,7 @@
 #include "../../Analyzer/Primitive/PFork.h"
 #include "../../Analyzer/Primitive/PFunc.h"
 #include "../Figure/FigureTypes.h"
+#include "../../Scheduler/Figure/Primitives/Rect.h"
 
 class EmborderScheduler: public AScheduler
 {

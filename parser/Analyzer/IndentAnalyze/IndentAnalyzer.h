@@ -50,11 +50,12 @@ private:
     ptrVector<Memory> longMemory;
     std::unique_ptr<BaseAlphabet> AlphaBet;
 
-    friend class FixtureIndentAnalyzer;
-    friend class FixtureIndentAnalyzer_get_current_indent_Test;
-    friend class FixtureIndentAnalyzer_ret_indent_Test;
-    friend class FixtureIndentAnalyzer_merge_back_mem_Test;
-    friend class FixtureIndentAnalyzer_try_add_pfollow_positive_Test;
+    friend class FIndentAnalyzer;
+    friend class FIndentAnalyzer_get_current_indent_Test;
+    friend class FIndentAnalyzer_ret_indent_Test;
+    friend class FIndentAnalyzer_merge_back_mem_Test;
+    friend class FIndentAnalyzer_try_add_pfollow_positive_Test;
+    friend class FAnalyzer_try_add_pfollow_positive_Test;
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZER_H_

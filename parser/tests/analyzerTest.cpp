@@ -102,7 +102,7 @@ TEST_F(FIndentAnalyzer, try_add_pfollow_positive)
 
 TEST_F(FIndentAnalyzer, merge_back_mem)
 {
-    analyzer->longMemory.push_back(new Memory(Fork, new PFork("text")));
+    analyzer->longMemory.push_back(new Memory(State::Fork, new PFork("text")));
     EXPECT_EQ(2, analyzer->longMemory.size());
     analyzer->mergeBackMemory();
     EXPECT_EQ(1, analyzer->longMemory.size());
@@ -119,13 +119,13 @@ TEST_F(FIndentAnalyzer, ret_indent)
 TEST_F(FIndentAnalyzer, get_current_indent)
 {
     analyzer->indent = "qwer";
-    analyzer->state_ = Cycle;
+    analyzer->state_ = State::Cycle;
     EXPECT_STREQ("qwer", analyzer->getCurrentIndent().data());
 
-    analyzer->state_ = Fork;
+    analyzer->state_ = State::Fork;
     EXPECT_STREQ("qwer", analyzer->getCurrentIndent().data());
 
-    analyzer->state_ = Follow;
+    analyzer->state_ = State::Follow;
     analyzer->longMemory.back()->setBodyIndent("asdf");
     EXPECT_STREQ("asdf", analyzer->getCurrentIndent().data());
 }
@@ -233,13 +233,14 @@ TEST(analyzer_utils, skip_symbols)
 
 TEST(memory, merge_positive)
 {
-    auto memory = new Memory(Alg, new PAlgorithm("text"));
-    auto merged_memory = new Memory(Fork, new PFork("text"));
+    auto memory = new Memory(State::Alg, new PAlgorithm("text"));
+    auto merged_memory = new Memory(State::Fork, new PFork("text"));
 
     EXPECT_EQ(0, memory->getComplexPrimitive()->childrenNum());
     memory->merge(merged_memory);
     EXPECT_EQ(1, memory->getComplexPrimitive()->childrenNum());
     EXPECT_EQ(nullptr, merged_memory);
+
     delete memory;
 }
 

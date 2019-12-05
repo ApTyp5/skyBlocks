@@ -6,7 +6,7 @@
 
 jsonString Parser::parse(std::string text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler)
 {
-    std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor(errors));
+/*    std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor(errors));
     std::unique_ptr<AAnalyzer> analyzer(analyzeFactory->createAnalyzer(errors));
 
     size_t line_num;
@@ -14,6 +14,19 @@ jsonString Parser::parse(std::string text, AAnalyzeFactory *analyzeFactory, ASch
     std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(constrainted_text, line_num));
     ptrVector<AFigure> figures = scheduler->schedule(algorithm);
     jsonString output = formJson(figures);
+    return algorithm->toString();*/
+    AConstraintor *constraintor(analyzeFactory->createConstraintor(errors));
+    AAnalyzer *analyzer(analyzeFactory->createAnalyzer(errors));
+
+    size_t line_num;
+    std::string constrainted_text = constraintor->findMain(line_num, std::move(text));
+    std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(constrainted_text, line_num));
+    ptrVector<AFigure> figures = scheduler->schedule(algorithm);
+    jsonString output = formJson(figures);
+
+    delete constraintor;
+    delete analyzer;
+
     return algorithm->toString();
 }
 

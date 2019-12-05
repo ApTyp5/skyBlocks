@@ -12,21 +12,11 @@
 class FContinue: public DoubleMeasureFigure
 {
 public:
-    explicit FContinue(Rect rect, size_t page = 1)
-        :
-        DoubleMeasureFigure(rect, std::string(name), page)
-    {
-        if (counter % 2) {
-            counter = 0;
-            ++*name;
-        }
-        else {
-            counter++;
-        }
-    }
+    explicit FContinue(Rect rect, size_t page = 1);
 
     static void reset();
-    jsonString acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer) override;
+    void acceptJsonFormer(JsonFormer &jFormer) override;
+    std::string figureType() const override;
 
 private:
 

@@ -6,7 +6,7 @@
 #define PARSER_ANALYZER_ACCUMULATEERRORS_H_
 
 #include "../Tools/ptrVector.h"
-#include "../Error/Error.h"
+#include "../Errors/Error.h"
 
 class AccumulateErrors
 {

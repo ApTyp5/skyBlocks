@@ -243,6 +243,7 @@ TEST_F(FEmborderScheduler, pushForkLines)
     EXPECT_EQ(leftVert->end.x, left);
     EXPECT_EQ(leftVert->end.y, forkRect.center.y + forkRect.size.h / 2 + meta.bs());
 }
+
 TEST_F(FEmborderScheduler, pushSpaceLine)
 {
     EXPECT_EQ(0, scheduler->figures.size());

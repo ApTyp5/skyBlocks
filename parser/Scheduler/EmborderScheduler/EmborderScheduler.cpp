@@ -129,7 +129,7 @@ void EmborderScheduler::initNewPage(size_t page)
 }
 void EmborderScheduler::addFigure(FigureType type, const std::string &innerText)
 {
-    assert(type != Fork);
+    assert(type != FigureType::Fork);
     std::string text(innerText);
     sRect widthFitRect = rectXFitSize(text, true);
 

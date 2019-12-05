@@ -15,9 +15,13 @@ public:
         SingleMeasureFigure(begin, end, std::move(text), page)
     {}
 
-    jsonString acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer) override
+    void acceptJsonFormer(JsonFormer &jFormer) override
     {
-        return jFormer.addToTree(tree, *this);
+        return jFormer.addToJson(*this);
+    }
+    std::string figureType() const override
+    {
+        return std::string("arrow");
     }
 };
 

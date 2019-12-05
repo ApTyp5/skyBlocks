@@ -360,7 +360,7 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/Primitive/PFunc.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Error/Error.h">
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Errors/Error.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FEmborderScheduler.h">
@@ -430,6 +430,12 @@
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FigureTypes.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/Primitives/Point.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/Primitives/Rect.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/SingleMeasureFigure.h">

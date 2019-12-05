@@ -21,11 +21,11 @@ public:
     static AFigure *createDMF(FigureType type, Rect rect, std::string text, size_t page = 1)
     {
         switch (type) {
-            case BegCycle: return new FBegCycle(rect, std::move(text), page);
-            case EndCycle: return new FEndCycle(rect, std::move(text), page);
-            case Follow: return new FFollow(rect, std::move(text), page);
-            case Fork: return new FFork(rect, std::move(text), page);
-            case Func: return new FFunc(rect, std::move(text), page);
+            case FigureType::BegCycle: return new FBegCycle(rect, std::move(text), page);
+            case FigureType::EndCycle: return new FEndCycle(rect, std::move(text), page);
+            case FigureType::Follow: return new FFollow(rect, std::move(text), page);
+            case FigureType::Fork: return new FFork(rect, std::move(text), page);
+            case FigureType::Func: return new FFunc(rect, std::move(text), page);
             default: throw std::exception();
         }
     }

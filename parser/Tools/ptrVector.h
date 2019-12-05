@@ -27,10 +27,10 @@ public:
         buffer.clear();
     }
 
-    ptrVector(ptrVector<T> &ptr_vector)
+    ptrVector(const ptrVector<T> &ptr_vector)
     {
         for (auto &i : ptr_vector) {
-            buffer.push_back(new T(**i));
+            buffer.push_back(new T(*i));
         }
     }
 
@@ -121,6 +121,23 @@ public:
     typename std::vector<T *>::const_iterator cend() const
     {
         return buffer.cend();
+    }
+
+    bool operator==(const ptrVector<T> &ptrVector) const
+    {
+        if (size() != ptrVector.size())
+            return false;
+
+        for (size_t i = 0; i < size(); i++)
+            if (*operator[](i) != *ptrVector[i])
+                return false;
+
+        return true;
+    }
+
+    bool operator!=(const ptrVector<T> &ptrVector) const
+    {
+        return !operator==(ptrVector);
     }
 };
 #endif //PARSER__PTRVECTOR_H_

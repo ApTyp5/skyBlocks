@@ -14,7 +14,25 @@ void FContinue::reset()
     counter = 0;
 }
 
-jsonString FContinue::acceptJsonFormer(boost::property_tree::ptree &tree, JsonFormer &jFormer)
+void FContinue::acceptJsonFormer(JsonFormer &jFormer)
 {
-    return jFormer.addToTree(tree, *this);
+    jFormer.addToJson(*this);
+}
+
+std::string FContinue::figureType() const
+{
+    return std::string("continue");
+}
+
+FContinue::FContinue(Rect rect, size_t page)
+    :
+    DoubleMeasureFigure(rect, std::string(name), page)
+{
+    if (counter % 2) {
+        counter = 0;
+        ++*name;
+    }
+    else {
+        counter++;
+    }
 }

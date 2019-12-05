@@ -33,6 +33,7 @@ public:
     explicit AScheduler(const Meta &meta)
         : meta(meta)
     {}
+
     virtual ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm) = 0;
 
     virtual bool schedulePrimitive(const PAlgorithm &primitive) = 0;
