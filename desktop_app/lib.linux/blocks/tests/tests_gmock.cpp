@@ -1,8 +1,8 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
-#include "blocks/Algorithm.h"
-#include "blocks/Block.h"
+#include "Algorithm.h"
+#include "Block.h"
 
 using ::testing::AtLeast;
 using ::testing::DoAll;
@@ -21,7 +21,7 @@ TEST(BlockTest, AlgorithmDrawTest) {
     algorithm.Draw();
 }
 
-class MockRequest : public ConcreteRequest {
-public:
-    MOCK_METHOD0(GetRequestParams, void());
-};
+int main(int argc, char** argv) {
+    ::testing::InitGoogleMock(&argc, argv);
+    return RUN_ALL_TESTS();
+}

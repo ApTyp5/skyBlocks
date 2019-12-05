@@ -5,10 +5,10 @@
 
 class FuncBlock : public Block {
 public:
-    FuncBlock();
-    ~FuncBlock();
+    FuncBlock() {}
+    ~FuncBlock() override {}
 
-    void Draw() override;
+    void Draw() override {}
 };
 
 #endif //DESKTOP_APP_FUNCBLOCK_H

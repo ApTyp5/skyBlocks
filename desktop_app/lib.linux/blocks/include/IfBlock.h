@@ -5,10 +5,10 @@
 
 class IfBlock : public Block {
 public:
-    IfBlock();
-    ~IfBlock();
+    IfBlock() {}
+    ~IfBlock() {};
 
-    void Draw() override;
+    void Draw() override {}
 };
 
 #endif //DESKTOP_APP_IFBLOCK_H

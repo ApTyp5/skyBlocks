@@ -5,10 +5,10 @@
 
 class IOBlock : public Block {
 public:
-    IOBlock();
-    ~IOBlock();
+    IOBlock() {}
+    ~IOBlock() {}
 
-    void Draw() override;
+    void Draw() override {}
 };
 
 #endif //DESKTOP_APP_IOBLOCK_H

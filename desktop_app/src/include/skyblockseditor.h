@@ -1,6 +1,8 @@
 #ifndef SKYBLOCKSEDITOR_H
 #define SKYBLOCKSEDITOR_H
 
+#include "BlockFactory.h"
+
 #include <QMainWindow>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
@@ -19,11 +21,13 @@ public:
 
 public slots:
     void sendInformation();
-    void putMessage(QString msg="OK");
+    void putMessage();
 
 private:
     Ui::SkyBlocksEditor *ui;
     QNetworkAccessManager networkManager;
     QNetworkReply *reply;
+
+    BlockFactory blockFactory;
 };
 #endif // SKYBLOCKSEDITOR_H

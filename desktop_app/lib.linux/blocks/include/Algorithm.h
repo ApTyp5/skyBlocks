@@ -7,7 +7,10 @@
 class Algorithm : public Block {
 public:
     Algorithm() = default;
-    ~Algorithm() = default;
+    ~Algorithm() override {
+        for (auto block : blocks)
+            delete(block);
+    }
 
     void Draw() override;
     void Add(Block *block);
