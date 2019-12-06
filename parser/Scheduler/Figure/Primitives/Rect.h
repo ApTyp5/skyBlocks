@@ -9,8 +9,8 @@
 
 struct sRect
 {
-    size_t w, h;
-    sRect operator*=(size_t num)
+    double w, h;
+    sRect operator*=(double num)
     {
         w *= num;
         h *= num;

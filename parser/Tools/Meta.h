@@ -10,23 +10,23 @@
 class Meta
 {
 public:
-    size_t pw() const
+    double pw() const
     { return 210; }
-    size_t ph() const
+    double ph() const
     { return 297; }
-    size_t xm() const
-    { return 3; }
-    size_t ym() const
-    { return 4; }
-    size_t xp() const
-    { return 5; }
-    size_t yp() const
-    { return 2; }
-    size_t lh() const
-    { return 3; }
-    size_t sw() const
-    { return 1; }
-    size_t bs() const
+    double xp() const
+    { return 0; }
+    double yp() const
+    { return 0; }
+    double xm() const
+    { return 0; }
+    double ym() const
+    { return 0; }
+    double lh() const
+    { return 11; }
+    double sw() const
+    { return 7; }
+    double bs() const
     { return 5; }
 };
 

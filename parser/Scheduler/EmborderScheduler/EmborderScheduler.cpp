@@ -19,7 +19,6 @@
 #include "../../Tools/SizedLiner.h"
 #include "../Figure/FContinue.h"
 #include "../Figure/FigureCreator.h"
-#include "../Figure/SingleMeasureFigure.h"
 #include "../Figure/FBegEnd.h"
 
 ptrVector<AFigure> EmborderScheduler::schedule(const std::unique_ptr<ComplexPrimitive> &primitives)
@@ -27,12 +26,15 @@ ptrVector<AFigure> EmborderScheduler::schedule(const std::unique_ptr<ComplexPrim
     initNewPage(1);
     primitives->acceptScheduler(*this);
 
+    //Удаляем все линии с конца
     while (figures.size() > 0 && dynamic_cast<SingleMeasureFigure *>(figures.back()))
         delete figures.pop_back();
 
+    // Преобразуем начальный блок следования в блок начала
     if (dynamic_cast<FFollow *>(figures[0]))
         figures[0] = (FBegEnd *) (figures[0]);
 
+    // Преобразуем конечный блок следования в блок конца
     if (dynamic_cast<FFollow *>(figures.back()))
         figures.back() = (FBegEnd *) (figures.back());
 
@@ -61,26 +63,26 @@ bool EmborderScheduler::schedulePrimitive(const PCycle &pCycle)
 }
 bool EmborderScheduler::schedulePrimitive(const PFunc &pFunc)
 {
-    addFigure(FigureType::Func, pFunc.getInnerText());
+    addFigure(FigureType::Func, pFunc.getName() + pFunc.getInnerText());
     return true;
 }
 bool EmborderScheduler::schedulePrimitive(const PFork &pFork)
 {
-    size_t negX = (curState.x() - meta.xm()) / 2;
-    size_t posX = curState.x() + negX;
+    double negX = (curState.x() + meta.xp()) / 2;
+    double posX = 2 * curState.x() - negX;
     addFFork(pFork.getInnerText(), negX, posX);
     State old = getCurState();
 
     State negState(old);
     negState.setX(negX);
-    negState.setW(old.width() / 2 - meta.xp() / 2);
+    negState.setW(old.width() / 2 - meta.xm() / 2);
     setCurState(negState);
     for (const auto &i : pFork.getChildren())
         i->acceptScheduler(*this);
 
     State posState(old);
     posState.setX(negX);
-    posState.setW(posState.width() / 2 - meta.xp() / 2);
+    posState.setW(posState.width() / 2 - meta.xm() / 2);
     setCurState(posState);
     for (const auto &i : pFork.getElseChildren())
         i->acceptScheduler(*this);
@@ -94,12 +96,12 @@ bool EmborderScheduler::schedulePrimitive(const PFork &pFork)
 }
 sRect EmborderScheduler::rectXFitSize(std::string &text, bool withMargin)
 {
+    size_t lineNum, maxWidth;
     std::string line;
     std::string output;
     SizedLiner liner(text);
-    size_t lineNum, maxWidth;
     lineNum = maxWidth = 0;
-    size_t neededLineWidth = curState.width();
+    size_t neededLineWidth = curState.width() / meta.sw();
 
     while (liner.getLine(line, neededLineWidth, true)) {
         lineNum += 1;
@@ -111,8 +113,8 @@ sRect EmborderScheduler::rectXFitSize(std::string &text, bool withMargin)
     text = output;
     sRect outRect{maxWidth * meta.sw(), lineNum * meta.lh()};
     if (withMargin) {
-        outRect.w += 2 * meta.xm();
-        outRect.h += 2 * meta.ym();
+        outRect.w += 2 * meta.xp();
+        outRect.h += 2 * meta.yp();
     }
 
     return outRect;
@@ -125,7 +127,7 @@ sRect EmborderScheduler::continueBlockSize()
 }
 void EmborderScheduler::initNewPage(size_t page)
 {
-    setCurState(State(meta.pw() / 2, meta.yp(), meta.pw() - meta.xp() * 2, page));
+    setCurState(State(meta.pw() / 2, meta.ym(), meta.pw() - meta.xm() * 2, page));
 }
 void EmborderScheduler::addFigure(FigureType type, const std::string &innerText)
 {
@@ -135,10 +137,10 @@ void EmborderScheduler::addFigure(FigureType type, const std::string &innerText)
 
     checkPageEnd(widthFitRect);
     Rect figRect{curState.x(), curState.y() + widthFitRect.h / 2, widthFitRect};
-    pushFigure(FigureCreator::createDMF(type, figRect, text, curState.page()));
+    pushFigure(type, figRect, text, curState.page());
     pushSpaceLine();
 }
-void EmborderScheduler::addFFork(const std::string &innerText, size_t leftX, size_t rightX)
+void EmborderScheduler::addFFork(const std::string &innerText, double leftX, double rightX)
 {
     std::string text(innerText);
     sRect widthFitRect = rectXFitSize(text, false);
@@ -147,13 +149,13 @@ void EmborderScheduler::addFFork(const std::string &innerText, size_t leftX, siz
 
     checkPageEnd(widthFitRect);
     Rect forkRect{curState.x(), curState.y() + widthFitRect.h / 2, widthFitRect};
-    pushFigure(FigureCreator::createDMF(FigureType::Fork, forkRect, text, curState.page()));
+    pushFigure(FigureType::Fork, forkRect, text, curState.page());
     pushForkLines(forkRect, leftX, rightX);
 }
-void EmborderScheduler::pushForkLines(Rect forkRect, size_t leftX, size_t rightX)
+void EmborderScheduler::pushForkLines(Rect forkRect, double leftX, double rightX)
 {
-    size_t halfWidth = forkRect.size.w / 2;
-    size_t leftBorder = forkRect.center.x - halfWidth;
+    double halfWidth = forkRect.size.w / 2;
+    double leftBorder = forkRect.center.x - halfWidth;
 
     Point hrombusLeftAngle{leftBorder, forkRect.center.y};
     Point hrombusRightAngle{leftBorder + forkRect.size.w, forkRect.center.y};
@@ -190,7 +192,7 @@ void EmborderScheduler::connectForkParts(State negState, State posState)
 
     pushHorizLine(curState.y(), negState.x(), posState.x(), posState.page());
 }
-bool EmborderScheduler::isYFit(size_t h)
+bool EmborderScheduler::isYFit(double h)
 {
     size_t neededSpace = curState.y() + h + meta.bs() + continueBlockSize().h;
     return neededSpace <= getBotBorder();
@@ -204,23 +206,25 @@ void EmborderScheduler::checkPageEnd(sRect widthFitRect)
     if (!isYFit(widthFitRect))
         gotoPage(curState.page() + 1);
 }
-void EmborderScheduler::pushHorizLine(size_t y, size_t xLeft, size_t xRight, size_t page, std::string text)
+void EmborderScheduler::pushHorizLine(double y, double xLeft, double xRight, size_t page, std::string text)
 {
     figures.push_back(new FLine(Point{xLeft, y}, Point{xRight, y}, std::move(text), page));
 }
-void EmborderScheduler::pushVerticalLine(size_t x, size_t yTop, size_t yBot, size_t page, std::string text)
+void EmborderScheduler::pushVerticalLine(double x, double yTop, double yBot, size_t page, std::string text)
 {
     figures.push_back(new FLine(Point{x, yTop}, Point{x, yBot}, std::move(text), page));
     curState.setY(yBot);
 }
-void EmborderScheduler::pushFigure(AFigure *newFigure)
+void EmborderScheduler::pushFigure(FigureType type, Rect rect, std::string text, size_t page)
 {
-    figures.push_back(newFigure);
+    figures.push_back(FigureCreator::createDMF(type, rect, std::move(text), page));
+    curState.setY(curState.y() + rect.size.h);
 }
 void EmborderScheduler::pushSpaceLine(std::string text)
 {// Предполагается, что размеры проверены заранее
     figures.push_back(new FLine(Point{curState.x(), curState.y()},
-                                Point{curState.x(), curState.y() + meta.bs()}, std::move(text), curState.page()));
+                                Point{curState.x(), curState.y() + meta.bs()},
+                                std::move(text), curState.page()));
 
     curState.setY(curState.y() + meta.bs());
 }
@@ -242,45 +246,45 @@ void EmborderScheduler::setCurState(State curState)
 void EmborderScheduler::gotoPage(size_t page)
 {
     pushContinueFigure();
-    curState.setY(meta.yp());
+    curState.setY(meta.ym());
     curState.setPage(page);
     pushContinueFigure();
     pushSpaceLine();
 }
 void EmborderScheduler::addMargin(sRect &rect)
 {
-    rect.w += 2 * meta.xm();
-    rect.h += 2 * meta.ym();
+    rect.w += 2 * meta.xp();
+    rect.h += 2 * meta.yp();
 }
-size_t EmborderScheduler::State::x() const
+double EmborderScheduler::State::x() const
 {
     return _x;
 }
-void EmborderScheduler::State::setX(size_t x)
+void EmborderScheduler::State::setX(double x)
 {
     State::_x = x;
 }
-size_t EmborderScheduler::State::y() const
+double EmborderScheduler::State::y() const
 {
     return _y;
 }
-void EmborderScheduler::State::setY(size_t y)
+void EmborderScheduler::State::setY(double y)
 {
     State::_y = y;
 }
-size_t EmborderScheduler::State::width() const
+double EmborderScheduler::State::width() const
 {
     return _w;
 }
-void EmborderScheduler::State::setW(size_t w)
+void EmborderScheduler::State::setW(double w)
 {
     State::_w = w;
 }
-size_t EmborderScheduler::State::page() const
+double EmborderScheduler::State::page() const
 {
     return _page;
 }
-void EmborderScheduler::State::setPage(size_t page)
+void EmborderScheduler::State::setPage(double page)
 {
     State::_page = page;
 }

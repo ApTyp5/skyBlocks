@@ -24,7 +24,7 @@ public:
 
     bool schedulePrimitive(const PAlgorithm &pAlgorithm) override;
     bool schedulePrimitive(const PCycle &pCycle) override;
-    bool schedulePrimitive(const PFollow &primitive) override;
+    bool schedulePrimitive(const PFollow &pFollow) override;
     bool schedulePrimitive(const PFork &pFork) override;
     bool schedulePrimitive(const PFunc &pFunc) override;
 
@@ -32,20 +32,20 @@ protected:
     class State
     {
         // cur bottom x, cur bottom y, cur width
-        size_t _x, _y, _w;
+        double _x, _y, _w;
         // cur page num
-        size_t _page;
+        double _page;
 
     public:
         explicit State(size_t x = 0, size_t y = 0, size_t w = 0, size_t page = 0);
-        size_t x() const;
-        size_t y() const;
-        size_t width() const;
-        size_t page() const;
-        void setX(size_t x);
-        void setY(size_t y);
-        void setW(size_t w);
-        void setPage(size_t page);
+        double x() const;
+        double y() const;
+        double width() const;
+        double page() const;
+        void setX(double x);
+        void setY(double y);
+        void setW(double w);
+        void setPage(double page);
     };
 
     State curState;
@@ -55,19 +55,19 @@ protected:
 protected:
     // add* - Добавление с проверкой размеров
     void addFigure(FigureType type, const std::string &innerText);
-    void addFFork(const std::string &innerText, size_t leftX, size_t rightX);
+    void addFFork(const std::string &innerText, double leftX, double rightX);
 
     // push* - Добавление
-    void pushFigure(AFigure *newFigure);
+    void pushFigure(FigureType type, Rect rect, std::string text, size_t page);
     void pushSpaceLine(std::string text = "");
-    void pushForkLines(Rect forkRect, size_t leftX, size_t rightX);
-    void pushHorizLine(size_t y, size_t xLeft, size_t xRight, size_t page = 1, std::string text = "");
-    void pushVerticalLine(size_t x, size_t yTop, size_t yBot, size_t page = 1, std::string text = "");
+    void pushForkLines(Rect forkRect, double leftX, double rightX);
+    void pushHorizLine(double y, double xLeft, double xRight, size_t page = 1, std::string text = "");
+    void pushVerticalLine(double x, double yTop, double yBot, size_t page = 1, std::string text = "");
     void pushContinueFigure();
 
     // Add ones
     bool isYFit(sRect rect);
-    bool isYFit(size_t h = 0);
+    bool isYFit(double h = 0);
     void initNewPage(size_t page = 1);
     void checkPageEnd(sRect widthFitRect);
     void connectForkParts(State negState, State posState);
@@ -94,7 +94,6 @@ protected:
     friend class FEmborderScheduler_addForkCommon_Test;
     friend class FEmborderScheduler_addForkBadWidth_Test;
     friend class FEmborderScheduler_addForkTooTight_Test;
-
 };
 
 #endif //PARSER_SCHEDULER_COMMONSCHEDULER_H_

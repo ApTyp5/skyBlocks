@@ -47,29 +47,9 @@ protected:
     const Meta &meta;
 
 protected:
-    virtual size_t BlockWidth(const std::string &text)
+    double getBotBorder()
     {
-        return meta.sw() * (meta.xp() + text.size());
-    }
-
-    virtual size_t BlockHeight(size_t lineNum)
-    {
-        return meta.lh() * (meta.yp() + lineNum);
-    }
-
-    size_t getBotBorder()
-    {
-        return meta.ph() - meta.ym();
-    }
-
-    size_t getLeftBorder()
-    {
-        return meta.xm();
-    }
-
-    size_t getRightBorder()
-    {
-        return meta.pw() - meta.xm();
+        return meta.ph() - meta.yp();
     }
 
     friend class FEmborderScheduler_pushContinueFigure_Test;

@@ -6,13 +6,15 @@
 #define POINT_H
 
 #include <ostream>
+#include <cmath>
 
 struct Point
 {
-    size_t x, y;
+    double x, y;
+    static constexpr double eps = 1e-3;
     bool operator==(Point p) const
     {
-        return (x == p.x && y == p.y);
+        return (fabs(x - p.x) < eps && fabs(y - p.y) < eps);
     }
     std::ostream &operator<<(std::ostream &out)
     {

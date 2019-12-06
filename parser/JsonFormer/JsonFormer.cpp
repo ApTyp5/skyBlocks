@@ -15,139 +15,130 @@
 #include "../Scheduler/Figure/FFunc.h"
 #include "../Errors/ParseError.h"
 
-jsonString JsonFormer::formJson(const ptrVector<JsonFormable> &jf)
+void JsonFormer::addSection(const ptrVector<JsonFormable> &jf, const std::string &section)
 {
-    tree.clear();
-    std::ostringstream output;
-
+    children.clear();
     for (const auto &i : jf) {
         i->acceptJsonFormer(*this);
     }
 
-    if (tree.empty())
-        return output.str();
-
-    boost::property_tree::write_json(output, tree);
-    return output.str();
+    if (!children.empty())
+        tree.add_child(section, children);
 }
-jsonString JsonFormer::formJson(const ptrVector<AFigure> &jf)
+void JsonFormer::addFigures(const ptrVector<AFigure> &figures)
 {
-    return formJson((const ptrVector<JsonFormable> &) jf);
+    addSection((const ptrVector<JsonFormable> &) figures, "figure");
 }
-jsonString JsonFormer::formJson(const ptrVector<ParseError> &jf)
+void JsonFormer::addErrors(const ptrVector<ParseError> &jf)
 {
-    return formJson((const ptrVector<JsonFormable> &) jf);
+    addSection((const ptrVector<JsonFormable> &) jf, "error");
 }
-void JsonFormer::addAloneProperty(const std::string &path, const std::string &name)
+void JsonFormer::childAddProperty(const std::string &path, const std::string &name)
 {
-    tree.put(path, name);
+    child.add(path, name);
 }
-void JsonFormer::addGroupProperty(const std::string &path, const std::string &name)
-{
-    tree.add(path, name);
-}
-
-JsonFormer::JsonFormer(int id)
-    : id(id)
+JsonFormer::JsonFormer()
 {}
-std::string JsonFormer::newFigureTemplat()
+void JsonFormer::addAFigure(const AFigure &aFigure)
 {
-    return "figure." + std::to_string(id++) + ".";
+    childAddProperty(std::string("text"), aFigure.getText());
+    childAddProperty(std::string("page"), std::to_string(aFigure.getPage()));
+    childAddProperty(std::string("type"), aFigure.figureType());
 }
-std::string JsonFormer::newErrorTemplat()
+void JsonFormer::addSMFigure(const SingleMeasureFigure &smFigure)
 {
-    return "error." + std::to_string(id++) + ".";
+    childAddProperty(std::string("begin.x"), std::to_string(smFigure.getBegin().x));
+    childAddProperty(std::string("begin.y"), std::to_string(smFigure.getBegin().y));
+    childAddProperty(std::string("end.x"), std::to_string(smFigure.getEnd().x));
+    childAddProperty(std::string("end.y"), std::to_string(smFigure.getEnd().y));
+    addAFigure(smFigure);
 }
-void JsonFormer::addAFigure(const std::string &templat, const AFigure &aFigure)
+void JsonFormer::addDMFigure(const DoubleMeasureFigure &dmFigure)
 {
-    addGroupProperty(templat + std::string("text"), aFigure.getText());
-    addGroupProperty(templat + std::string("page"), std::to_string(aFigure.getPage()));
-    addGroupProperty(templat + std::string("type"), aFigure.figureType());
-}
-void JsonFormer::addSMFigure(const std::string &templat, const SingleMeasureFigure &smFigure)
-{
-    addGroupProperty(templat + std::string("begin.x"), std::to_string(smFigure.getBegin().x));
-    addGroupProperty(templat + std::string("begin.y"), std::to_string(smFigure.getBegin().y));
-    addGroupProperty(templat + std::string("end.x"), std::to_string(smFigure.getEnd().x));
-    addGroupProperty(templat + std::string("end.y"), std::to_string(smFigure.getEnd().y));
-    addAFigure(templat, smFigure);
-}
-void JsonFormer::addDMFigure(const std::string &templat, const DoubleMeasureFigure &dmFigure)
-{
-    addGroupProperty(templat + std::string("size.width"), std::to_string(dmFigure.getWidth()));
-    addGroupProperty(templat + std::string("size.height"), std::to_string(dmFigure.getHeight()));
-    addGroupProperty(templat + std::string("center.x"), std::to_string(dmFigure.getCenter().x));
-    addGroupProperty(templat + std::string("center.y"), std::to_string(dmFigure.getCenter().y));
-    addAFigure(templat, dmFigure);
+    childAddProperty(std::string("size.width"), std::to_string(dmFigure.getWidth()));
+    childAddProperty(std::string("size.height"), std::to_string(dmFigure.getHeight()));
+    childAddProperty(std::string("center.x"), std::to_string(dmFigure.getCenter().x));
+    childAddProperty(std::string("center.y"), std::to_string(dmFigure.getCenter().y));
+    addAFigure(dmFigure);
 }
 
 void JsonFormer::addToJson(const FLine &fLine)
 {
-    initFigureTemplat();
-    addSMFigure(templat, fLine);
+    child.clear();
+    addSMFigure(fLine);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const FArrow &fArrow)
 {
-    initFigureTemplat();
-    addSMFigure(templat, fArrow);
+    child.clear();
+    addSMFigure(fArrow);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const FBegCycle &fBegCycle)
 {
-    initFigureTemplat();
-    addDMFigure(templat, fBegCycle);
+    child.clear();
+    addDMFigure(fBegCycle);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const FEndCycle &fEndCycle)
 {
-    initFigureTemplat();
-    addDMFigure(templat, fEndCycle);
+    child.clear();
+    addDMFigure(fEndCycle);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const FBegEnd &fBegEnd)
 {
-    initFigureTemplat();
-    addDMFigure(templat, fBegEnd);
+    child.clear();
+    addDMFigure(fBegEnd);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const FContinue &fContinue)
 {
-    initFigureTemplat();
-    addDMFigure(templat, fContinue);
+    child.clear();
+    addDMFigure(fContinue);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const FFollow &fFollow)
 {
-    initFigureTemplat();
-    addDMFigure(templat, fFollow);
+    child.clear();
+    addDMFigure(fFollow);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const FFork &fFork)
 {
-    initFigureTemplat();
-    addDMFigure(templat, fFork);
+    child.clear();
+    addDMFigure(fFork);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const FFunc &fFunc)
 {
-    initFigureTemplat();
-    addDMFigure(templat, fFunc);
-}
-void JsonFormer::initFigureTemplat()
-{
-    templat = newFigureTemplat();
-}
-void JsonFormer::initErrorTemplat()
-{
-    templat = newErrorTemplat();
+    child.clear();
+    addDMFigure(fFunc);
+    children.push_back(std::make_pair("", child));
 }
 void JsonFormer::addToJson(const ParseError &error)
 {
-    initErrorTemplat();
-    addGroupProperty(templat + std::string("row"), std::to_string(error.getRow()));
-    addGroupProperty(templat + std::string("col"), std::to_string(error.getCol()));
-    addGroupProperty(templat + std::string("text"), error.getMessage());
+    child.clear();
+    childAddProperty(std::string("row"), std::to_string(error.getRow()));
+    childAddProperty(std::string("col"), std::to_string(error.getCol()));
+    childAddProperty(std::string("text"), error.getMessage());
+    children.push_back(std::make_pair("", child));
 }
+jsonString JsonFormer::getJson()
+{
+    std::ostringstream output;
+    boost::property_tree::write_json(output, tree);
+    return output.str();
+}
+
+
 /*jsonString JsonFormer::formJson(const ptrVector<AFigure> &figures)
 {
-    return formJson(dynamic_cast<const ptrVector<JsonFormable> &>(figures));
+    return addErrors(dynamic_cast<const ptrVector<JsonFormable> &>(figures));
 }
-jsonString JsonFormer::formJson(const ptrVector<ParseError> &errors)
+jsonString JsonFormer::addSection(const ptrVector<ParseError> &errors)
 {
-    return formJson(dynamic_cast<const ptrVector<JsonFormable> &>(errors));
+    return addFigures(dynamic_cast<const ptrVector<JsonFormable> &>(errors));
 }*/
 
 

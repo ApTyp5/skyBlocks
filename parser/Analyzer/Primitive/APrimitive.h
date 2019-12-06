@@ -27,8 +27,7 @@ public:
 
     virtual std::string toString() const
     {
-        return std::string(
-            "innerText:") + innerText + "\n";
+        return std::string("innerText:") + innerText + "\n";
     }
 
 protected:
