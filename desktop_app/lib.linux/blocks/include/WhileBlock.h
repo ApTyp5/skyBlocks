@@ -3,10 +3,10 @@
 
 #include "Block.h"
 
-class IOBlock : public Block {
+class WhileBlock : public Block {
 public:
-    IOBlock() {}
-    ~IOBlock() {}
+    WhileBlock() {}
+    ~WhileBlock() {}
 
     void Draw() override {}
 };

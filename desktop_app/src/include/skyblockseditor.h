@@ -1,9 +1,11 @@
 #ifndef SKYBLOCKSEDITOR_H
 #define SKYBLOCKSEDITOR_H
 
-#include "BlockFactory.h"
+#include "FigureFactory.h"
 
 #include <QMainWindow>
+#include <QGraphicsScene>
+#include <QLabel>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
 
@@ -25,9 +27,12 @@ public slots:
 
 private:
     Ui::SkyBlocksEditor *ui;
+    QLabel label;
+    QImage image;
+
     QNetworkAccessManager networkManager;
     QNetworkReply *reply;
 
-    BlockFactory blockFactory;
+    FigureFactory blockFactory;
 };
 #endif // SKYBLOCKSEDITOR_H

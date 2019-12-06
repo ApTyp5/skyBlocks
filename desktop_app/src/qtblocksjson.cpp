@@ -1,4 +1,6 @@
 #include "qtblocksjson.h"
+#include "Block.h"
+#include "Line.h"
 #include <QJsonArray>
 #include <QString>
 
@@ -27,29 +29,43 @@ bool QtBlocksJson::CheckCorrect(const QJsonValue &jsonValue) const {
     if (!type.isString())
         return false;
 
+    if (type == "line") {
+        QJsonValue beginPos = jsonValue[beginField.c_str()];
+        if (beginPos == QJsonValue::Undefined)
+            return false;
+        if (!beginPos[X.c_str()].isDouble()
+                || !beginPos[Y.c_str()].isDouble())
+            return false;
+
+        QJsonValue endPos = jsonValue[endField.c_str()];
+        if (endPos == QJsonValue::Undefined)
+            return false;
+        if (!endPos[X.c_str()].isDouble()
+                || !endPos[Y.c_str()].isDouble())
+            return false;
+
+        QJsonValue text = jsonValue[textField.c_str()];
+        if (text == QJsonValue::Undefined)
+            return false;
+        if (!text.isString())
+            return false;
+
+        return true;
+    }
+
     QJsonValue centerPos = jsonValue[centerPositionField.c_str()];
     if (centerPos == QJsonValue::Undefined)
         return false;
-    if (!centerPos.isArray())
-        return false;
-
-    QJsonArray centerArray = centerPos.toArray();
-    if (centerArray.count() < 2)
-        return false;
-    if (!centerArray[0].isDouble() || !centerArray[1].isDouble())
+    if (!centerPos[X.c_str()].isDouble() ||
+            !centerPos[Y.c_str()].isDouble())
         return false;
 
 
     QJsonValue rectSizes = jsonValue[rectSizesField.c_str()];
     if (rectSizes == QJsonValue::Undefined)
         return false;
-    if (!rectSizes.isArray())
-        return false;
-
-    QJsonArray rectSizesArray = centerPos.toArray();
-    if (rectSizesArray.count() < 2)
-        return false;
-    if (!rectSizesArray[0].isDouble() || !rectSizesArray[1].isDouble())
+    if (!rectSizes[widthField.c_str()].isDouble() ||
+            !rectSizes[heightField.c_str()].isDouble())
         return false;
 
     QJsonValue text = jsonValue[textField.c_str()];
@@ -67,10 +83,9 @@ int QtBlocksJson::Count() const {
     return object.toArray().count();
 }
 
-BlockData *QtBlocksJson::GetBlock(int num) const {
+FigureData *QtBlocksJson::GetFigure(int num) const {
     if (!object.isArray())
         return nullptr;
-    auto blockData = new BlockData;
 
     QJsonArray array = object.toArray();
     if(array.count() <= num)
@@ -78,11 +93,33 @@ BlockData *QtBlocksJson::GetBlock(int num) const {
 
     QJsonValue value = array[num];
 
-    blockData->blockType = value[typeField.c_str()].toString().toStdString();
-    blockData->centerPosX = value[centerPositionField.c_str()][0].toDouble();
-    blockData->centerPosY = value[centerPositionField.c_str()][1].toDouble();
-    blockData->rectangleWidth = value[rectSizesField.c_str()][0].toDouble();
-    blockData->rectangleHeight = value[rectSizesField.c_str()][1].toDouble();
+    std::string type = value[typeField.c_str()].toString().toStdString();
+
+    if (type == lineType) {
+        auto lineData = new LineData;
+
+        lineData->figureType = LINE;
+        lineData->beginX = value[beginField.c_str()][X.c_str()].toInt();
+        lineData->beginY = value[beginField.c_str()][Y.c_str()].toInt();
+        lineData->endX = value[endField.c_str()][X.c_str()].toInt();
+        lineData->endY = value[endField.c_str()][Y.c_str()].toInt();
+
+        return lineData;
+    }
+
+    auto blockData = new BlockData;
+
+    if (type == blockType)
+        blockData->figureType = BLOCK;
+    else if (type == ifType)
+        blockData->figureType = IF;
+    else if (type == whileType)
+        blockData->figureType = WHILE;
+
+    blockData->centerPosX = value[centerPositionField.c_str()][X.c_str()].toInt();
+    blockData->centerPosY = value[centerPositionField.c_str()][Y.c_str()].toInt();
+    blockData->rectangleWidth = value[rectSizesField.c_str()][X.c_str()].toInt();
+    blockData->rectangleHeight = value[rectSizesField.c_str()][Y.c_str()].toInt();
     blockData->innerText = value[textField.c_str()].toString().toStdString();
 
     return blockData;

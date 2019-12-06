@@ -1,10 +1,10 @@
 #include "Algorithm.h"
 
 void Algorithm::Draw() {
-    for (auto block: blocks)
-        block->Draw();
+    for (auto figure: figures)
+        figure->Draw();
 }
 
-void Algorithm::Add(Block *block) {
-    blocks.push_back(block);
+void Algorithm::Add(Figure *figure) {
+    figures.push_back(figure);
 }

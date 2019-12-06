@@ -11,11 +11,14 @@ set(INCLD_DIR "include")
 set(BLOCKS_LIB_SOURCE_FILES
         ${SRC_DIR}/Algorithm.cpp
         ${SRC_DIR}/Block.cpp
-        ${SRC_DIR}/BlockFactory.cpp
+        ${SRC_DIR}/Figure.cpp
+        ${SRC_DIR}/FigureFactory.cpp
         ${SRC_DIR}/FuncBlock.cpp
         ${SRC_DIR}/IfBlock.cpp
-        ${SRC_DIR}/IOBlock.cpp
-        ${SRC_DIR}/JsonObject.cpp)
+        ${SRC_DIR}/JsonObject.cpp
+        ${SRC_DIR}/Line.cpp
+        ${SRC_DIR}/WhileBlock.cpp
+        )
 
 add_library(blocks_lib STATIC ${BLOCKS_LIB_SOURCE_FILES})
 

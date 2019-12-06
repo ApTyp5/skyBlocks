@@ -3,45 +3,48 @@
 
 #pragma once
 
-#include <string>
+#include "Figure.h"
 
-struct BlockData {
+#include <string>
+#include <vector>
+
+struct BlockData : public FigureData {
     std::string blockType;
-    double centerPosX;
-    double centerPosY;
-    double rectangleWidth;
-    double rectangleHeight;
+    int centerPosX;
+    int centerPosY;
+    int rectangleWidth;
+    int rectangleHeight;
     std::string innerText;
 
     BlockData() : blockType(), centerPosX(0), centerPosY(0),
         rectangleWidth(0), rectangleHeight(0), innerText() {}
 };
 
-class Block {
+class Block : public Figure {
 public:
     explicit Block() : centerPosX(0), centerPosY(0), rectangleWidth(0),
         rectangleHeight(0), innerText() {}
-    virtual ~Block() = default;
+    virtual ~Block() override {}
 
-    double getPositionX() const { return centerPosX; }
-    double getPositionY() const { return centerPosY; }
-    double getWidth() const { return rectangleWidth; }
-    double getHeight() const { return  rectangleHeight; }
+    int getPositionX() const { return centerPosX; }
+    int getPositionY() const { return centerPosY; }
+    int getWidth() const { return rectangleWidth; }
+    int getHeight() const { return  rectangleHeight; }
     std::string getText() const { return innerText; }
 
 
-    void setPositionX(const double &value) { centerPosX = value; }
-    void setPositionY(const double &value) { centerPosY = value; }
-    void setWidth(const double &value) { rectangleWidth = value; }
-    void setHeight(const double &value) { rectangleHeight = value; }
+    void setPositionX(const int &value) { centerPosX = value; }
+    void setPositionY(const int &value) { centerPosY = value; }
+    void setWidth(const int &value) { rectangleWidth = value; }
+    void setHeight(const int &value) { rectangleHeight = value; }
     void setText(const std::string &value) { innerText = value; }
 
-    virtual void Draw() = 0;
+    virtual void Draw() override;
 protected:
-    double centerPosX;
-    double centerPosY;
-    double rectangleWidth;
-    double rectangleHeight;
+    int centerPosX;
+    int centerPosY;
+    int rectangleWidth;
+    int rectangleHeight;
     std::string innerText;
 };
 

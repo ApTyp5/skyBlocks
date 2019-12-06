@@ -23,10 +23,28 @@
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
         <widget class="QTextEdit" name="codeEdit">
+         <property name="minimumSize">
+          <size>
+           <width>210</width>
+           <height>297</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <family>FreeMono</family>
           </font>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="lineWrapMode">
+          <enum>QTextEdit::NoWrap</enum>
          </property>
          <property name="tabStopWidth">
           <number>30</number>
@@ -34,7 +52,21 @@
         </widget>
        </item>
        <item>
-        <widget class="QGraphicsView" name="diagramView"/>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>374</width>
+            <height>417</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
        </item>
       </layout>
      </widget>

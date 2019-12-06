@@ -16,7 +16,7 @@ public:
 
     int Count() const override;
 
-    BlockData *GetBlock(int num) const override;
+    FigureData *GetFigure(int num) const override;
 private:
     QJsonValue object;
 };

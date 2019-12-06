@@ -1,13 +1,29 @@
 #ifndef JSONOBJECT_H
 #define JSONOBJECT_H
 
-#include "Block.h"
+#include "Figure.h"
 #include <string>
 
 const std::string typeField = "type";
 const std::string centerPositionField = "center";
-const std::string rectSizesField = "rect";
+const std::string rectSizesField = "size";
 const std::string textField = "text";
+const std::string pageField = "page";
+
+const std::string widthField = "width";
+const std::string heightField = "height";
+
+const std::string X = "x";
+const std::string Y = "y";
+
+const std::string beginField = "begin";
+const std::string endField = "end";
+
+const std::string lineType = "line";
+const std::string blockType = "follow";
+const std::string ifType = "if";
+const std::string whileType = "while";
+
 
 class JsonObject {
 public:
@@ -18,7 +34,7 @@ public:
 
     virtual int Count() const = 0;
 
-    virtual BlockData *GetBlock(int num) const = 0;
+    virtual FigureData *GetFigure(int num) const = 0;
 };
 
 #endif // JSONOBJECT_H

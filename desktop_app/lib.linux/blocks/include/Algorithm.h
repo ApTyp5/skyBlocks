@@ -1,22 +1,22 @@
 #ifndef DESKTOP_APP_ALGORITHM_H
 #define DESKTOP_APP_ALGORITHM_H
 
-#include "Block.h"
+#include "Figure.h"
 #include "vector"
 
-class Algorithm : public Block {
+class Algorithm : public Figure {
 public:
     Algorithm() = default;
     ~Algorithm() override {
-        for (auto block : blocks)
-            delete(block);
+        for (auto figure : figures)
+            delete(figure);
     }
 
     void Draw() override;
-    void Add(Block *block);
+    void Add(Figure *figure);
 
 private:
-    std::vector<Block *> blocks;
+    std::vector<Figure *> figures;
 };
 
 #endif //DESKTOP_APP_ALGORITHM_H

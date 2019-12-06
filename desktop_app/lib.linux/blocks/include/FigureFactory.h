@@ -5,18 +5,12 @@
 #include "Block.h"
 #include "JsonObject.h"
 
-enum BlockTypes {
-    FUNCBLOCK = 0,
-    IFBLOCK,
-    IOBLOCK,
-};
-
-class BlockFactory {
+class FigureFactory {
 public:
-    BlockFactory() = default;
-    ~BlockFactory() = default;
+    FigureFactory() = default;
+    ~FigureFactory() = default;
 
-    Block *CreateBlock(BlockData *blockData);
+    Figure *CreateFigure(FigureData *figureData);
     Algorithm *CreateAlgorithm(const JsonObject &json);
 };
 
