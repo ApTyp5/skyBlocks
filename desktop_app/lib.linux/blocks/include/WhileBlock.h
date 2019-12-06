@@ -5,10 +5,9 @@
 
 class WhileBlock : public Block {
 public:
-    WhileBlock() {}
-    ~WhileBlock() {}
+    ~WhileBlock() override {}
 
-    void Draw() override {}
+    DrawData * Draw() override { return nullptr; }
 };
 
 #endif //DESKTOP_APP_IOBLOCK_H

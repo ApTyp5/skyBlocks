@@ -39,7 +39,7 @@ public:
     void setHeight(const int &value) { rectangleHeight = value; }
     void setText(const std::string &value) { innerText = value; }
 
-    virtual void Draw() override;
+    virtual DrawData *Draw() override;
 protected:
     int centerPosX;
     int centerPosY;

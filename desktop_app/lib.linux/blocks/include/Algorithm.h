@@ -12,7 +12,9 @@ public:
             delete(figure);
     }
 
-    void Draw() override;
+    std::vector<DrawData *> *DrawAll();
+
+    DrawData * Draw() override { return nullptr; }
     void Add(Figure *figure);
 
 private:

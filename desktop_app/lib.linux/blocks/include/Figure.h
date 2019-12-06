@@ -8,7 +8,7 @@
 #include <array>
 
 enum FigureType {
-    LINE = 0, BLOCK, FUNC, IF, WHILE, UNDEFINED = -1
+    LINE = 0, BLOCK, FUNC, IF, WHILE, TERMINAL, UNDEFINED = -1
 };
 
 struct FigureData {
@@ -20,15 +20,16 @@ struct FigureData {
 struct DrawData {
     FigureType figureType;
     std::vector<std::array<int, 2>> points;
+    std::string text;
 
-    DrawData() : figureType(UNDEFINED), points() {}
+    DrawData() : figureType(UNDEFINED), points(), text() {}
 };
 
 class Figure {
 public:
     virtual ~Figure() = default;
 
-    virtual void Draw() = 0;
+    virtual DrawData *Draw() = 0;
 };
 
 #endif // FIGURE_H

@@ -33,7 +33,7 @@ public:
     void setEndY(const int &value) { endY = value; }
     void setText(const std::string &value) { text = value; }
 
-    void Draw() override {} ;
+    DrawData *Draw() override;
 private:
     int beginX;
     int beginY;

@@ -7,7 +7,7 @@ class IfBlock : public Block {
 public:
     ~IfBlock() override {}
 
-    void Draw() override;
+    DrawData *Draw() override;
 };
 
 #endif //DESKTOP_APP_IFBLOCK_H

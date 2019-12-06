@@ -8,7 +8,7 @@ public:
     FuncBlock() {}
     ~FuncBlock() override {}
 
-    void Draw() override {}
+    DrawData * Draw() override { return nullptr; }
 };
 
 #endif //DESKTOP_APP_FUNCBLOCK_H

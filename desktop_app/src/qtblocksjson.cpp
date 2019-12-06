@@ -118,8 +118,8 @@ FigureData *QtBlocksJson::GetFigure(int num) const {
 
     blockData->centerPosX = value[centerPositionField.c_str()][X.c_str()].toInt();
     blockData->centerPosY = value[centerPositionField.c_str()][Y.c_str()].toInt();
-    blockData->rectangleWidth = value[rectSizesField.c_str()][X.c_str()].toInt();
-    blockData->rectangleHeight = value[rectSizesField.c_str()][Y.c_str()].toInt();
+    blockData->rectangleWidth = value[rectSizesField.c_str()][widthField.c_str()].toInt();
+    blockData->rectangleHeight = value[rectSizesField.c_str()][heightField.c_str()].toInt();
     blockData->innerText = value[textField.c_str()].toString().toStdString();
 
     return blockData;
