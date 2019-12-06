@@ -53,12 +53,12 @@ bool EmborderScheduler::schedulePrimitive(const PFollow &pFollow)
 }
 bool EmborderScheduler::schedulePrimitive(const PCycle &pCycle)
 {
-    addFigure(FigureType::EndCycle, pCycle.getBeforeCycyleText());
+    addFigure(FigureType::BegCycle, pCycle.getBeforeCycyleText());
 
     for (const auto &i : pCycle.getChildren())
         i->acceptScheduler(*this);
 
-    addFigure(FigureType::BegCycle, pCycle.getAfterCycleText());
+    addFigure(FigureType::EndCycle, pCycle.getAfterCycleText());
     return true;
 }
 bool EmborderScheduler::schedulePrimitive(const PFunc &pFunc)
