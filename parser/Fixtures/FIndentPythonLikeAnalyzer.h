@@ -18,8 +18,6 @@ protected:
     virtual void SetUp()
     {
         analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
-        analyzer->longMemory.push_back(new Memory(State::Alg, new PAlgorithm("")));
-
     }
 
     virtual void TearDown()

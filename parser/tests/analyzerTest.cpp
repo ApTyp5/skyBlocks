@@ -13,83 +13,151 @@
 #include "../Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h"
 #include "../Fixtures/FIndentPythonLikeAnalyzer.h"
 
+TEST(IndentAnalyzer, great_test)
+{
+    ptrVector<ParseError> errors;
+    auto *analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
+    std::string text = "some text, some text\n"
+                       "moooore text\n"
+                       "\n"
+                       "ano block\n"
+                       "of\n"
+                       "text\n"
+                       "\n"
+                       "if some condition\n"
+                       "   it is multiline condition\n"
+                       "\tdo smth useless\n"
+                       "else\n"
+                       "   while top text;   \tbot text\n"
+                       "\t\tinner block\n"
+                       "   after while block\n"
+                       "after if block\n"
+                       "\n"
+                       "bye-bye block";
+
+    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 1, 18));
+    EXPECT_EQ(5, prim_ptr->childrenNum());
+    auto *f1 = prim_ptr->getChildren()[0];
+    auto *f2 = prim_ptr->getChildren()[1];
+    auto if1 = dynamic_cast<const PFork *>(prim_ptr->getChildren()[2]);
+    auto *f3 = prim_ptr->getChildren()[3];
+    auto *f4 = prim_ptr->getChildren()[4];
+
+    EXPECT_STREQ("some text, some text\nmoooore text", f1->getInnerText().data());
+    EXPECT_STREQ("ano block\nof\ntext", f2->getInnerText().data());
+    EXPECT_STREQ("some condition\nit is multiline condition", if1->getInnerText().data());
+    EXPECT_STREQ("after if block", f3->getInnerText().data());
+    EXPECT_STREQ("bye-bye block", f4->getInnerText().data());
+
+    EXPECT_EQ(1, if1->getChildren().size());
+    EXPECT_EQ(2, if1->getElseChildren().size());
+
+    EXPECT_STREQ("do smth useless", if1->getChildren()[0]->getInnerText().data());
+    EXPECT_STREQ("after while block", if1->getElseChildren()[1]->getInnerText().data());
+
+    auto *w = dynamic_cast<const PCycle *>(if1->getElseChildren()[0]);
+    EXPECT_STREQ("top text", w->getBeforeCycyleText().data());
+    EXPECT_STREQ("bot text", w->getAfterCycleText().data());
+    EXPECT_EQ(1, w->getChildren().size());
+    EXPECT_STREQ("inner block", w->getChildren()[0]->getInnerText().data());
+}
+
+TEST(IndentAnalyzer, funcTest)
+{
+    ptrVector<ParseError> errors;
+    auto *analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
+    std::string text = "begin\n"
+                       "call funcname (some args)\n"
+                       "end";
+
+    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 1, 9));
+    EXPECT_EQ(3, prim_ptr->childrenNum());
+
+    auto func = dynamic_cast<const PFunc *>(prim_ptr->getChildren()[1]);
+    EXPECT_STREQ("funcname", func->getName().data());
+    EXPECT_STREQ("(some args)", func->getInnerText().data());
+}
 TEST(IndentAnalyzer, analyze_if)
 {
     ptrVector<ParseError> errors;
     auto *analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
     std::string text = "begin\n"
-                       "if true\n"
+                       "if\tcond\n"
+                       "  \tcontinue cond\n"
+                       "\n"
                        "    smth\n"
                        "else\n"
                        "    smth2\n"
-                       "end\n";
+                       "end";
 
-    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 1, 7));
+    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 1, 9));
     EXPECT_EQ(3, prim_ptr->childrenNum());
-    EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
-    EXPECT_EQ("true\n", prim_ptr->getChildern()[1]->getInnerText());
-    EXPECT_EQ("end\n", prim_ptr->getChildern()[2]->getInnerText());
+    EXPECT_STREQ("begin", prim_ptr->getChildren()[0]->getInnerText().data());
+    EXPECT_STREQ("cond\ncontinue cond", prim_ptr->getChildren()[1]->getInnerText().data());
+    EXPECT_STREQ("end", prim_ptr->getChildren()[2]->getInnerText().data());
 
-    EXPECT_EQ(false, prim_ptr->getChildern()[0]->hasChildren());
-    EXPECT_EQ(true, prim_ptr->getChildern()[1]->hasChildren());
-    EXPECT_EQ(false, prim_ptr->getChildern()[0]->hasChildren());
+    EXPECT_EQ(false, prim_ptr->getChildren()[0]->hasChildren());
+    EXPECT_EQ(true, prim_ptr->getChildren()[1]->hasChildren());
+    EXPECT_EQ(false, prim_ptr->getChildren()[0]->hasChildren());
 
-    auto iff = dynamic_cast<const ComplexPrimitive *>(prim_ptr->getChildern()[1]);
+    auto iff = dynamic_cast<const PFork *>(prim_ptr->getChildren()[1]);
 
     EXPECT_EQ(1, iff->childrenNum());
-    EXPECT_EQ("smth\n", iff->getChildern()[0]->getInnerText());
-//    EXPECT_EQ("smth2\n", iff->getChildern()[1]->getInnerText());
+    EXPECT_STREQ("smth", iff->getChildren()[0]->getInnerText().data());
+    EXPECT_STREQ("smth2", iff->getElseChildren()[0]->getInnerText().data());
 
-    EXPECT_EQ(false, iff->getChildern()[0]->hasChildren());
-//    EXPECT_EQ(false, iff->getChildern()[1]->hasChildren());
+    EXPECT_EQ(false, iff->getChildren()[0]->hasChildren());
+    EXPECT_EQ(false, iff->getElseChildren()[0]->hasChildren());
 }
 TEST(IndentAnalyzer, analyze_cycle)
 {
     ptrVector<ParseError> errors;
     auto *analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
     std::string text = "begin\n"
-                       "while true\n"
+                       "while top word; botword\n"
+                       "      more bot words\n"
                        "    smth\n"
                        "\n"
                        "    smth2\n"
                        "end\n";
 
-    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 1, 7));
+    std::unique_ptr<ComplexPrimitive> prim_ptr(analyzer->analyze(text, 1, 8));
     EXPECT_EQ(3, prim_ptr->childrenNum());
-    EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
-    EXPECT_EQ("true\n", prim_ptr->getChildern()[1]->getInnerText());
-    EXPECT_EQ("end\n", prim_ptr->getChildern()[2]->getInnerText());
+    EXPECT_STREQ("begin", prim_ptr->getChildren()[0]->getInnerText().data());
+    EXPECT_STREQ("top word", prim_ptr->getChildren()[1]->getInnerText().data());
+    EXPECT_STREQ("end", prim_ptr->getChildren()[2]->getInnerText().data());
 
-    EXPECT_EQ(false, prim_ptr->getChildern()[0]->hasChildren());
-    EXPECT_EQ(true, prim_ptr->getChildern()[1]->hasChildren());
-    EXPECT_EQ(false, prim_ptr->getChildern()[0]->hasChildren());
+    EXPECT_EQ(false, prim_ptr->getChildren()[0]->hasChildren());
+    EXPECT_EQ(true, prim_ptr->getChildren()[1]->hasChildren());
+    EXPECT_EQ(false, prim_ptr->getChildren()[0]->hasChildren());
 
-    auto whil = dynamic_cast<const ComplexPrimitive *>(prim_ptr->getChildern()[1]);
+    auto whil = dynamic_cast<const PCycle *>(prim_ptr->getChildren()[1]);
 
     EXPECT_EQ(2, whil->childrenNum());
-    EXPECT_EQ("smth\n", whil->getChildern()[0]->getInnerText());
-    EXPECT_EQ("smth2\n", whil->getChildern()[1]->getInnerText());
+    EXPECT_STREQ("botword\nmore bot words", whil->getAfterCycleText().data());
+    EXPECT_STREQ("top word", whil->getBeforeCycyleText().data());
+    EXPECT_STREQ("smth", whil->getChildren()[0]->getInnerText().data());
+    EXPECT_STREQ("smth2", whil->getChildren()[1]->getInnerText().data());
 
-    EXPECT_EQ(false, whil->getChildern()[0]->hasChildren());
-    EXPECT_EQ(false, whil->getChildern()[1]->hasChildren());
+    EXPECT_EQ(false, whil->getChildren()[0]->hasChildren());
+    EXPECT_EQ(false, whil->getChildren()[1]->hasChildren());
+
+    delete analyzer;
 }
-TEST(IndentAnalyzer, analyze_2_follow)
+TEST_F(FIndentPythonLikeAnalyzer, analyze_2_follow)
 {
-    ptrVector<ParseError> errors;
-    auto *analyzer = new IndentAnalyzer(errors, new PythonLikeAlphabet);
-
     std::string text = "begin\n"
                        "\n"
                        "end\n";
 
     ComplexPrimitive *prim_ptr(analyzer->analyze(text, 1, 4));
     EXPECT_EQ(2, prim_ptr->childrenNum());
-    EXPECT_EQ("begin\n", prim_ptr->getChildern()[0]->getInnerText());
-    EXPECT_EQ("end\n", prim_ptr->getChildern()[1]->getInnerText());
-    delete (prim_ptr);
+    EXPECT_EQ("begin", prim_ptr->getChildren()[0]->getInnerText());
+    EXPECT_EQ("end", prim_ptr->getChildren()[1]->getInnerText());
 }
 TEST_F(FIndentPythonLikeAnalyzer, try_add_pfollow_positive)
 {
+    analyzer->longMemory.push_back(new Memory(State::Alg, new PAlgorithm("")));
     analyzer->shortMemory = "qwer";
     EXPECT_EQ(0, analyzer->longMemory.back()->getComplexPrimitive()->childrenNum());
     analyzer->tryAddPFollowToLastMem();
@@ -98,6 +166,7 @@ TEST_F(FIndentPythonLikeAnalyzer, try_add_pfollow_positive)
 }
 TEST_F(FIndentPythonLikeAnalyzer, merge_back_mem)
 {
+    analyzer->longMemory.push_back(new Memory(State::Alg, new PAlgorithm("")));
     analyzer->longMemory.push_back(new Memory(State::Fork, new PFork("text")));
     EXPECT_EQ(2, analyzer->longMemory.size());
     analyzer->mergeBackMemory();
@@ -112,6 +181,7 @@ TEST_F(FIndentPythonLikeAnalyzer, ret_indent)
 }
 TEST_F(FIndentPythonLikeAnalyzer, get_current_indent)
 {
+    analyzer->longMemory.push_back(new Memory(State::Alg, new PAlgorithm("__main__")));
     analyzer->indent = "qwer";
     analyzer->state_ = State::Cycle;
     EXPECT_STREQ("qwer", analyzer->getCurrentIndent().data());
@@ -122,6 +192,44 @@ TEST_F(FIndentPythonLikeAnalyzer, get_current_indent)
     analyzer->state_ = State::Follow;
     analyzer->longMemory.back()->setBodyIndent("asdf");
     EXPECT_STREQ("asdf", analyzer->getCurrentIndent().data());
+}
+TEST_F(FIndentPythonLikeAnalyzer, is_def_positive)
+{
+    std::string input = "def name (args)";
+    EXPECT_EQ(true, analyzer->isDef(input));
+}
+TEST_F(FIndentPythonLikeAnalyzer, is_def_negative)
+{
+    std::string input = "notdef name (args)";
+    EXPECT_EQ(false, analyzer->isDef(input));
+}
+TEST_F(FIndentPythonLikeAnalyzer, is_def_negative2)
+{
+    std::string input = " def name (args)";
+    EXPECT_EQ(false, analyzer->isDef(input));
+}
+TEST(analyzer_utils, extract_second_word_positive2)
+{
+    std::vector<char> delims = {' ', '\t'};
+    std::string str = "qwer asdf zxcv";
+    std::string sWord;
+    EXPECT_EQ(true, IndentAnalyzerUtils::extractSecondWord(sWord, str, delims));
+    EXPECT_STREQ("asdf", sWord.data());
+}
+TEST(analyzer_utils, extract_second_word_positive)
+{
+    std::vector<char> delims = {' ', '\t'};
+    std::string str = "qwer asdf";
+    std::string sWord;
+    EXPECT_EQ(true, IndentAnalyzerUtils::extractSecondWord(sWord, str, delims));
+    EXPECT_STREQ("asdf", sWord.data());
+}
+TEST(analyzer_utils, extract_second_word_negative)
+{
+    std::vector<char> delims = {' ', '\t'};
+    std::string str = "qwer";
+    std::string sWord;
+    EXPECT_EQ(false, IndentAnalyzerUtils::extractSecondWord(sWord, str, delims));
 }
 TEST(analyzer_utils, is_in_vector_str_positive)
 {
@@ -149,61 +257,35 @@ TEST(analyzer_utils, str_append_mult_syms_positive)
     std::string exp_output = init + '/' + '/' + '/';
     EXPECT_STREQ(exp_output.data(), output.data());
 }
-TEST(analyzer_utils, ret_first_word_negaitve)
+TEST(analyzer_utils, delim_string_negaitve)
 {
     std::string test_string = "longword";
     std::string first = "longword";
     std::string others;
     std::string rec_first, rec_others;
 
-    bool is_ok = IndentAnalyzerUtils::extractFuncName(rec_first, rec_others, test_string);
+    bool is_ok = IndentAnalyzerUtils::delimString(rec_first, rec_others, test_string, {' '});
     EXPECT_EQ(false, is_ok);
     EXPECT_STREQ(first.data(), rec_first.data());
     EXPECT_STREQ(others.data(), rec_others.data());
 }
-TEST(analyzer_utils, ret_first_word_positive)
+TEST(analyzer_utils, delim_string_positive)
 {
     std::string test_string = "first word";
     std::string first = "first";
     std::string others = "word";
     std::string rec_first, rec_others;
 
-    bool is_ok = IndentAnalyzerUtils::extractFuncName(rec_first, rec_others, test_string);
+    bool is_ok = IndentAnalyzerUtils::delimString(rec_first, rec_others, test_string, {' '});
     EXPECT_EQ(true, is_ok);
     EXPECT_STREQ(first.data(), rec_first.data());
     EXPECT_STREQ(others.data(), rec_others.data());
 }
-TEST(analyzer_utils, extract_func_name_positive)
-{
-    char delim = ' ';
-    std::string test_string = "qwer asdf";
-    std::string name = "qwer";
-    std::string other = "asdf";
-    std::string rec_name, rec_other;
-
-    bool is_ok = IndentAnalyzerUtils::extractFuncName(rec_name, rec_other, test_string, delim);
-    EXPECT_EQ(true, is_ok);
-    EXPECT_STREQ(name.data(), rec_name.data());
-    EXPECT_STREQ(other.data(), rec_other.data());
-}
-TEST(analyzer_utils, extract_func_name_negative)
-{
-    char delim = '/';
-    std::string test_string = "qwer asdf";
-    std::string name = "qwer asdf";
-    std::string other;
-    std::string rec_name, rec_other;
-
-    bool is_ok = IndentAnalyzerUtils::extractFuncName(rec_name, rec_other, test_string, delim);
-    EXPECT_EQ(false, is_ok);
-    EXPECT_STREQ(name.data(), rec_name.data());
-    EXPECT_STREQ(other.data(), rec_other.data());
-}
 TEST(analyzer_utils, cut_front_positive)
 {
-    std::string test_string("Useless textUsefull text");
+    std::string test_string("Useless text Usefull text");
     std::string ult("Useless text");
-    std::string uft("Usefull text");
+    std::string uft(" Usefull text");
 
     std::string answer = IndentAnalyzerUtils::cutFront(test_string, ult.size());
     EXPECT_STREQ(answer.data(), uft.data());

@@ -33,25 +33,10 @@ public:
         return str.substr(size);
     }
 
-    static bool extractFuncName(std::string &name,
-                                std::string &otherText,
-                                const std::string &text,
-                                char delim = ' ')
+    static bool delimString(std::string &firstWord, std::string &others, const std::string &str,
+                            const std::vector<char> &delims = {' '})
     {
-        return separateString(name, otherText, text, delim);
-    }
-
-    static bool extractCycleParts(std::string &topPart,
-                                  std::string &botPart,
-                                  const std::string &text,
-                                  char delim = ';')
-    {
-        return separateString(topPart, botPart, text, delim);
-    }
-
-    static bool retFirstWord(std::string &firstWord, std::string &others, const std::string &str)
-    {
-        return separateString(firstWord, others, str, ' ');
+        return separateString(firstWord, others, str, delims);
     }
 
     static std::string strAppendMultipleSymbols(const std::string &curIndent, char sym, size_t n)
@@ -74,10 +59,14 @@ public:
         return false;
     }
 
+    static std::string skipBorderSymbols(const std::string &str, const std::vector<char> &syms)
+    {
+        return skipBackSymbols(skipSymbols(str, syms), syms);
+    }
+
     static std::string skipSymbols(const std::string &str, const std::vector<char> &syms)
     {
-        size_t i = 0;
-        for (; i < str.size(); i++) {
+        for (size_t i = 0; i < str.size(); i++) {
             if (!isInVector(str[i], syms))
                 return str.substr(i);
         }
@@ -85,20 +74,54 @@ public:
         return std::string();
     }
 
+    static std::string skipBackSymbols(const std::string &str, const std::vector<char> &syms)
+    {
+        for (size_t i = str.size() - 1; i >= 0; i--) {
+            if (!isInVector(str[i], syms))
+                return str.substr(0, i + 1);
+        }
+
+        return std::string();
+    }
+
+    static bool extractFirstWord(std::string &fWord, const std::string &str, const std::vector<char> &delims)
+    {
+        std::string sPart;
+        return separateString(fWord, sPart, str, delims);
+    }
+
+    static bool extractSecondWord(std::string &sWord, const std::string &str, const std::vector<char> &delims)
+    {
+        std::string fPart, sPart;
+        bool ans = separateString(fPart, sPart, str, delims);
+        separateString(sWord, fPart, sPart, delims);
+        return ans;
+    }
+
+    static void delLastNewLine(std::string &str)
+    {
+        if (str.back() == '\n')
+            str.pop_back();
+    }
+
 private:
     static bool separateString(std::string &firstPart,
                                std::string &secondPart,
                                const std::string &initString,
-                               char delim)
+                               const std::vector<char> &delims)
     {
-        int first_delim = initString.find(delim);
-        if (first_delim < 0) {
+        std::vector<size_t> pos(delims.size());
+        for (size_t i = 0; i < delims.size(); i++) {
+            pos[i] = (initString.find(delims[i]));
+        }
+        auto minEl = std::min_element(pos.begin(), pos.end());
+        if (*minEl == std::string::npos) {
             firstPart = initString;
             return false;
         }
 
-        firstPart = initString.substr(0, first_delim);
-        secondPart = initString.substr(first_delim + 1);
+        firstPart = initString.substr(0, *minEl);
+        secondPart = initString.substr(*minEl + 1);
         return true;
     }
 };

@@ -17,7 +17,7 @@ TEST(sizedLiner, endOfText)
     SizedLiner liner(input);
 
     EXPECT_EQ(false, liner.isEmpty());
-    EXPECT_EQ(false, liner.getLine(input));
+    EXPECT_EQ(true, liner.getLine(input));
     EXPECT_EQ(true, liner.isEmpty());
 }
 TEST(sizedLiner, without_nl)
@@ -25,7 +25,7 @@ TEST(sizedLiner, without_nl)
     size_t size = 5;
     std::string input = "first string\n" // 13 symbols
                         "second string\n" // 14 symbols
-                        "third string\n"; // 13 symbols
+                        "third string"; // 13 symbols
 
     SizedLiner liner(input);
     std::vector<std::string> answers = {"first", " stri", "ng",
@@ -47,7 +47,7 @@ TEST(sizedLiner, with_nl)
     std::string input = "first string\n" // 13 symbols
                         "second string\n" // 14 symbols
                         "third string\n" // 13 symbols
-                        "qwer qwert\n"; // 10 sym
+                        "qwer qwert"; // 10 sym
 
     SizedLiner liner(input);
     std::vector<std::string> answers = {"first\n", " stri\n", "ng\n",
@@ -71,14 +71,14 @@ TEST(liner, endOfText)
     std::string line;
 
     EXPECT_EQ(false, liner.isEmpty());
-    EXPECT_EQ(false, liner.getLine(line, false));
+    EXPECT_EQ(true, liner.getLine(line, false));
     EXPECT_EQ(true, liner.isEmpty());
 }
 TEST(liner, without_nl)
 {
     std::string input = "first string\n"
                         "second string\n"
-                        "third string\n";
+                        "third string";
     Liner liner(input);
     std::vector<std::string> answers = {"first string",
                                         "second string",
@@ -97,7 +97,7 @@ TEST(liner, with_nl)
 {
     std::string input = "first string\n"
                         "second string\n"
-                        "third string\n";
+                        "third string";
     Liner liner(input);
     std::vector<std::string> answers = {"first string\n",
                                         "second string\n",

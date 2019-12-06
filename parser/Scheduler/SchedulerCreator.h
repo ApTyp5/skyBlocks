@@ -12,7 +12,6 @@
 #include "../Stubs/Stubs.h"
 #include "EmborderScheduler/EmborderScheduler.h"
 
-
 class SchedulerCreator
 {
 public:
@@ -24,4 +23,5 @@ public:
         }
     }
 };
+
 #endif //PARSER_SCHEDULER_SCHEDULERCREATOR_H_

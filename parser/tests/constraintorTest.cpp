@@ -27,7 +27,7 @@ TEST_F(FIndentPythonLikeConstraintor, findMainCommon)
                         "  some func text\n"
                         "first string\n"
                         "second string\n"
-                        "third string\n";
+                        "third string";
     size_t front;
     size_t back;
     EXPECT_EQ(true, constraintor->findMain(front, back, input));

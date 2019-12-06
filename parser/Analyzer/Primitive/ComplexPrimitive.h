@@ -27,7 +27,7 @@ public:
         return children.size();
     };
 
-    const ptrVector<APrimitive> &getChildern() const
+    const ptrVector<APrimitive> &getChildren() const
     {
         return children;
     };

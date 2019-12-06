@@ -29,7 +29,6 @@ int main()
                         "after if block\n"
                         "\n"
                         "bye-bye block";*/
-
     std::string input = "some text, some text\n"
                         "moooore text\n"
                         "\n"
@@ -43,5 +42,6 @@ int main()
     Parser parser(db);
     std::string output = parser.parse(input, AnalyzeFactoryCreator::create(), SchedulerCreator::create(meta));
     std::cout << output;
+
     return 0;
 }

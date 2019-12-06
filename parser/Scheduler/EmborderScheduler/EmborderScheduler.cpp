@@ -40,7 +40,7 @@ ptrVector<AFigure> EmborderScheduler::schedule(const std::unique_ptr<ComplexPrim
 }
 bool EmborderScheduler::schedulePrimitive(const PAlgorithm &pAlgorithm)
 {
-    for (const auto &i : pAlgorithm.getChildern())
+    for (const auto &i : pAlgorithm.getChildren())
         i->acceptScheduler(*this);
     return true;
 }
@@ -53,7 +53,7 @@ bool EmborderScheduler::schedulePrimitive(const PCycle &pCycle)
 {
     addFigure(FigureType::EndCycle, pCycle.getBeforeCycyleText());
 
-    for (const auto &i : pCycle.getChildern())
+    for (const auto &i : pCycle.getChildren())
         i->acceptScheduler(*this);
 
     addFigure(FigureType::BegCycle, pCycle.getAfterCycleText());
@@ -75,7 +75,7 @@ bool EmborderScheduler::schedulePrimitive(const PFork &pFork)
     negState.setX(negX);
     negState.setW(old.width() / 2 - meta.xp() / 2);
     setCurState(negState);
-    for (const auto &i : pFork.getChildern())
+    for (const auto &i : pFork.getChildren())
         i->acceptScheduler(*this);
 
     State posState(old);

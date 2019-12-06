@@ -32,33 +32,11 @@ jsonString JsonFormer::formJson(const ptrVector<JsonFormable> &jf)
 }
 jsonString JsonFormer::formJson(const ptrVector<AFigure> &jf)
 {
-    tree.clear();
-    std::ostringstream output;
-
-    for (const auto &i : jf) {
-        i->acceptJsonFormer(*this);
-    }
-
-    if (tree.empty())
-        return output.str();
-
-    boost::property_tree::write_json(output, tree);
-    return output.str();
+    return formJson((const ptrVector<JsonFormable> &) jf);
 }
 jsonString JsonFormer::formJson(const ptrVector<ParseError> &jf)
 {
-    tree.clear();
-    std::ostringstream output;
-
-    for (const auto &i : jf) {
-        i->acceptJsonFormer(*this);
-    }
-
-    if (tree.empty())
-        return output.str();
-
-    boost::property_tree::write_json(output, tree);
-    return output.str();
+    return formJson((const ptrVector<JsonFormable> &) jf);
 }
 void JsonFormer::addAloneProperty(const std::string &path, const std::string &name)
 {

@@ -6,5 +6,5 @@ CXX_FLAGS = -g -fPIC   -std=gnu++11
 
 CXX_DEFINES = -Dparser_EXPORTS
 
-CXX_INCLUDES = -I/home/arthur/Repos/new_skyBlocks/parser/test_parser 
+CXX_INCLUDES = 
 

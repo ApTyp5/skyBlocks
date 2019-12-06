@@ -26,6 +26,11 @@ public:
             APrimitive::toString();
     }
 
+    const std::string &getName() const
+    {
+        return name;
+    }
+
 protected:
     std::string name;
 };

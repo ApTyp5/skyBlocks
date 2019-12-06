@@ -91,7 +91,7 @@ set(AllFiles
         )
 
 find_package(GTest REQUIRED)
-include_directories(test_parser ${GTEST_INCLUDE_DIRS})
+include_directories(${GTEST_INCLUDE_DIRS})
 add_library(${PROJECT_NAME} SHARED ${AllFiles})
 
 add_executable(parserTest tests/parserTest.cpp)

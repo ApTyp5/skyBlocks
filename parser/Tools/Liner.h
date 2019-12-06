@@ -14,6 +14,7 @@ public:
     explicit Liner(const std::string &text);
 
     virtual bool getLine(std::string &line, bool withNL = true);
+    void skipLines(size_t num);
     bool isEmpty();
 
 private:
