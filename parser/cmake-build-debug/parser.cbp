@@ -394,6 +394,9 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Alphabet/PythonLikeAlphabet.h">
 			<Option target="parser"/>
 		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Alphabet/RuPseudoCodeAlphabet.h">
+			<Option target="parser"/>
+		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentAnalyzeFactory.h">
 			<Option target="parser"/>
 		</Unit>
@@ -529,13 +532,13 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Scheduler/SchedulerType.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Stubs/Stubs.h">
-			<Option target="parser"/>
-		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/Liner.cpp">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/Liner.h">
+			<Option target="parser"/>
+		</Unit>
+		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/Meta.cpp">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Tools/Meta.h">

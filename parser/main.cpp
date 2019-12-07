@@ -63,7 +63,7 @@ int main(){
 
 int main()
 {
-    std::string input = "some text, some text\n"
+/*    std::string input = "some text, some text\n"
                         "moooore text\n"
                         "\n"
                         "ano block\n"
@@ -79,11 +79,17 @@ int main()
                         "   after while block\n"
                         "after if block\n"
                         "\n"
-                        "bye-bye block";
+                        "bye-bye block";*/
 /*    std::string input = "do smth\n"
                         "\n"
                         "do ano smth\n";*/
 
+    std::string input = "hi!\n"
+                        "\n"
+                        "if cond\n"
+                        "\tif cond2\n"
+                        "\t\t inner2\n"
+                        "bye!";
 
     Meta meta;
     DataBaseConnection db;

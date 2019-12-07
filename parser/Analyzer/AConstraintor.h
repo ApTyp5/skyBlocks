@@ -7,9 +7,9 @@
 
 #include <string>
 
-#include "../Stubs/Stubs.h"
 #include "AccumulateErrors.h"
 #include "../Errors/ParseError.h"
+#include "../../server/DataBaseConnection.h"
 
 class AConstraintor: public AccumulateErrors
 {

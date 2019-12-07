@@ -1,10 +1,9 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.5)
 project(parser)
 
 set(CMAKE_CXX_STANDARD 11)
 
 
-set(Stubs Stubs/Stubs.h)
 set(Errors Errors/ParseError.h)
 set(JsonFormer
         JsonFormer/JsonFormer.h JsonFormer/JsonFormer.cpp
@@ -49,11 +48,11 @@ set(AnalyzersFiles ${PrimitiveFiles}
         Analyzer/IndentAnalyze/Alphabet/BaseAlphabet.h
         Analyzer/IndentAnalyze/Alphabet/PythonLikeAlphabet.h
         Analyzer/AccumulateErrors.h
-        )
+        Analyzer/IndentAnalyze/Alphabet/RuPseudoCodeAlphabet.h)
 set(ToolFiles
         Tools/Liner.cpp Tools/Liner.h
         Tools/SizedLiner.cpp Tools/SizedLiner.h
-        Tools/Meta.h
+        Tools/Meta.cpp Tools/Meta.h
         )
 set(SchedulerFiles
         ${FigureFiles}

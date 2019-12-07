@@ -428,6 +428,33 @@ Tools/Liner.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/Liner.cpp.s
 .PHONY : Tools/Liner.cpp.s
 
+Tools/Meta.o: Tools/Meta.cpp.o
+
+.PHONY : Tools/Meta.o
+
+# target to build an object file
+Tools/Meta.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/Meta.cpp.o
+.PHONY : Tools/Meta.cpp.o
+
+Tools/Meta.i: Tools/Meta.cpp.i
+
+.PHONY : Tools/Meta.i
+
+# target to preprocess a source file
+Tools/Meta.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/Meta.cpp.i
+.PHONY : Tools/Meta.cpp.i
+
+Tools/Meta.s: Tools/Meta.cpp.s
+
+.PHONY : Tools/Meta.s
+
+# target to generate assembly for a file
+Tools/Meta.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Tools/Meta.cpp.s
+.PHONY : Tools/Meta.cpp.s
+
 Tools/SizedLiner.o: Tools/SizedLiner.cpp.o
 
 .PHONY : Tools/SizedLiner.o
@@ -657,6 +684,9 @@ help:
 	@echo "... Tools/Liner.o"
 	@echo "... Tools/Liner.i"
 	@echo "... Tools/Liner.s"
+	@echo "... Tools/Meta.o"
+	@echo "... Tools/Meta.i"
+	@echo "... Tools/Meta.s"
 	@echo "... Tools/SizedLiner.o"
 	@echo "... Tools/SizedLiner.i"
 	@echo "... Tools/SizedLiner.s"

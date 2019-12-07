@@ -11,9 +11,14 @@
 class BaseAlphabet
 {
 public:
-    BaseAlphabet(std::string forkWord, std::string elseWord, std::string cycleWord,
-                 std::string callFuncWord, std::string defineFuncWord,
-                 std::vector<char> wordDelimiters, std::vector<char> sectionDelimiters)
+    BaseAlphabet(
+        std::string forkWord,
+        std::string elseWord,
+        std::string cycleWord,
+        std::string callFuncWord,
+        std::string defineFuncWord,
+        std::vector<char> wordDelimiters,
+        std::vector<char> sectionDelimiters)
         :
         forkWord(std::move(forkWord)),
         elseWord(std::move(elseWord)),

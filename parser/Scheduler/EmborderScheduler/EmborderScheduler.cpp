@@ -79,18 +79,21 @@ bool EmborderScheduler::schedulePrimitive(const PFork &pFork)
     setCurState(negState);
     for (const auto &i : pFork.getChildren())
         i->acceptScheduler(*this);
+    negState = getCurState();
 
     State posState(old);
-    posState.setX(negX);
+    posState.setX(posX);
     posState.setW(posState.width() / 2 - meta.xm() / 2);
     setCurState(posState);
     for (const auto &i : pFork.getElseChildren())
         i->acceptScheduler(*this);
+    posState = getCurState();
 
     connectForkParts(negState, posState);
-    setCurState(posState);
+    curState.setY(posState.y());
     curState.setX(old.x());
     curState.setW(old.width());
+    pushSpaceLine("");
 
     return true;
 }
@@ -145,12 +148,13 @@ void EmborderScheduler::addFFork(const std::string &innerText, double leftX, dou
     std::string text(innerText);
     sRect widthFitRect = rectXFitSize(text, false);
     widthFitRect *= 2;
-    addMargin(widthFitRect);
+    addPadding(widthFitRect);
 
     checkPageEnd(widthFitRect);
     Rect forkRect{curState.x(), curState.y() + widthFitRect.h / 2, widthFitRect};
     pushFigure(FigureType::Fork, forkRect, text, curState.page());
     pushForkLines(forkRect, leftX, rightX);
+    curState.setY(curState.y() + meta.bs());
 }
 void EmborderScheduler::pushForkLines(Rect forkRect, double leftX, double rightX)
 {
@@ -172,7 +176,7 @@ void EmborderScheduler::pushForkLines(Rect forkRect, double leftX, double rightX
     figures.push_back(new FLine(hrombusRightAngle, rightMid, "Да", curState.page()));
     figures.push_back(new FLine(rightMid, rightLast, "", curState.page()));
 }
-void EmborderScheduler::connectForkParts(State negState, State posState)
+void EmborderScheduler::connectForkParts(State &negState, State &posState)
 {
     if (negState.page() > posState.page()) {
         setCurState(posState);
@@ -185,10 +189,16 @@ void EmborderScheduler::connectForkParts(State negState, State posState)
         negState = getCurState();
     }
 
-    if (negState.y() > posState.y())
+    if (negState.y() > posState.y()) {
+        setCurState(posState);
         pushVerticalLine(posState.x(), posState.y(), negState.y(), posState.page());
-    else if (posState.y() > negState.y())
+        posState = getCurState();
+    }
+    else if (posState.y() > negState.y()) {
+        setCurState(negState);
         pushVerticalLine(negState.x(), negState.y(), posState.y(), posState.page());
+        negState = getCurState();
+    }
 
     pushHorizLine(curState.y(), negState.x(), posState.x(), posState.page());
 }
@@ -251,7 +261,7 @@ void EmborderScheduler::gotoPage(size_t page)
     pushContinueFigure();
     pushSpaceLine();
 }
-void EmborderScheduler::addMargin(sRect &rect)
+void EmborderScheduler::addPadding(sRect &rect)
 {
     rect.w += 2 * meta.xp();
     rect.h += 2 * meta.yp();

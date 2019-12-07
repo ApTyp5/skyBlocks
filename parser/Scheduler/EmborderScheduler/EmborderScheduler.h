@@ -70,9 +70,9 @@ protected:
     bool isYFit(double h = 0);
     void initNewPage(size_t page = 1);
     void checkPageEnd(sRect widthFitRect);
-    void connectForkParts(State negState, State posState);
+    void connectForkParts(State &negState, State &posState);
     void gotoPage(size_t page);
-    void addMargin(sRect &rect);
+    void addPadding(sRect &rect);
 
     sRect rectXFitSize(std::string &text, bool withMargin = true);
     sRect continueBlockSize();

@@ -9,7 +9,6 @@
 
 #include "AScheduler.h"
 #include "SchedulerType.h"
-#include "../Stubs/Stubs.h"
 #include "EmborderScheduler/EmborderScheduler.h"
 
 class SchedulerCreator

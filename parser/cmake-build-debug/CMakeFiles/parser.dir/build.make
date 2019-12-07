@@ -96,9 +96,22 @@ CMakeFiles/parser.dir/Tools/SizedLiner.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Tools/SizedLiner.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/Tools/SizedLiner.cpp -o CMakeFiles/parser.dir/Tools/SizedLiner.cpp.s
 
+CMakeFiles/parser.dir/Tools/Meta.cpp.o: CMakeFiles/parser.dir/flags.make
+CMakeFiles/parser.dir/Tools/Meta.cpp.o: ../Tools/Meta.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/parser.dir/Tools/Meta.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Tools/Meta.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Tools/Meta.cpp
+
+CMakeFiles/parser.dir/Tools/Meta.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/parser.dir/Tools/Meta.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/arthur/Repos/new_skyBlocks/parser/Tools/Meta.cpp > CMakeFiles/parser.dir/Tools/Meta.cpp.i
+
+CMakeFiles/parser.dir/Tools/Meta.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/parser.dir/Tools/Meta.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/arthur/Repos/new_skyBlocks/parser/Tools/Meta.cpp -o CMakeFiles/parser.dir/Tools/Meta.cpp.s
+
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: CMakeFiles/parser.dir/flags.make
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/IndentAnalyzer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentAnalyzer.cpp
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.s: cmake_force
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: CMakeFiles/parser.dir/flags.make
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/IndentConstraintor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/IndentConstraintor.cpp
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.i: cmake_force
@@ -124,7 +137,7 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.s: cmake_for
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: CMakeFiles/parser.dir/flags.make
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Analyzer/IndentAnalyze/Tools/Memory.cpp
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.i: cmake_force
@@ -137,7 +150,7 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.s: cmake_force
 
 CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: CMakeFiles/parser.dir/flags.make
 CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: ../Scheduler/Figure/FContinue.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Scheduler/Figure/FContinue.cpp
 
 CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.i: cmake_force
@@ -150,7 +163,7 @@ CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.s: cmake_force
 
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: CMakeFiles/parser.dir/flags.make
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/EmborderScheduler/EmborderScheduler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Scheduler/EmborderScheduler/EmborderScheduler.cpp
 
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.i: cmake_force
@@ -163,7 +176,7 @@ CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.s: cmake
 
 CMakeFiles/parser.dir/Parser.cpp.o: CMakeFiles/parser.dir/flags.make
 CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/parser.dir/Parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/parser.dir/Parser.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/parser.dir/Parser.cpp.o -c /home/arthur/Repos/new_skyBlocks/parser/Parser.cpp
 
 CMakeFiles/parser.dir/Parser.cpp.i: cmake_force
@@ -179,6 +192,7 @@ parser_OBJECTS = \
 "CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o" \
 "CMakeFiles/parser.dir/Tools/Liner.cpp.o" \
 "CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o" \
+"CMakeFiles/parser.dir/Tools/Meta.cpp.o" \
 "CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o" \
 "CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o" \
 "CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o" \
@@ -192,6 +206,7 @@ parser_EXTERNAL_OBJECTS =
 libparser.so: CMakeFiles/parser.dir/JsonFormer/JsonFormer.cpp.o
 libparser.so: CMakeFiles/parser.dir/Tools/Liner.cpp.o
 libparser.so: CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o
+libparser.so: CMakeFiles/parser.dir/Tools/Meta.cpp.o
 libparser.so: CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o
 libparser.so: CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o
 libparser.so: CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o
@@ -200,7 +215,7 @@ libparser.so: CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderSchedule
 libparser.so: CMakeFiles/parser.dir/Parser.cpp.o
 libparser.so: CMakeFiles/parser.dir/build.make
 libparser.so: CMakeFiles/parser.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX shared library libparser.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX shared library libparser.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/parser.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

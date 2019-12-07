@@ -1,33 +1,35 @@
 //
-// Created by arthur on 27.11.2019.
+// Created by arthur on 07.12.2019.
 //
 
 #ifndef META_H
 #define META_H
 
-#include <cstddef>
 
 class Meta
 {
 public:
-    double pw() const
-    { return 210; }
-    double ph() const
-    { return 297; }
-    double xp() const
-    { return 0; }
-    double yp() const
-    { return 0; }
-    double xm() const
-    { return 0; }
-    double ym() const
-    { return 0; }
-    double lh() const
-    { return 11; }
-    double sw() const
-    { return 7; }
-    double bs() const
-    { return 5; }
+    Meta() = default;
+    Meta(double pw, double ph, double xp, double yp, double xm, double ym, double lh, double sw, double bs);
+    double pw() const;
+    double ph() const;
+    double xp() const;
+    double yp() const;
+    double xm() const;
+    double ym() const;
+    double lh() const;
+    double sw() const;
+    double bs() const;
+private:
+    double pw_;
+    double ph_;
+    double xp_;
+    double yp_;
+    double xm_;
+    double ym_;
+    double lh_;
+    double sw_;
+    double bs_;
 };
 
 

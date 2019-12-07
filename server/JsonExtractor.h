@@ -6,7 +6,7 @@
 #define JSONEXTRACTOR_H
 
 #include <boost/property_tree/json_parser.hpp>
-#include "Meta.h"
+#include "../parser/Tools/Meta.h"
 
 class JsonExtractor
 {
@@ -27,7 +27,7 @@ public:
             tree.get<double>("meta.lh"),
             tree.get<double>("meta.sw"),
             tree.get<double>("meta.bs")
-            }
+        };
     }
 
     std::string extractText(){

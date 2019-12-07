@@ -7,7 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o"
   "CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o"
   "CMakeFiles/parser.dir/Tools/Liner.cpp.o"
-  "CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o"
+        "CMakeFiles/parser.dir/Tools/Meta.cpp.o"
+        "CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o"
   "libparser.pdb"
   "libparser.so"
 )

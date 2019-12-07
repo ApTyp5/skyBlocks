@@ -9,3 +9,4 @@ add_subdirectory(server)
 enable_testing()
 
 add_executable(${SERVER} main.cpp)
+target_link_libraries(${SERVER} parser -lpistache)

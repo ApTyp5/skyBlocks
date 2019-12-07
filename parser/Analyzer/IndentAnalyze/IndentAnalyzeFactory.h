@@ -8,17 +8,18 @@
 #include "../AAnalyzeFactory.h"
 #include "IndentAnalyzer.h"
 #include "IndentConstraintor.h"
+#include "Alphabet/RuPseudoCodeAlphabet.h"
 
 class IndentAnalyzeFactory: public AAnalyzeFactory
 {
 public:
     AConstraintor *createConstraintor(ptrVector<ParseError> &errors) override
     {
-        return new IndentConstraintor(errors, new PythonLikeAlphabet);
+        return new IndentConstraintor(errors, new RuPseudoCodeAlphabet);
     }
     AAnalyzer *createAnalyzer(ptrVector<ParseError> &errors) override
     {
-        return new IndentAnalyzer(errors, new PythonLikeAlphabet);
+        return new IndentAnalyzer(errors, new RuPseudoCodeAlphabet);
     }
 };
 
