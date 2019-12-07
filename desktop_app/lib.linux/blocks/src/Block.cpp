@@ -25,7 +25,7 @@ DrawData *Block::Draw() {
 
     data->text = innerText;
 
-    data->textPosX = leftTopX + 3 ;
+    data->textPosX = leftTopX + 2;
     data->textPosY = leftTopY + rectangleHeight - 2;
 
     return data;

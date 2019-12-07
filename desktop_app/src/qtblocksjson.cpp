@@ -132,7 +132,7 @@ FigureData *QtBlocksJson::GetFigure(int num) const {
         lineData->beginY = value[beginField.c_str()][Y.c_str()].toString().toDouble();
         lineData->endX = value[endField.c_str()][X.c_str()].toString().toDouble();
         lineData->endY = value[endField.c_str()][Y.c_str()].toString().toDouble();
-
+        lineData->text = value[textField.c_str()].toString().toStdString();
         return lineData;
     }
 

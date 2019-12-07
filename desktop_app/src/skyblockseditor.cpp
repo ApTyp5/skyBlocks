@@ -37,8 +37,8 @@ SkyBlocksEditor::SkyBlocksEditor(QWidget *parent)
     qDebug() << metrics.lineSpacing() << endl << metrics.maxWidth() << endl;
 */
     ui->scrollArea->setBackgroundRole(QPalette::Dark);
-   // connect(ui->sendCodeButton, SIGNAL(clicked()), this, SLOT(sendInformation()));
-    connect(ui->sendCodeButton, SIGNAL(clicked()), this, SLOT(putMessage()));
+    connect(ui->sendCodeButton, SIGNAL(clicked()), this, SLOT(sendInformation()));
+    //connect(ui->sendCodeButton, SIGNAL(clicked()), this, SLOT(putMessage()));
 }
 
 SkyBlocksEditor::~SkyBlocksEditor()
@@ -48,24 +48,302 @@ SkyBlocksEditor::~SkyBlocksEditor()
 
 void SkyBlocksEditor::sendInformation() {
     QString content = ui->codeEdit->toPlainText();
-    QUrl url("https://postman-echo.com/post");
+    QUrl url("http://localhost:6000");
 
     QByteArray arr;
     arr.append(content);
     reply = networkManager.post(QNetworkRequest(url), arr);
     connect(reply, SIGNAL(finished()), this, SLOT(putMessage()));
-    connect(reply, SIGNAL(error(code)), this, SLOT(putMessage()));
 }
 
 void SkyBlocksEditor::putMessage() {
-    QString msg;
-    /*if (reply->error())
-        msg = reply->errorString();
+    QString msg, msg2;
+    if (reply->error()) {
+        msg2 = reply->errorString();
+        qDebug() << msg2 << endl;
+    }
     else
-        msg = QString(reply->readAll());
-*/
+        msg2 = QString(reply->readAll());
+
     //msg = "{ \"figure\": [{\"size\": {\"width\": \"49\",\"height\": \"11\"},\"center\": {\"x\": \"105.0\",\"y\": \"7.5\"},\"text\": \"do smth\n\",\"page\": \"1\",\"type\": \"begincycle\"},{\"begin\": {\"x\": \"105.0\",\"y\": \"13.0\"},\"end\": {\"x\": \"105.0\",\"y\": \"18.0\"},\"text\": \"\",\"page\": \"1\",\"type\": \"line\"},{\"size\": {\"width\": \"77\",\"height\": \"11\"},\"center\": {\"x\": \"105\",\"y\": \"23.5\"},\"text\": \"do ano smth\n\",\"page\": \"1\",\"type\": \"endcycle\"}]}";
-    msg = "{\"figure\":[{\"size\":{\"width\":\"35\",\"height\":\"11\"},\"center\":{\"x\":\"105.000000\",\"y\":\"5.500000\"},\"text\":\"block\",\"page\":\"1\",\"type\":\"follow\"},{\"begin\":{\"x\":\"105.000000\",\"y\":\"11.000000\"},\"end\":{\"x\":\"105.000000\",\"y\":\"16.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"56\",\"height\":\"22\"},\"center\":{\"x\":\"105.000000\",\"y\":\"27.000000\"},\"text\":\"cond\",\"page\":\"1\",\"type\":\"fork\"},{\"begin\":{\"x\":\"77.000000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"27.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"133.000000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"157.500000\",\"y\":\"27.000000\"},\"text\":\"Да\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"157.500000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"157.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"28\",\"height\":\"11\"},\"center\":{\"x\":\"52.500000\",\"y\":\"43.500000\"},\"text\":\"smth\",\"page\":\"1\",\"type\":\"follow\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"49.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"54.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"38.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"38.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"21\",\"height\":\"11\"},\"center\":{\"x\":\"105.000000\",\"y\":\"43.500000\"},\"text\":\"end\",\"page\":\"1\",\"type\":\"follow\"}]}";
+    //msg = "{\"figure\":[{\"size\":{\"width\":\"35\",\"height\":\"11\"},\"center\":{\"x\":\"105.000000\",\"y\":\"5.500000\"},\"text\":\"block\",\"page\":\"1\",\"type\":\"follow\"},{\"begin\":{\"x\":\"105.000000\",\"y\":\"11.000000\"},\"end\":{\"x\":\"105.000000\",\"y\":\"16.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"56\",\"height\":\"22\"},\"center\":{\"x\":\"105.000000\",\"y\":\"27.000000\"},\"text\":\"cond\",\"page\":\"1\",\"type\":\"fork\"},{\"begin\":{\"x\":\"77.000000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"27.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"133.000000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"157.500000\",\"y\":\"27.000000\"},\"text\":\"Да\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"157.500000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"157.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"28\",\"height\":\"11\"},\"center\":{\"x\":\"52.500000\",\"y\":\"48.500000\"},\"text\":\"smth\",\"page\":\"1\",\"type\":\"follow\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"54.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"59.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"43.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"21\",\"height\":\"11\"},\"center\":{\"x\":\"105.000000\",\"y\":\"48.500000\"},\"text\":\"end\",\"page\":\"1\",\"type\":\"follow\"}]}";
+
+    msg = "{\n"
+              "    \"figure\": [\n"
+              "        {\n"
+              "            \"size\": {\n"
+              "                \"width\": \"21\",\n"
+              "                \"height\": \"11\"\n"
+              "            },\n"
+              "            \"center\": {\n"
+              "                \"x\": \"105.000000\",\n"
+              "                \"y\": \"5.500000\"\n"
+              "            },\n"
+              "            \"text\": \"hi!\\n\",\n"
+              "            \"page\": \"1\",\n"
+              "            \"type\": \"follow\"\n"
+              "        },\n"
+              "        {\n"
+              "            \"begin\": {\n"
+              "                \"x\": \"105.000000\",\n"
+              "                \"y\": \"11.000000\"\n"
+              "            },\n"
+              "            \"end\": {\n"
+              "                \"x\": \"105.000000\",\n"
+              "                \"y\": \"16.000000\"\n"
+              "            },\n"
+              "            \"text\": \"\",\n"
+              "            \"page\": \"1\",\n"
+              "            \"type\": \"line\"\n"
+              "        },\n"
+              "        {\n"
+              "            \"size\": {\n"
+              "                \"width\": \"56\",\n"
+              "                \"height\": \"22\"\n"
+              "            },\n"
+              "            \"center\": {\n"
+              "                \"x\": \"105.000000\",\n"
+              "                \"y\": \"27.000000\"\n"
+              "            },\n"
+              "            \"text\": \"cond\\n\",\n"
+              "            \"page\": \"1\",\n"
+              "            \"type\": \"fork\"\n"
+              "        },\n"
+              "        {\n"
+              "            \"begin\": {\n"
+              "                \"x\": \"77.000000\",\n"
+              "                \"y\": \"27.000000\"\n"
+              "            },\n"
+              "            \"end\": {\n"
+              "                \"x\": \"52.500000\",\n"
+              "                \"y\": \"27.000000\"\n"
+              "            },\n"
+              "            \"text\": \"\",\n"
+              "            \"page\": \"1\",\n"
+              "            \"type\": \"line\"\n"
+              "        },\n"
+              "        {\n"
+              "            \"begin\": {\n"
+              "                \"x\": \"52.500000\",\n"
+              "                \"y\": \"27.000000\"\n"
+              "            },\n"
+              "            \"end\": {\n"
+              "                \"x\": \"52.500000\",\n"
+              "                \"y\": \"43.000000\"\n"
+              "            },\n"
+              "            \"text\": \"\",\n"
+              "            \"page\": \"1\",\n"
+              "            \"type\": \"line\"\n"
+              "        },\n"
+              "        {\n"
+              "            \"begin\": {\n"
+              "                \"x\": \"133.000000\",\n"
+              "                \"y\": \"27.000000\"\n"
+              "            },\n"
+              "            \"end\": {\n"
+              "                \"x\": \"157.500000\",\n"
+              "                \"y\": \"27.000000\"\n"
+              "            },\n"
+              "            \"text\": \"Да\",\n"
+              "            \"page\": \"1\",\n"
+              "            \"type\": \"line\"\n"
+              "        },\n"
+              "        {\n"
+              "            \"begin\": {\n"
+              "                \"x\": \"157.500000\",\n"
+              "                \"y\": \"27.000000\"\n"
+              "            },\n"
+              "            \"end\": {\n"
+              "                \"x\": \"157.500000\",\n"
+              "                \"y\": \"43.000000\"\n"
+              "            },\n"
+              "            \"text\": \"\",\n"
+              "            \"page\": \"1\",\n"
+              "            \"type\": \"line\"\n"
+              "        },\n"
+              "        {\n"
+              "            \"size\": {\n"
+              "                \"width\": \"70\",\n"
+              "                \"height\": \"22\"\n"
+              "            },\n"
+              "            \"center\": {\n"
+              "                \"x\": \"52.500000\",\n"
+              "                \"y\": \"54.000000\"\n"
+              "            },\n""            \"text\": \"cond2\\n\",\n"
+          "            \"page\": \"1\",\n"
+          "            \"type\": \"fork\"\n"
+          "        },\n"
+          "        {\n"
+          "            \"begin\": {\n"
+          "                \"x\": \"17.500000\",\n"
+          "                \"y\": \"54.000000\"\n"
+          "            },\n"
+          "            \"end\": {\n"
+          "                \"x\": \"26.250000\",\n"
+          "                \"y\": \"54.000000\"\n"
+          "            },\n"
+          "            \"text\": \"\",\n"
+          "            \"page\": \"1\",\n"
+          "            \"type\": \"line\"\n"
+          "        },\n"
+          "        {\n"
+          "            \"begin\": {\n"
+          "                \"x\": \"26.250000\",\n"
+          "                \"y\": \"54.000000\"\n"
+          "            },\n"
+          "            \"end\": {\n"
+          "                \"x\": \"26.250000\",\n"
+          "                \"y\": \"70.000000\"\n"
+          "            },\n"
+          "            \"text\": \"\",\n"
+          "            \"page\": \"1\",\n"
+          "            \"type\": \"line\"\n"
+          "        },\n"
+          "        {\n"
+          "            \"begin\": {\n"
+          "                \"x\": \"87.500000\",\n"
+          "                \"y\": \"54.000000\"\n"
+          "            },\n"
+          "            \"end\": {\n"
+          "                \"x\": \"78.750000\",\n"
+          "                \"y\": \"54.000000\"\n"
+          "            },\n"
+          "            \"text\": \"Да\",\n"
+          "            \"page\": \"1\",\n"
+          "            \"type\": \"line\"\n"
+          "        },\n"
+          "        {\n"
+          "            \"begin\": {\n"
+          "                \"x\": \"78.750000\",\n"
+          "                \"y\": \"54.000000\"\n"
+          "            },\n"
+          "            \"end\": {\n"
+          "                \"x\": \"78.750000\",\n"
+          "                \"y\": \"70.000000\"\n"
+          "            },\n"
+          "            \"text\": \"\",\n"
+          "            \"page\": \"1\",\n"
+          "            \"type\": \"line\"\n"
+          "        },\n"
+          "        {\n"
+          "            \"size\": {\n"
+          "                \"width\": \"42\",\n"
+          "                \"height\": \"11\"\n"
+          "            },\n"
+          "            \"center\": {\n"
+          "                \"x\": \"26.250000\",\n"
+          "                \"y\": \"75.500000\"\n"
+          "            },\n"
+          "            \"text\": \"inner2\\n\",\n"
+          "            \"page\": \"1\",\n"
+          "            \"type\": \"follow\"\n"
+          "        },\n"
+          "        {\n"
+          "            \"begin\": {\n"
+          "                \"x\": \"26.250000\",\n"
+          "                \"y\": \"81.000000\"\n"
+          "            },\n"
+          "            \"end\": {\n"
+          "                \"x\": \"26.250000\",\n"
+          "                \"y\": \"86.000000\"\n"
+          "            },\n"
+          "            \"text\": \"\",\n"
+          "            \"page\": \"1\",\n"
+          "            \"type\": \"line\"\n"
+          "        },\n"
+          "        {\n"
+          "            \"begin\": {\n"
+          "                \"x\": \"78.750000\",\n"
+          "                \"y\": \"70.000000\"\n"
+          "            },\n"
+          "            \"end\": {\n"
+          "                \"x\": \"78.750000\",\n"
+          "                \"y\": \"86.000000\"\n"
+          "            },\n"
+          "            \"text\": \"\",\n"
+          "            \"page\": \"1\",\n"
+          "            \"type\": \"line\"\n"
+          "        },\n"
+          "        {\n"
+          "            \"begin\": {\n"
+          "                \"x\": \"26.250000\",\n"
+          "                \"y\": \"86.000000\"\n"
+          "            },\n"
+          "            \"end\": {\n"
+          "                \"x\": \"78.750000\",\n"
+          "                \"y\": \"86.000000\"\n"
+                    "            },\n"
+                    "            \"text\": \"\",\n"
+                    "            \"page\": \"1\",\n"
+                    "            \"type\": \"line\"\n"
+                    "        },\n"
+                    "        {\n"
+                    "            \"begin\": {\n"
+                    "                \"x\": \"52.500000\",\n"
+                    "                \"y\": \"86.000000\"\n"
+                    "            },\n"
+                    "            \"end\": {\n"
+                    "                \"x\": \"52.500000\",\n"
+                    "                \"y\": \"91.000000\"\n"
+                    "            },\n"
+                    "            \"text\": \"\",\n"
+                    "            \"page\": \"1\",\n"
+                    "            \"type\": \"line\"\n"
+                    "        },\n"
+                    "        {\n"
+                    "            \"begin\": {\n"
+                    "                \"x\": \"157.500000\",\n"
+                    "                \"y\": \"43.000000\"\n"
+                    "            },\n"
+                    "            \"end\": {\n"
+                    "                \"x\": \"157.500000\",\n"
+                    "                \"y\": \"91.000000\"\n"
+                    "            },\n"
+                    "            \"text\": \"\",\n"
+                    "            \"page\": \"1\",\n"
+                    "            \"type\": \"line\"\n"
+                    "        },\n"
+                    "        {\n"
+                    "            \"begin\": {\n"
+                    "                \"x\": \"52.500000\",\n"
+                    "                \"y\": \"91.000000\"\n"
+                    "            },\n"
+                    "            \"end\": {\n"
+                    "                \"x\": \"157.500000\",\n"
+                    "                \"y\": \"91.000000\"\n"
+                    "            },\n"
+                    "            \"text\": \"\",\n"
+                    "            \"page\": \"1\",\n"
+                    "            \"type\": \"line\"\n"
+                    "        },\n"
+                    "        {\n"
+                    "            \"begin\": {\n"
+                    "                \"x\": \"105.000000\",\n"
+                    "                \"y\": \"91.000000\"\n"
+                    "            },\n"
+                    "            \"end\": {\n"
+                    "                \"x\": \"105.000000\",\n"
+                    "                \"y\": \"96.000000\"\n"
+                    "            },\n"
+                    "            \"text\": \"\",\n"
+                    "            \"page\": \"1\",\n"
+                    "            \"type\": \"line\"\n"
+                    "        },\n"
+                    "        {\n"
+                    "            \"size\": {\n"
+                    "                \"width\": \"28\",\n"
+                    "                \"height\": \"11\"\n"
+                    "            },\n"
+                    "            \"center\": {\n"
+                    "                \"x\": \"105.000000\",\n"
+                    "                \"y\": \"101.500000\"\n"
+                    "            },\n"
+                    "            \"text\": \"bye!\\n\",\n"
+                    "            \"page\": \"1\",\n"
+                    "            \"type\": \"follow\"\n"
+                    "        }\n"
+                    "    ]\n"
+                    "}";
 
     QJsonDocument doc = QJsonDocument::fromJson(msg.toUtf8());
 
@@ -77,17 +355,21 @@ void SkyBlocksEditor::putMessage() {
             obj = doc.object();
         }
     }
-    else
-        qDebug() << "BAD" << endl;
+    else {
+        qDebug() << "JSON not parsed" << endl;
+        return;
+    }
 
     QJsonValue figures = obj["figure"];
 
     QtBlocksJson blocks(figures);
 
-    qDebug() << blocks.CheckCorrect() << endl;
-
+    if (blocks.CheckCorrect())
+        qDebug() << "Drawing objects created correctly" << endl;
 
     auto algorithm = blockFactory.CreateAlgorithm(blocks);
+    if (!algorithm)
+        return;
     auto drawData = algorithm->DrawAll();
 
     QPainter painter(&image);
@@ -101,15 +383,18 @@ void SkyBlocksEditor::putMessage() {
             painter.drawLine(points[0], points[1]);
         else if (data->figureType == BLOCK) {
             painter.drawPolygon(points);
-            painter.setFont(QFont("freeMono", 8*2));
+        }
+        painter.setFont(QFont("freeMono", 8*2));
                         painter.drawText(
                         QPoint(data->textPosX*2, data->textPosY*2),
                         data->text.c_str()
                         );
-        }
     }
 
     label.setPixmap(QPixmap::fromImage(image));
+
+    for (DrawData *data: *drawData)
+        delete data;
 
     delete drawData;
     delete algorithm;

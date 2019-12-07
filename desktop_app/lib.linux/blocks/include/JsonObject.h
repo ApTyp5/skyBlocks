@@ -23,8 +23,8 @@ const std::string lineType = "line";
 const std::string blockType = "follow";
 const std::string funcType = "innerblock";
 const std::string ifType = "fork";
-const std::string whileBeginType = "begincycle";
-const std::string whileEndType = "endcycle";
+const std::string whileBeginType = "begin cycle";
+const std::string whileEndType = "end cycle";
 
 
 class JsonObject {

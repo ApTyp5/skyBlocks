@@ -16,6 +16,8 @@ Figure *FigureFactory::CreateFigure(FigureData *figureData) {
         newLine->setEndX(lineData->endX);
         newLine->setEndY(lineData->endY);
 
+        newLine->setText(lineData->text);
+
         return newLine;
     }
 
