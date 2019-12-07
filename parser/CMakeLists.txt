@@ -78,7 +78,7 @@ set(ParserFiles
 set(TestFiles
         Fixtures/FIndentPythonLikeAnalyzer.h
         Fixtures/FEmborderScheduler.h
-        tests/constraintorTest.cpp Fixtures/FIndentPythonLikeConstraintor.h)
+        )
 set(AllFiles
         ${Stubs}
         ${Errors}

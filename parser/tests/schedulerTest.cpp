@@ -12,7 +12,7 @@
 
 TEST_F(FEmborderScheduler, addForkTooTight)
 {
-    scheduler->curState.setW(5);
+    scheduler->curState.setW(98);
     scheduler->curState.setY(260);
     std::string text = "Some text of any size\n" // 21
                        "Don-van tried to speak\n" // 22
@@ -22,39 +22,16 @@ TEST_F(FEmborderScheduler, addForkTooTight)
     scheduler->addFFork(text, 70, 140);
     EXPECT_EQ(8, scheduler->figures.size());
 
-    delete scheduler->figures.pop_back();
-    delete scheduler->figures.pop_back();
-    delete scheduler->figures.pop_back();
-    delete scheduler->figures.pop_back();
+    for (int i = 0; i < 4; i++) {
+        delete scheduler->figures.pop_back();
+    }
 
-    auto *follow = dynamic_cast<DoubleMeasureFigure *>(scheduler->figures.back());
-    EXPECT_DOUBLE_EQ(2 * 14 * meta.lh() + 2 * meta.yp(), follow->rect_.size.h);
-    EXPECT_DOUBLE_EQ(2 * 5 * meta.sw() + 2 * meta.xp(), follow->rect_.size.w);
-    EXPECT_DOUBLE_EQ(meta.ym() + follow->rect_.size.h / 2 + meta.bs() + scheduler->continueBlockSize().h,
-                     follow->rect_.center.y);
-    EXPECT_DOUBLE_EQ(scheduler->curState.x(), follow->rect_.center.x);
-}
-TEST_F(FEmborderScheduler, addForkBadWidth)
-{
-    scheduler->curState.setW(5);
-    std::string text = "Some text of any size\n" // 21
-                       "Don-van tried to speak\n" // 22
-                       "Hoo!\n" // 4
-                       "Ano conjunction"; // 15
-
-    scheduler->addFFork(text, 70, 140);
-    EXPECT_EQ(5, scheduler->figures.size());
-
-    delete scheduler->figures.pop_back();
-    delete scheduler->figures.pop_back();
-    delete scheduler->figures.pop_back();
-    delete scheduler->figures.pop_back();
-
-    auto *follow = dynamic_cast<DoubleMeasureFigure *>(scheduler->figures.back());
-    EXPECT_DOUBLE_EQ(2 * 14 * meta.lh() + 2 * meta.yp(), follow->rect_.size.h);
-    EXPECT_DOUBLE_EQ(2 * 5 * meta.sw() + 2 * meta.xp(), follow->rect_.size.w);
-    EXPECT_DOUBLE_EQ(meta.ym() + follow->rect_.size.h / 2, follow->rect_.center.y);
-    EXPECT_DOUBLE_EQ(scheduler->curState.x(), follow->rect_.center.x);
+    auto *fork = dynamic_cast<DoubleMeasureFigure *>(scheduler->figures.back());
+    EXPECT_DOUBLE_EQ(2 * 7 * meta.lh() + 2 * meta.yp(), fork->rect_.size.h);
+    EXPECT_DOUBLE_EQ(2 * 14 * meta.sw() + 2 * meta.xp(), fork->rect_.size.w);
+    EXPECT_DOUBLE_EQ(meta.ym() + fork->rect_.size.h / 2 + meta.bs() + scheduler->continueBlockSize().h,
+                     fork->rect_.center.y);
+    EXPECT_DOUBLE_EQ(scheduler->curState.x(), fork->rect_.center.x);
 }
 TEST_F(FEmborderScheduler, addForkCommon)
 {
@@ -79,7 +56,7 @@ TEST_F(FEmborderScheduler, addForkCommon)
 }
 TEST_F(FEmborderScheduler, addFigureTooTight)
 {
-    scheduler->curState.setW(5);
+    scheduler->curState.setW(98);
     scheduler->curState.setY(270);
     std::string text = "Some text of any size\n" // 21
                        "Don-van tried to speak\n" // 22
@@ -91,14 +68,14 @@ TEST_F(FEmborderScheduler, addFigureTooTight)
 
     delete scheduler->figures.pop_back();
     auto *follow = dynamic_cast<DoubleMeasureFigure *>(scheduler->figures.back());
-    EXPECT_DOUBLE_EQ(14 * meta.lh() + 2 * meta.yp(), follow->rect_.size.h);
-    EXPECT_DOUBLE_EQ(5 * meta.sw() + 2 * meta.xp(), follow->rect_.size.w);
+    EXPECT_DOUBLE_EQ(7 * meta.lh() + 2 * meta.yp(), follow->rect_.size.h);
+    EXPECT_DOUBLE_EQ(14 * meta.sw() + 2 * meta.xp(), follow->rect_.size.w);
     EXPECT_DOUBLE_EQ(meta.ym() + follow->rect_.size.h / 2 + scheduler->continueBlockSize().h + meta.bs(),
                      follow->rect_.center.y);
     EXPECT_DOUBLE_EQ(scheduler->curState.x(), follow->rect_.center.x);
     EXPECT_DOUBLE_EQ(2, scheduler->curState.page());
 }
-TEST_F(FEmborderScheduler, addFigureBadWidth)
+/*TEST_F(FEmborderScheduler, addFigureBadWidth)
 {
     scheduler->curState.setW(5);
     std::string text = "Some text of any size\n" // 21
@@ -115,7 +92,7 @@ TEST_F(FEmborderScheduler, addFigureBadWidth)
     EXPECT_DOUBLE_EQ(5 * meta.sw() + 2 * meta.xp(), follow->rect_.size.w);
     EXPECT_DOUBLE_EQ(meta.ym() + follow->rect_.size.h / 2, follow->rect_.center.y);
     EXPECT_DOUBLE_EQ(scheduler->curState.x(), follow->rect_.center.x);
-}
+}*/
 TEST_F(FEmborderScheduler, addFigureCommon)
 {
     std::string text = "Some text of any size\n" // 21
@@ -263,7 +240,7 @@ TEST_F(FEmborderScheduler, pushContinueFigure)
 }
 TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
 {
-    scheduler->curState.setW(20);
+    scheduler->curState.setW(5 * meta.sw());
     std::string text = "Hoo\n"
                        "Hoo\n"
                        "Hoo\n"
@@ -273,7 +250,7 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
     EXPECT_DOUBLE_EQ(3 * meta.sw() + meta.xp() * 2, output.w);
     EXPECT_DOUBLE_EQ(4 * meta.lh() + meta.yp() * 2, output.h);
 }
-TEST_F(FEmborderScheduler, rectXFitSizeWithMarginBadWidth)
+/*TEST_F(FEmborderScheduler, rectXFitSizeWithMarginBadWidth)
 {
     scheduler->curState.setW(5);
     std::string text = "Some text of any size\n" // 26
@@ -299,8 +276,8 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithMarginBadWidth)
     sRect output = scheduler->rectXFitSize(text, true);
     EXPECT_DOUBLE_EQ(5 * meta.sw() + meta.xp() * 2, output.w);
     EXPECT_DOUBLE_EQ(14 * meta.lh() + meta.yp() * 2, output.h);
-}
-TEST_F(FEmborderScheduler, rectXFitSizeWithoutMarginBadWidth)
+}*/
+/*TEST_F(FEmborderScheduler, rectXFitSizeWithoutMarginBadWidth)
 {
     scheduler->curState.setW(5);
     std::string text = "Some text of any size\n" // 26
@@ -326,10 +303,10 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithoutMarginBadWidth)
     sRect output = scheduler->rectXFitSize(text, false);
     EXPECT_DOUBLE_EQ(5 * meta.sw(), output.w);
     EXPECT_DOUBLE_EQ(14 * meta.lh(), output.h);
-}
+}*/
 TEST_F(FEmborderScheduler, rectXFitSizeWithoutMarginGoodWidth)
 {
-    scheduler->curState.setW(20);
+    scheduler->curState.setW(5 * meta.sw());
     std::string text = "Hoo\n"
                        "Hoo\n"
                        "Hoo\n"

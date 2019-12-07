@@ -451,9 +451,6 @@
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FIndentPythonLikeAnalyzer.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/Fixtures/FIndentPythonLikeConstraintor.h">
-			<Option target="parser"/>
-		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/JsonFormer/JsonFormer.cpp">
 			<Option target="parser"/>
 		</Unit>
@@ -560,7 +557,6 @@
 			<Option target="analyzerTest"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/tests/constraintorTest.cpp">
-			<Option target="parser"/>
 			<Option target="constraintorTest"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/new_skyBlocks/parser/tests/parserTest.cpp">
