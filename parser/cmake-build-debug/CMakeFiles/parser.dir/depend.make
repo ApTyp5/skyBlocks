@@ -3,7 +3,7 @@
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/AAnalyzer.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/AccumulateErrors.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/BaseAlphabet.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/BaseIndentAlphabet.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/PythonLikeAlphabet.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/IndentAnalyzer.cpp
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Analyzer/IndentAnalyze/IndentAnalyzer.h
@@ -21,14 +21,13 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Errors/Par
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../JsonFormer/JsonFormer.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Scheduler/Figure/AFigure.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Stubs/Stubs.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Tools/Liner.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentAnalyzer.cpp.o: ../Tools/ptrVector.h
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/AConstraintor.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/AccumulateErrors.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/BaseAlphabet.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/Alphabet/BaseIndentAlphabet.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/IndentConstraintor.cpp
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/IndentConstraintor.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h
@@ -44,10 +43,10 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Errors
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../JsonFormer/JsonFormer.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Scheduler/Figure/AFigure.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Stubs/Stubs.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/Liner.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/ptrVector.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: /home/arthur/Repos/new_skyBlocks/server/DataBaseConnection.h
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.cpp
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.h
@@ -62,7 +61,6 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/Pri
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../JsonFormer/JsonFormer.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Scheduler/Figure/AFigure.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Stubs/Stubs.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Tools/ptrVector.h
 
@@ -89,6 +87,7 @@ CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/AAnalyzeFactory.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/AAnalyzer.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/AConstraintor.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/AccumulateErrors.h
+CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/AlphabetType.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/APrimitive.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Analyzer/Primitive/PAlgorithm.h
@@ -102,9 +101,9 @@ CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.cpp
 CMakeFiles/parser.dir/Parser.cpp.o: ../Parser.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Scheduler/Figure/AFigure.h
-CMakeFiles/parser.dir/Parser.cpp.o: ../Stubs/Stubs.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Tools/ptrVector.h
+CMakeFiles/parser.dir/Parser.cpp.o: /home/arthur/Repos/new_skyBlocks/server/DataBaseConnection.h
 
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/APrimitive.h
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h
@@ -133,7 +132,6 @@ CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Sc
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/Primitives/Point.h
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/Primitives/Rect.h
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Scheduler/Figure/SingleMeasureFigure.h
-CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Stubs/Stubs.h
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Tools/Liner.h
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Tools/SizedLiner.h
@@ -150,6 +148,9 @@ CMakeFiles/parser.dir/Scheduler/Figure/FContinue.cpp.o: ../Tools/ptrVector.h
 
 CMakeFiles/parser.dir/Tools/Liner.cpp.o: ../Tools/Liner.cpp
 CMakeFiles/parser.dir/Tools/Liner.cpp.o: ../Tools/Liner.h
+
+CMakeFiles/parser.dir/Tools/Meta.cpp.o: ../Tools/Meta.cpp
+CMakeFiles/parser.dir/Tools/Meta.cpp.o: ../Tools/Meta.h
 
 CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o: ../Tools/Liner.h
 CMakeFiles/parser.dir/Tools/SizedLiner.cpp.o: ../Tools/SizedLiner.cpp

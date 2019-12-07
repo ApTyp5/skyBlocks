@@ -22,8 +22,8 @@ HTTP_PROTOTYPE(SimpleHandler)
         std::string input = extractor.extractText();
 
         std::string output = parser.parse(input,
-            AnalyzeFactoryCreator::create(),
-            SchedulerCreator::create(meta));
+                                          AnalyzeFactoryCreator::create(Indent, RuPseudoCode),
+                                          SchedulerCreator::create(meta));
 
         writer.send(Http::Code::Ok, output.data(), output.size());
     }

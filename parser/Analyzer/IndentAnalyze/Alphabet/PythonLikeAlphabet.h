@@ -5,14 +5,14 @@
 #ifndef PARSER_ANALYZER_INDENTANALYZE_ALPHABET_PYTHONLIKEALPHABET_H_
 #define PARSER_ANALYZER_INDENTANALYZE_ALPHABET_PYTHONLIKEALPHABET_H_
 
-#include "BaseAlphabet.h"
+#include "BaseIndentAlphabet.h"
 
-class PythonLikeAlphabet: public BaseAlphabet
+class PythonLikeAlphabet: public BaseIndentAlphabet
 {
 public:
     PythonLikeAlphabet()
         :
-        BaseAlphabet(
+        BaseIndentAlphabet(
             "if",
             "else",
             "while",

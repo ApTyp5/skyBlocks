@@ -12,11 +12,11 @@
 class AnalyzeFactoryCreator
 {
 public:
-    static AAnalyzeFactory *create(AnalyzeFactoryType type = Indent)
+    static AAnalyzeFactory *create(AnalyzeFactoryType type = Indent, AlphabetType aType = PythonLike)
     {
         switch (type) {
             default:
-            case Indent: return new IndentAnalyzeFactory();
+            case Indent: return new IndentAnalyzeFactory(aType);
         }
     }
 };

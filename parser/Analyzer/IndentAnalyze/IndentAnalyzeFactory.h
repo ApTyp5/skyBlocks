@@ -9,17 +9,22 @@
 #include "IndentAnalyzer.h"
 #include "IndentConstraintor.h"
 #include "Alphabet/RuPseudoCodeAlphabet.h"
+#include "../AlphabetType.h"
+#include "Alphabet/IndentAlphabetCreator.h"
 
 class IndentAnalyzeFactory: public AAnalyzeFactory
 {
 public:
+    IndentAnalyzeFactory(AlphabetType aType)
+        : AAnalyzeFactory(aType)
+    {};
     AConstraintor *createConstraintor(ptrVector<ParseError> &errors) override
     {
-        return new IndentConstraintor(errors, new RuPseudoCodeAlphabet);
+        return new IndentConstraintor(errors, IndentAlphabetCreator::create(getAType()));
     }
     AAnalyzer *createAnalyzer(ptrVector<ParseError> &errors) override
     {
-        return new IndentAnalyzer(errors, new RuPseudoCodeAlphabet);
+        return new IndentAnalyzer(errors, IndentAlphabetCreator::create(getAType()));
     }
 };
 

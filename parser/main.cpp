@@ -94,7 +94,9 @@ int main()
     Meta meta;
     DataBaseConnection db;
     Parser parser(db);
-    std::string output = parser.parse(input, AnalyzeFactoryCreator::create(), SchedulerCreator::create(meta));
+    std::string output = parser.parse(input,
+                                      AnalyzeFactoryCreator::create(Indent, PythonLike),
+                                      SchedulerCreator::create(meta));
     std::cout << output;
 
     return 0;

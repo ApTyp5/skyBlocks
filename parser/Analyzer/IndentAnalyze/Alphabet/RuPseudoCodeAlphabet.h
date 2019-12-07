@@ -5,13 +5,13 @@
 #ifndef RUPSEUDOCODEALPHABET_H
 #define RUPSEUDOCODEALPHABET_H
 
-#include "BaseAlphabet.h"
+#include "BaseIndentAlphabet.h"
 
-class RuPseudoCodeAlphabet: public BaseAlphabet
+class RuPseudoCodeAlphabet: public BaseIndentAlphabet
 {
 public:
     RuPseudoCodeAlphabet()
-        : BaseAlphabet(
+        : BaseIndentAlphabet(
         "если",
         "иначе",
         "пока",

@@ -23,7 +23,7 @@ class FixtureIndentAnalyzer_get_current_indent_follow_test;
 class IndentAnalyzer: public AAnalyzer
 {
 public:
-    explicit IndentAnalyzer(ptrVector<ParseError> &errors, BaseAlphabet *alphabet);
+    explicit IndentAnalyzer(ptrVector<ParseError> &errors, BaseIndentAlphabet *alphabet);
     ComplexPrimitive *analyze(std::string text, size_t frontLine, size_t backLine) override;
 
 private:
@@ -49,7 +49,7 @@ private:
     std::string indent;
     std::string shortMemory;
     ptrVector<Memory> longMemory;
-    std::unique_ptr<BaseAlphabet> AlphaBet;
+    std::unique_ptr<BaseIndentAlphabet> AlphaBet;
 
     friend class FIndentPythonLikeAnalyzer;
     friend class FIndentPythonLikeAnalyzer_get_current_indent_Test;

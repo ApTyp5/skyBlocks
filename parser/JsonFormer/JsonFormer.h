@@ -31,10 +31,10 @@ class JsonFormer
 {
 public:
     jsonString getJson();
-    explicit JsonFormer();
-    void addSection(const ptrVector<JsonFormable> &jf, const std::string &section);
-    void addFigures(const ptrVector<AFigure> &figures);
-    void addErrors(const ptrVector<ParseError> &jf);
+    explicit JsonFormer() = default;
+    void addSection(const ptrVector<JsonFormable> &vector, const std::string &section);
+    void addFigures(const ptrVector<AFigure> &vector);
+    void addErrors(const ptrVector<ParseError> &vector);
 
     void addToJson(const FArrow &fArrow);
     void addToJson(const FLine &fLine);

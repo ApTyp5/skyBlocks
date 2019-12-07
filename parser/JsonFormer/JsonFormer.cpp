@@ -15,30 +15,30 @@
 #include "../Scheduler/Figure/FFunc.h"
 #include "../Errors/ParseError.h"
 
-void JsonFormer::addSection(const ptrVector<JsonFormable> &jf, const std::string &section)
+void JsonFormer::addSection(const ptrVector<JsonFormable> &vector, const std::string &section)
 {
     children.clear();
-    for (const auto &i : jf) {
+    for (const auto &i : vector) {
         i->acceptJsonFormer(*this);
     }
 
     if (!children.empty())
         tree.add_child(section, children);
 }
-void JsonFormer::addFigures(const ptrVector<AFigure> &figures)
+void JsonFormer::addFigures(const ptrVector<AFigure> &vector)
 {
-    addSection((const ptrVector<JsonFormable> &) figures, "figure");
+    if (vector.size())
+        addSection((const ptrVector<JsonFormable> &) vector, "figure");
 }
-void JsonFormer::addErrors(const ptrVector<ParseError> &jf)
+void JsonFormer::addErrors(const ptrVector<ParseError> &vector)
 {
-    addSection((const ptrVector<JsonFormable> &) jf, "error");
+    if (vector.size())
+        addSection((const ptrVector<JsonFormable> &) vector, "error");
 }
 void JsonFormer::childAddProperty(const std::string &path, const std::string &name)
 {
     child.add(path, name);
 }
-JsonFormer::JsonFormer()
-{}
 void JsonFormer::addAFigure(const AFigure &aFigure)
 {
     childAddProperty(std::string("text"), aFigure.getText());

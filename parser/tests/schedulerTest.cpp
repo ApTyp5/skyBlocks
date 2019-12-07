@@ -124,13 +124,12 @@ TEST_F(FEmborderScheduler, connectForkPartsRightPageLess)
 
     auto contin1 = dynamic_cast<FContinue *>(scheduler->figures[0]);
     EXPECT_EQ(right.x(), contin1->rect_.center.x);
-    EXPECT_EQ(right.y() + scheduler->continueBlockSize().h / 2, contin1->rect_.center.y);
     EXPECT_STREQ("A", contin1->getText().data());
     EXPECT_EQ(2, contin1->getPage());
 
     auto contin2 = dynamic_cast<FContinue *>(scheduler->figures[1]);
     EXPECT_EQ(right.x(), contin2->rect_.center.x);
-    EXPECT_EQ(meta.ym() + scheduler->continueBlockSize().h / 2, contin2->rect_.center.y);
+    EXPECT_DOUBLE_EQ(meta.ym() + scheduler->continueBlockSize().h / 2, contin2->rect_.center.y);
     EXPECT_STREQ("A", contin2->getText().data());
     EXPECT_EQ(5, contin2->getPage());
 
@@ -161,7 +160,6 @@ TEST_F(FEmborderScheduler, connectForkPartsLeftPageLess)
 
     auto contin1 = dynamic_cast<FContinue *>(scheduler->figures[0]);
     EXPECT_EQ(left.x(), contin1->rect_.center.x);
-    EXPECT_EQ(left.y() + scheduler->continueBlockSize().h / 2, contin1->rect_.center.y);
     EXPECT_STREQ("A", contin1->getText().data());
     EXPECT_EQ(2, contin1->getPage());
 

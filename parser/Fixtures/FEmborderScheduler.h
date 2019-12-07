@@ -17,6 +17,16 @@ protected:
 
     virtual void SetUp()
     {
+        meta = Meta(
+            210,
+            297,
+            0,
+            0,
+            0,
+            0,
+            11,
+            7,
+            5);
         scheduler = new EmborderScheduler(meta);
         scheduler->initNewPage(1);
     }
@@ -25,7 +35,6 @@ protected:
     {
         delete scheduler;
     }
-
 };
 
 #endif //FEMBORDERSCHEDULER_H

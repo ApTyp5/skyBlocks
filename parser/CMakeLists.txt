@@ -45,10 +45,10 @@ set(AnalyzersFiles ${PrimitiveFiles}
         Analyzer/IndentAnalyze/Tools/IndentAnalyzerUtils.h
         Analyzer/IndentAnalyze/Tools/States.h
         Analyzer/IndentAnalyze/Tools/Memory.cpp Analyzer/IndentAnalyze/Tools/Memory.h
-        Analyzer/IndentAnalyze/Alphabet/BaseAlphabet.h
+        Analyzer/IndentAnalyze/Alphabet/BaseIndentAlphabet.h
         Analyzer/IndentAnalyze/Alphabet/PythonLikeAlphabet.h
         Analyzer/AccumulateErrors.h
-        Analyzer/IndentAnalyze/Alphabet/RuPseudoCodeAlphabet.h)
+        Analyzer/IndentAnalyze/Alphabet/RuPseudoCodeAlphabet.h Analyzer/AlphabetType.h Analyzer/IndentAnalyze/Alphabet/IndentAlphabetCreator.h)
 set(ToolFiles
         Tools/Liner.cpp Tools/Liner.h
         Tools/SizedLiner.cpp Tools/SizedLiner.h

@@ -8,10 +8,10 @@
 #include <string>
 #include <vector>
 
-class BaseAlphabet
+class BaseIndentAlphabet
 {
 public:
-    BaseAlphabet(
+    BaseIndentAlphabet(
         std::string forkWord,
         std::string elseWord,
         std::string cycleWord,

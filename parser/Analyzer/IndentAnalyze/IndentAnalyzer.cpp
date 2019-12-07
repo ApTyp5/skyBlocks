@@ -279,7 +279,7 @@ bool IndentAnalyzer::addPFuncToLastMem(std::string text)
     return true;
 }
 
-IndentAnalyzer::IndentAnalyzer(ptrVector<ParseError> &errors, BaseAlphabet *alphabet)
+IndentAnalyzer::IndentAnalyzer(ptrVector<ParseError> &errors, BaseIndentAlphabet *alphabet)
     : AAnalyzer(errors), AlphaBet(alphabet)
 {}
 

@@ -9,12 +9,12 @@
 #include "../../Tools/ptrVector.h"
 #include "../AConstraintor.h"
 #include "Tools/IndentAnalyzerUtils.h"
-#include "Alphabet/BaseAlphabet.h"
+#include "Alphabet/BaseIndentAlphabet.h"
 
 class IndentConstraintor: public AConstraintor
 {
 public:
-    explicit IndentConstraintor(ptrVector<ParseError> &errors, BaseAlphabet *alphabet)
+    explicit IndentConstraintor(ptrVector<ParseError> &errors, BaseIndentAlphabet *alphabet)
         : AConstraintor(errors), AlphaBet(alphabet)
     {}
 
@@ -24,7 +24,7 @@ public:
     bool findMain(size_t &first_index, size_t &back_index, const std::string &text) override;
 
 private:
-    std::unique_ptr<BaseAlphabet> AlphaBet;
+    std::unique_ptr<BaseIndentAlphabet> AlphaBet;
 };
 
 #endif //PARSER_ANALYZER_INDENTCONSTRAINTOR_H_
