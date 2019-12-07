@@ -52,7 +52,12 @@ void SkyBlocksEditor::sendInformation() {
     obj["text"] = content;
     obj["meta"] = QJsonObject({
         QPair<QString, QJsonValue>({"line_spacing", QJsonValue(metrics.lineSpacing())}),
-        QPair<QString, QJsonValue>({"max_width", QJsonValue(metrics.maxWidth())})
+        QPair<QString, QJsonValue>({"max_width", QJsonValue(metrics.maxWidth())}),
+        QPair<QString, QJsonValue>({"padding_x", QJsonValue(0)}),
+        QPair<QString, QJsonValue>({"padding_y", QJsonValue(0)}),
+        QPair<QString, QJsonValue>({"margin_x", QJsonValue(0)}),
+        QPair<QString, QJsonValue>({"margin_y", QJsonValue(0)}),
+        QPair<QString, QJsonValue>({"blocks_space", QJsonValue(5)}),
         });
 
     QJsonDocument doc;
