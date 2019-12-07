@@ -9,6 +9,8 @@
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
 
+#include <QKeyEvent>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class SkyBlocksEditor; }
 QT_END_NAMESPACE
@@ -21,6 +23,7 @@ public:
     SkyBlocksEditor(QWidget *parent = nullptr);
     ~SkyBlocksEditor();
 
+    void keyPressEvent(QKeyEvent *event);
 public slots:
     void sendInformation();
     void putMessage();
@@ -29,6 +32,7 @@ private:
     Ui::SkyBlocksEditor *ui;
     QLabel label;
     std::vector<QImage *> images;
+    int currPage;
 
     QNetworkAccessManager networkManager;
     QNetworkReply *reply;

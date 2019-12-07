@@ -17,10 +17,12 @@
 #include <QUrl>
 
 
+
 SkyBlocksEditor::SkyBlocksEditor(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::SkyBlocksEditor)
     , images()
+    , currPage(1)
     , reply(nullptr)
 
 {
@@ -88,7 +90,7 @@ void SkyBlocksEditor::putMessage() {
     //msg = "{ \"figure\": [{\"size\": {\"width\": \"49\",\"height\": \"11\"},\"center\": {\"x\": \"105.0\",\"y\": \"7.5\"},\"text\": \"do smth\n\",\"page\": \"1\",\"type\": \"begincycle\"},{\"begin\": {\"x\": \"105.0\",\"y\": \"13.0\"},\"end\": {\"x\": \"105.0\",\"y\": \"18.0\"},\"text\": \"\",\"page\": \"1\",\"type\": \"line\"},{\"size\": {\"width\": \"77\",\"height\": \"11\"},\"center\": {\"x\": \"105\",\"y\": \"23.5\"},\"text\": \"do ano smth\n\",\"page\": \"1\",\"type\": \"endcycle\"}]}";
     //msg = "{\"figure\":[{\"size\":{\"width\":\"35\",\"height\":\"11\"},\"center\":{\"x\":\"105.000000\",\"y\":\"5.500000\"},\"text\":\"block\",\"page\":\"1\",\"type\":\"follow\"},{\"begin\":{\"x\":\"105.000000\",\"y\":\"11.000000\"},\"end\":{\"x\":\"105.000000\",\"y\":\"16.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"56\",\"height\":\"22\"},\"center\":{\"x\":\"105.000000\",\"y\":\"27.000000\"},\"text\":\"cond\",\"page\":\"1\",\"type\":\"fork\"},{\"begin\":{\"x\":\"77.000000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"27.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"133.000000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"157.500000\",\"y\":\"27.000000\"},\"text\":\"Да\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"157.500000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"157.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"28\",\"height\":\"11\"},\"center\":{\"x\":\"52.500000\",\"y\":\"48.500000\"},\"text\":\"smth\",\"page\":\"1\",\"type\":\"follow\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"54.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"59.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"43.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"21\",\"height\":\"11\"},\"center\":{\"x\":\"105.000000\",\"y\":\"48.500000\"},\"text\":\"end\",\"page\":\"1\",\"type\":\"follow\"}]}";
 
-    msg = "{\n"
+   /* msg = "{\n"
               "    \"figure\": [\n"
               "        {\n"
               "            \"size\": {\n"
@@ -363,7 +365,7 @@ void SkyBlocksEditor::putMessage() {
                     "            \"type\": \"follow\"\n"
                     "        }\n"
                     "    ]\n"
-                    "}";
+                    "}";*/
 
     QJsonDocument doc = QJsonDocument::fromJson(msg.toUtf8());
 
@@ -394,6 +396,18 @@ void SkyBlocksEditor::putMessage() {
 
     int pagesCount = algorithm->getPagesCount();
 
+    for(auto image: images) {
+        delete image;
+    }
+
+    std::vector<QImage *> newImages;
+    for (int i = 0; i < pagesCount; i++) {
+        auto image = new QImage(QSize(420, 594), QImage::Format_RGB32);
+        newImages.push_back(image);
+    }
+
+    images = newImages;
+
     qDebug() << pagesCount;
     for (int i = 0; i < images.size(); i++) {
         QPainter painter(images[i]);
@@ -417,12 +431,28 @@ void SkyBlocksEditor::putMessage() {
             }
         }
     }
-
     label.setPixmap(QPixmap::fromImage(*images[0]));
-
+    currPage = 1;
     for (DrawData *data: *drawData)
         delete data;
 
     delete drawData;
     delete algorithm;
+}
+
+void SkyBlocksEditor::keyPressEvent(QKeyEvent *event) {
+    switch(event->key()) {
+    case Qt::Key_F1:
+        qDebug() << currPage;
+        if (currPage < images.size()) {
+            label.setPixmap(QPixmap::fromImage(*images[currPage++]));
+        }
+        break;
+    case Qt::Key_F2:
+        qDebug() << currPage;
+        if (currPage > 1) {
+            label.setPixmap(QPixmap::fromImage(*images[--currPage - 1]));
+        }
+        break;
+    }
 }
