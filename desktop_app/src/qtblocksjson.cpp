@@ -23,6 +23,8 @@ bool QtBlocksJson::CheckCorrect() const {
 }
 
 bool QtBlocksJson::CheckCorrect(const QJsonValue &jsonValue) const {
+    QString temp_str;
+    bool ok = true;
     QJsonValue type = jsonValue[typeField.c_str()];
     if (type == QJsonValue::Undefined)
         return false;
@@ -33,15 +35,29 @@ bool QtBlocksJson::CheckCorrect(const QJsonValue &jsonValue) const {
         QJsonValue beginPos = jsonValue[beginField.c_str()];
         if (beginPos == QJsonValue::Undefined)
             return false;
-        if (!beginPos[X.c_str()].isDouble()
-                || !beginPos[Y.c_str()].isDouble())
+
+        temp_str = beginPos[X.c_str()].toString();
+        temp_str.toDouble(&ok);
+        if (!ok)
+            return false;
+
+        temp_str = beginPos[Y.c_str()].toString();
+        temp_str.toDouble(&ok);
+        if (!ok)
             return false;
 
         QJsonValue endPos = jsonValue[endField.c_str()];
         if (endPos == QJsonValue::Undefined)
             return false;
-        if (!endPos[X.c_str()].isDouble()
-                || !endPos[Y.c_str()].isDouble())
+
+        temp_str = endPos[X.c_str()].toString();
+        temp_str.toDouble(&ok);
+        if (!ok)
+            return false;
+
+        temp_str = endPos[Y.c_str()].toString();
+        temp_str.toDouble(&ok);
+        if (!ok)
             return false;
 
         QJsonValue text = jsonValue[textField.c_str()];
@@ -56,16 +72,29 @@ bool QtBlocksJson::CheckCorrect(const QJsonValue &jsonValue) const {
     QJsonValue centerPos = jsonValue[centerPositionField.c_str()];
     if (centerPos == QJsonValue::Undefined)
         return false;
-    if (!centerPos[X.c_str()].isDouble() ||
-            !centerPos[Y.c_str()].isDouble())
+
+    temp_str = centerPos[X.c_str()].toString();
+    temp_str.toDouble(&ok);
+    if (!ok)
         return false;
 
+    temp_str = centerPos[Y.c_str()].toString();
+    temp_str.toDouble(&ok);
+    if (!ok)
+        return false;
 
     QJsonValue rectSizes = jsonValue[rectSizesField.c_str()];
     if (rectSizes == QJsonValue::Undefined)
         return false;
-    if (!rectSizes[widthField.c_str()].isDouble() ||
-            !rectSizes[heightField.c_str()].isDouble())
+
+    temp_str = rectSizes[widthField.c_str()].toString();
+    temp_str.toDouble(&ok);
+    if (!ok)
+        return false;
+
+    temp_str = rectSizes[heightField.c_str()].toString();
+    temp_str.toDouble(&ok);
+    if (!ok)
         return false;
 
     QJsonValue text = jsonValue[textField.c_str()];
@@ -99,10 +128,10 @@ FigureData *QtBlocksJson::GetFigure(int num) const {
         auto lineData = new LineData;
 
         lineData->figureType = LINE;
-        lineData->beginX = value[beginField.c_str()][X.c_str()].toInt();
-        lineData->beginY = value[beginField.c_str()][Y.c_str()].toInt();
-        lineData->endX = value[endField.c_str()][X.c_str()].toInt();
-        lineData->endY = value[endField.c_str()][Y.c_str()].toInt();
+        lineData->beginX = value[beginField.c_str()][X.c_str()].toString().toDouble();
+        lineData->beginY = value[beginField.c_str()][Y.c_str()].toString().toDouble();
+        lineData->endX = value[endField.c_str()][X.c_str()].toString().toDouble();
+        lineData->endY = value[endField.c_str()][Y.c_str()].toString().toDouble();
 
         return lineData;
     }
@@ -111,15 +140,19 @@ FigureData *QtBlocksJson::GetFigure(int num) const {
 
     if (type == blockType)
         blockData->figureType = BLOCK;
+    else if (type == funcType)
+        blockData->figureType = FUNC;
     else if (type == ifType)
         blockData->figureType = IF;
-    else if (type == whileType)
-        blockData->figureType = WHILE;
+    else if (type == whileBeginType)
+        blockData->figureType = WHILEBEGIN;
+    else if (type == whileEndType)
+        blockData->figureType = WHILEEND;
 
-    blockData->centerPosX = value[centerPositionField.c_str()][X.c_str()].toInt();
-    blockData->centerPosY = value[centerPositionField.c_str()][Y.c_str()].toInt();
-    blockData->rectangleWidth = value[rectSizesField.c_str()][widthField.c_str()].toInt();
-    blockData->rectangleHeight = value[rectSizesField.c_str()][heightField.c_str()].toInt();
+    blockData->centerPosX = value[centerPositionField.c_str()][X.c_str()].toString().toDouble();
+    blockData->centerPosY = value[centerPositionField.c_str()][Y.c_str()].toString().toDouble();
+    blockData->rectangleWidth = value[rectSizesField.c_str()][widthField.c_str()].toString().toDouble();
+    blockData->rectangleHeight = value[rectSizesField.c_str()][heightField.c_str()].toString().toDouble();
     blockData->innerText = value[textField.c_str()].toString().toStdString();
 
     return blockData;

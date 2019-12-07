@@ -32,5 +32,10 @@ DrawData *IfBlock::Draw() {
                                    })
                 );
 
+    data->text = innerText;
+
+    data->textPosX = leftTopX + 5;
+    data->textPosY = centerPosY + 3;
+
     return data;
 }

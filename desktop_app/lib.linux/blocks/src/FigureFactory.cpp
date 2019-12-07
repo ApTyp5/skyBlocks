@@ -28,12 +28,20 @@ Figure *FigureFactory::CreateFigure(FigureData *figureData) {
         case BLOCK:
             newBlock = new Block;
             break;
+        case FUNC:
+            newBlock = new FuncBlock;
+            break;
         case IF:
             newBlock = new IfBlock;
             break;
-        case WHILE:
-            newBlock = new WhileBlock;
+        case WHILEBEGIN:
+            newBlock = new WhileBlock(BEGIN);
             break;
+        case WHILEEND:
+            newBlock = new WhileBlock(END);
+            break;
+        default:
+            return nullptr;
         }
 
         newBlock->setPositionX(blockData->centerPosX);

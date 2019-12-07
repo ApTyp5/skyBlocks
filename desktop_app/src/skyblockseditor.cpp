@@ -12,6 +12,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPainter>
+#include <QPoint>
 #include <QMessageBox>
 #include <QUrl>
 
@@ -30,11 +31,11 @@ SkyBlocksEditor::SkyBlocksEditor(QWidget *parent)
     label.setPixmap(QPixmap::fromImage(image));
     ui->scrollArea->setWidget(&label);
 
-    QFont font = QFont("freeMono");
+    /*QFont font = QFont("freeMono", 8);
     QFontMetrics metrics = QFontMetrics(font);
 
-    qDebug() << metrics.underlinePos();
-
+    qDebug() << metrics.lineSpacing() << endl << metrics.maxWidth() << endl;
+*/
     ui->scrollArea->setBackgroundRole(QPalette::Dark);
    // connect(ui->sendCodeButton, SIGNAL(clicked()), this, SLOT(sendInformation()));
     connect(ui->sendCodeButton, SIGNAL(clicked()), this, SLOT(putMessage()));
@@ -63,7 +64,9 @@ void SkyBlocksEditor::putMessage() {
     else
         msg = QString(reply->readAll());
 */
-    msg = "{ \"figure\": [{\"size\": {\"width\": 26,\"height\": 14},\"center\": {\"x\": 105,\"y\": 9},\"text\": \"some text, some text\nmoooore text\n\",\"page\": 1,\"type\": \"follow\"},{\"begin\": {\"x\": 105,\"y\": 2},\"end\": {\"x\": 105,\"y\": 7},\"text\": \"\",\"page\": 1,\"type\": \"line\"},{\"size\": {\"width\": 15,\"height\": 17},\"center\": {\"x\": 105,\"y\": 15},\"text\": \"ano block\nof\ntext\n\",\"page\": 1,\"type\": \"follow\"}]}";
+    //msg = "{ \"figure\": [{\"size\": {\"width\": \"49\",\"height\": \"11\"},\"center\": {\"x\": \"105.0\",\"y\": \"7.5\"},\"text\": \"do smth\n\",\"page\": \"1\",\"type\": \"begincycle\"},{\"begin\": {\"x\": \"105.0\",\"y\": \"13.0\"},\"end\": {\"x\": \"105.0\",\"y\": \"18.0\"},\"text\": \"\",\"page\": \"1\",\"type\": \"line\"},{\"size\": {\"width\": \"77\",\"height\": \"11\"},\"center\": {\"x\": \"105\",\"y\": \"23.5\"},\"text\": \"do ano smth\n\",\"page\": \"1\",\"type\": \"endcycle\"}]}";
+    msg = "{\"figure\":[{\"size\":{\"width\":\"35\",\"height\":\"11\"},\"center\":{\"x\":\"105.000000\",\"y\":\"5.500000\"},\"text\":\"block\",\"page\":\"1\",\"type\":\"follow\"},{\"begin\":{\"x\":\"105.000000\",\"y\":\"11.000000\"},\"end\":{\"x\":\"105.000000\",\"y\":\"16.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"56\",\"height\":\"22\"},\"center\":{\"x\":\"105.000000\",\"y\":\"27.000000\"},\"text\":\"cond\",\"page\":\"1\",\"type\":\"fork\"},{\"begin\":{\"x\":\"77.000000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"27.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"133.000000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"157.500000\",\"y\":\"27.000000\"},\"text\":\"Да\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"157.500000\",\"y\":\"27.000000\"},\"end\":{\"x\":\"157.500000\",\"y\":\"43.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"28\",\"height\":\"11\"},\"center\":{\"x\":\"52.500000\",\"y\":\"43.500000\"},\"text\":\"smth\",\"page\":\"1\",\"type\":\"follow\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"49.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"54.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"begin\":{\"x\":\"52.500000\",\"y\":\"38.000000\"},\"end\":{\"x\":\"52.500000\",\"y\":\"38.000000\"},\"text\":\"\",\"page\":\"1\",\"type\":\"line\"},{\"size\":{\"width\":\"21\",\"height\":\"11\"},\"center\":{\"x\":\"105.000000\",\"y\":\"43.500000\"},\"text\":\"end\",\"page\":\"1\",\"type\":\"follow\"}]}";
+
     QJsonDocument doc = QJsonDocument::fromJson(msg.toUtf8());
 
     QJsonObject obj;
@@ -81,6 +84,9 @@ void SkyBlocksEditor::putMessage() {
 
     QtBlocksJson blocks(figures);
 
+    qDebug() << blocks.CheckCorrect() << endl;
+
+
     auto algorithm = blockFactory.CreateAlgorithm(blocks);
     auto drawData = algorithm->DrawAll();
 
@@ -90,15 +96,21 @@ void SkyBlocksEditor::putMessage() {
     for (DrawData *data: *drawData) {
         QVector<QPointF> points;
         for (std::array<int, 2> point : data->points)
-            points.push_back(QPoint(point[0], point[1]));
+            points.push_back(QPoint(point[0]*2, point[1]*2));
         if (data->figureType == LINE)
             painter.drawLine(points[0], points[1]);
-        else if (data->figureType == BLOCK)
+        else if (data->figureType == BLOCK) {
             painter.drawPolygon(points);
+            painter.setFont(QFont("freeMono", 8*2));
+                        painter.drawText(
+                        QPoint(data->textPosX*2, data->textPosY*2),
+                        data->text.c_str()
+                        );
+        }
     }
+
+    label.setPixmap(QPixmap::fromImage(image));
 
     delete drawData;
     delete algorithm;
-
-    label.setPixmap(QPixmap::fromImage(image));
 }

@@ -21,8 +21,10 @@ const std::string endField = "end";
 
 const std::string lineType = "line";
 const std::string blockType = "follow";
-const std::string ifType = "if";
-const std::string whileType = "while";
+const std::string funcType = "innerblock";
+const std::string ifType = "fork";
+const std::string whileBeginType = "begincycle";
+const std::string whileEndType = "endcycle";
 
 
 class JsonObject {
