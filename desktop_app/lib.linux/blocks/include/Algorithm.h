@@ -14,6 +14,7 @@ public:
 
     std::vector<DrawData *> *DrawAll();
 
+    int getPagesCount();
     DrawData * Draw() override { return nullptr; }
     void Add(Figure *figure);
 

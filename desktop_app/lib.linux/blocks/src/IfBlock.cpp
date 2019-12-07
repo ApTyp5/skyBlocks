@@ -32,6 +32,7 @@ DrawData *IfBlock::Draw() {
                                    })
                 );
 
+    data->page = page;
     data->text = innerText;
 
     data->textPosX = leftTopX + rectangleWidth / 5;

@@ -20,15 +20,19 @@
 SkyBlocksEditor::SkyBlocksEditor(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::SkyBlocksEditor)
-    , image(QImage(QSize(420, 594), QImage::Format_RGB32))
+    , images()
     , reply(nullptr)
 
 {
     ui->setupUi(this);
 
-    QPainter painter(&image);
-    painter.fillRect(image.rect(), Qt::white);
-    label.setPixmap(QPixmap::fromImage(image));
+    auto image = new QImage(QSize(420, 594), QImage::Format_RGB32);
+
+    images.push_back(image);
+
+    QPainter painter(image);
+    painter.fillRect(image->rect(), Qt::white);
+    label.setPixmap(QPixmap::fromImage(*image));
     ui->scrollArea->setWidget(&label);
 
     ui->scrollArea->setBackgroundRole(QPalette::Dark);
@@ -388,26 +392,33 @@ void SkyBlocksEditor::putMessage() {
         return;
     auto drawData = algorithm->DrawAll();
 
-    QPainter painter(&image);
-    painter.fillRect(image.rect(), Qt::white);
+    int pagesCount = algorithm->getPagesCount();
 
-    for (DrawData *data: *drawData) {
-        QVector<QPointF> points;
-        for (std::array<int, 2> point : data->points)
-            points.push_back(QPoint(point[0]*2, point[1]*2));
-        if (data->figureType == LINE)
-            painter.drawLine(points[0], points[1]);
-        else if (data->figureType == BLOCK) {
-            painter.drawPolygon(points);
+    qDebug() << pagesCount;
+    for (int i = 0; i < images.size(); i++) {
+        QPainter painter(images[i]);
+        painter.fillRect(images[i]->rect(), Qt::white);
+
+        for (DrawData *data: *drawData) {
+            if (data->page == i+1) {
+                QVector<QPointF> points;
+                for (std::array<int, 2> point : data->points)
+                    points.push_back(QPoint(point[0]*2, point[1]*2));
+                if (data->figureType == LINE)
+                    painter.drawLine(points[0], points[1]);
+                else if (data->figureType == BLOCK) {
+                    painter.drawPolygon(points);
+                }
+                painter.setFont(QFont("freeMono", 8*2));
+                                painter.drawText(
+                                QPoint(data->textPosX*2, data->textPosY*2),
+                                data->text.c_str()
+                                );
+            }
         }
-        painter.setFont(QFont("freeMono", 8*2));
-                        painter.drawText(
-                        QPoint(data->textPosX*2, data->textPosY*2),
-                        data->text.c_str()
-                        );
     }
 
-    label.setPixmap(QPixmap::fromImage(image));
+    label.setPixmap(QPixmap::fromImage(*images[0]));
 
     for (DrawData *data: *drawData)
         delete data;

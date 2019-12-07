@@ -17,6 +17,7 @@ Figure *FigureFactory::CreateFigure(FigureData *figureData) {
         newLine->setEndY(lineData->endY);
 
         newLine->setText(lineData->text);
+        newLine->setPage(lineData->page);
 
         return newLine;
     }
@@ -46,6 +47,7 @@ Figure *FigureFactory::CreateFigure(FigureData *figureData) {
             return nullptr;
         }
 
+        newBlock->setPage(blockData->page);
         newBlock->setPositionX(blockData->centerPosX);
         newBlock->setPositionY(blockData->centerPosY);
         newBlock->setWidth(blockData->rectangleWidth);

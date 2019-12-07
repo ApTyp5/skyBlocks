@@ -14,7 +14,9 @@ enum FigureType {
 struct FigureData {
     FigureType figureType;
 
-    FigureData() : figureType(UNDEFINED) {}
+    int page;
+
+    FigureData() : figureType(UNDEFINED), page(0) {}
 };
 
 struct DrawData {
@@ -22,18 +24,29 @@ struct DrawData {
     std::vector<std::array<int, 2>> points;
     std::string text;
 
+    int page;
+
+    int centerX;
+    int centerY;
+
     int textPosX;
     int textPosY;
 
     DrawData() : figureType(UNDEFINED), points(), text(),
-        textPosX(0), textPosY(0) {}
+        centerX(0), centerY(0), textPosX(0), textPosY(0) {}
 };
 
 class Figure {
 public:
+    Figure() : page(0) {}
     virtual ~Figure() = default;
 
+    void setPage(const int &num) { page = num; }
+    int getPage() const { return page; }
+
     virtual DrawData *Draw() = 0;
+protected:
+    int page;
 };
 
 #endif // FIGURE_H

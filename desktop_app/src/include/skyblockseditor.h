@@ -28,7 +28,7 @@ public slots:
 private:
     Ui::SkyBlocksEditor *ui;
     QLabel label;
-    QImage image;
+    std::vector<QImage *> images;
 
     QNetworkAccessManager networkManager;
     QNetworkReply *reply;

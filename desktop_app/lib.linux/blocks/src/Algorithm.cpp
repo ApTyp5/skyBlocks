@@ -12,6 +12,10 @@ std::vector<DrawData *> *Algorithm::DrawAll() {
     return data;
 }
 
+int Algorithm::getPagesCount() {
+    return figures.back()->getPage();
+}
+
 void Algorithm::Add(Figure *figure) {
     figures.push_back(figure);
 }

@@ -24,7 +24,7 @@ DrawData *Block::Draw() {
                     });
 
     data->text = innerText;
-
+    data->page = page;
     data->textPosX = leftTopX + 2;
     data->textPosY = leftTopY + rectangleHeight - 2;
 

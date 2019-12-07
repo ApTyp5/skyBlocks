@@ -16,6 +16,8 @@ DrawData *Line::Draw() {
                     })
                 );
 
+    data->page = page;
+
     if (!text.empty()) {
         data->text = text;
 

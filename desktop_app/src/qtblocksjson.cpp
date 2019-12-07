@@ -31,6 +31,11 @@ bool QtBlocksJson::CheckCorrect(const QJsonValue &jsonValue) const {
     if (!type.isString())
         return false;
 
+    temp_str = jsonValue[pageField.c_str()].toString();
+    temp_str.toDouble(&ok);
+    if (!ok)
+        return false;
+
     if (type == "line") {
         QJsonValue beginPos = jsonValue[beginField.c_str()];
         if (beginPos == QJsonValue::Undefined)
@@ -128,11 +133,13 @@ FigureData *QtBlocksJson::GetFigure(int num) const {
         auto lineData = new LineData;
 
         lineData->figureType = LINE;
+        lineData->page = value[pageField.c_str()].toString().toDouble();
         lineData->beginX = value[beginField.c_str()][X.c_str()].toString().toDouble();
         lineData->beginY = value[beginField.c_str()][Y.c_str()].toString().toDouble();
         lineData->endX = value[endField.c_str()][X.c_str()].toString().toDouble();
         lineData->endY = value[endField.c_str()][Y.c_str()].toString().toDouble();
         lineData->text = value[textField.c_str()].toString().toStdString();
+
         return lineData;
     }
 
@@ -149,6 +156,7 @@ FigureData *QtBlocksJson::GetFigure(int num) const {
     else if (type == whileEndType)
         blockData->figureType = WHILEEND;
 
+    blockData->page = value[pageField.c_str()].toString().toDouble();
     blockData->centerPosX = value[centerPositionField.c_str()][X.c_str()].toString().toDouble();
     blockData->centerPosY = value[centerPositionField.c_str()][Y.c_str()].toString().toDouble();
     blockData->rectangleWidth = value[rectSizesField.c_str()][widthField.c_str()].toString().toDouble();
