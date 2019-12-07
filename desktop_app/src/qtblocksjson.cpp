@@ -155,6 +155,8 @@ FigureData *QtBlocksJson::GetFigure(int num) const {
         blockData->figureType = WHILEBEGIN;
     else if (type == whileEndType)
         blockData->figureType = WHILEEND;
+    else
+        blockData->figureType = BLOCK;
 
     blockData->page = value[pageField.c_str()].toString().toDouble();
     blockData->centerPosX = value[centerPositionField.c_str()][X.c_str()].toString().toDouble();
