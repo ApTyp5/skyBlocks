@@ -3,9 +3,12 @@
 
 #include "FigureFactory.h"
 
-#include <QMainWindow>
+#include "drawsettings.h"
+#include "ui_drawsettings.h"
+
 #include <QGraphicsScene>
 #include <QLabel>
+#include <QMainWindow>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
 
@@ -26,6 +29,7 @@ public:
     void keyPressEvent(QKeyEvent *event);
 public slots:
     void sendInformation();
+    void setDrawSettings();
     void putMessage();
 
 private:
@@ -33,6 +37,11 @@ private:
     QLabel label;
     std::vector<QImage *> images;
     int currPage;
+    double scaleIndex;
+
+    DrawSettings settings;
+
+    QFont drawFont;
 
     QNetworkAccessManager networkManager;
     QNetworkReply *reply;

@@ -20,18 +20,21 @@ set(LIBS_DIR "lib.linux")
 include_directories(${SOURCE_DIR}/${HEADERS_DIR})
 
 set(SOURCE_FILES
+    ${SOURCE_DIR}/drawsettings.cpp
     ${SOURCE_DIR}/main.cpp
     ${SOURCE_DIR}/skyblockseditor.cpp
     ${SOURCE_DIR}/qtblocksjson.cpp
     )
 
 set(HEADERS
-    ${SOURCE_DIR}/${HEADERS_DIR}/skyblockseditor.h
+    ${SOURCE_DIR}/${HEADERS_DIR}/drawsettings.h
     ${SOURCE_DIR}/${HEADERS_DIR}/qtblocksjson.h
+    ${SOURCE_DIR}/${HEADERS_DIR}/skyblockseditor.h
     )
 
 set(UI
     ${SOURCE_DIR}/${UI_DIR}/skyblockseditor.ui
+    ${SOURCE_DIR}/${UI_DIR}/drawsettings.ui
     )
 
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${SOURCE_DIR}/${UI_DIR})
