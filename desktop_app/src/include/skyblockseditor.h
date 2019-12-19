@@ -27,10 +27,12 @@ public:
     ~SkyBlocksEditor();
 
     void keyPressEvent(QKeyEvent *event);
+
+    void Draw(QPainter &painter, const DrawData &drawData);
 public slots:
     void sendInformation();
     void setDrawSettings();
-    void putMessage();
+    void drawAlgorithm();
 
 private:
     Ui::SkyBlocksEditor *ui;

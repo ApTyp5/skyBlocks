@@ -73,7 +73,7 @@ void SkyBlocksEditor::sendInformation() {
     qDebug() << QString(doc.toJson());
 
     reply = networkManager.post(QNetworkRequest(url), doc.toJson());
-    connect(reply, SIGNAL(finished()), this, SLOT(putMessage()));
+    connect(reply, SIGNAL(finished()), this, SLOT(drawAlgorithm()));
 }
 
 void SkyBlocksEditor::setDrawSettings() {
@@ -83,7 +83,7 @@ void SkyBlocksEditor::setDrawSettings() {
         settings = dialog.getSettings();
 }
 
-void SkyBlocksEditor::putMessage() {
+void SkyBlocksEditor::drawAlgorithm() {
     QString msg;
     if (reply->error()) {
         msg = reply->errorString();
@@ -145,21 +145,10 @@ void SkyBlocksEditor::putMessage() {
 
         for (DrawData *data: *drawData) {
             if (data->page == i+1) {
-                QVector<QPointF> points;
-                for (std::array<int, 2> point : data->points)
-                    points.push_back(QPoint(point[0]*2, point[1]*2));
-                if (data->figureType == LINE)
-                    painter.drawLine(points[0], points[1]);
-                else if (data->figureType == BLOCK) {
-                    painter.drawPolygon(points);
-                }
                 QFont drawFont = settings.font;
                 drawFont.setPointSize(drawFont.pointSize() * scaleIndex);
                 painter.setFont(drawFont);
-                painter.drawText(
-                            QPoint(data->textPosX*2, data->textPosY*2),
-                            data->text.c_str()
-                            );
+                Draw(painter, *data);
             }
         }
     }
@@ -186,5 +175,24 @@ void SkyBlocksEditor::keyPressEvent(QKeyEvent *event) {
             label.setPixmap(QPixmap::fromImage(*images[--currPage - 1]));
         }
         break;
+    }
+}
+
+void SkyBlocksEditor::Draw(QPainter &painter, const DrawData &drawData) {
+    QVector<QPointF> points;
+    for (std::array<int, 2> point : drawData.points)
+        points.push_back(QPoint(point[0]*scaleIndex, point[1]*scaleIndex));
+    if (drawData.figureType == LINE) {
+        painter.drawLine(points[0], points[1]);
+    }
+    else if (drawData.figureType == BLOCK) {
+        painter.drawPolygon(points);
+        QRectF rectText(
+                    QPointF(drawData.centerX - drawData.width / 2,
+                            drawData.centerY - drawData.height / 2) * scaleIndex,
+                    QSizeF(drawData.width, drawData.height) * scaleIndex
+                    );
+        painter.drawText(rectText, Qt::AlignCenter, drawData.text.c_str());
+
     }
 }

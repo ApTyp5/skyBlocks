@@ -73,8 +73,10 @@ DrawData *FuncBlock::Draw() {
 
     data->page = page;
     data->text = innerText;
-    data->textPosX = leftTopX + subRectWidth + 3;
-    data->textPosY = leftTopY + rectangleHeight - 2;
+    data->centerX = centerPosX;
+    data->centerY = centerPosY;
+    data->width = rectangleWidth;
+    data->height = rectangleHeight;
 
     return data;
 }

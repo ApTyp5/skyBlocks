@@ -68,8 +68,10 @@ DrawData *WhileBlock::Draw() {
 
     data->page = page;
     data->text = innerText;
-    data->textPosX = centerPosX - rectangleWidth / 2 + 3;
-    data->textPosY = centerPosY + 3;
+    data->centerX = centerPosX;
+    data->centerY = centerPosY;
+    data->width = rectangleWidth;
+    data->height = rectangleHeight;
 
     return data;
 }
