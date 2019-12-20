@@ -21,18 +21,21 @@
 SkyBlocksEditor::SkyBlocksEditor(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::SkyBlocksEditor)
-    , currPage(1)
     , images()
+    , currPage(0)
+    , pagesCount(0)
     , scaleIndex(3)
-    , reply(nullptr)
+    , drawData(nullptr)
     , settings()
+    , reply(nullptr)
 
 {
     ui->setupUi(this);
 
-    ui->scrollArea->setMaximumWidth(210 * 3);
+    ui->scrollArea->setFixedWidth(210 * 3);
+    ui->imageButtonsWidget->setMaximumWidth(210 * 3);
 
-    auto image = new QImage(
+    /*auto image = new QImage(
                 listSizes[settings.size] * scaleIndex,
                 QImage::Format_RGB32
                 );
@@ -41,17 +44,24 @@ SkyBlocksEditor::SkyBlocksEditor(QWidget *parent)
 
     QPainter painter(image);
     painter.fillRect(image->rect(), Qt::white);
-    label.setPixmap(QPixmap::fromImage(*image));
+    label.setPixmap(QPixmap::fromImage(*image));*/
+
     ui->scrollArea->setWidget(&label);
 
     ui->scrollArea->setBackgroundRole(QPalette::Dark);
 
     connect(ui->drawSettingsButton, SIGNAL(clicked()), this, SLOT(setDrawSettings()));
     connect(ui->sendCodeButton, SIGNAL(clicked()), this, SLOT(sendInformation()));
+    connect(ui->nextPageButton, SIGNAL(clicked()), this, SLOT(nextImagePage()));
+    connect(ui->prevPageButton, SIGNAL(clicked()), this, SLOT(prevImagePage()));
+    connect(ui->increaseScaleButton, SIGNAL(clicked()), this, SLOT(increaseImageScale()));
+    connect(ui->reduceScaleButton, SIGNAL(clicked()), this, SLOT(reduceImageScale()));
 }
 
 SkyBlocksEditor::~SkyBlocksEditor()
 {
+    if (drawData)
+        delete drawData;
     delete ui;
 }
 
@@ -98,7 +108,6 @@ void SkyBlocksEditor::drawAlgorithm() {
 
     QJsonObject obj;
 
-
     if(!doc.isNull()) {
         if(doc.isObject()) {
             obj = doc.object();
@@ -119,13 +128,73 @@ void SkyBlocksEditor::drawAlgorithm() {
     auto algorithm = blockFactory.CreateAlgorithm(blocks);
     if (!algorithm)
         return;
-    auto drawData = algorithm->DrawAll();
 
-    int pagesCount = algorithm->getPagesCount();
+    if (drawData)
+        delete drawData;
 
+    drawData = algorithm->DrawAll();
+
+    pagesCount = algorithm->getPagesCount();
+
+    DrawAll();
+
+    delete algorithm;
+}
+
+void SkyBlocksEditor::nextImagePage() {
+    qDebug() << currPage;
+    if (currPage < images.size()) {
+        label.setPixmap(QPixmap::fromImage(*images[currPage++]));
+        auto pl = std::to_string(currPage) + "/" + std::to_string(images.size());
+        ui->pageLabel->setText(pl.c_str());
+    }
+}
+
+void SkyBlocksEditor::prevImagePage() {
+    qDebug() << currPage;
+    if (currPage > 1) {
+        label.setPixmap(QPixmap::fromImage(*images[--currPage - 1]));
+        auto pl = std::to_string(currPage) + "/" + std::to_string(images.size());
+        ui->pageLabel->setText(pl.c_str());
+    }
+}
+
+void SkyBlocksEditor::increaseImageScale() {
+    if (!drawData)
+        return;
+    if (scaleIndex + 1 > 10)
+        return;
+    scaleIndex += 1;
+    DrawAll();
+}
+
+void SkyBlocksEditor::reduceImageScale() {
+    if (!drawData)
+        return;
+    if (scaleIndex - 1 < 3)
+        return;
+    scaleIndex -= 1;
+    DrawAll();
+}
+
+void SkyBlocksEditor::keyPressEvent(QKeyEvent *event) {
+    switch(event->key()) {
+    case Qt::Key_F1:
+        nextImagePage();
+        break;
+    case Qt::Key_F2:
+        prevImagePage();
+        break;
+    }
+}
+
+void SkyBlocksEditor::DrawAll() {
     for(auto image: images) {
         delete image;
     }
+
+    auto pl = "1/" + std::to_string(pagesCount);
+    ui->pageLabel->setText(pl.c_str());
 
     std::vector<QImage *> newImages;
     for (int i = 0; i < pagesCount; i++) {
@@ -154,45 +223,33 @@ void SkyBlocksEditor::drawAlgorithm() {
     }
     label.setPixmap(QPixmap::fromImage(*images[0]));
     currPage = 1;
-    for (DrawData *data: *drawData)
-        delete data;
-
-    delete drawData;
-    delete algorithm;
-}
-
-void SkyBlocksEditor::keyPressEvent(QKeyEvent *event) {
-    switch(event->key()) {
-    case Qt::Key_F1:
-        qDebug() << currPage;
-        if (currPage < images.size()) {
-            label.setPixmap(QPixmap::fromImage(*images[currPage++]));
-        }
-        break;
-    case Qt::Key_F2:
-        qDebug() << currPage;
-        if (currPage > 1) {
-            label.setPixmap(QPixmap::fromImage(*images[--currPage - 1]));
-        }
-        break;
-    }
 }
 
 void SkyBlocksEditor::Draw(QPainter &painter, const DrawData &drawData) {
     QVector<QPointF> points;
-    for (std::array<int, 2> point : drawData.points)
+    for (std::array<double, 2> point : drawData.points)
         points.push_back(QPoint(point[0]*scaleIndex, point[1]*scaleIndex));
     if (drawData.figureType == LINE) {
         painter.drawLine(points[0], points[1]);
-    }
-    else if (drawData.figureType == BLOCK) {
+        painter.drawText(QPoint(drawData.centerX, drawData.centerY) * scaleIndex,
+                         drawData.text.c_str());
+    } else {
         painter.drawPolygon(points);
-        QRectF rectText(
-                    QPointF(drawData.centerX - drawData.width / 2,
-                            drawData.centerY - drawData.height / 2) * scaleIndex,
-                    QSizeF(drawData.width, drawData.height) * scaleIndex
-                    );
-        painter.drawText(rectText, Qt::AlignCenter, drawData.text.c_str());
+        if (drawData.figureType == IF){
+            QRectF rectText(
+                        QPointF(drawData.centerX - drawData.width / 4,
+                                drawData.centerY - drawData.height / 4) * scaleIndex,
+                        QSizeF(drawData.width / 2, drawData.height / 2) * scaleIndex
+                        );
+            painter.drawText(rectText, 0, drawData.text.c_str());
+        } else if (drawData.figureType == BLOCK) {
+            QRectF rectText(
+                        QPointF(drawData.centerX - drawData.width / 2,
+                                drawData.centerY - drawData.height / 2) * scaleIndex,
+                        QSizeF(drawData.width, drawData.height) * scaleIndex
+                        );
 
+            painter.drawText(rectText, 0, drawData.text.c_str());
+        }
     }
 }

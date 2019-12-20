@@ -10,10 +10,10 @@
 
 struct BlockData : public FigureData {
     std::string blockType;
-    int centerPosX;
-    int centerPosY;
-    int rectangleWidth;
-    int rectangleHeight;
+    double centerPosX;
+    double centerPosY;
+    double rectangleWidth;
+    double rectangleHeight;
     std::string innerText;
 
     BlockData() : blockType(), centerPosX(0), centerPosY(0),
@@ -26,25 +26,25 @@ public:
         rectangleHeight(0), innerText() {}
     virtual ~Block() override {}
 
-    int getPositionX() const { return centerPosX; }
-    int getPositionY() const { return centerPosY; }
-    int getWidth() const { return rectangleWidth; }
-    int getHeight() const { return  rectangleHeight; }
+    double getPositionX() const { return centerPosX; }
+    double getPositionY() const { return centerPosY; }
+    double getWidth() const { return rectangleWidth; }
+    double getHeight() const { return  rectangleHeight; }
     std::string getText() const { return innerText; }
 
 
-    void setPositionX(const int &value) { centerPosX = value; }
-    void setPositionY(const int &value) { centerPosY = value; }
-    void setWidth(const int &value) { rectangleWidth = value; }
-    void setHeight(const int &value) { rectangleHeight = value; }
+    void setPositionX(const double &value) { centerPosX = value; }
+    void setPositionY(const double &value) { centerPosY = value; }
+    void setWidth(const double &value) { rectangleWidth = value; }
+    void setHeight(const double &value) { rectangleHeight = value; }
     void setText(const std::string &value) { innerText = value; }
 
     virtual DrawData *Draw() override;
 protected:
-    int centerPosX;
-    int centerPosY;
-    int rectangleWidth;
-    int rectangleHeight;
+    double centerPosX;
+    double centerPosY;
+    double rectangleWidth;
+    double rectangleHeight;
     std::string innerText;
 };
 

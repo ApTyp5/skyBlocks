@@ -5,10 +5,10 @@
 #include <string>
 
 struct LineData : public FigureData {
-    int beginX;
-    int beginY;
-    int endX;
-    int endY;
+    double beginX;
+    double beginY;
+    double endX;
+    double endY;
     std::string text;
 
     LineData() : beginX(0), beginY(0), endX(0), endY(0),
@@ -21,24 +21,24 @@ public:
         text() {}
     ~Line() override {}
 
-    int getBeginX() const { return beginX; }
-    int getBeginY() const { return beginY; }
-    int getEndX() const { return endX; }
-    int getEndY() const { return endY; }
+    double getBeginX() const { return beginX; }
+    double getBeginY() const { return beginY; }
+    double getEndX() const { return endX; }
+    double getEndY() const { return endY; }
     std::string getText() const { return text; }
 
-    void setBeginX(const int &value) { beginX = value; }
-    void setBeginY(const int &value) { beginY = value; }
-    void setEndX(const int &value) { endX = value; }
-    void setEndY(const int &value) { endY = value; }
+    void setBeginX(const double &value) { beginX = value; }
+    void setBeginY(const double &value) { beginY = value; }
+    void setEndX(const double &value) { endX = value; }
+    void setEndY(const double &value) { endY = value; }
     void setText(const std::string &value) { text = value; }
 
     DrawData *Draw() override;
 private:
-    int beginX;
-    int beginY;
-    int endX;
-    int endY;
+    double beginX;
+    double beginY;
+    double endX;
+    double endY;
     std::string text;
 };
 

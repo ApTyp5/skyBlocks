@@ -29,7 +29,13 @@ public:
     void keyPressEvent(QKeyEvent *event);
 
     void Draw(QPainter &painter, const DrawData &drawData);
+    void DrawAll();
 public slots:
+    void nextImagePage();
+    void prevImagePage();
+
+    void increaseImageScale();
+    void reduceImageScale();
     void sendInformation();
     void setDrawSettings();
     void drawAlgorithm();
@@ -39,7 +45,10 @@ private:
     QLabel label;
     std::vector<QImage *> images;
     int currPage;
+    int pagesCount;
     double scaleIndex;
+
+    std::vector<DrawData *> *drawData;
 
     DrawSettings settings;
 

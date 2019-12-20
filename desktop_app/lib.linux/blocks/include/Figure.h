@@ -22,16 +22,16 @@ struct FigureData {
 
 struct DrawData {
     FigureType figureType;
-    std::vector<std::array<int, 2>> points;
+    std::vector<std::array<double, 2>> points;
     std::string text;
 
     int page;
 
-    int centerX;
-    int centerY;
+    double centerX;
+    double centerY;
 
-    int width;
-    int height;
+    double width;
+    double height;
 
     DrawData() : figureType(UNDEFINED), points(), text(),
         centerX(0), centerY(0), width(0), height(0) {}

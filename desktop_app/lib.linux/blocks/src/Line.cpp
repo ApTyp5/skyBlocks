@@ -3,18 +3,14 @@
 DrawData *Line::Draw() {
     auto data = new DrawData;
     data->figureType = LINE;
-    data->points.push_back(
-                std::array<int, 2>({
+    data->points.push_back({
                     beginX,
                     beginY
-                    })
-                );
-    data->points.push_back(
-                std::array<int, 2>({
+                    });
+    data->points.push_back({
                     endX,
                     endY
-                    })
-                );
+                    });
 
     data->page = page;
 
