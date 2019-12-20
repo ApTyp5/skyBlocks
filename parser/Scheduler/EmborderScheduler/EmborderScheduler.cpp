@@ -27,16 +27,17 @@ ptrVector<AFigure> EmborderScheduler::schedule(const std::unique_ptr<ComplexPrim
     primitives->acceptScheduler(*this);
 
     //Удаляем все линии с конца
-    while (figures.size() > 0 && dynamic_cast<SingleMeasureFigure *>(figures.back()))
+
+    while (figures.size() > 0 && figures.back()->isSingleMeasureFigure())
         delete figures.pop_back();
 
-    // Преобразуем начальный блок следования в блок начала
-    if (dynamic_cast<FFollow *>(figures[0]))
-        figures[0] = (FBegEnd *) (figures[0]);
+    // Если на верхнем уровне имеются открывающий / закрывающий
+    // блоки следования, то они преобразуюстя в терминальные блоки
+    if (FFollow::onOneLine(figures.back(), figures[0])) {
+        castFFollowToFBegEnd(figures[0]);
+        castFFollowToFBegEnd(figures.back());
+    }
 
-    // Преобразуем конечный блок следования в блок конца
-    if (dynamic_cast<FFollow *>(figures.back()))
-        figures.back() = (FBegEnd *) (figures.back());
 
     return std::move(figures);
 }
@@ -114,6 +115,7 @@ sRect EmborderScheduler::rectXFitSize(std::string &text, bool withMargin)
     }
 
     text = output;
+    text.pop_back(); // удаление \n
     sRect outRect{maxWidth * meta.sw(), lineNum * meta.lh()};
     if (withMargin) {
         outRect.w += 2 * meta.xp();
@@ -265,6 +267,12 @@ void EmborderScheduler::addPadding(sRect &rect)
 {
     rect.w += 2 * meta.xp();
     rect.h += 2 * meta.yp();
+}
+void EmborderScheduler::castFFollowToFBegEnd(AFigure *&figure)
+{
+    auto *begin = new FBegEnd(*dynamic_cast<FFollow *>(figure));
+    delete figure;
+    figure = begin;
 }
 double EmborderScheduler::State::x() const
 {

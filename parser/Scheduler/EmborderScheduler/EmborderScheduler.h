@@ -76,6 +76,7 @@ protected:
 
     sRect rectXFitSize(std::string &text, bool withMargin = true);
     sRect continueBlockSize();
+    void castFFollowToFBegEnd(AFigure *&figure);
 
     friend class FEmborderScheduler;
     friend class FEmborderScheduler_rectXFitSizeWithoutMarginGoodWidth_Test;

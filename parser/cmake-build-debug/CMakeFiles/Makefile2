@@ -35,19 +35,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/98/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/99/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/98/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/99/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/arthur/Repos/new_skyBlocks/parser
+CMAKE_SOURCE_DIR = /home/arthur/Repos/skyBlocks/parser
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug
+CMAKE_BINARY_DIR = /home/arthur/Repos/skyBlocks/parser/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -86,14 +86,14 @@ preinstall:
 CMakeFiles/main.dir/all: CMakeFiles/parser.dir/all
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=5,6 "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/main.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/main.dir/rule
 
 # Convenience name for target.
@@ -113,14 +113,14 @@ CMakeFiles/main.dir/clean:
 CMakeFiles/parserTest.dir/all: CMakeFiles/parser.dir/all
 	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/depend
 	$(MAKE) -f CMakeFiles/parserTest.dir/build.make CMakeFiles/parserTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=18,19 "Built target parserTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=18,19 "Built target parserTest"
 .PHONY : CMakeFiles/parserTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/parserTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/parserTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/parserTest.dir/rule
 
 # Convenience name for target.
@@ -140,14 +140,14 @@ CMakeFiles/parserTest.dir/clean:
 CMakeFiles/parser.dir/all:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/depend
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17 "Built target parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=7,8,9,10,11,12,13,14,15,16,17 "Built target parser"
 .PHONY : CMakeFiles/parser.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/parser.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/parser.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/parser.dir/rule
 
 # Convenience name for target.
@@ -167,14 +167,14 @@ CMakeFiles/parser.dir/clean:
 CMakeFiles/analyzerTest.dir/all: CMakeFiles/parser.dir/all
 	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/depend
 	$(MAKE) -f CMakeFiles/analyzerTest.dir/build.make CMakeFiles/analyzerTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target analyzerTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target analyzerTest"
 .PHONY : CMakeFiles/analyzerTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/analyzerTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/analyzerTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/analyzerTest.dir/rule
 
 # Convenience name for target.
@@ -194,14 +194,14 @@ CMakeFiles/analyzerTest.dir/clean:
 CMakeFiles/schedulerTest.dir/all: CMakeFiles/parser.dir/all
 	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/depend
 	$(MAKE) -f CMakeFiles/schedulerTest.dir/build.make CMakeFiles/schedulerTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=22,23 "Built target schedulerTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=22,23 "Built target schedulerTest"
 .PHONY : CMakeFiles/schedulerTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/schedulerTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/schedulerTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/schedulerTest.dir/rule
 
 # Convenience name for target.
@@ -221,14 +221,14 @@ CMakeFiles/schedulerTest.dir/clean:
 CMakeFiles/parserToolsTest.dir/all: CMakeFiles/parser.dir/all
 	$(MAKE) -f CMakeFiles/parserToolsTest.dir/build.make CMakeFiles/parserToolsTest.dir/depend
 	$(MAKE) -f CMakeFiles/parserToolsTest.dir/build.make CMakeFiles/parserToolsTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=20,21 "Built target parserToolsTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=20,21 "Built target parserToolsTest"
 .PHONY : CMakeFiles/parserToolsTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/parserToolsTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/parserToolsTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/parserToolsTest.dir/rule
 
 # Convenience name for target.
@@ -248,14 +248,14 @@ CMakeFiles/parserToolsTest.dir/clean:
 CMakeFiles/constraintorTest.dir/all: CMakeFiles/parser.dir/all
 	$(MAKE) -f CMakeFiles/constraintorTest.dir/build.make CMakeFiles/constraintorTest.dir/depend
 	$(MAKE) -f CMakeFiles/constraintorTest.dir/build.make CMakeFiles/constraintorTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target constraintorTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target constraintorTest"
 .PHONY : CMakeFiles/constraintorTest.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/constraintorTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/constraintorTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/new_skyBlocks/parser/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/arthur/Repos/skyBlocks/parser/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/constraintorTest.dir/rule
 
 # Convenience name for target.
