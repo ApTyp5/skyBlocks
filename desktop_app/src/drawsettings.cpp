@@ -50,5 +50,6 @@ DrawSettings DrawSettingsDialog::getSettings() const {
     settings.bs = ui->bsBox->value();
     settings.font.setPointSize(ui->fontSizeBox->value());
     settings.size = ListSizes(ui->listSizesBox->currentIndex());
+    settings.font = ui->fontComboBox->currentFont();
     return settings;
 }

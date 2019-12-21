@@ -25,6 +25,8 @@ const std::string funcType = "innerblock";
 const std::string ifType = "fork";
 const std::string whileBeginType = "begin cycle";
 const std::string whileEndType = "end cycle";
+const std::string terminal = "begin end";
+const std::string pageChanger = "continue";
 
 
 class JsonObject {

@@ -35,17 +35,6 @@ SkyBlocksEditor::SkyBlocksEditor(QWidget *parent)
     ui->scrollArea->setFixedWidth(210 * 3);
     ui->imageButtonsWidget->setMaximumWidth(210 * 3);
 
-    /*auto image = new QImage(
-                listSizes[settings.size] * scaleIndex,
-                QImage::Format_RGB32
-                );
-
-    images.push_back(image);
-
-    QPainter painter(image);
-    painter.fillRect(image->rect(), Qt::white);
-    label.setPixmap(QPixmap::fromImage(*image));*/
-
     ui->scrollArea->setWidget(&label);
 
     ui->scrollArea->setBackgroundRole(QPalette::Dark);
@@ -82,7 +71,10 @@ void SkyBlocksEditor::sendInformation() {
 
     qDebug() << QString(doc.toJson());
 
-    reply = networkManager.post(QNetworkRequest(url), doc.toJson());
+    QNetworkRequest req;
+    req.setUrl(url);
+    req.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    reply = networkManager.post(req, doc.toJson());
     connect(reply, SIGNAL(finished()), this, SLOT(drawAlgorithm()));
 }
 
@@ -213,7 +205,7 @@ void SkyBlocksEditor::DrawAll() {
         painter.fillRect(images[i]->rect(), Qt::white);
 
         for (DrawData *data: *drawData) {
-            if (data->page == i+1) {
+            if (data->page == i + 1) {
                 QFont drawFont = settings.font;
                 drawFont.setPointSize(drawFont.pointSize() * scaleIndex);
                 painter.setFont(drawFont);
@@ -221,6 +213,7 @@ void SkyBlocksEditor::DrawAll() {
             }
         }
     }
+
     label.setPixmap(QPixmap::fromImage(*images[0]));
     currPage = 1;
 }
@@ -230,26 +223,68 @@ void SkyBlocksEditor::Draw(QPainter &painter, const DrawData &drawData) {
     for (std::array<double, 2> point : drawData.points)
         points.push_back(QPoint(point[0]*scaleIndex, point[1]*scaleIndex));
     if (drawData.figureType == LINE) {
+
         painter.drawLine(points[0], points[1]);
         painter.drawText(QPoint(drawData.centerX, drawData.centerY) * scaleIndex,
                          drawData.text.c_str());
+
+    } else if (drawData.figureType == TERMINAL) {
+        painter.drawLine(points[0], points[1]);
+        painter.drawLine(points[2], points[3]);
+        QPainterPath pathLeft;
+
+        pathLeft.moveTo(points[3]);
+        QPointF p1 = points[3];
+        p1 -= {drawData.width / 2 * scaleIndex, 0};
+        QPointF p2 = points[0];
+        p2 -= {drawData.width / 2 * scaleIndex, 0};
+        pathLeft.cubicTo(p1, p2, points[0]);
+        painter.drawPath(pathLeft);
+
+        QPainterPath pathRight;
+        pathRight.moveTo(points[2]);
+        p1 = points[2];
+        p1 += {drawData.width / 2 * scaleIndex, 0};
+        p2 = points[1];
+        p2 += {drawData.width / 2 * scaleIndex, 0};
+        pathRight.cubicTo(p1, p2, points[1]);
+        painter.drawPath(pathRight);
+
+        QRectF rectText(
+                   QPointF(drawData.centerX - drawData.width / 2,
+                           drawData.centerY - drawData.height / 2 + settings.yp) * scaleIndex,
+                            QSizeF(drawData.width, drawData.height -  settings.yp) * scaleIndex
+                    );
+
+       painter.drawText(rectText, Qt::AlignHCenter, drawData.text.c_str());
+    } else if (drawData.figureType == PAGE_CHANGER) {
+        QPointF p = points[0];
+        p += {0, qreal(settings.yp)};
+        QRectF rectText(
+                    p,
+                    QSizeF(drawData.width, drawData.height - settings.yp) * scaleIndex
+                    );
+        painter.drawEllipse(rectText);
+        painter.drawText(rectText, Qt::AlignCenter, drawData.text.c_str());
     } else {
         painter.drawPolygon(points);
+
         if (drawData.figureType == IF){
             QRectF rectText(
                         QPointF(drawData.centerX - drawData.width / 4,
                                 drawData.centerY - drawData.height / 4) * scaleIndex,
                         QSizeF(drawData.width / 2, drawData.height / 2) * scaleIndex
                         );
-            painter.drawText(rectText, 0, drawData.text.c_str());
+            painter.drawText(rectText, Qt::AlignHCenter, drawData.text.c_str());
+
         } else if (drawData.figureType == BLOCK) {
             QRectF rectText(
                         QPointF(drawData.centerX - drawData.width / 2,
-                                drawData.centerY - drawData.height / 2) * scaleIndex,
-                        QSizeF(drawData.width, drawData.height) * scaleIndex
+                                drawData.centerY - drawData.height / 2 + settings.yp) * scaleIndex,
+                        QSizeF(drawData.width, drawData.height - settings.yp) * scaleIndex
                         );
 
-            painter.drawText(rectText, 0, drawData.text.c_str());
+            painter.drawText(rectText, Qt::AlignHCenter, drawData.text.c_str());
         }
     }
 }
