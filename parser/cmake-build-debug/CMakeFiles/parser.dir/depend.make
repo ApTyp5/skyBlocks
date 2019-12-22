@@ -46,7 +46,7 @@ CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Schedu
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/Liner.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: ../Tools/ptrVector.h
-CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: /home/arthur/Repos/new_skyBlocks/server/DataBaseConnection.h
+CMakeFiles/parser.dir/Analyzer/IndentAnalyze/IndentConstraintor.cpp.o: /home/arthur/Repos/skyBlocks/server/DataBaseConnection.h
 
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.cpp
 CMakeFiles/parser.dir/Analyzer/IndentAnalyze/Tools/Memory.cpp.o: ../Analyzer/IndentAnalyze/Tools/Memory.h
@@ -103,7 +103,7 @@ CMakeFiles/parser.dir/Parser.cpp.o: ../Scheduler/AScheduler.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Scheduler/Figure/AFigure.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Tools/Meta.h
 CMakeFiles/parser.dir/Parser.cpp.o: ../Tools/ptrVector.h
-CMakeFiles/parser.dir/Parser.cpp.o: /home/arthur/Repos/new_skyBlocks/server/DataBaseConnection.h
+CMakeFiles/parser.dir/Parser.cpp.o: /home/arthur/Repos/skyBlocks/server/DataBaseConnection.h
 
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/APrimitive.h
 CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o: ../Analyzer/Primitive/ComplexPrimitive.h

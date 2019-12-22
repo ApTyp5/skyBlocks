@@ -18,9 +18,17 @@ public:
     {}
 
     Point getBegin() const
-    { return begin; }
+    {
+        return begin;
+    }
     Point getEnd() const
-    { return end; }
+    {
+        return end;
+    }
+    bool isSingleMeasureFigure() const
+    {
+        return true;
+    }
 
 protected:
     Point begin, end;

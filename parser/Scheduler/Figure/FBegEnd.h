@@ -14,6 +14,10 @@ public:
         :
         FFollow(rect, std::move(text), page)
     {}
+    FBegEnd(FFollow &follow)
+        :
+        FFollow(follow)
+    {}
 
     void acceptJsonFormer(JsonFormer &jFormer) override
     {

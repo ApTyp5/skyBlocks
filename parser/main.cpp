@@ -91,7 +91,7 @@ int main()
                         "\t\t inner2\n"
                         "bye!";
 
-    Meta meta;
+    Meta meta(200, 300, 5, 5, 5, 5, 10, 4, 5);
     DataBaseConnection db;
     Parser parser(db);
     std::string output = parser.parse(input,

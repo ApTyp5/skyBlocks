@@ -21,7 +21,9 @@ public:
     virtual ~AFigure() = default;
 
     size_t getPage() const
-    { return page; }
+    {
+        return page;
+    }
 
     const std::string &getText() const
     {
@@ -29,8 +31,15 @@ public:
     }
 
     virtual std::string figureType() const = 0;
-
     virtual AFigure *tryToConvertToFBegEnd() = 0;
+    virtual bool isFFollow() const
+    {
+        return false;
+    }
+    virtual bool isSingleMeasureFigure() const
+    {
+        return false;
+    }
 
 private:
     size_t page;

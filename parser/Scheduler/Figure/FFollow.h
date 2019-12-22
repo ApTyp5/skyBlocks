@@ -27,6 +27,19 @@ public:
     {
         return this;
     }
+    bool isFFollow() const override
+    {
+        return true;
+    }
+    static bool onOneLine(AFigure *fig1, AFigure *fig2)
+    {
+        if (!fig1->isFFollow()) return false;
+        if (!fig2->isFFollow()) return false;
+        auto *follow1 = dynamic_cast<FFollow *>(fig1);
+        auto *follow2 = dynamic_cast<FFollow *>(fig2);
+
+        return follow1->getCenter().x == follow2->getCenter().x;
+    }
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_FFOLLOW_H_
