@@ -3,10 +3,10 @@
 DrawData *FuncBlock::Draw() {
     auto data = new DrawData;
     data->figureType = BLOCK;
-    int leftTopX = centerPosX - rectangleWidth / 2;
-    int leftTopY = centerPosY - rectangleHeight / 2;
+    double leftTopX = centerPosX - rectangleWidth / 2;
+    double leftTopY = centerPosY - rectangleHeight / 2;
 
-    int subRectWidth = rectangleWidth / 10;
+    double subRectWidth = rectangleWidth / 10;
 
     data->points.push_back({
                     leftTopX,
@@ -73,8 +73,10 @@ DrawData *FuncBlock::Draw() {
 
     data->page = page;
     data->text = innerText;
-    data->textPosX = leftTopX + subRectWidth + 3;
-    data->textPosY = leftTopY + rectangleHeight - 2;
+    data->centerX = centerPosX;
+    data->centerY = centerPosY;
+    data->width = rectangleWidth;
+    data->height = rectangleHeight;
 
     return data;
 }

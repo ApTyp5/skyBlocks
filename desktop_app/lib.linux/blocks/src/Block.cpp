@@ -3,8 +3,8 @@
 DrawData *Block::Draw() {
     auto data = new DrawData;
     data->figureType = BLOCK;
-    int leftTopX = centerPosX - rectangleWidth / 2;
-    int leftTopY = centerPosY - rectangleHeight / 2;
+    double leftTopX = centerPosX - rectangleWidth / 2;
+    double leftTopY = centerPosY - rectangleHeight / 2;
 
     data->points.push_back({
                     leftTopX,
@@ -25,8 +25,11 @@ DrawData *Block::Draw() {
 
     data->text = innerText;
     data->page = page;
-    data->textPosX = leftTopX + 2;
-    data->textPosY = leftTopY + rectangleHeight - 2;
+
+    data->centerX = centerPosX;
+    data->centerY = centerPosY;
+    data->width = rectangleWidth;
+    data->height = rectangleHeight;
 
     return data;
 }

@@ -155,6 +155,10 @@ FigureData *QtBlocksJson::GetFigure(int num) const {
         blockData->figureType = WHILEBEGIN;
     else if (type == whileEndType)
         blockData->figureType = WHILEEND;
+    else if (type == terminal)
+        blockData->figureType = TERMINAL;
+    else if (type == pageChanger)
+        blockData->figureType = PAGE_CHANGER;
     else
         blockData->figureType = BLOCK;
 

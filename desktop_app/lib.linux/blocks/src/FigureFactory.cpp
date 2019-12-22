@@ -1,8 +1,10 @@
-#include "FigureFactory.h"
-#include "Line.h"
 #include "Block.h"
+#include "Continue.h"
+#include "FigureFactory.h"
 #include "FuncBlock.h"
 #include "IfBlock.h"
+#include "Line.h"
+#include "Terminal.h"
 #include "WhileBlock.h"
 
 Figure *FigureFactory::CreateFigure(FigureData *figureData) {
@@ -42,6 +44,12 @@ Figure *FigureFactory::CreateFigure(FigureData *figureData) {
             break;
         case WHILEEND:
             newBlock = new WhileBlock(END);
+            break;
+        case TERMINAL:
+            newBlock = new TerminalBlock();
+            break;
+        case PAGE_CHANGER:
+            newBlock = new ContinueBlock();
             break;
         default:
             return nullptr;

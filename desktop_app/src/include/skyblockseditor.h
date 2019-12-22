@@ -3,9 +3,12 @@
 
 #include "FigureFactory.h"
 
-#include <QMainWindow>
+#include "drawsettings.h"
+#include "ui_drawsettings.h"
+
 #include <QGraphicsScene>
 #include <QLabel>
+#include <QMainWindow>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
 
@@ -24,15 +27,32 @@ public:
     ~SkyBlocksEditor();
 
     void keyPressEvent(QKeyEvent *event);
+
+    void Draw(QPainter &painter, const DrawData &drawData);
+    void DrawAll();
 public slots:
+    void nextImagePage();
+    void prevImagePage();
+
+    void increaseImageScale();
+    void reduceImageScale();
     void sendInformation();
-    void putMessage();
+    void setDrawSettings();
+    void drawAlgorithm();
 
 private:
     Ui::SkyBlocksEditor *ui;
     QLabel label;
     std::vector<QImage *> images;
     int currPage;
+    int pagesCount;
+    double scaleIndex;
+
+    std::vector<DrawData *> *drawData;
+
+    DrawSettings settings;
+
+    QFont drawFont;
 
     QNetworkAccessManager networkManager;
     QNetworkReply *reply;

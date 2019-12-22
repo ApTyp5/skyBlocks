@@ -4,11 +4,11 @@ DrawData *WhileBlock::Draw() {
     auto data = new DrawData;
     data->figureType = BLOCK;
 
-    int angleSize = rectangleHeight / 5;
+    double angleSize = rectangleHeight / 5;
 
     if (type == BEGIN) {
-        int leftBotX = centerPosX - rectangleWidth / 2;
-        int leftBotY = centerPosY + rectangleHeight / 2;
+        double leftBotX = centerPosX - rectangleWidth / 2;
+        double leftBotY = centerPosY + rectangleHeight / 2;
 
         data->points.push_back({
                         leftBotX,
@@ -37,8 +37,8 @@ DrawData *WhileBlock::Draw() {
     }
 
     if (type == END) {
-        int leftTopX = centerPosX - rectangleWidth / 2;
-        int leftTopY = centerPosY - rectangleHeight / 2;
+        double leftTopX = centerPosX - rectangleWidth / 2;
+        double leftTopY = centerPosY - rectangleHeight / 2;
 
         data->points.push_back({
                         leftTopX,
@@ -68,8 +68,10 @@ DrawData *WhileBlock::Draw() {
 
     data->page = page;
     data->text = innerText;
-    data->textPosX = centerPosX - rectangleWidth / 2 + 3;
-    data->textPosY = centerPosY + 3;
+    data->centerX = centerPosX;
+    data->centerY = centerPosY;
+    data->width = rectangleWidth;
+    data->height = rectangleHeight;
 
     return data;
 }

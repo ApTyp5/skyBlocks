@@ -11,12 +11,14 @@ set(INCLD_DIR "include")
 set(BLOCKS_LIB_SOURCE_FILES
         ${SRC_DIR}/Algorithm.cpp
         ${SRC_DIR}/Block.cpp
+        ${SRC_DIR}/Continue.cpp
         ${SRC_DIR}/Figure.cpp
         ${SRC_DIR}/FigureFactory.cpp
         ${SRC_DIR}/FuncBlock.cpp
         ${SRC_DIR}/IfBlock.cpp
         ${SRC_DIR}/JsonObject.cpp
         ${SRC_DIR}/Line.cpp
+        ${SRC_DIR}/Terminal.cpp
         ${SRC_DIR}/WhileBlock.cpp
         )
 
