@@ -4,13 +4,13 @@
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
   set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
-string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+wstring(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
 # Set the install configuration name.
 if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
   if(BUILD_TYPE)
-    string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
-           CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
+      wstring(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
+              CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
     set(CMAKE_INSTALL_CONFIG_NAME "Debug")
   endif()
@@ -43,7 +43,7 @@ else()
   set(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 endif()
 
-string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
-       "${CMAKE_INSTALL_MANIFEST_FILES}")
+wstring(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
+        "${CMAKE_INSTALL_MANIFEST_FILES}")
 file(WRITE "/home/arthur/Repos/skyBlocks/parser/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
-     "${CMAKE_INSTALL_MANIFEST_CONTENT}")
+        "${CMAKE_INSTALL_MANIFEST_CONTENT}")

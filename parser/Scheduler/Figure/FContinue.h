@@ -16,12 +16,12 @@ public:
 
     static void reset();
     void acceptJsonFormer(JsonFormer &jFormer) override;
-    std::string figureType() const override;
+    std::wstring figureType() const override;
     AFigure *tryToConvertToFBegEnd() override;
 
 private:
 
-    static char name[2];
+    static wchar_t name[2];
     static size_t counter;
 
     friend class FEmborderScheduler_connectForkPartsLeftPageLess_Test;

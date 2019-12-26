@@ -14,7 +14,7 @@
 class Memory
 {
     State state_;
-    std::string bodyIndent;
+    std::wstring bodyIndent;
     ComplexPrimitive *complexPrimitive;
 
 public:
@@ -25,11 +25,11 @@ public:
 
 public:
     State getState() const;
-    const std::string &getBodyIndent() const;
+    const std::wstring &getBodyIndent() const;
     ComplexPrimitive *getComplexPrimitive() const;
 
 public:
-    void setBodyIndent(const std::string &indent);
+    void setBodyIndent(const std::wstring &indent);
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZE_TOOLS_MEMORY_H_

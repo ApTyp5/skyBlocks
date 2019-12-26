@@ -12,7 +12,7 @@
 class SingleMeasureFigure: public AFigure
 {
 public:
-    SingleMeasureFigure(Point begin, Point end, std::string text, size_t page)
+    SingleMeasureFigure(Point begin, Point end, std::wstring text, size_t page)
         :
         AFigure(std::move(text), page), begin(begin), end(end)
     {}

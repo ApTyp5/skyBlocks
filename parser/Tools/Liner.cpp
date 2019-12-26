@@ -5,11 +5,11 @@
 #include <jmorecfg.h>
 #include "Liner.h"
 
-Liner::Liner(const std::string &text)
+Liner::Liner(const std::wstring &text)
 {
     ss.str(text);
 }
-bool Liner::getLine(std::string &line, bool withNL)
+bool Liner::getLine(std::wstring &line, bool withNL)
 {
     if (ss.eof()) return false;
     std::getline(ss, line);
@@ -22,7 +22,7 @@ bool Liner::isEmpty()
 }
 void Liner::skipLines(size_t num)
 {
-    std::string line;
+    std::wstring line;
     for (size_t i = 0; i < num; i++)
         getLine(line);
 }

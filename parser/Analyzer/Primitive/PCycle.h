@@ -10,7 +10,7 @@
 class PCycle: public ComplexPrimitive
 {
 public:
-    PCycle(std::string beginCycleText, std::string endCycleText)
+    PCycle(std::wstring beginCycleText, std::wstring endCycleText)
         :
         ComplexPrimitive(std::move(beginCycleText)),
         afterCycleText(std::move(endCycleText))
@@ -21,24 +21,24 @@ public:
         return scheduler.schedulePrimitive(*this);
     }
 
-    std::string toString() override
+    std::wstring toString() override
     {
-        std::string ans = "Cycle\n" + ComplexPrimitive::toString();
+        std::wstring ans = L"Cycle\n" + ComplexPrimitive::toString();
         return ans;
     }
 
-    std::string getBeforeCycyleText() const
+    std::wstring getBeforeCycyleText() const
     {
         return getInnerText();
     }
 
-    std::string getAfterCycleText() const
+    std::wstring getAfterCycleText() const
     {
         return afterCycleText;
     }
 
 private:
-    std::string afterCycleText;
+    std::wstring afterCycleText;
 };
 
 #endif //PARSER_PRIMITIVE_PCYCLE_H_

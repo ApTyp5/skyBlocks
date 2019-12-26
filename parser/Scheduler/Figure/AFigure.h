@@ -14,7 +14,7 @@
 class AFigure: public JsonFormable
 {
 public:
-    explicit AFigure(std::string text, size_t page = 1)
+    explicit AFigure(std::wstring text, size_t page = 1)
         : text(std::move(text)), page(page)
     {}
 
@@ -25,12 +25,12 @@ public:
         return page;
     }
 
-    const std::string &getText() const
+    const std::wstring &getText() const
     {
         return text;
     }
 
-    virtual std::string figureType() const = 0;
+    virtual std::wstring figureType() const = 0;
     virtual AFigure *tryToConvertToFBegEnd() = 0;
     virtual bool isFFollow() const
     {
@@ -43,7 +43,7 @@ public:
 
 private:
     size_t page;
-    std::string text;
+    std::wstring text;
 };
 
 #endif //PARSER_SCHEDULER_FIGURE_AFIGURE_H_

@@ -10,7 +10,7 @@
 class FEndCycle: public DoubleMeasureFigure
 {
 public:
-    FEndCycle(Rect rect, std::string text, size_t page = 1)
+    FEndCycle(Rect rect, std::wstring text, size_t page = 1)
         :
         DoubleMeasureFigure(rect, std::move(text), page)
     {}
@@ -19,9 +19,9 @@ public:
     {
         jFormer.addToJson(*this);
     }
-    std::string figureType() const override
+    std::wstring figureType() const override
     {
-        return std::string("end cycle");
+        return std::wstring(L"end cycle");
     }
     AFigure *tryToConvertToFBegEnd() override
     {

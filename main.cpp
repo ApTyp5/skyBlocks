@@ -19,11 +19,11 @@ HTTP_PROTOTYPE(SimpleHandler)
 
         JsonExtractor extractor(request.body());
         Meta meta = extractor.extractMeta();
-        std::string input = extractor.extractText();
+        std::wstring input = extractor.extractText();
 
-        std::string output = parser.parse(input,
-                                          AnalyzeFactoryCreator::create(Indent, RuPseudoCode),
-                                          SchedulerCreator::create(meta));
+        std::wstring output = parser.parse(input,
+                                           AnalyzeFactoryCreator::create(Indent, PythonLike),
+                                           SchedulerCreator::create(meta));
 
         writer.send(Http::Code::Ok, output.data(), output.size());
     }

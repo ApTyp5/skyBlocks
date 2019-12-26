@@ -10,7 +10,7 @@
 class PFollow: public APrimitive
 {
 public:
-    explicit PFollow(std::string text)
+    explicit PFollow(std::wstring text)
         : APrimitive(std::move(text))
     {}
 
@@ -19,9 +19,9 @@ public:
         return scheduler.schedulePrimitive(*this);
     }
 
-    std::string toString() const override
+    std::wstring toString() const override
     {
-        return std::string("Func\n") +
+        return std::wstring(L"Func\n") +
             APrimitive::toString();
     }
 };

@@ -13,13 +13,13 @@ public:
     PythonLikeAlphabet()
         :
         BaseIndentAlphabet(
-            "if",
-            "else",
-            "while",
-            "call",
-            "def",
-            {' ', '\t'},
-            {';'}
+            L"if",
+            L"else",
+            L"while",
+            L"call",
+            L"def",
+            {L' ', L'\t'},
+            {L';'}
         )
     {}
 };

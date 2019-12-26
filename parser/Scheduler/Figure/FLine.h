@@ -10,7 +10,7 @@
 class FLine: public SingleMeasureFigure
 {
 public:
-    FLine(Point begin, Point end, std::string text = "", size_t page = 1)
+    FLine(Point begin, Point end, std::wstring text = L"", size_t page = 1)
         :
         SingleMeasureFigure(begin, end, std::move(text), page)
     {}
@@ -19,9 +19,9 @@ public:
     {
         jFormer.addToJson(*this);
     }
-    std::string figureType() const override
+    std::wstring figureType() const override
     {
-        return std::string("line");
+        return std::wstring(L"line");
     }
     AFigure *tryToConvertToFBegEnd() override
     {

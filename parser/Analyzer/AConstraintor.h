@@ -17,12 +17,12 @@ public:
     explicit AConstraintor(ptrVector<ParseError> &errors)
         : AccumulateErrors(errors)
     {}
-    virtual bool findMain(size_t &first_index, size_t &last_index, const std::string &text) = 0;
+    virtual bool findMain(size_t &first_index, size_t &last_index, const std::wstring &text) = 0;
 
-    virtual std::string findFunc(
+    virtual std::wstring findFunc(
         size_t &line_num,
-        std::string text,
-        std::string name,
+        std::wstring text,
+        std::wstring name,
         DataBaseConnection &connection) = 0;
 
 };

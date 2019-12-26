@@ -3,16 +3,16 @@
 //
 
 #include "SizedLiner.h"
-bool SizedLiner::getLine(std::string &line, bool withNL)
+bool SizedLiner::getLine(std::wstring &line, bool withNL)
 {
     return Liner::getLine(line, withNL);
 }
 
-SizedLiner::SizedLiner(const std::string &str)
+SizedLiner::SizedLiner(const std::wstring &str)
     : Liner(str)
 {}
 
-bool SizedLiner::getLine(std::string &line, size_t maxSize, bool withNL)
+bool SizedLiner::getLine(std::wstring &line, size_t maxSize, bool withNL)
 {
     if (buff.empty())
         if (!Liner::getLine(buff, false))
@@ -25,6 +25,6 @@ bool SizedLiner::getLine(std::string &line, size_t maxSize, bool withNL)
         buff = buff.substr(maxSize);
     }
 
-    if (withNL) line += "\n";
+    if (withNL) line.push_back('\n');
     return true;
 }

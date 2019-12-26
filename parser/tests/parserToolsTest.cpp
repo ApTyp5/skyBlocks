@@ -13,7 +13,7 @@
 TEST(sizedLiner, endOfText)
 {
     size_t size = 10;
-    std::string input = "qwer";
+    std::wstring input = "qwer";
     SizedLiner liner(input);
 
     EXPECT_EQ(false, liner.isEmpty());
@@ -23,15 +23,15 @@ TEST(sizedLiner, endOfText)
 TEST(sizedLiner, without_nl)
 {
     size_t size = 5;
-    std::string input = "first string\n" // 13 symbols
-                        "second string\n" // 14 symbols
-                        "third string"; // 13 symbols
+    std::wstring input = "first wstring\n" // 13 symbols
+                         "second wstring\n" // 14 symbols
+                         "third wstring"; // 13 symbols
 
     SizedLiner liner(input);
-    std::vector<std::string> answers = {"first", " stri", "ng",
-                                        "secon", "d str", "ing",
-                                        "third", " stri", "ng"};
-    std::string line;
+    std::vector<std::wstring> answers = {"first", " stri", "ng",
+                                         "secon", "d str", "ing",
+                                         "third", " stri", "ng"};
+    std::wstring line;
     size_t c = 0;
 
     while (liner.getLine(line, size, false)) {
@@ -44,17 +44,17 @@ TEST(sizedLiner, without_nl)
 TEST(sizedLiner, with_nl)
 {
     size_t size = 5;
-    std::string input = "first string\n" // 13 symbols
-                        "second string\n" // 14 symbols
-                        "third string\n" // 13 symbols
-                        "qwer qwert"; // 10 sym
+    std::wstring input = "first wstring\n" // 13 symbols
+                         "second wstring\n" // 14 symbols
+                         "third wstring\n" // 13 symbols
+                         "qwer qwert"; // 10 sym
 
     SizedLiner liner(input);
-    std::vector<std::string> answers = {"first\n", " stri\n", "ng\n",
-                                        "secon\n", "d str\n", "ing\n",
-                                        "third\n", " stri\n", "ng\n",
-                                        "qwer \n", "qwert\n"};
-    std::string line;
+    std::vector<std::wstring> answers = {"first\n", " stri\n", "ng\n",
+                                         "secon\n", "d str\n", "ing\n",
+                                         "third\n", " stri\n", "ng\n",
+                                         "qwer \n", "qwert\n"};
+    std::wstring line;
     size_t c = 0;
 
     while (liner.getLine(line, size, true)) {
@@ -66,9 +66,9 @@ TEST(sizedLiner, with_nl)
 }
 TEST(liner, endOfText)
 {
-    std::string input = "qwer";
+    std::wstring input = "qwer";
     Liner liner(input);
-    std::string line;
+    std::wstring line;
 
     EXPECT_EQ(false, liner.isEmpty());
     EXPECT_EQ(true, liner.getLine(line, false));
@@ -76,14 +76,14 @@ TEST(liner, endOfText)
 }
 TEST(liner, without_nl)
 {
-    std::string input = "first string\n"
-                        "second string\n"
-                        "third string";
+    std::wstring input = "first wstring\n"
+                         "second wstring\n"
+                         "third wstring";
     Liner liner(input);
-    std::vector<std::string> answers = {"first string",
-                                        "second string",
-                                        "third string"};
-    std::string line;
+    std::vector<std::wstring> answers = {"first wstring",
+                                         "second wstring",
+                                         "third wstring"};
+    std::wstring line;
     size_t c = 0;
 
     while (liner.getLine(line, false)) {
@@ -95,14 +95,14 @@ TEST(liner, without_nl)
 }
 TEST(liner, with_nl)
 {
-    std::string input = "first string\n"
-                        "second string\n"
-                        "third string";
+    std::wstring input = "first wstring\n"
+                         "second wstring\n"
+                         "third wstring";
     Liner liner(input);
-    std::vector<std::string> answers = {"first string\n",
-                                        "second string\n",
-                                        "third string\n"};
-    std::string line;
+    std::vector<std::wstring> answers = {"first wstring\n",
+                                         "second wstring\n",
+                                         "third wstring\n"};
+    std::wstring line;
     size_t c = 0;
 
     while (liner.getLine(line, true)) {
@@ -113,7 +113,7 @@ TEST(liner, with_nl)
     EXPECT_EQ(answers.size(), c);
 }
 
-int main(int argc, char *argv[])
+int main(int argc, wchar_t *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

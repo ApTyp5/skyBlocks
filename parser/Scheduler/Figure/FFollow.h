@@ -10,7 +10,7 @@
 class FFollow: public DoubleMeasureFigure
 {
 public:
-    FFollow(Rect rect, std::string text, size_t page = 1)
+    FFollow(Rect rect, std::wstring text, size_t page = 1)
         :
         DoubleMeasureFigure(rect, std::move(text), page)
     {}
@@ -19,9 +19,9 @@ public:
     {
         jFormer.addToJson(*this);
     }
-    std::string figureType() const override
+    std::wstring figureType() const override
     {
-        return std::string("follow");
+        return std::wstring(L"follow");
     }
     AFigure *tryToConvertToFBegEnd() override
     {

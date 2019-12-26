@@ -16,9 +16,14 @@ public:
     {}
 
 protected:
-    void push_error(const std::string &message, int raw = -1, int col = -1)
+    void push_error(const std::wstring &message, int raw = -1, int col = -1)
     {
         errors.push_back(new ParseError(message, raw, col));
+    }
+
+    void clear_errors()
+    {
+        errors.clear();
     }
 
 private:

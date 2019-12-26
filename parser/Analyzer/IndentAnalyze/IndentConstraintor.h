@@ -18,10 +18,10 @@ public:
         : AConstraintor(errors), AlphaBet(alphabet)
     {}
 
-    std::string findFunc(size_t &line_num, std::string text, std::string name,
-                         DataBaseConnection &connection) override;
+    std::wstring findFunc(size_t &line_num, std::wstring text, std::wstring name,
+                          DataBaseConnection &connection) override;
 
-    bool findMain(size_t &first_index, size_t &back_index, const std::string &text) override;
+    bool findMain(size_t &first_index, size_t &back_index, const std::wstring &text) override;
 
 private:
     std::unique_ptr<BaseIndentAlphabet> AlphaBet;

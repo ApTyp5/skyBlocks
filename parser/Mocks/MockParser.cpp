@@ -4,7 +4,7 @@
 
 #include "MockParser.h"
 
-jsonString MockParser::parse(std::string text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler)
+jsonString MockParser::parse(std::wstring text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler)
 {
     ptrVector<Error> errors;
     std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor(errors));

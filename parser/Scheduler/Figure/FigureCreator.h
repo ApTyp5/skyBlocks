@@ -18,7 +18,7 @@
 class FigureCreator
 {
 public:
-    static AFigure *createDMF(FigureType type, Rect rect, std::string text, size_t page = 1)
+    static AFigure *createDMF(FigureType type, Rect rect, std::wstring text, size_t page = 1)
     {
         switch (type) {
             case FigureType::BegCycle: return new FBegCycle(rect, std::move(text), page);

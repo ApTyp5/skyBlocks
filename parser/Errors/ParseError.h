@@ -12,10 +12,10 @@
 class ParseError: public JsonFormable
 {
     int row, col;
-    std::string message;
+    std::wstring message;
 
 public:
-    explicit ParseError(std::string message = "", int row = -1, int col = -1)
+    explicit ParseError(std::wstring message, int row = -1, int col = -1)
         :
         message(std::move(message)), row(row), col(col)
     {}
@@ -42,7 +42,7 @@ public:
     {
         return col;
     }
-    const std::string &getMessage() const
+    const std::wstring &getMessage() const
     {
         return message;
     }

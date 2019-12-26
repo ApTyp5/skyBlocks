@@ -3,7 +3,7 @@
 //
 #include "FContinue.h"
 
-char FContinue::name[2] = "A";
+wchar_t FContinue::name[2] = L"A";
 
 size_t FContinue::counter = 0;
 
@@ -19,14 +19,14 @@ void FContinue::acceptJsonFormer(JsonFormer &jFormer)
     jFormer.addToJson(*this);
 }
 
-std::string FContinue::figureType() const
+std::wstring FContinue::figureType() const
 {
-    return std::string("continue");
+    return std::wstring(L"continue");
 }
 
 FContinue::FContinue(Rect rect, size_t page)
     :
-    DoubleMeasureFigure(rect, std::string(name), page)
+    DoubleMeasureFigure(rect, std::wstring(name), page)
 {
     if (counter % 2) {
         counter = 0;

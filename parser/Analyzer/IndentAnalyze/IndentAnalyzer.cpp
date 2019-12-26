@@ -9,24 +9,24 @@
 #include "Tools/IndentAnalyzerUtils.h"
 
 
-ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t frontLine, size_t backLine)
+ComplexPrimitive *IndentAnalyzer::analyze(std::wstring text, size_t frontLine, size_t backLine)
 {
     state_ = State::UnknownIndent;
-    indent = shortMemory = "";
+    indent = shortMemory = L"";
 
-    std::string line;
+    std::wstring line;
     Liner liner(text);
     liner.skipLines(frontLine - 1);
 
     liner.getLine(line);
     if (isDef(line)) {
-        std::string name;
+        std::wstring name;
         IndentAnalyzerUtils::extractSecondWord(name, line, AlphaBet->WordDelimiters());
         initAlg(name);
         liner.getLine(line);
     }
     else {
-        initAlg("__main__");
+        initAlg(L"__main__");
     }
 
     for (size_t lineNum = frontLine; lineNum < backLine; lineNum++, liner.getLine(line)) {
@@ -43,11 +43,11 @@ ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t frontLine, si
     return longMemory.pop_back()->getComplexPrimitive();
 }
 
-bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t lineNum)
+bool IndentAnalyzer::emptyStringPhase(const std::wstring &line, size_t lineNum)
 {
-    std::string curIndent = retIndent(line);
+    std::wstring curIndent = retIndent(line);
 
-    if (line.front() == '\n' || curIndent.size() + 1 == line.size()) {
+    if (line.front() == L'\n' || curIndent.size() + 1 == line.size()) {
         switch (state_) {
             case State::Follow:tryAddPFollowToLastMem();
                 return true;
@@ -57,7 +57,7 @@ bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t lineNum)
                     state_ = State::UnknownIndent;
                 }
                 else {
-                    push_error("empty fork body", lineNum, 0);
+                    push_error(L"empty fork body", lineNum, 0);
                 }
                 return true;
 
@@ -66,7 +66,7 @@ bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t lineNum)
                     state_ = State::UnknownIndent;
                 }
                 else {
-                    push_error("empty cycle body", lineNum, 0);
+                    push_error(L"empty cycle body", lineNum, 0);
                 }
                 return true;
             case State::UnknownIndent:return true;
@@ -78,9 +78,9 @@ bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t lineNum)
     return false;
 }
 
-bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t lineNum)
+bool IndentAnalyzer::indentCheckPhase(const std::wstring &line, size_t lineNum)
 {
-    std::string lineIndent = retIndent(line);
+    std::wstring lineIndent = retIndent(line);
 
     switch (state_) {
         case State::Alg:; // state_ = UnknownIndent;
@@ -96,15 +96,15 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t lineNum)
                 tryAddPFollowToLastMem();
 
                 if (longMemory.back()->getState() == State::Fork) {
-                    std::string str = IndentAnalyzerUtils::cutFront(line, lineIndent.size());
-                    std::string fWord;
+                    std::wstring str = IndentAnalyzerUtils::cutFront(line, lineIndent.size());
+                    std::wstring fWord;
                     bool isMultWords = IndentAnalyzerUtils::extractFirstWord(fWord, str, AlphaBet->WordDelimiters());
                     IndentAnalyzerUtils::delLastNewLine(fWord);
                     if (fWord == AlphaBet->ElseWord()) {
                         longMemory.back()->getComplexPrimitive()->startElseSection();
                         state_ = State::UnknownIndent;
                         if (isMultWords) {
-                            push_error("text after else word ignored", lineNum,
+                            push_error(L"text after else word ignored", lineNum,
                                        lineIndent.size() + AlphaBet->ElseWord().size() + 1);
                         }
                         return true;
@@ -116,14 +116,14 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t lineNum)
                     return false;
             }
 
-            push_error("indent does not match any of previous", lineNum);
+            push_error(L"indent does not match any of previous", lineNum);
             return false;
 
         case State::Fork:
             if (lineIndent == getCurrentIndent())
                 return false;
             if (!tryMemorizePFork()) {
-                push_error("empty fork body", lineNum);
+                push_error(L"empty fork body", lineNum);
             }
             state_ = State::UnknownIndent;
             break;
@@ -132,7 +132,7 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t lineNum)
             if (lineIndent == getCurrentIndent())
                 return false;
             if (!tryMemorizePCycle()) {
-                push_error("empty cycle body", lineNum);
+                push_error(L"empty cycle body", lineNum);
             }
             state_ = State::UnknownIndent;
             break;
@@ -145,10 +145,10 @@ bool IndentAnalyzer::indentCheckPhase(const std::string &line, size_t lineNum)
     return false;
 }
 
-bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
+bool IndentAnalyzer::analyzeStrPhase(const std::wstring &line, size_t line_num)
 {
-    const std::string &currentIndent = getCurrentIndent();
-    std::string lineWithoutIndent = IndentAnalyzerUtils::cutFront(line, currentIndent.size());
+    const std::wstring &currentIndent = getCurrentIndent();
+    std::wstring lineWithoutIndent = IndentAnalyzerUtils::cutFront(line, currentIndent.size());
 
     switch (state_) {
         case State::Fork:
@@ -159,8 +159,8 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
         case State::UnknownIndent: throw "Alg state in analyzeStrPhase";
         default: throw "default case in analyzeStrPhase";
 
-        case State::Follow:std::string fstWord;
-            std::string others;
+        case State::Follow:std::wstring fstWord;
+            std::wstring others;
             IndentAnalyzerUtils::delimString(fstWord, others, lineWithoutIndent, AlphaBet->WordDelimiters());
 
             bool isFork = fstWord == AlphaBet->ForkWord();
@@ -187,20 +187,20 @@ bool IndentAnalyzer::analyzeStrPhase(const std::string &line, size_t line_num)
 }
 
 void IndentAnalyzer::setWFIndent(size_t fstWordSize, size_t othersWordSize,
-                                 const std::string &lineIndent,
-                                 const std::string &lineWithoutIndent)
+                                 const std::wstring &lineIndent,
+                                 const std::wstring &lineWithoutIndent)
 {
     size_t LWISize = lineWithoutIndent.size();
     size_t n = LWISize - othersWordSize - fstWordSize;
-    std::string end = lineWithoutIndent.substr(fstWordSize, n);
-    std::string begin = IndentAnalyzerUtils::strAppendMultipleSymbols(
+    std::wstring end = lineWithoutIndent.substr(fstWordSize, n);
+    std::wstring begin = IndentAnalyzerUtils::strAppendMultipleSymbols(
         lineIndent, AlphaBet->WordDelimiters().front(), fstWordSize);
     indent = begin + end;
 }
 
-std::string IndentAnalyzer::retIndent(const std::string &line)
+std::wstring IndentAnalyzer::retIndent(const std::wstring &line)
 {
-    std::string retVal;
+    std::wstring retVal;
     auto i = line.cbegin();
     while (IndentAnalyzerUtils::isInVector(*i, AlphaBet->WordDelimiters())) {
         retVal.push_back(*i);
@@ -235,7 +235,7 @@ bool IndentAnalyzer::tryMemorizePFork()
 bool IndentAnalyzer::tryMemorizePCycle()
 {
     if (!shortMemory.empty()) {
-        std::string topText, botText;
+        std::wstring topText, botText;
         IndentAnalyzerUtils::delimString(topText, botText, shortMemory, AlphaBet->SectionDelimiters());
         IndentAnalyzerUtils::delLastNewLine(topText);
         IndentAnalyzerUtils::delLastNewLine(botText);
@@ -255,7 +255,7 @@ void IndentAnalyzer::mergeBackMemory()
     longMemory.back()->merge(last);
 }
 
-const std::string &IndentAnalyzer::getCurrentIndent()
+const std::wstring &IndentAnalyzer::getCurrentIndent()
 {
     if (state_ == State::UnknownIndent
         || state_ == State::Alg)
@@ -268,10 +268,10 @@ const std::string &IndentAnalyzer::getCurrentIndent()
     return longMemory.back()->getBodyIndent();
 }
 
-bool IndentAnalyzer::addPFuncToLastMem(std::string text)
+bool IndentAnalyzer::addPFuncToLastMem(std::wstring text)
 {
-    std::string name;
-    std::string otherPart;
+    std::wstring name;
+    std::wstring otherPart;
     IndentAnalyzerUtils::delimString(name, otherPart, text, AlphaBet->WordDelimiters());
     IndentAnalyzerUtils::delLastNewLine(otherPart);
 
@@ -285,14 +285,14 @@ IndentAnalyzer::IndentAnalyzer(ptrVector<ParseError> &errors, BaseIndentAlphabet
 
 void IndentAnalyzer::flushShortMemory()
 {
-    emptyStringPhase("\n", 0);
+    emptyStringPhase(L"\n", 0);
 }
-bool IndentAnalyzer::isDef(const std::string &line)
+bool IndentAnalyzer::isDef(const std::wstring &line)
 {
-    const std::string &defFW = AlphaBet->DefineFuncWord();
+    const std::wstring &defFW = AlphaBet->DefineFuncWord();
     return line.substr(0, defFW.size()) == defFW;
 }
-void IndentAnalyzer::initAlg(const std::string &name)
+void IndentAnalyzer::initAlg(const std::wstring &name)
 {
     longMemory.push_back(new Memory(State::Alg, new PAlgorithm(name)));
 }

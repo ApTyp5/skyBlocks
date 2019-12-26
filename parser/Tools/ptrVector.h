@@ -79,6 +79,14 @@ public:
         return buffer.back();
     }
 
+    void clear()
+    {
+        for (auto i : buffer) {
+            delete i;
+        }
+        buffer.clear();
+    }
+
     T *&operator[](size_t index)
     {
         if (index >= size())

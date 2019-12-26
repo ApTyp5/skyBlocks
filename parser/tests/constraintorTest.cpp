@@ -10,9 +10,9 @@
 
 TEST_F(FIndentPythonLikeConstraintor, findMainNoMain)
 {
-    std::string input = "def function (args)\n"
-                        "  some func text\n"
-                        "  some func text\n";
+    std::wstring input = "def function (args)\n"
+                         "  some func text\n"
+                         "  some func text\n";
     size_t front;
     size_t back;
 
@@ -22,12 +22,12 @@ TEST_F(FIndentPythonLikeConstraintor, findMainNoMain)
 
 TEST_F(FIndentPythonLikeConstraintor, findMainCommon)
 {
-    std::string input = "def function (args)\n"
-                        "  some func text\n"
-                        "  some func text\n"
-                        "first string\n"
-                        "second string\n"
-                        "third string";
+    std::wstring input = "def function (args)\n"
+                         "  some func text\n"
+                         "  some func text\n"
+                         "first wstring\n"
+                         "second wstring\n"
+                         "third wstring";
     size_t front;
     size_t back;
     EXPECT_EQ(true, constraintor->findMain(front, back, input));
@@ -36,7 +36,7 @@ TEST_F(FIndentPythonLikeConstraintor, findMainCommon)
     EXPECT_EQ(7, back);
 }
 
-int main(int argc, char *argv[])
+int main(int argc, wchar_t *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

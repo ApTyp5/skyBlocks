@@ -10,7 +10,7 @@
 class PFunc: public APrimitive
 {
 public:
-    PFunc(std::string name, std::string text)
+    PFunc(std::wstring name, std::wstring text)
         :
         APrimitive(std::move(text)), name(std::move(name))
     {}
@@ -20,18 +20,18 @@ public:
         return scheduler.schedulePrimitive(*this);
     }
 
-    virtual std::string toString() const
+    virtual std::wstring toString() const
     {
-        return std::string("Func(") + name + std::string(")\n") +
+        return std::wstring(L"Func(") + name + std::wstring(L")\n") +
             APrimitive::toString();
     }
 
-    const std::string &getName() const
+    const std::wstring &getName() const
     {
         return name;
     }
 
 protected:
-    std::string name;
+    std::wstring name;
 };
 #endif //PARSER_PRIMITIVE_PFUNC_H_

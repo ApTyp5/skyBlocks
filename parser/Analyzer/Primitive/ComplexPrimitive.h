@@ -11,7 +11,7 @@
 class ComplexPrimitive: public APrimitive
 {
 public:
-    explicit ComplexPrimitive(std::string text)
+    explicit ComplexPrimitive(std::wstring text)
         : APrimitive(std::move(text))
     {}
 
@@ -40,12 +40,12 @@ public:
     virtual void startElseSection()
     {}
 
-    virtual std::string toString()
+    virtual std::wstring toString()
     {
-        std::string ans = "inner text:" + innerText + "\n"
-                                                      "children:";
+        std::wstring ans = L"inner text:" + innerText + L"\n"
+                                                        L"children:";
         for (size_t i = 0; i < childrenNum(); i++) {
-            ans += "\t" + children[i]->toString();
+            ans += L"\t" + children[i]->toString();
         }
         return ans;
     }

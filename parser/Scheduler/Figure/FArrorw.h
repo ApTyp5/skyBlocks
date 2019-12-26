@@ -10,7 +10,7 @@
 class FArrow: public SingleMeasureFigure
 {
 public:
-    FArrow(Point begin, Point end, std::string text, size_t page = 1)
+    FArrow(Point begin, Point end, std::wstring text, size_t page = 1)
         :
         SingleMeasureFigure(begin, end, std::move(text), page)
     {}
@@ -19,9 +19,9 @@ public:
     {
         return jFormer.addToJson(*this);
     }
-    std::string figureType() const override
+    std::wstring figureType() const override
     {
-        return std::string("arrow");
+        return std::wstring(L"arrow");
     }
     AFigure *tryToConvertToFBegEnd() override
     {

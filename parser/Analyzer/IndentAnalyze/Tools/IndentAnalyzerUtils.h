@@ -16,8 +16,8 @@ class IndentAnalyzerUtils
 {
 public:
     static APrimitive *createPrimitive(State state,
-                                       const std::string &par1 = "",
-                                       const std::string &par2 = "")
+                                       const std::wstring &par1 = L"",
+                                       const std::wstring &par2 = L"")
     {
         switch (state) {
             case State::Alg:return new PAlgorithm(par1);
@@ -28,20 +28,20 @@ public:
         }
     };
 
-    static std::string cutFront(const std::string &str, size_t size)
+    static std::wstring cutFront(const std::wstring &str, size_t size)
     {
         return str.substr(size);
     }
 
-    static bool delimString(std::string &firstWord, std::string &others, const std::string &str,
-                            const std::vector<char> &delims = {' '})
+    static bool delimString(std::wstring &firstWord, std::wstring &others, const std::wstring &str,
+                            const std::vector<wchar_t> &delims = {L' '})
     {
         return separateString(firstWord, others, str, delims);
     }
 
-    static std::string strAppendMultipleSymbols(const std::string &curIndent, char sym, size_t n)
+    static std::wstring strAppendMultipleSymbols(const std::wstring &curIndent, wchar_t sym, size_t n)
     {
-        std::string output(curIndent);
+        std::wstring output(curIndent);
         for (size_t i = 0; i < n; i++) {
             output += sym;
         }
@@ -59,63 +59,63 @@ public:
         return false;
     }
 
-    static std::string skipBorderSymbols(const std::string &str, const std::vector<char> &syms)
+    static std::wstring skipBorderSymbols(const std::wstring &str, const std::vector<wchar_t> &syms)
     {
         return skipBackSymbols(skipSymbols(str, syms), syms);
     }
 
-    static std::string skipSymbols(const std::string &str, const std::vector<char> &syms)
+    static std::wstring skipSymbols(const std::wstring &str, const std::vector<wchar_t> &syms)
     {
         for (size_t i = 0; i < str.size(); i++) {
             if (!isInVector(str[i], syms))
                 return str.substr(i);
         }
 
-        return std::string();
+        return std::wstring();
     }
 
-    static std::string skipBackSymbols(const std::string &str, const std::vector<char> &syms)
+    static std::wstring skipBackSymbols(const std::wstring &str, const std::vector<wchar_t> &syms)
     {
         for (size_t i = str.size() - 1; i >= 0; i--) {
             if (!isInVector(str[i], syms))
                 return str.substr(0, i + 1);
         }
 
-        return std::string();
+        return std::wstring();
     }
 
-    static bool extractFirstWord(std::string &fWord, const std::string &str, const std::vector<char> &delims)
+    static bool extractFirstWord(std::wstring &fWord, const std::wstring &str, const std::vector<wchar_t> &delims)
     {
-        std::string sPart;
+        std::wstring sPart;
         return separateString(fWord, sPart, str, delims);
     }
 
-    static bool extractSecondWord(std::string &sWord, const std::string &str, const std::vector<char> &delims)
+    static bool extractSecondWord(std::wstring &sWord, const std::wstring &str, const std::vector<wchar_t> &delims)
     {
-        std::string fPart, sPart;
+        std::wstring fPart, sPart;
         bool ans = separateString(fPart, sPart, str, delims);
         separateString(sWord, fPart, sPart, delims);
         return ans;
     }
 
-    static void delLastNewLine(std::string &str)
+    static void delLastNewLine(std::wstring &str)
     {
         if (str.back() == '\n')
             str.pop_back();
     }
 
 private:
-    static bool separateString(std::string &firstPart,
-                               std::string &secondPart,
-                               const std::string &initString,
-                               const std::vector<char> &delims)
+    static bool separateString(std::wstring &firstPart,
+                               std::wstring &secondPart,
+                               const std::wstring &initString,
+                               const std::vector<wchar_t> &delims)
     {
         std::vector<size_t> pos(delims.size());
         for (size_t i = 0; i < delims.size(); i++) {
             pos[i] = (initString.find(delims[i]));
         }
         auto minEl = std::min_element(pos.begin(), pos.end());
-        if (*minEl == std::string::npos) {
+        if (*minEl == std::wstring::npos) {
             firstPart = initString;
             return false;
         }

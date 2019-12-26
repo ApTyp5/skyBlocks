@@ -12,7 +12,7 @@
 class APrimitive
 {
 public:
-    explicit APrimitive(std::string text)
+    explicit APrimitive(std::wstring text)
         : innerText(std::move(text))
     {}
 
@@ -25,16 +25,16 @@ public:
         return false;
     }
 
-    virtual std::string toString() const
+    virtual std::wstring toString() const
     {
-        return std::string("innerText:") + innerText + "\n";
+        return std::wstring(L"innerText:") + innerText + L"\n";
     }
 
 protected:
-    std::string innerText;
+    std::wstring innerText;
 
 public:
-    const std::string &getInnerText() const
+    const std::wstring &getInnerText() const
     {
         return innerText;
     }

@@ -11,7 +11,7 @@
 class DoubleMeasureFigure: public AFigure
 {
 public:
-    DoubleMeasureFigure(Rect rect, std::string text, size_t page = 1)
+    DoubleMeasureFigure(Rect rect, std::wstring text, size_t page = 1)
         :
         AFigure(std::move(text), page), rect_(rect)
     {}

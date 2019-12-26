@@ -4,7 +4,7 @@
 
 #include "Parser.h"
 
-jsonString Parser::parse(std::string text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler)
+jsonString Parser::parse(std::wstring text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler)
 {
     std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor(errors));
     std::unique_ptr<AAnalyzer> analyzer(analyzeFactory->createAnalyzer(errors));
@@ -22,7 +22,10 @@ jsonString Parser::parse(std::string text, AAnalyzeFactory *analyzeFactory, ASch
     return former.getJson();
 }
 
-jsonString Parser::parseFunc(std::string text, std::string name, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler)
+jsonString Parser::parseFunc(std::wstring text,
+                             std::wstring name,
+                             AAnalyzeFactory *analyzeFactory,
+                             AScheduler *scheduler)
 {
     std::unique_ptr<AConstraintor> constraintor(analyzeFactory->createConstraintor(errors));
     std::unique_ptr<AAnalyzer> analyzer(analyzeFactory->createAnalyzer(errors));

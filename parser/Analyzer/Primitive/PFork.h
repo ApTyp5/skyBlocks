@@ -10,7 +10,7 @@
 class PFork: public ComplexPrimitive
 {
 public:
-    explicit PFork(std::string text)
+    explicit PFork(std::wstring text)
         : ComplexPrimitive(std::move(text)),
           is_else(false)
     {}
@@ -33,9 +33,9 @@ public:
         is_else = true;
     }
 
-    std::string toString() override
+    std::wstring toString() override
     {
-        std::string ans = "Fork\n" + ComplexPrimitive::toString();
+        std::wstring ans = L"Fork\n" + ComplexPrimitive::toString();
         return ans;
     }
 

@@ -54,15 +54,15 @@ protected:
 
 protected:
     // add* - Добавление с проверкой размеров
-    void addFigure(FigureType type, const std::string &innerText);
-    void addFFork(const std::string &innerText, double leftX, double rightX);
+    void addFigure(FigureType type, const std::wstring &innerText);
+    void addFFork(const std::wstring &innerText, double leftX, double rightX);
 
     // push* - Добавление
-    void pushFigure(FigureType type, Rect rect, std::string text, size_t page);
-    void pushSpaceLine(std::string text = "");
+    void pushFigure(FigureType type, Rect rect, std::wstring text, size_t page);
+    void pushSpaceLine(std::wstring text = L"");
     void pushForkLines(Rect forkRect, double leftX, double rightX);
-    void pushHorizLine(double y, double xLeft, double xRight, size_t page = 1, std::string text = "");
-    void pushVerticalLine(double x, double yTop, double yBot, size_t page = 1, std::string text = "");
+    void pushHorizLine(double y, double xLeft, double xRight, size_t page = 1, std::wstring text = L"");
+    void pushVerticalLine(double x, double yTop, double yBot, size_t page = 1, std::wstring text = L"");
     void pushContinueFigure();
 
     // Add ones
@@ -74,7 +74,7 @@ protected:
     void gotoPage(size_t page);
     void addPadding(sRect &rect);
 
-    sRect rectXFitSize(std::string &text, bool withMargin = true);
+    sRect rectXFitSize(std::wstring &text, bool withMargin = true);
     sRect continueBlockSize();
     void castFFollowToFBegEnd(AFigure *&figure);
 

@@ -35,7 +35,7 @@ State Memory::getState() const
     return state_;
 }
 
-const std::string &Memory::getBodyIndent() const
+const std::wstring &Memory::getBodyIndent() const
 {
     return bodyIndent;
 }
@@ -45,7 +45,7 @@ ComplexPrimitive *Memory::getComplexPrimitive() const
     return complexPrimitive;
 }
 
-void Memory::setBodyIndent(const std::string &indent)
+void Memory::setBodyIndent(const std::wstring &indent)
 {
     Memory::bodyIndent = indent;
 }

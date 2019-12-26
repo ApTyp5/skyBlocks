@@ -14,10 +14,10 @@ TEST_F(FEmborderScheduler, addForkTooTight)
 {
     scheduler->curState.setW(98);
     scheduler->curState.setY(260);
-    std::string text = "Some text of any size\n" // 21
-                       "Don-van tried to speak\n" // 22
-                       "Hoo!\n" // 4
-                       "Ano conjunction"; // 15
+    std::wstring text = "Some text of any size\n" // 21
+                        "Don-van tried to speak\n" // 22
+                        "Hoo!\n" // 4
+                        "Ano conjunction"; // 15
 
     scheduler->addFFork(text, 70, 140);
     EXPECT_EQ(8, scheduler->figures.size());
@@ -35,10 +35,10 @@ TEST_F(FEmborderScheduler, addForkTooTight)
 }
 TEST_F(FEmborderScheduler, addForkCommon)
 {
-    std::string text = "Some text of any size\n" // 21
-                       "Don-van tried to speak\n" // 22
-                       "Hoo!\n" // 4
-                       "Ano conjunction"; // 15
+    std::wstring text = "Some text of any size\n" // 21
+                        "Don-van tried to speak\n" // 22
+                        "Hoo!\n" // 4
+                        "Ano conjunction"; // 15
 
     scheduler->addFFork(text, 70, 140);
     EXPECT_EQ(5, scheduler->figures.size());
@@ -58,10 +58,10 @@ TEST_F(FEmborderScheduler, addFigureTooTight)
 {
     scheduler->curState.setW(98);
     scheduler->curState.setY(270);
-    std::string text = "Some text of any size\n" // 21
-                       "Don-van tried to speak\n" // 22
-                       "Hoo!\n" // 4
-                       "Ano conjunction"; // 15
+    std::wstring text = "Some text of any size\n" // 21
+                        "Don-van tried to speak\n" // 22
+                        "Hoo!\n" // 4
+                        "Ano conjunction"; // 15
 
     scheduler->addFigure(FigureType::Follow, text);
     EXPECT_EQ(5, scheduler->figures.size());
@@ -78,7 +78,7 @@ TEST_F(FEmborderScheduler, addFigureTooTight)
 /*TEST_F(FEmborderScheduler, addFigureBadWidth)
 {
     scheduler->curState.setW(5);
-    std::string text = "Some text of any size\n" // 21
+    std::wstring text = "Some text of any size\n" // 21
                        "Don-van tried to speak\n" // 22
                        "Hoo!\n" // 4
                        "Ano conjunction"; // 15
@@ -95,10 +95,10 @@ TEST_F(FEmborderScheduler, addFigureTooTight)
 }*/
 TEST_F(FEmborderScheduler, addFigureCommon)
 {
-    std::string text = "Some text of any size\n" // 21
-                       "Don-van tried to speak\n" // 22
-                       "Hoo!\n" // 4
-                       "Ano conjunction"; // 15
+    std::wstring text = "Some text of any size\n" // 21
+                        "Don-van tried to speak\n" // 22
+                        "Hoo!\n" // 4
+                        "Ano conjunction"; // 15
 
     scheduler->addFigure(FigureType::Follow, text);
     EXPECT_EQ(2, scheduler->figures.size());
@@ -239,10 +239,10 @@ TEST_F(FEmborderScheduler, pushContinueFigure)
 TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
 {
     scheduler->curState.setW(5 * meta.sw());
-    std::string text = "Hoo\n"
-                       "Hoo\n"
-                       "Hoo\n"
-                       "Hoo";
+    std::wstring text = "Hoo\n"
+                        "Hoo\n"
+                        "Hoo\n"
+                        "Hoo";
 
     sRect output = scheduler->rectXFitSize(text, true);
     EXPECT_DOUBLE_EQ(3 * meta.sw() + meta.xp() * 2, output.w);
@@ -251,12 +251,12 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
 /*TEST_F(FEmborderScheduler, rectXFitSizeWithMarginBadWidth)
 {
     scheduler->curState.setW(5);
-    std::string text = "Some text of any size\n" // 26
+    std::wstring text = "Some text of any size\n" // 26
                        "Don-van tried to speak\n" // 22
                        "Hoo!\n" // 4
                        "Ano conjunction"; // 15
 
-    std::string rightOutput = "Some \n"
+    std::wstring rightOutput = "Some \n"
                               "text \n"
                               "of an\n"
                               "y siz\n"
@@ -278,12 +278,12 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
 /*TEST_F(FEmborderScheduler, rectXFitSizeWithoutMarginBadWidth)
 {
     scheduler->curState.setW(5);
-    std::string text = "Some text of any size\n" // 26
+    std::wstring text = "Some text of any size\n" // 26
                        "Don-van tried to speak\n" // 22
                        "Hoo!\n" // 4
                        "Ano conjunction"; // 15
 
-    std::string rightOutput = "Some \n"
+    std::wstring rightOutput = "Some \n"
                               "text \n"
                               "of an\n"
                               "y siz\n"
@@ -305,10 +305,10 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
 TEST_F(FEmborderScheduler, rectXFitSizeWithoutMarginGoodWidth)
 {
     scheduler->curState.setW(5 * meta.sw());
-    std::string text = "Hoo\n"
-                       "Hoo\n"
-                       "Hoo\n"
-                       "Hoo";
+    std::wstring text = "Hoo\n"
+                        "Hoo\n"
+                        "Hoo\n"
+                        "Hoo";
 
     sRect output = scheduler->rectXFitSize(text, false);
     EXPECT_DOUBLE_EQ(3 * meta.sw(), output.w);
@@ -326,7 +326,7 @@ TEST(FContinue, alphabet_check)
     EXPECT_STREQ("B", fContinue3.getText().data());
 }
 
-int main(int argc, char *argv[])
+int main(int argc, wchar_t *argv[])
 {
     ::testing::InitGoogleMock(&argc, argv);
     return RUN_ALL_TESTS();

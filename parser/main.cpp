@@ -63,7 +63,7 @@ int main(){
 
 int main()
 {
-/*    std::string input = "some text, some text\n"
+/*    std::wstring input = "some text, some text\n"
                         "moooore text\n"
                         "\n"
                         "ano block\n"
@@ -80,23 +80,23 @@ int main()
                         "after if block\n"
                         "\n"
                         "bye-bye block";*/
-/*    std::string input = "do smth\n"
+/*    std::wstring input = "do smth\n"
                         "\n"
                         "do ano smth\n";*/
 
-    std::string input = "hi!\n"
-                        "\n"
-                        "if cond\n"
-                        "\tif cond2\n"
-                        "\t\t inner2\n"
-                        "bye!";
+    std::wstring input = "hi!\n"
+                         "\n"
+                         "if cond\n"
+                         "\tif cond2\n"
+                         "\t\t inner2\n"
+                         "bye!";
 
     Meta meta(200, 300, 5, 5, 5, 5, 10, 4, 5);
     DataBaseConnection db;
     Parser parser(db);
-    std::string output = parser.parse(input,
-                                      AnalyzeFactoryCreator::create(Indent, PythonLike),
-                                      SchedulerCreator::create(meta));
+    std::wstring output = parser.parse(input,
+                                       AnalyzeFactoryCreator::create(Indent, PythonLike),
+                                       SchedulerCreator::create(meta));
     std::cout << output;
 
     return 0;

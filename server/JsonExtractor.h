@@ -11,7 +11,8 @@
 class JsonExtractor
 {
 public:
-    JsonExtractor(const std::string& text) {
+    JsonExtractor(const std::wstring &text)
+    {
         std::istringstream str(text);
         boost::property_tree::read_json(str, tree);
     }
@@ -30,8 +31,9 @@ public:
         };
     }
 
-    std::string extractText(){
-        return tree.get<std::string>("text");
+    std::wstring extractText()
+    {
+        return tree.get<std::wstring>("text");
     }
 
 private:

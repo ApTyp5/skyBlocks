@@ -10,7 +10,7 @@
 class PAlgorithm: public ComplexPrimitive
 {
 public:
-    explicit PAlgorithm(std::string text)
+    explicit PAlgorithm(std::wstring text)
         :
         ComplexPrimitive(std::move(text))
     {}
@@ -20,9 +20,9 @@ public:
         return scheduler.schedulePrimitive(*this);
     }
 
-    std::string toString() override
+    std::wstring toString() override
     {
-        std::string ans = "Algorithm\n" + ComplexPrimitive::toString();
+        std::wstring ans = L"Algorithm\n" + ComplexPrimitive::toString();
         return ans;
     }
 };

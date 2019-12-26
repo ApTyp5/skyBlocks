@@ -10,7 +10,7 @@
 class FFork: public DoubleMeasureFigure
 {
 public:
-    FFork(Rect rect, std::string text, size_t page = 1)
+    FFork(Rect rect, std::wstring text, size_t page = 1)
         :
         DoubleMeasureFigure(rect, std::move(text), page)
     {}
@@ -19,9 +19,9 @@ public:
     {
         jFormer.addToJson(*this);
     }
-    std::string figureType() const override
+    std::wstring figureType() const override
     {
-        return std::string("fork");
+        return std::wstring(L"fork");
     }
     AFigure *tryToConvertToFBegEnd() override
     {

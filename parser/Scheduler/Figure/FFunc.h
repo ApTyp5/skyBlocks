@@ -10,7 +10,7 @@
 class FFunc: public DoubleMeasureFigure
 {
 public:
-    FFunc(Rect rect, std::string text, size_t page = 1)
+    FFunc(Rect rect, std::wstring text, size_t page = 1)
         :
         DoubleMeasureFigure(rect, std::move(text), page)
     {}
@@ -19,9 +19,9 @@ public:
     {
         jFormer.addToJson(*this);
     }
-    std::string figureType() const override
+    std::wstring figureType() const override
     {
-        return std::string("func");
+        return std::wstring(L"func");
     }
     AFigure *tryToConvertToFBegEnd() override
     {

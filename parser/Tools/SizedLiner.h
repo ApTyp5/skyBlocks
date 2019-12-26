@@ -10,12 +10,12 @@
 class SizedLiner: public Liner
 {
 public:
-    explicit SizedLiner(const std::string &str);
+    explicit SizedLiner(const std::wstring &str);
 public:
-    bool getLine(std::string &line, bool withNL = true) override;
-    bool getLine(std::string &line, size_t maxSize, bool withNL = true);
+    bool getLine(std::wstring &line, bool withNL = true) override;
+    bool getLine(std::wstring &line, size_t maxSize, bool withNL = true);
 private:
-    std::string buff;
+    std::wstring buff;
 };
 
 

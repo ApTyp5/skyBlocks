@@ -22,12 +22,12 @@ public:
     explicit Parser(DataBaseConnection connection = DataBaseConnection())
     {}
 
-    virtual jsonString parse(std::string text,
+    virtual jsonString parse(std::wstring text,
                              AAnalyzeFactory *analyzeFactory,
                              AScheduler *scheduler);
 
-    virtual jsonString parseFunc(std::string text,
-                                 std::string name,
+    virtual jsonString parseFunc(std::wstring text,
+                                 std::wstring name,
                                  AAnalyzeFactory *analyzeFactory,
                                  AScheduler *scheduler);
 

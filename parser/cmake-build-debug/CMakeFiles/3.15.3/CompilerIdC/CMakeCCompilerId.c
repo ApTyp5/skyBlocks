@@ -314,21 +314,21 @@
 # define COMPILER_ID ""
 #endif
 
-/* Construct the string literal in pieces to prevent the source from
+/* Construct the wstring literal in pieces to prevent the source from
    getting matched.  Store it in a pointer rather than an array
    because some compilers will just produce instructions to fill the
    array rather than assigning a pointer to a static array.  */
-char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+wchar_t const *info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
 #ifdef SIMULATE_ID
-char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";
+wchar_t const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";
 #endif
 
 #ifdef __QNXNTO__
-char const* qnxnto = "INFO" ":" "qnxnto[]";
+wchar_t const* qnxnto = "INFO" ":" "qnxnto[]";
 #endif
 
 #if defined(__CRAYXE) || defined(__CRAYXC)
-char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";
+wchar_t const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";
 #endif
 
 #define STRINGIFY_HELPER(X) #X
@@ -556,9 +556,9 @@ char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";
   ('0' + ((n)>>4  & 0xF)), \
   ('0' + ((n)     & 0xF))
 
-/* Construct a string literal encoding the version number components. */
+/* Construct a wstring literal encoding the version number components. */
 #ifdef COMPILER_VERSION_MAJOR
-char const info_version[] = {
+wchar_t const info_version[] = {
   'I', 'N', 'F', 'O', ':',
   'c','o','m','p','i','l','e','r','_','v','e','r','s','i','o','n','[',
   COMPILER_VERSION_MAJOR,
@@ -574,18 +574,18 @@ char const info_version[] = {
   ']','\0'};
 #endif
 
-/* Construct a string literal encoding the internal version number. */
+/* Construct a wstring literal encoding the internal version number. */
 #ifdef COMPILER_VERSION_INTERNAL
-char const info_version_internal[] = {
+wchar_t const info_version_internal[] = {
   'I', 'N', 'F', 'O', ':',
   'c','o','m','p','i','l','e','r','_','v','e','r','s','i','o','n','_',
   'i','n','t','e','r','n','a','l','[',
   COMPILER_VERSION_INTERNAL,']','\0'};
 #endif
 
-/* Construct a string literal encoding the version number components. */
+/* Construct a wstring literal encoding the version number components. */
 #ifdef SIMULATE_VERSION_MAJOR
-char const info_simulate_version[] = {
+wchar_t const info_simulate_version[] = {
   'I', 'N', 'F', 'O', ':',
   's','i','m','u','l','a','t','e','_','v','e','r','s','i','o','n','[',
   SIMULATE_VERSION_MAJOR,
@@ -601,19 +601,18 @@ char const info_simulate_version[] = {
   ']','\0'};
 #endif
 
-/* Construct the string literal in pieces to prevent the source from
+/* Construct the wstring literal in pieces to prevent the source from
    getting matched.  Store it in a pointer rather than an array
    because some compilers will just produce instructions to fill the
    array rather than assigning a pointer to a static array.  */
-char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
-char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
+wchar_t const *info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
 
-
+wchar_t const *info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
 
 
 #if !defined(__STDC__)
 # if (defined(_MSC_VER) && !defined(__clang__)) \
-  || (defined(__ibmxl__) || defined(__IBMC__))
+ || (defined(__ibmxl__) || defined(__IBMC__))
 #  define C_DIALECT "90"
 # else
 #  define C_DIALECT
@@ -625,8 +624,9 @@ char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
 #else
 # define C_DIALECT "90"
 #endif
-const char* info_language_dialect_default =
-  "INFO" ":" "dialect_default[" C_DIALECT "]";
+
+const wchar_t *info_language_dialect_default =
+    "INFO" ":" "dialect_default[" C_DIALECT "]";
 
 /*--------------------------------------------------------------------------*/
 
@@ -634,17 +634,17 @@ const char* info_language_dialect_default =
 void main() {}
 #else
 # if defined(__CLASSIC_C__)
-int main(argc, argv) int argc; char *argv[];
+int main(argc, argv) int argc; wchar_t *argv[];
 # else
-int main(int argc, char* argv[])
+int main(int argc, wchar_t *argv[])
 # endif
 {
-  int require = 0;
-  require += info_compiler[argc];
-  require += info_platform[argc];
-  require += info_arch[argc];
+    int require = 0;
+    require += info_compiler[argc];
+    require += info_platform[argc];
+    require += info_arch[argc];
 #ifdef COMPILER_VERSION_MAJOR
-  require += info_version[argc];
+    require += info_version[argc];
 #endif
 #ifdef COMPILER_VERSION_INTERNAL
   require += info_version_internal[argc];

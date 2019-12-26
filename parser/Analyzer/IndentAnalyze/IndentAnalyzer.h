@@ -24,16 +24,16 @@ class IndentAnalyzer: public AAnalyzer
 {
 public:
     explicit IndentAnalyzer(ptrVector<ParseError> &errors, BaseIndentAlphabet *alphabet);
-    ComplexPrimitive *analyze(std::string text, size_t frontLine, size_t backLine) override;
+    ComplexPrimitive *analyze(std::wstring text, size_t frontLine, size_t backLine) override;
 
 private:
-    virtual bool emptyStringPhase(const std::string &line, size_t lineNum);
-    virtual bool indentCheckPhase(const std::string &line, size_t lineNum);
-    virtual bool analyzeStrPhase(const std::string &line, size_t line_num);
+    virtual bool emptyStringPhase(const std::wstring &line, size_t lineNum);
+    virtual bool indentCheckPhase(const std::wstring &line, size_t lineNum);
+    virtual bool analyzeStrPhase(const std::wstring &line, size_t line_num);
 
 private:
-    std::string retIndent(const std::string &line);
-    const std::string &getCurrentIndent();
+    std::wstring retIndent(const std::wstring &line);
+    const std::wstring &getCurrentIndent();
     void mergeBackMemory();
     void flushShortMemory();
 
@@ -41,13 +41,13 @@ private:
     bool tryAddPFollowToLastMem();
     bool tryMemorizePFork();
     bool tryMemorizePCycle();
-    bool addPFuncToLastMem(std::string text);
-    bool isDef(const std::string &line);
-    void initAlg(const std::string &name);
+    bool addPFuncToLastMem(std::wstring text);
+    bool isDef(const std::wstring &line);
+    void initAlg(const std::wstring &name);
 private:
     State state_;
-    std::string indent;
-    std::string shortMemory;
+    std::wstring indent;
+    std::wstring shortMemory;
     ptrVector<Memory> longMemory;
     std::unique_ptr<BaseIndentAlphabet> AlphaBet;
 
@@ -62,8 +62,8 @@ private:
     friend class FIndentPythonLikeAnalyzer_is_def_negative2_Test;
     void setWFIndent(size_t fstWordSize,
                      size_t othersWordSize,
-                     const std::string &lineIndent,
-                     const std::string &lineWithoutIndent);
+                     const std::wstring &lineIndent,
+                     const std::wstring &lineWithoutIndent);
 };
 
 #endif //PARSER_ANALYZER_INDENTANALYZER_H_

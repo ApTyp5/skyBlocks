@@ -12,13 +12,13 @@ class BaseIndentAlphabet
 {
 public:
     BaseIndentAlphabet(
-        std::string forkWord,
-        std::string elseWord,
-        std::string cycleWord,
-        std::string callFuncWord,
-        std::string defineFuncWord,
-        std::vector<char> wordDelimiters,
-        std::vector<char> sectionDelimiters)
+        std::wstring forkWord,
+        std::wstring elseWord,
+        std::wstring cycleWord,
+        std::wstring callFuncWord,
+        std::wstring defineFuncWord,
+        std::vector<wchar_t> wordDelimiters,
+        std::vector<wchar_t> sectionDelimiters)
         :
         forkWord(std::move(forkWord)),
         elseWord(std::move(elseWord)),
@@ -29,28 +29,28 @@ public:
         sectionDelimiters(std::move(sectionDelimiters))
     {}
 
-    virtual const std::vector<char> &WordDelimiters()
+    virtual const std::vector<wchar_t> &WordDelimiters()
     { return wordDelimiters; }
-    virtual const std::vector<char> &SectionDelimiters()
+    virtual const std::vector<wchar_t> &SectionDelimiters()
     { return sectionDelimiters; }
-    virtual const std::string &ForkWord()
+    virtual const std::wstring &ForkWord()
     { return forkWord; }
-    virtual const std::string &ElseWord()
+    virtual const std::wstring &ElseWord()
     { return elseWord; }
-    virtual const std::string &CycleWord()
+    virtual const std::wstring &CycleWord()
     { return cycleWord; }
-    virtual const std::string &CallFuncWord()
+    virtual const std::wstring &CallFuncWord()
     { return callFuncWord; }
-    virtual const std::string &DefineFuncWord()
+    virtual const std::wstring &DefineFuncWord()
     { return defineFuncWord; }
 
 private:
-    std::vector<char> sectionDelimiters;
-    std::vector<char> wordDelimiters;
-    std::string forkWord;
-    std::string elseWord;
-    std::string cycleWord;
-    std::string callFuncWord;
-    std::string defineFuncWord;
+    std::vector<wchar_t> sectionDelimiters;
+    std::vector<wchar_t> wordDelimiters;
+    std::wstring forkWord;
+    std::wstring elseWord;
+    std::wstring cycleWord;
+    std::wstring callFuncWord;
+    std::wstring defineFuncWord;
 };
 #endif //PARSER_ANALYZER_INDENTANALYZE_ALPHABET_BASEALPHABET_H_

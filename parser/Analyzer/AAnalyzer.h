@@ -17,7 +17,7 @@ class AAnalyzer : public AccumulateErrors {
         : AccumulateErrors(errors)
     {}
     ~AAnalyzer() = default;
-    virtual ComplexPrimitive *analyze(std::string text, size_t frontLine, size_t backLine) = 0;
+    virtual ComplexPrimitive *analyze(std::wstring text, size_t frontLine, size_t backLine) = 0;
 };
 
 #endif //PARSER_ANALYZER_AANALYZER_H_

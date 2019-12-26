@@ -23,7 +23,7 @@ class SingleMeasureFigure;
 class DoubleMeasureFigure;
 class ParseError;
 
-typedef std::string jsonString;
+typedef std::wstring jsonString;
 
 class JsonFormable;
 
@@ -32,7 +32,7 @@ class JsonFormer
 public:
     jsonString getJson();
     explicit JsonFormer() = default;
-    void addSection(const ptrVector<JsonFormable> &vector, const std::string &section);
+    void addSection(const ptrVector<JsonFormable> &vector, const std::wstring &section);
     void addFigures(const ptrVector<AFigure> &vector);
     void addErrors(const ptrVector<ParseError> &vector);
 
@@ -51,12 +51,12 @@ protected:
     void addAFigure(const AFigure &aFigure);
     void addSMFigure(const SingleMeasureFigure &smFigure);
     void addDMFigure(const DoubleMeasureFigure &dmFigure);
-    void childAddProperty(const std::string &path, const std::string &name);
+    void childAddProperty(const std::wstring &path, const std::wstring &name);
 
 private:
-    boost::property_tree::ptree tree;
-    boost::property_tree::ptree children;
-    boost::property_tree::ptree child;
+    boost::property_tree::wptree tree;
+    boost::property_tree::wptree children;
+    boost::property_tree::wptree child;
 };
 
 class JsonFormable

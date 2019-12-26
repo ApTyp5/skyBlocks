@@ -5,12 +5,12 @@
 #include "IndentConstraintor.h"
 #include "../../Tools/Liner.h"
 
-bool IndentConstraintor::findMain(size_t &first_index, size_t &back_index, const std::string &text)
+bool IndentConstraintor::findMain(size_t &first_index, size_t &back_index, const std::wstring &text)
 {
     size_t front, back;
     front = 1;
     Liner liner(text);
-    std::string line;
+    std::wstring line;
 
     for (front = 1; liner.getLine(line); front++) {
         if (IndentAnalyzerUtils::isInVector(line.front(), AlphaBet->WordDelimiters()))
@@ -26,7 +26,7 @@ bool IndentConstraintor::findMain(size_t &first_index, size_t &back_index, const
     }
 
     if (back - front <= 1) {
-        push_error("main algorithm not found", 0, 0);
+        push_error(L"main algorithm not found", 0, 0);
         return false;
     }
 
@@ -36,10 +36,10 @@ bool IndentConstraintor::findMain(size_t &first_index, size_t &back_index, const
     return true;
 }
 
-std::string IndentConstraintor::findFunc(size_t &line_num,
-                                         std::string text,
-                                         std::string name,
-                                         DataBaseConnection &connection)
+std::wstring IndentConstraintor::findFunc(size_t &line_num,
+                                          std::wstring text,
+                                          std::wstring name,
+                                          DataBaseConnection &connection)
 {
-    return std::string();
+    return std::wstring();
 }
