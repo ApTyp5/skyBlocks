@@ -55,6 +55,7 @@ SkyBlocksEditor::~SkyBlocksEditor()
 }
 
 void SkyBlocksEditor::sendInformation() {
+    ui->messagesBrowser->clear();
     QString content = ui->codeEdit->toPlainText();
     QUrl url("http://localhost:6000");
 
@@ -108,6 +109,19 @@ void SkyBlocksEditor::drawAlgorithm() {
     else {
         qDebug() << "JSON not parsed" << endl;
         return;
+    }
+
+    QJsonValue errors = obj["error"];
+
+    if (errors != QJsonValue::Undefined) {
+        for (QJsonValue error : errors.toArray()) {
+            QString row = QString("Row: ") + error["row"].toString();
+            QString column = QString("Column: ") + error["col"].toString();
+            QString text = row + QString(" ") + column + QString(" ")
+                    + error["text"].toString() + QString("\n");
+            ui->messagesBrowser->setTextColor(Qt::red);
+            ui->messagesBrowser->append(text);
+        }
     }
 
     QJsonValue figures = obj["figure"];
