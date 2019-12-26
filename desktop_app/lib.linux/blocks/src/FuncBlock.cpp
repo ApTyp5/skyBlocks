@@ -2,7 +2,7 @@
 
 DrawData *FuncBlock::Draw() {
     auto data = new DrawData;
-    data->figureType = BLOCK;
+    data->figureType = FUNC;
     double leftTopX = centerPosX - rectangleWidth / 2;
     double leftTopY = centerPosY - rectangleHeight / 2;
 
@@ -13,11 +13,27 @@ DrawData *FuncBlock::Draw() {
                     leftTopY
                     });
     data->points.push_back({
-                    leftTopX + subRectWidth,
+                    leftTopX - subRectWidth,
                     leftTopY
                     });
     data->points.push_back({
-                    leftTopX + subRectWidth,
+                    leftTopX - subRectWidth,
+                    leftTopY + rectangleHeight
+                    });
+    data->points.push_back({
+                    leftTopX,
+                    leftTopY + rectangleHeight
+                    });
+    data->points.push_back({
+                    leftTopX,
+                    leftTopY
+                    });
+    data->points.push_back({
+                    leftTopX + rectangleWidth,
+                    leftTopY
+                    });
+    data->points.push_back({
+                    leftTopX + rectangleWidth,
                     leftTopY + rectangleHeight
                     });
     data->points.push_back({
@@ -30,28 +46,7 @@ DrawData *FuncBlock::Draw() {
                     });
 
     data->points.push_back({
-                    leftTopX + subRectWidth,
-                    leftTopY
-                    });
-    data->points.push_back({
-                    leftTopX + rectangleWidth - subRectWidth,
-                    leftTopY
-                    });
-    data->points.push_back({
-                    leftTopX + rectangleWidth - subRectWidth,
-                    leftTopY + rectangleHeight
-                    });
-    data->points.push_back({
-                    leftTopX + subRectWidth,
-                    leftTopY + rectangleHeight
-                    });
-    data->points.push_back({
-                    leftTopX + subRectWidth,
-                    leftTopY
-                    });
-
-    data->points.push_back({
-                    leftTopX + rectangleWidth - subRectWidth,
+                    leftTopX + rectangleWidth + subRectWidth,
                     leftTopY
                     });
     data->points.push_back({
@@ -63,11 +58,11 @@ DrawData *FuncBlock::Draw() {
                     leftTopY + rectangleHeight
                     });
     data->points.push_back({
-                    leftTopX + rectangleWidth - subRectWidth,
+                    leftTopX + rectangleWidth + subRectWidth,
                     leftTopY + rectangleHeight
                     });
     data->points.push_back({
-                    leftTopX + rectangleWidth - subRectWidth,
+                    leftTopX + rectangleWidth + subRectWidth,
                     leftTopY
                     });
 

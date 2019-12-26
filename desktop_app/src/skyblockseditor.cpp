@@ -294,6 +294,13 @@ void SkyBlocksEditor::Draw(QPainter &painter, const DrawData &drawData) {
                         );
             painter.drawText(rectText, Qt::AlignHCenter, drawData.text.c_str());
 
+        } else if (drawData.figureType == FUNC) {
+            QRectF rectText(
+                        QPointF(drawData.centerX - drawData.width / 2,
+                                drawData.centerY - drawData.height / 2 + settings.yp) * scaleIndex,
+                        QSizeF(drawData.width, drawData.height - settings.yp) * scaleIndex
+                        );
+            painter.drawText(rectText, Qt::AlignHCenter, drawData.text.c_str());
         } else if (drawData.figureType == BLOCK) {
             QRectF rectText(
                         QPointF(drawData.centerX - drawData.width / 2,
