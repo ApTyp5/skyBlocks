@@ -21,7 +21,7 @@ const std::string endField = "end";
 
 const std::string lineType = "line";
 const std::string blockType = "follow";
-const std::string funcType = "innerblock";
+const std::string funcType = "func";
 const std::string ifType = "fork";
 const std::string whileBeginType = "begin cycle";
 const std::string whileEndType = "end cycle";

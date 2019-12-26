@@ -15,6 +15,7 @@
 #include <QJsonObject>
 #include <QPainter>
 #include <QPoint>
+#include <QTextCodec>
 #include <QMessageBox>
 #include <QUrl>
 
@@ -62,9 +63,6 @@ void SkyBlocksEditor::sendInformation() {
     QString content = ui->codeEdit->toPlainText();
     QUrl url("http://localhost:6000");
 
-    QFont font = QFont("freeMono", 8);
-    QFontMetrics metrics = QFontMetrics(font);
-
     QJsonObject obj;
 
     obj["text"] = content;
@@ -73,7 +71,7 @@ void SkyBlocksEditor::sendInformation() {
     QJsonDocument doc;
     doc.setObject(obj);
 
-    qDebug() << QString(doc.toJson());
+    qDebug() << doc.toJson();
 
     QNetworkRequest req;
     req.setUrl(url);
@@ -90,17 +88,17 @@ void SkyBlocksEditor::setDrawSettings() {
 }
 
 void SkyBlocksEditor::drawAlgorithm() {
-    QString msg;
+    QString textMsg;
     if (reply->error()) {
-        msg = reply->errorString();
-        qDebug() << msg << endl;
-    }
-    else {
-        msg = QString(reply->readAll());
-        qDebug() << msg;
+        textMsg = reply->errorString();
+        QMessageBox msg(QMessageBox::Critical, "Ошибка соединения", textMsg);
+        msg.exec();
+        return;
     }
 
-    QJsonDocument doc = QJsonDocument::fromJson(msg.toUtf8());
+    textMsg = QString(reply->readAll());
+    qDebug() << textMsg;
+    QJsonDocument doc = QJsonDocument::fromJson(textMsg.toUtf8());
 
     QJsonObject obj;
 
@@ -125,8 +123,6 @@ void SkyBlocksEditor::drawAlgorithm() {
             ui->messagesBrowser->setTextColor(Qt::red);
             ui->messagesBrowser->append(text);
         }
-    } else {
-
     }
 
     ui->saveDiagramButton->setEnabled(true);
@@ -304,7 +300,6 @@ void SkyBlocksEditor::Draw(QPainter &painter, const DrawData &drawData) {
                                 drawData.centerY - drawData.height / 2 + settings.yp) * scaleIndex,
                         QSizeF(drawData.width, drawData.height - settings.yp) * scaleIndex
                         );
-
             painter.drawText(rectText, Qt::AlignHCenter, drawData.text.c_str());
         }
     }
