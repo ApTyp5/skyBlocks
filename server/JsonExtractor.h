@@ -13,31 +13,31 @@ class JsonExtractor
 public:
     JsonExtractor(const std::wstring &text)
     {
-        std::istringstream str(text);
+        std::wistringstream str(text);
         boost::property_tree::read_json(str, tree);
     }
 
     Meta extractMeta(){
         return {
-            tree.get<double>("meta.pw"),
-            tree.get<double>("meta.ph"),
-            tree.get<double>("meta.xp"),
-            tree.get<double>("meta.yp"),
-            tree.get<double>("meta.xm"),
-            tree.get<double>("meta.ym"),
-            tree.get<double>("meta.lh"),
-            tree.get<double>("meta.sw"),
-            tree.get<double>("meta.bs")
+            tree.get<double>(L"meta.pw"),
+            tree.get<double>(L"meta.ph"),
+            tree.get<double>(L"meta.xp"),
+            tree.get<double>(L"meta.yp"),
+            tree.get<double>(L"meta.xm"),
+            tree.get<double>(L"meta.ym"),
+            tree.get<double>(L"meta.lh"),
+            tree.get<double>(L"meta.sw"),
+            tree.get<double>(L"meta.bs")
         };
     }
 
     std::wstring extractText()
     {
-        return tree.get<std::wstring>("text");
+        return tree.get<std::wstring>(L"text");
     }
 
 private:
-    boost::property_tree::ptree tree;
+  boost::property_tree::wptree tree;
 };
 
 

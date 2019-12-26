@@ -12,11 +12,11 @@ class RuPseudoCodeAlphabet: public BaseIndentAlphabet
 public:
     RuPseudoCodeAlphabet()
         : BaseIndentAlphabet(
-        "если",
-        "иначе",
-        "пока",
-        "вызов",
-        "функция",
+        L"если",
+        L"иначе",
+        L"пока",
+        L"вызов",
+        L"функция",
         {' ', '\t'},
         {';'})
     {}

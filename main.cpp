@@ -16,16 +16,18 @@ public:
 HTTP_PROTOTYPE(SimpleHandler)
     void onRequest(const Http::Request &request, Http::ResponseWriter writer) override
     {
-
-        JsonExtractor extractor(request.body());
+        std::wstring str(request.body().begin(), request.body().end());
+        std::wcout << str;
+        JsonExtractor extractor(str);
         Meta meta = extractor.extractMeta();
         std::wstring input = extractor.extractText();
 
         std::wstring output = parser.parse(input,
                                            AnalyzeFactoryCreator::create(Indent, PythonLike),
                                            SchedulerCreator::create(meta));
-
-        writer.send(Http::Code::Ok, output.data(), output.size());
+        std::string out(output.begin(), output.end());
+        std::cout << out << std::endl;
+        writer.send(Http::Code::Ok, out.data(), out.size());
     }
 private:
     DataBaseConnection db;
