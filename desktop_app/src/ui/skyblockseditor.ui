@@ -252,6 +252,16 @@
         </spacer>
        </item>
        <item>
+        <widget class="QPushButton" name="saveDiagramButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Сохранить диаграмму</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="sendCodeButton">
          <property name="text">
           <string>Отправить</string>

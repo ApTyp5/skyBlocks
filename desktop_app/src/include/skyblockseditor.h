@@ -39,6 +39,7 @@ public slots:
     void sendInformation();
     void setDrawSettings();
     void drawAlgorithm();
+    void saveDiagram();
 
 private:
     Ui::SkyBlocksEditor *ui;

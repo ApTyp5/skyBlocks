@@ -8,6 +8,8 @@
 
 #include <QByteArray>
 #include <QDebug>
+#include <QErrorMessage>
+#include <QFileDialog>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -45,6 +47,7 @@ SkyBlocksEditor::SkyBlocksEditor(QWidget *parent)
     connect(ui->prevPageButton, SIGNAL(clicked()), this, SLOT(prevImagePage()));
     connect(ui->increaseScaleButton, SIGNAL(clicked()), this, SLOT(increaseImageScale()));
     connect(ui->reduceScaleButton, SIGNAL(clicked()), this, SLOT(reduceImageScale()));
+    connect(ui->saveDiagramButton, SIGNAL(clicked()), this, SLOT(saveDiagram()));
 }
 
 SkyBlocksEditor::~SkyBlocksEditor()
@@ -122,7 +125,11 @@ void SkyBlocksEditor::drawAlgorithm() {
             ui->messagesBrowser->setTextColor(Qt::red);
             ui->messagesBrowser->append(text);
         }
+    } else {
+
     }
+
+    ui->saveDiagramButton->setEnabled(true);
 
     QJsonValue figures = obj["figure"];
 
@@ -301,4 +308,24 @@ void SkyBlocksEditor::Draw(QPainter &painter, const DrawData &drawData) {
             painter.drawText(rectText, Qt::AlignHCenter, drawData.text.c_str());
         }
     }
+}
+
+void SkyBlocksEditor::saveDiagram() {
+    int prevScaleIndex = scaleIndex;
+    scaleIndex = 10;
+    DrawAll();
+    for (int i = 0; i < images.size(); i++) {
+        QString title = tr("Сохранение диаграммы (страница ") + QString(i) + tr(")");
+        QString fileName = QFileDialog::getSaveFileName(this,
+                            title, "",
+                            tr("Image Files (*.png *.jpg *.bmp);;All Files (*)"));
+        if (fileName == "")
+            break;
+        if (!images[i]->save(fileName, "png")) {
+            QErrorMessage message(this);
+            message.showMessage("Не удалось сохранить изображение");
+        }
+    }
+    scaleIndex = prevScaleIndex;
+    DrawAll();
 }
