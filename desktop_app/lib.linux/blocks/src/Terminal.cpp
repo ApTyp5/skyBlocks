@@ -7,19 +7,19 @@ DrawData *TerminalBlock::Draw() {
     double leftTopY = centerPosY - rectangleHeight / 2;
 
     data->points.push_back({
-                    leftTopX,
+                    leftTopX + rectangleWidth / 10,
                     leftTopY
                     });
     data->points.push_back({
-                    leftTopX + rectangleWidth,
+                    leftTopX + rectangleWidth - rectangleWidth / 10,
                     leftTopY
                     });
     data->points.push_back({
-                    leftTopX + rectangleWidth,
+                    leftTopX + rectangleWidth - rectangleWidth / 10,
                     leftTopY + rectangleHeight
                     });
     data->points.push_back({
-                    leftTopX,
+                    leftTopX + rectangleWidth / 10,
                     leftTopY + rectangleHeight
                     });
 

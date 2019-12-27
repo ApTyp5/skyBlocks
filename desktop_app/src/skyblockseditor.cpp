@@ -253,18 +253,18 @@ void SkyBlocksEditor::Draw(QPainter &painter, const DrawData &drawData) {
 
         pathLeft.moveTo(points[3]);
         QPointF p1 = points[3];
-        p1 -= {drawData.width / 2 * scaleIndex, 0};
+        p1 -= {7 * scaleIndex, 0};
         QPointF p2 = points[0];
-        p2 -= {drawData.width / 2 * scaleIndex, 0};
+        p2 -= {7 * scaleIndex, 0};
         pathLeft.cubicTo(p1, p2, points[0]);
         painter.drawPath(pathLeft);
 
         QPainterPath pathRight;
         pathRight.moveTo(points[2]);
         p1 = points[2];
-        p1 += {drawData.width / 2 * scaleIndex, 0};
+        p1 += {7 * scaleIndex, 0};
         p2 = points[1];
-        p2 += {drawData.width / 2 * scaleIndex, 0};
+        p2 += {7 * scaleIndex, 0};
         pathRight.cubicTo(p1, p2, points[1]);
         painter.drawPath(pathRight);
 
@@ -289,11 +289,11 @@ void SkyBlocksEditor::Draw(QPainter &painter, const DrawData &drawData) {
 
         if (drawData.figureType == IF){
             QRectF rectText(
-                        QPointF(drawData.centerX - drawData.width / 4,
-                                drawData.centerY - drawData.height / 4) * scaleIndex,
-                        QSizeF(drawData.width / 2, drawData.height / 2) * scaleIndex
+                        QPointF(drawData.centerX - drawData.width / 2,
+                                drawData.centerY - drawData.height / 2) * scaleIndex,
+                        QSizeF(drawData.width, drawData.height) * scaleIndex
                         );
-            painter.drawText(rectText, Qt::AlignHCenter, drawData.text.c_str());
+            painter.drawText(rectText, Qt::AlignCenter, drawData.text.c_str());
 
         } else if (drawData.figureType == FUNC) {
             QRectF rectText(
