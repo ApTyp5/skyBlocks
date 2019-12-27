@@ -16,16 +16,23 @@ public:
 HTTP_PROTOTYPE(SimpleHandler)
     void onRequest(const Http::Request &request, Http::ResponseWriter writer) override
     {
+      AlphabetType language = PythonLike;
+      JsonExtractor extractor(request.body());
+      Meta meta = extractor.extractMeta();
+      std::string input = extractor.extractText();
+      std::string lang = extractor.extractLang();
 
-        JsonExtractor extractor(request.body());
-        Meta meta = extractor.extractMeta();
-        std::string input = extractor.extractText();
+      std::cout << input;
+      if (lang == "russian") {
+        language = RuPseudoCode;
+        meta.setSW(meta.sw() / 2);
+      }
 
-        std::string output = parser.parse(input,
-                                          AnalyzeFactoryCreator::create(Indent, RuPseudoCode),
-                                          SchedulerCreator::create(meta));
+      std::string output = parser.parse(input,
+                                        AnalyzeFactoryCreator::create(Indent, language),
+                                        SchedulerCreator::create(meta));
 
-        writer.send(Http::Code::Ok, output.data(), output.size());
+      writer.send(Http::Code::Ok, output.data(), output.size());
     }
 private:
     DataBaseConnection db;

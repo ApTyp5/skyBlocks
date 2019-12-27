@@ -3,6 +3,7 @@
 //
 
 #include "Parser.h"
+#include "Analyzer/Primitive/PAlgorithm.h"
 
 jsonString Parser::parse(std::string text, AAnalyzeFactory *analyzeFactory, AScheduler *scheduler)
 {
@@ -12,12 +13,13 @@ jsonString Parser::parse(std::string text, AAnalyzeFactory *analyzeFactory, ASch
 
     size_t front_line, back_line;
     if (constraintor->findMain(front_line, back_line, text)) {
-        std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(text, front_line, back_line));
-        ptrVector<AFigure> figures = scheduler->schedule(algorithm);
+      std::unique_ptr<PAlgorithm> algorithm(analyzer->analyze(text, front_line, back_line));
+      ptrVector<AFigure> figures = scheduler->schedule(algorithm);
         former.addFigures(figures);
     }
 
-    former.addErrors(errors);
+  former.addErrors(errors);
+  errors.clear();
 
     return former.getJson();
 }
@@ -30,8 +32,8 @@ jsonString Parser::parseFunc(std::string text, std::string name, AAnalyzeFactory
 
     size_t front_line, back_line;
     if (constraintor->findMain(front_line, back_line, text)) {
-        std::unique_ptr<ComplexPrimitive> algorithm(analyzer->analyze(text, front_line, back_line));
-        ptrVector<AFigure> figures = scheduler->schedule(algorithm);
+      std::unique_ptr<PAlgorithm> algorithm(analyzer->analyze(text, front_line, back_line));
+      ptrVector<AFigure> figures = scheduler->schedule(algorithm);
         former.addFigures(figures);
     }
 

@@ -347,32 +347,32 @@ Parser.cpp.s:
 	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Parser.cpp.s
 .PHONY : Parser.cpp.s
 
-Scheduler/EmborderScheduler/EmborderScheduler.o: Scheduler/EmborderScheduler/EmborderScheduler.cpp.o
+Scheduler/GostScheduler/GostScheduler.o: Scheduler/GostScheduler/GostScheduler.cpp.o
 
-.PHONY : Scheduler/EmborderScheduler/EmborderScheduler.o
+.PHONY : Scheduler/GostScheduler/GostScheduler.o
 
 # target to build an object file
-Scheduler/EmborderScheduler/EmborderScheduler.cpp.o:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.o
-.PHONY : Scheduler/EmborderScheduler/EmborderScheduler.cpp.o
+Scheduler/GostScheduler/GostScheduler.cpp.o:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/GostScheduler/GostScheduler.cpp.o
+.PHONY : Scheduler/GostScheduler/GostScheduler.cpp.o
 
-Scheduler/EmborderScheduler/EmborderScheduler.i: Scheduler/EmborderScheduler/EmborderScheduler.cpp.i
+Scheduler/GostScheduler/GostScheduler.i: Scheduler/GostScheduler/GostScheduler.cpp.i
 
-.PHONY : Scheduler/EmborderScheduler/EmborderScheduler.i
+.PHONY : Scheduler/GostScheduler/GostScheduler.i
 
 # target to preprocess a source file
-Scheduler/EmborderScheduler/EmborderScheduler.cpp.i:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.i
-.PHONY : Scheduler/EmborderScheduler/EmborderScheduler.cpp.i
+Scheduler/GostScheduler/GostScheduler.cpp.i:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/GostScheduler/GostScheduler.cpp.i
+.PHONY : Scheduler/GostScheduler/GostScheduler.cpp.i
 
-Scheduler/EmborderScheduler/EmborderScheduler.s: Scheduler/EmborderScheduler/EmborderScheduler.cpp.s
+Scheduler/GostScheduler/GostScheduler.s: Scheduler/GostScheduler/GostScheduler.cpp.s
 
-.PHONY : Scheduler/EmborderScheduler/EmborderScheduler.s
+.PHONY : Scheduler/GostScheduler/GostScheduler.s
 
 # target to generate assembly for a file
-Scheduler/EmborderScheduler/EmborderScheduler.cpp.s:
-	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/EmborderScheduler/EmborderScheduler.cpp.s
-.PHONY : Scheduler/EmborderScheduler/EmborderScheduler.cpp.s
+Scheduler/GostScheduler/GostScheduler.cpp.s:
+	$(MAKE) -f CMakeFiles/parser.dir/build.make CMakeFiles/parser.dir/Scheduler/GostScheduler/GostScheduler.cpp.s
+.PHONY : Scheduler/GostScheduler/GostScheduler.cpp.s
 
 Scheduler/Figure/FContinue.o: Scheduler/Figure/FContinue.cpp.o
 
@@ -675,9 +675,9 @@ help:
 	@echo "... Parser.o"
 	@echo "... Parser.i"
 	@echo "... Parser.s"
-	@echo "... Scheduler/EmborderScheduler/EmborderScheduler.o"
-	@echo "... Scheduler/EmborderScheduler/EmborderScheduler.i"
-	@echo "... Scheduler/EmborderScheduler/EmborderScheduler.s"
+	@echo "... Scheduler/GostScheduler/GostScheduler.o"
+	@echo "... Scheduler/GostScheduler/GostScheduler.i"
+	@echo "... Scheduler/GostScheduler/GostScheduler.s"
 	@echo "... Scheduler/Figure/FContinue.o"
 	@echo "... Scheduler/Figure/FContinue.i"
 	@echo "... Scheduler/Figure/FContinue.s"

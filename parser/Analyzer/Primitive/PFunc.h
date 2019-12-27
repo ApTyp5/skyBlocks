@@ -20,18 +20,19 @@ public:
         return scheduler.schedulePrimitive(*this);
     }
 
-    virtual std::string toString() const
-    {
-        return std::string("Func(") + name + std::string(")\n") +
-            APrimitive::toString();
-    }
+  virtual std::string toString() const {
+    return std::string("Func(") + name + std::string(")\n") +
+        APrimitive::toString();
+  }
 
-    const std::string &getName() const
-    {
-        return name;
-    }
+  const std::string &getName() const {
+    return name;
+  }
+  size_t maxTextWid() const override {
+    return getMaxTextWid(name + getInnerText());
+  }
 
-protected:
-    std::string name;
+ protected:
+  std::string name;
 };
 #endif //PARSER_PRIMITIVE_PFUNC_H_

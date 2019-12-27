@@ -33,7 +33,7 @@ public:
         : meta(meta)
     {}
 
-    virtual ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &algorithm) = 0;
+    virtual ptrVector<AFigure> schedule(const std::unique_ptr<PAlgorithm> &algorithm) = 0;
 
     virtual bool schedulePrimitive(const PAlgorithm &primitive) = 0;
     virtual bool schedulePrimitive(const PCycle &primitive) = 0;

@@ -9,6 +9,7 @@
 #include "../Scheduler/Figure/FContinue.h"
 #include "../Fixtures/FEmborderScheduler.h"
 #include "../Scheduler/Figure/FLine.h"
+#include "../Scheduler/EmborderScheduler/GostScheduler.h"
 
 TEST_F(FEmborderScheduler, addForkTooTight)
 {
@@ -91,7 +92,7 @@ TEST_F(FEmborderScheduler, addFigureTooTight)
     EXPECT_DOUBLE_EQ(14 * meta.lh() + 2 * meta.yp(), follow->rect_.size.h);
     EXPECT_DOUBLE_EQ(5 * meta.sw() + 2 * meta.xp(), follow->rect_.size.w);
     EXPECT_DOUBLE_EQ(meta.ym() + follow->rect_.size.h / 2, follow->rect_.center.y);
-    EXPECT_DOUBLE_EQ(scheduler->curState.x(), follow->rect_.center.x);
+    EXPECT_DOUBLE_EQ(scheduler->CurState.x(), follow->rect_.center.x);
 }*/
 TEST_F(FEmborderScheduler, addFigureCommon)
 {
@@ -110,21 +111,19 @@ TEST_F(FEmborderScheduler, addFigureCommon)
     EXPECT_DOUBLE_EQ(meta.ym() + follow->rect_.size.h / 2, follow->rect_.center.y);
     EXPECT_DOUBLE_EQ(scheduler->curState.x(), follow->rect_.center.x);
 }
-TEST_F(FEmborderScheduler, connectForkPartsRightPageLess)
-{
-    FContinue::reset();
-    EmborderScheduler::State left(70, 70, 20, 5);
-    EmborderScheduler::State right(30, 50, 20, 2);
+TEST_F(FEmborderScheduler, connectForkPartsRightPageLess) {
+  FContinue::reset();
+  GostScheduler::State left(70, 70, 20, 0, 5);
+  GostScheduler::State right(30, 50, 20, 0, 2);
 
+  scheduler->connectForkParts(left, right);
 
-    scheduler->connectForkParts(left, right);
+  EXPECT_EQ(scheduler->figures.size(), 5);
+  EXPECT_EQ(2, scheduler->figures[0]->getPage());
 
-    EXPECT_EQ(scheduler->figures.size(), 5);
-    EXPECT_EQ(2, scheduler->figures[0]->getPage());
-
-    auto contin1 = dynamic_cast<FContinue *>(scheduler->figures[0]);
-    EXPECT_EQ(right.x(), contin1->rect_.center.x);
-    EXPECT_STREQ("A", contin1->getText().data());
+  auto contin1 = dynamic_cast<FContinue *>(scheduler->figures[0]);
+  EXPECT_EQ(right.x(), contin1->rect_.center.x);
+  EXPECT_STREQ("A", contin1->getText().data());
     EXPECT_EQ(2, contin1->getPage());
 
     auto contin2 = dynamic_cast<FContinue *>(scheduler->figures[1]);
@@ -147,21 +146,20 @@ TEST_F(FEmborderScheduler, connectForkPartsRightPageLess)
     EXPECT_EQ(right.x(), horizLine->end.x);
     EXPECT_EQ(left.y(), horizLine->end.y);
 }
-TEST_F(FEmborderScheduler, connectForkPartsLeftPageLess)
-{
-    FContinue::reset();
-    EmborderScheduler::State left(30, 50, 20, 2);
-    EmborderScheduler::State right(70, 70, 20, 5);
+TEST_F(FEmborderScheduler, connectForkPartsLeftPageLess) {
+  FContinue::reset();
+  GostScheduler::State left(30, 50, 20, 0, 2);
+  GostScheduler::State right(70, 70, 20, 0, 5);
 
-    scheduler->connectForkParts(left, right);
+  scheduler->connectForkParts(left, right);
 
-    EXPECT_EQ(scheduler->figures.size(), 5);
-    EXPECT_EQ(2, scheduler->figures[0]->getPage());
+  EXPECT_EQ(scheduler->figures.size(), 5);
+  EXPECT_EQ(2, scheduler->figures[0]->getPage());
 
-    auto contin1 = dynamic_cast<FContinue *>(scheduler->figures[0]);
-    EXPECT_EQ(left.x(), contin1->rect_.center.x);
-    EXPECT_STREQ("A", contin1->getText().data());
-    EXPECT_EQ(2, contin1->getPage());
+  auto contin1 = dynamic_cast<FContinue *>(scheduler->figures[0]);
+  EXPECT_EQ(left.x(), contin1->rect_.center.x);
+  EXPECT_STREQ("A", contin1->getText().data());
+  EXPECT_EQ(2, contin1->getPage());
 
     auto contin2 = dynamic_cast<FContinue *>(scheduler->figures[1]);
     EXPECT_EQ(left.x(), contin2->rect_.center.x);
@@ -218,7 +216,7 @@ TEST_F(FEmborderScheduler, pushForkLines)
 TEST_F(FEmborderScheduler, pushSpaceLine)
 {
     EXPECT_EQ(0, scheduler->figures.size());
-    EmborderScheduler::State state = scheduler->getCurState();
+  GostScheduler::State state = scheduler->getCurState();
 
     scheduler->pushSpaceLine("qwer");
     EXPECT_EQ(1, scheduler->figures.size());
@@ -228,7 +226,7 @@ TEST_F(FEmborderScheduler, pushSpaceLine)
 TEST_F(FEmborderScheduler, pushContinueFigure)
 {
     EXPECT_EQ(0, scheduler->figures.size());
-    EmborderScheduler::State state = scheduler->getCurState();
+  GostScheduler::State state = scheduler->getCurState();
 
     scheduler->pushContinueFigure();
     EXPECT_EQ(1, scheduler->figures.size());
@@ -244,13 +242,13 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
                        "Hoo\n"
                        "Hoo";
 
-    sRect output = scheduler->rectXFitSize(text, true);
+  sRect output = scheduler->rectXFixedSize(text);
     EXPECT_DOUBLE_EQ(3 * meta.sw() + meta.xp() * 2, output.w);
     EXPECT_DOUBLE_EQ(4 * meta.lh() + meta.yp() * 2, output.h);
 }
 /*TEST_F(FEmborderScheduler, rectXFitSizeWithMarginBadWidth)
 {
-    scheduler->curState.setW(5);
+    scheduler->CurState.setW(5);
     std::string text = "Some text of any size\n" // 26
                        "Don-van tried to speak\n" // 22
                        "Hoo!\n" // 4
@@ -271,13 +269,13 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
                               "onjun\n"
                               "ction";
 
-    sRect output = scheduler->rectXFitSize(text, true);
+    sRect output = scheduler->rectXFixedSize(text, true);
     EXPECT_DOUBLE_EQ(5 * meta.sw() + meta.xp() * 2, output.w);
     EXPECT_DOUBLE_EQ(14 * meta.lh() + meta.yp() * 2, output.h);
 }*/
 /*TEST_F(FEmborderScheduler, rectXFitSizeWithoutMarginBadWidth)
 {
-    scheduler->curState.setW(5);
+    scheduler->CurState.setW(5);
     std::string text = "Some text of any size\n" // 26
                        "Don-van tried to speak\n" // 22
                        "Hoo!\n" // 4
@@ -298,7 +296,7 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithMarginGoodWidth)
                               "onjun\n"
                               "ction";
 
-    sRect output = scheduler->rectXFitSize(text, false);
+    sRect output = scheduler->rectXFixedSize(text, false);
     EXPECT_DOUBLE_EQ(5 * meta.sw(), output.w);
     EXPECT_DOUBLE_EQ(14 * meta.lh(), output.h);
 }*/
@@ -310,7 +308,7 @@ TEST_F(FEmborderScheduler, rectXFitSizeWithoutMarginGoodWidth)
                        "Hoo\n"
                        "Hoo";
 
-    sRect output = scheduler->rectXFitSize(text, false);
+  sRect output = scheduler->rectXFixedSize(text);
     EXPECT_DOUBLE_EQ(3 * meta.sw(), output.w);
     EXPECT_DOUBLE_EQ(4 * meta.lh(), output.h);
 }

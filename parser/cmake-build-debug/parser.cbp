@@ -475,10 +475,10 @@
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Scheduler/AScheduler.h">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Scheduler/EmborderScheduler/EmborderScheduler.cpp">
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Scheduler/GostScheduler/GostScheduler.cpp">
 			<Option target="parser"/>
 		</Unit>
-		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Scheduler/EmborderScheduler/EmborderScheduler.h">
+		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Scheduler/GostScheduler/GostScheduler.h">
 			<Option target="parser"/>
 		</Unit>
 		<Unit filename="/home/arthur/Repos/skyBlocks/parser/Scheduler/Figure/AFigure.h">

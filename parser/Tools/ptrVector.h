@@ -69,25 +69,29 @@ public:
 
     size_t size() const
     {
-        return buffer.size();
+      return buffer.size();
     }
 
-    T *&back()
-    {
-        if (buffer.empty())
-            throw std::exception();
-        return buffer.back();
-    }
+  T *&back() {
+    if (buffer.empty())
+      throw std::exception();
+    return buffer.back();
+  }
 
-    T *&operator[](size_t index)
-    {
-        if (index >= size())
-            throw std::exception();
-        return buffer[index];
+  void clear() {
+    for (auto i : buffer) {
+      delete i;
     }
+    buffer.clear();
+  }
 
-    const T *operator[](size_t index) const
-    {
+  T *&operator[](size_t index) {
+    if (index >= size())
+      throw std::exception();
+    return buffer[index];
+  }
+
+  const T *operator[](size_t index) const {
         if (index >= size())
             throw std::exception();
         return buffer[index];

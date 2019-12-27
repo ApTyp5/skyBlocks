@@ -14,43 +14,44 @@
 #include "../Figure/FigureTypes.h"
 #include "../../Scheduler/Figure/Primitives/Rect.h"
 
-class EmborderScheduler: public AScheduler
-{
-public:
-    explicit EmborderScheduler(const Meta &meta)
-        : AScheduler(meta)
-    {}
-    ptrVector<AFigure> schedule(const std::unique_ptr<ComplexPrimitive> &primitives) override;
+class GostScheduler : public AScheduler {
+ public:
+  explicit GostScheduler(const Meta &meta)
+      : AScheduler(meta), curState(0, 0, 0, 0, 0) {}
+  ptrVector<AFigure> schedule(const std::unique_ptr<PAlgorithm> &root) override;
 
-    bool schedulePrimitive(const PAlgorithm &pAlgorithm) override;
-    bool schedulePrimitive(const PCycle &pCycle) override;
-    bool schedulePrimitive(const PFollow &pFollow) override;
-    bool schedulePrimitive(const PFork &pFork) override;
-    bool schedulePrimitive(const PFunc &pFunc) override;
+  bool schedulePrimitive(const PAlgorithm &pAlgorithm) override;
+  bool schedulePrimitive(const PCycle &pCycle) override;
+  bool schedulePrimitive(const PFollow &pFollow) override;
+  bool schedulePrimitive(const PFork &pFork) override;
+  bool schedulePrimitive(const PFunc &pFunc) override;
 
-protected:
-    class State
-    {
-        // cur bottom x, cur bottom y, cur width
-        double _x, _y, _w;
-        // cur page num
-        double _page;
+ protected:
+  class State {
+    // cur bottom x, cur bottom y, cur width
+    double _x, _y, _w;
+    size_t _maxW;
+    // cur page num
+    size_t _page;
+   public:
+    double maxWid() const;
 
-    public:
-        explicit State(size_t x = 0, size_t y = 0, size_t w = 0, size_t page = 0);
-        double x() const;
-        double y() const;
-        double width() const;
-        double page() const;
-        void setX(double x);
-        void setY(double y);
-        void setW(double w);
-        void setPage(double page);
-    };
+   public:
+    void setMaxWid(double max_w);
+    explicit State(size_t x = 0, size_t y = 0, size_t w = 0, size_t mW = 0, size_t page = 0);
+    double x() const;
+    double y() const;
+    double width() const;
+    size_t page() const;
+    void setX(double x);
+    void setY(double y);
+    void setW(double w);
+    void setPage(double page);
+  };
 
     State curState;
-    const State &getCurState() const;
-    void setCurState(State curState);
+  const State &getCurState() const;
+  State &CurState();
 
 protected:
     // add* - Добавление с проверкой размеров
@@ -74,8 +75,8 @@ protected:
     void gotoPage(size_t page);
     void addPadding(sRect &rect);
 
-    sRect rectXFitSize(std::string &text, bool withMargin = true);
-    sRect continueBlockSize();
+  sRect rectXFixedSize(std::string &text);
+  sRect continueBlockSize();
     void castFFollowToFBegEnd(AFigure *&figure);
 
     friend class FEmborderScheduler;

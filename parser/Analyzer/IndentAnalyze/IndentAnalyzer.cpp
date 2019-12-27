@@ -9,17 +9,16 @@
 #include "Tools/IndentAnalyzerUtils.h"
 
 
-ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t frontLine, size_t backLine)
-{
-    state_ = State::UnknownIndent;
-    indent = shortMemory = "";
+PAlgorithm *IndentAnalyzer::analyze(std::string text, size_t frontLine, size_t backLine) {
+  state_ = State::UnknownIndent;
+  indent = shortMemory = "";
 
-    std::string line;
-    Liner liner(text);
-    liner.skipLines(frontLine - 1);
+  std::string line;
+  Liner liner(text);
+  liner.skipLines(frontLine - 1);
 
-    liner.getLine(line);
-    if (isDef(line)) {
+  liner.getLine(line);
+  if (isDef(line)) {
         std::string name;
         IndentAnalyzerUtils::extractSecondWord(name, line, AlphaBet->WordDelimiters());
         initAlg(name);
@@ -40,7 +39,7 @@ ComplexPrimitive *IndentAnalyzer::analyze(std::string text, size_t frontLine, si
     while (longMemory.size() > 1)
         mergeBackMemory();
 
-    return longMemory.pop_back()->getComplexPrimitive();
+  return dynamic_cast<PAlgorithm *>(longMemory.pop_back()->getComplexPrimitive());
 }
 
 bool IndentAnalyzer::emptyStringPhase(const std::string &line, size_t lineNum)

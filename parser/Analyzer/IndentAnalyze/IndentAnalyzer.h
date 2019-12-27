@@ -24,7 +24,7 @@ class IndentAnalyzer: public AAnalyzer
 {
 public:
     explicit IndentAnalyzer(ptrVector<ParseError> &errors, BaseIndentAlphabet *alphabet);
-    ComplexPrimitive *analyze(std::string text, size_t frontLine, size_t backLine) override;
+  PAlgorithm *analyze(std::string text, size_t frontLine, size_t backLine) override;
 
 private:
     virtual bool emptyStringPhase(const std::string &line, size_t lineNum);

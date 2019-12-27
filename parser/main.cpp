@@ -84,12 +84,13 @@ int main()
                         "\n"
                         "do ano smth\n";*/
 
-    std::string input = "hi!\n"
+    std::string input = "Привет!\n"
                         "\n"
-                        "if cond\n"
-                        "\tif cond2\n"
-                        "\t\t inner2\n"
-                        "bye!";
+                        "пока\n"
+                        "\n"
+                        "Я Алекс\n"
+                        "и это мой \n"
+                        "десктоп арр";
 
     Meta meta(200, 300, 5, 5, 5, 5, 10, 4, 5);
     DataBaseConnection db;

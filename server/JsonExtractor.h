@@ -30,12 +30,16 @@ public:
         };
     }
 
-    std::string extractText(){
-        return tree.get<std::string>("text");
-    }
+  std::string extractText() {
+    return tree.get<std::string>("text");
+  }
 
-private:
-    boost::property_tree::ptree tree;
+  std::string extractLang() {
+    return tree.get<std::string>("language");
+  }
+
+ private:
+  boost::property_tree::ptree tree;
 };
 
 

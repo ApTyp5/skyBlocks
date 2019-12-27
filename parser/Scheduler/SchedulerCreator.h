@@ -9,7 +9,7 @@
 
 #include "AScheduler.h"
 #include "SchedulerType.h"
-#include "EmborderScheduler/EmborderScheduler.h"
+#include "EmborderScheduler/GostScheduler.h"
 
 class SchedulerCreator
 {
@@ -18,7 +18,7 @@ public:
     {
         switch (type) {
             default:
-            case Embordered:return new EmborderScheduler(meta);
+            case Embordered:return new GostScheduler(meta);
         }
     }
 };
