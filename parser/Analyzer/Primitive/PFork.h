@@ -39,7 +39,7 @@ class PFork : public ComplexPrimitive {
 
   size_t maxTextWid() const override {
     size_t lineNum = getLineNum(getInnerText());
-    return getMaxTextWid(getInnerText()) + lineNum;
+    return getMaxTextWid(getInnerText()) + lineNum * 2;
   }
 
   size_t getChildMaxWid() const {

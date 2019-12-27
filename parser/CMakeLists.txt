@@ -59,7 +59,7 @@ set(SchedulerFiles
         Scheduler/SchedulerType.h
         Scheduler/SchedulerCreator.h
         Scheduler/AScheduler.h
-        Scheduler/EmborderScheduler/GostScheduler.cpp Scheduler/EmborderScheduler/GostScheduler.h
+        Scheduler/GostScheduler/GostScheduler.cpp Scheduler/GostScheduler/GostScheduler.h
         Scheduler/Figure/FContinue.h Scheduler/Figure/FContinue.cpp
         Scheduler/Figure/Primitives/Point.h
         Scheduler/Figure/Primitives/Rect.h

@@ -76,6 +76,7 @@ protected:
     void addPadding(sRect &rect);
 
   sRect rectXFixedSize(std::string &text);
+  sRect rectForkFixedSize(std::string &text);
   sRect continueBlockSize();
     void castFFollowToFBegEnd(AFigure *&figure);
 

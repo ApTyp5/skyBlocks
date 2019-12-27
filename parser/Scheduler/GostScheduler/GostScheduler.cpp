@@ -79,6 +79,7 @@ bool GostScheduler::schedulePrimitive(const PFork &pFork) {
   size_t maxWid = curState.maxWid() / 2;
   size_t chldMaxWid = pFork.getChildMaxWid();
   size_t elseChldMaxWid = pFork.getElseChildMaxWid();
+
   addFFork(pFork.getInnerText(), negX, posX);
   State old = getCurState();
 
@@ -88,13 +89,14 @@ bool GostScheduler::schedulePrimitive(const PFork &pFork) {
   negState.setW(std::min(maxWid, elseChldMaxWid));
   negState.setMaxWid(maxWid);
   CurState() = negState;
+
   for (const auto &i : pFork.getElseChildren())
     i->acceptScheduler(*this);
   negState = getCurState();
 
   State posState(old);
   posState.setX(posX);
-  posState.setW(std::min(maxWid, elseChldMaxWid));
+  posState.setW(std::min(maxWid, chldMaxWid));
   posState.setMaxWid(maxWid);
   CurState() = posState;
   for (const auto &i : pFork.getChildren())
@@ -109,6 +111,29 @@ bool GostScheduler::schedulePrimitive(const PFork &pFork) {
 
   return true;
 }
+
+sRect GostScheduler::rectForkFixedSize(std::string &text) {
+  size_t lineNum, maxWidth = curState.maxWid();
+  size_t curMaxWidth = 0;
+  std::string line;
+  std::string output;
+  SizedLiner liner(text);
+  lineNum = 0;
+
+  while (liner.getLine(line, maxWidth, true)) {
+    curMaxWidth = std::max(curMaxWidth, line.size());
+    lineNum += 1;
+    output += line;
+  }
+
+  text = output;
+  text.pop_back(); // удаление \n
+
+  sRect outRect{(getCurState().width() + lineNum * 2) * meta.sw() + 2 * meta.xp(),
+                (lineNum + curMaxWidth / 4) * meta.lh() + 2 * meta.yp()};
+  return outRect;
+}
+
 sRect GostScheduler::rectXFixedSize(std::string &text) {
   size_t lineNum, maxWidth = curState.maxWid();
   std::string line;
@@ -129,7 +154,7 @@ sRect GostScheduler::rectXFixedSize(std::string &text) {
 }
 sRect GostScheduler::continueBlockSize() {
   sRect size{};
-  size.h = size.w = std::max(meta.sw(), meta.lh()) * 3;
+  size.h = size.w = std::max(meta.sw(), meta.lh()) * 2;
   return size;
 }
 void GostScheduler::initNewPage(size_t page) {
@@ -147,7 +172,7 @@ void GostScheduler::addFigure(FigureType type, const std::string &innerText) {
 }
 void GostScheduler::addFFork(const std::string &innerText, double leftX, double rightX) {
   std::string text(innerText);
-  sRect widthFitRect = rectXFixedSize(text);
+  sRect widthFitRect = rectForkFixedSize(text);
 
   checkPageEnd(widthFitRect);
   Rect forkRect{curState.x(), curState.y() + widthFitRect.h / 2, widthFitRect};
@@ -171,7 +196,7 @@ void GostScheduler::pushForkLines(Rect forkRect, double leftX, double rightX) {
   figures.push_back(new FLine(hrombusLeftAngle, leftMid, "", curState.page()));
   figures.push_back(new FLine(leftMid, leftLast, "", curState.page()));
 
-  figures.push_back(new FLine(hrombusRightAngle, rightMid, "Да", curState.page()));
+  figures.push_back(new FLine(hrombusRightAngle, rightMid, "Yes", curState.page()));
   figures.push_back(new FLine(rightMid, rightLast, "", curState.page()));
 }
 void GostScheduler::connectForkParts(State &negState, State &posState) {

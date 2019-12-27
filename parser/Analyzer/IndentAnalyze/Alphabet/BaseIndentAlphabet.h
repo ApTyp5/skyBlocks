@@ -33,24 +33,21 @@ public:
     { return wordDelimiters; }
     virtual const std::vector<char> &SectionDelimiters()
     { return sectionDelimiters; }
-    virtual const std::string &ForkWord()
-    { return forkWord; }
-    virtual const std::string &ElseWord()
-    { return elseWord; }
-    virtual const std::string &CycleWord()
-    { return cycleWord; }
-    virtual const std::string &CallFuncWord()
-    { return callFuncWord; }
-    virtual const std::string &DefineFuncWord()
-    { return defineFuncWord; }
+  virtual const std::string &ForkWord() { return forkWord; }
+  virtual const std::string &ElseWord() { return elseWord; }
+  virtual const std::string &CycleWord() { return cycleWord; }
+  virtual const std::string &CallFuncWord() { return callFuncWord; }
+  virtual const std::string &DefineFuncWord() { return defineFuncWord; }
+  virtual const std::string &YesMart() { return yesMark; }
 
-private:
-    std::vector<char> sectionDelimiters;
-    std::vector<char> wordDelimiters;
-    std::string forkWord;
-    std::string elseWord;
-    std::string cycleWord;
-    std::string callFuncWord;
-    std::string defineFuncWord;
+ private:
+  std::vector<char> sectionDelimiters;
+  std::vector<char> wordDelimiters;
+  std::string forkWord;
+  std::string elseWord;
+  std::string cycleWord;
+  std::string callFuncWord;
+  std::string defineFuncWord;
+  std::string yesMark;
 };
 #endif //PARSER_ANALYZER_INDENTANALYZE_ALPHABET_BASEALPHABET_H_

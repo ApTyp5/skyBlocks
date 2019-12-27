@@ -9,7 +9,7 @@
 
 #include "AScheduler.h"
 #include "SchedulerType.h"
-#include "EmborderScheduler/GostScheduler.h"
+#include "GostScheduler/GostScheduler.h"
 
 class SchedulerCreator
 {
