@@ -34,6 +34,16 @@ const QStringList listSizesStrings = {
     "A5 Горизонтальный",
 };
 
+const QStringList languages = {
+    "RU",
+    "EN",
+};
+
+const QStringList languagesList = {
+    "Русский",
+    "Английский",
+};
+
 struct DrawSettings {
     unsigned int xp;
     unsigned int yp;
@@ -41,11 +51,12 @@ struct DrawSettings {
     unsigned int ym;
     unsigned int bs;
     ListSizes size;
+    int language;
 
     QFont font;
 
     DrawSettings() : xp(0), yp(0), xm(0), ym(0), bs(5),
-        size(A4V), font("freeMono", 8) {}
+        size(A4V), font("freeMono", 8), language(0) {}
 
     QJsonObject ToJson();
 };
@@ -62,7 +73,7 @@ public:
     explicit DrawSettingsDialog(const DrawSettings &s, QWidget *parent = nullptr);
     ~DrawSettingsDialog();
 
-    DrawSettings getSettings() const;
+    DrawSettings getMetaSettings() const;
 
 private:
     Ui::DrawSettingsDialog *ui;

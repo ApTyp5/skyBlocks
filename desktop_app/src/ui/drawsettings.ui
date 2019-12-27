@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>443</width>
-    <height>243</height>
+    <height>274</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -66,6 +66,13 @@
         <widget class="QLabel" name="fontSizeLabel">
          <property name="text">
           <string>Размер шрифта</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="languageLabel">
+         <property name="text">
+          <string>Язык</string>
          </property>
         </widget>
        </item>
@@ -242,6 +249,9 @@
           <enum>QAbstractSpinBox::DefaultStepType</enum>
          </property>
         </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="languageBox"/>
        </item>
       </layout>
      </item>

@@ -25,11 +25,13 @@ DrawSettingsDialog::DrawSettingsDialog(const DrawSettings &s, QWidget *parent) :
 
     this->setFixedSize(this->size());
     ui->listSizesBox->addItems(listSizesStrings);
+    ui->languageBox->addItems(languagesList);
     ui->xmBox->setValue(s.xm);
     ui->ymBox->setValue(s.ym);
     ui->xpBox->setValue(s.xp);
     ui->ypBox->setValue(s.yp);
     ui->bsBox->setValue(s.bs);
+    ui->languageBox->setCurrentIndex(s.language);
 
     ui->listSizesBox->setCurrentIndex(s.size);
     ui->fontSizeBox->setValue(s.font.pointSize());
@@ -41,13 +43,14 @@ DrawSettingsDialog::~DrawSettingsDialog()
     delete ui;
 }
 
-DrawSettings DrawSettingsDialog::getSettings() const {
+DrawSettings DrawSettingsDialog::getMetaSettings() const {
     DrawSettings settings;
     settings.xm = ui->xmBox->value();
     settings.ym = ui->ymBox->value();
     settings.xp = ui->xpBox->value();
     settings.yp = ui->ypBox->value();
     settings.bs = ui->bsBox->value();
+    settings.language = ui->languageBox->currentIndex();
     settings.font.setPointSize(ui->fontSizeBox->value());
     settings.size = ListSizes(ui->listSizesBox->currentIndex());
     settings.font = ui->fontComboBox->currentFont();

@@ -66,6 +66,7 @@ void SkyBlocksEditor::sendInformation() {
     QJsonObject obj;
 
     obj["text"] = content;
+    obj["language"] = languages[settings.language];
     obj["meta"] = settings.ToJson();
 
     QJsonDocument doc;
@@ -84,7 +85,7 @@ void SkyBlocksEditor::setDrawSettings() {
     DrawSettingsDialog dialog(settings);
     auto accept = dialog.exec();
     if (accept)
-        settings = dialog.getSettings();
+        settings = dialog.getMetaSettings();
 }
 
 void SkyBlocksEditor::drawAlgorithm() {
