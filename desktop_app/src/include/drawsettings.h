@@ -55,8 +55,8 @@ struct DrawSettings {
 
     QFont font;
 
-    DrawSettings() : xp(0), yp(0), xm(0), ym(0), bs(5),
-        size(A4V), font("freeMono", 8), language(0) {}
+    DrawSettings() : xp(0), yp(5), xm(0), ym(0), bs(5),
+        size(A3H), font("freeMono", 8), language(1) {}
 
     QJsonObject ToJson();
 };
